@@ -52,6 +52,9 @@
 愛犬の情報（年齢、体型、運動量、アレルギー）に基づいて、最適なレシピをフィルタリングして表示します。
 Ransack を使用した複合条件での検索・フィルタリング機能により、愛犬に合ったレシピのみを提案します。
 
+## 画面遷移図
+  https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
+
 ## 機能候補
 
 ### MVP（最小限の機能）
@@ -97,5 +100,4 @@ Ransack を使用した複合条件での検索・フィルタリング機能に
   - Kaminari（ページネーション）
   - RSpec（テスト）
 
-  ## 画面遷移図
-  https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
+  
