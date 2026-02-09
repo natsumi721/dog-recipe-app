@@ -35,10 +35,6 @@
 食材から選ぶのでは無く、健康状態等から厳選された少数から選ぶことができます。
 ドックフードだけに頼るのでは無く、自分で愛犬の健康を守りたいというオーナーの気持ちを尊重、また愛犬との絆を深めることができます。
 
-## 画面遷移図
-  https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
-  
-
 ## ユーザーの獲得について
 ・Xにてハッシュタグを利用し実際の利用方法を投稿。（＃愛犬手作りごはん/#犬のいる暮らし）など
 ・Instagramで愛犬の写真と共にアプリ紹介
@@ -55,6 +51,9 @@
 ## レシピ提案のロジック
 愛犬の情報（年齢、体型、運動量、アレルギー）に基づいて、最適なレシピをフィルタリングして表示します。
 Ransack を使用した複合条件での検索・フィルタリング機能により、愛犬に合ったレシピのみを提案します。
+
+## 画面遷移図
+  https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
 
 ## 機能候補
 
@@ -101,5 +100,4 @@ Ransack を使用した複合条件での検索・フィルタリング機能に
   - Kaminari（ページネーション）
   - RSpec（テスト）
 
-  ## 画面遷移図
-  https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
+  
