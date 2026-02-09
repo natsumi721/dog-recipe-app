@@ -38,7 +38,6 @@
 ## 画面遷移図
   https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
   
-
 ## ユーザーの獲得について
 ・Xにてハッシュタグを利用し実際の利用方法を投稿。（＃愛犬手作りごはん/#犬のいる暮らし）など
 ・Instagramで愛犬の写真と共にアプリ紹介
