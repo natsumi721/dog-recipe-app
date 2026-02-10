@@ -101,5 +101,4 @@ Ransack を使用した複合条件での検索・フィルタリング機能に
   - Kaminari（ページネーション）
   - RSpec（テスト）
 
-  ## 画面遷移図
-  https://www.figma.com/design/nfgSQf3E8Kd7JZjfjbZa23/dog_recipe?node-id=0-1&p=f&m=draw
+ 
