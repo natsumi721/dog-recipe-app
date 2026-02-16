@@ -1,0 +1,26 @@
+# Ruby のベースイメージを指定
+FROM ruby:3.4.8
+
+# 環境変数の設定
+ENV LANG C.UTF-8
+ENV TZ Asia/Tokyo
+
+# 必要なパッケージのインストール
+RUN apt-get update -qq \
+&& apt-get install -y ca-certificates curl gnupg \
+&& mkdir -p /etc/apt/keyrings \
+&& curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+&& echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+&& apt-get update -qq \
+&& apt-get install -y build-essential libpq-dev nodejs vim \
+&& npm install -g yarn
+
+# アプリケーションディレクトリの作成
+RUN mkdir /myapp
+WORKDIR /myapp
+
+# Bundlerのインストール
+RUN gem install bundler
+
+# アプリケーションのコードをコピー
+COPY . /myapp
