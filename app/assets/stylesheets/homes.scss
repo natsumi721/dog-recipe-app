@@ -1,0 +1,88 @@
+.top-container {
+  font-family: "Helvetica Neue", sans-serif;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* ヒーロー */
+.hero h1 {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.accent {
+  color: #f59e0b;
+}
+
+.sub-text {
+  margin: 20px 0;
+  color: #666;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+
+/* ボタン */
+.primary-button {
+  display: inline-block;
+  background-color: #f59e0b;
+  color: white;
+  padding: 14px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.primary-button:hover {
+  opacity: 0.8;
+}
+
+.note {
+  font-size: 12px;
+  color: #999;
+  margin-top: 10px;
+}
+
+/* process */
+.process {
+  margin-top: 80px;
+}
+
+.steps {
+  margin-top: 30px;
+}
+
+.step {
+  margin-bottom: 30px;
+}
+
+.step h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* CTA */
+.cta {
+  background-color: #f59e0b;
+  color: white;
+  padding: 60px 20px;
+  border-radius: 30px;
+  margin-top: 80px;
+}
+
+.secondary-button {
+  display: inline-block;
+  background-color: white;
+  color: #f59e0b;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+}
