@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  size: 1
+  age_stage: 1
+  weight: 1
+  body_type: 1
+  activity_level: 1
+  allergies: MyText
+  user: one
+
+two:
+  name: MyString
+  size: 1
+  age_stage: 1
+  weight: 1
+  body_type: 1
+  activity_level: 1
+  allergies: MyText
+  user: two
