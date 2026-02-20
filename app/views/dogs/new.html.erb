@@ -1,0 +1,74 @@
+<div class="container mt-5" style="max-width: 600px;">
+  <div class="card shadow p-4 rounded-4">
+
+    <h2 class="text-center mb-4 fw-bold">健康プロフィールの作成</h2>
+
+    <%= form_with model: @dog, local: true do |f| %>
+
+      <!-- 名前 -->
+      <div class="mb-4">
+        <%= f.label :name, "愛犬のお名前", class: "form-label fw-bold" %>
+        <%= f.text_field :name, class: "form-control form-control-lg rounded-pill" %>
+      </div>
+
+      <!-- サイズ -->
+      <div class="mb-4">
+        <label class="form-label fw-bold">サイズ</label>
+        <div class="d-flex gap-2">
+          <% Dog.sizes.keys.each do |size| %>
+            <%= f.radio_button :size, size, class: "btn-check", id: "size_#{size}" %>
+            <%= f.label "size_#{size}", size_i18n(size), class: "btn btn-outline-warning rounded-pill px-4" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- 年齢 -->
+      <div class="mb-4">
+        <label class="form-label fw-bold">年齢</label>
+        <div class="d-flex gap-2">
+          <% Dog.age_stages.keys.each do |age| %>
+            <%= f.radio_button :age_stage, age, class: "btn-check", id: "age_stage_#{age}" %>
+            <%= f.label "age_#{age}", age_i18n(age), class: "btn btn-outline-warning rounded-pill px-4" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- 体型 -->
+      <div class="mb-4">
+        <label class="form-label fw-bold">体型</label>
+        <div class="d-flex gap-2">
+          <% Dog.body_types.keys.each do |body| %>
+            <%= f.radio_button :body_type, body, class: "btn-check", id: "body_#{body}" %>
+            <%= f.label "body_#{body}", body_i18n(body), class: "btn btn-outline-warning rounded-pill px-4" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- 活発度 -->
+      <div class="mb-4">
+        <label class="form-label fw-bold">活発度</label>
+        <div class="d-flex gap-2">
+          <% Dog.activity_levels.keys.each do |act| %>
+            <%= f.radio_button :activity_level, act, class: "btn-check", id: "act_#{act}" %>
+            <%= f.label "act_#{act}", activity_i18n(act), class: "btn btn-outline-warning rounded-pill px-4" %>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- アレルギー -->
+      <div class="mb-4">
+        <%= f.label :allergies, "アレルギー", class: "form-label fw-bold" %>
+        <%= f.select :allergies,
+          ["牛肉","鶏肉","ラム肉","豚肉","牛乳","チーズ","ヨーグルト","卵","小麦","大豆","トウモロコシ","魚","魚介類"],
+          { include_blank: "選択してください" },
+          class: "form-select rounded-pill" %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "レシピを提案してもらう",
+            class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
