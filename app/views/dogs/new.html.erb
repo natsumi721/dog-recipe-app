@@ -16,7 +16,7 @@
         <label class="form-label fw-bold">サイズ</label>
         <div class="d-flex gap-2">
           <% Dog.sizes.keys.each do |size| %>
-            <%= f.radio_button :size, size, class: "btn-check", id: "size_#{size}" %>
+            <%= f.radio_button :size, size, class: "btn-check", id: "dog_size_#{size}" %>
             <%= f.label "size_#{size}", size_i18n(size), class: "btn btn-outline-warning rounded-pill px-4" %>
           <% end %>
         </div>
@@ -27,8 +27,8 @@
         <label class="form-label fw-bold">年齢</label>
         <div class="d-flex gap-2">
           <% Dog.age_stages.keys.each do |age| %>
-            <%= f.radio_button :age_stage, age, class: "btn-check", id: "age_stage_#{age}" %>
-            <%= f.label "age_#{age}", age_i18n(age), class: "btn btn-outline-warning rounded-pill px-4" %>
+            <%= f.radio_button :age_stage, age, class: "btn-check", id: "dog_age_stage_#{age}" %>
+            <%= f.label "age_stage_#{age}", age_i18n(age), class: "btn btn-outline-warning rounded-pill px-4" %>
           <% end %>
         </div>
       </div>
@@ -38,8 +38,8 @@
         <label class="form-label fw-bold">体型</label>
         <div class="d-flex gap-2">
           <% Dog.body_types.keys.each do |body| %>
-            <%= f.radio_button :body_type, body, class: "btn-check", id: "body_#{body}" %>
-            <%= f.label "body_#{body}", body_i18n(body), class: "btn btn-outline-warning rounded-pill px-4" %>
+            <%= f.radio_button :body_type, body, class: "btn-check", id: "dog_body_type_#{body}" %>
+            <%= f.label "body_type_#{body}", body_i18n(body), class: "btn btn-outline-warning rounded-pill px-4" %>
           <% end %>
         </div>
       </div>
@@ -49,8 +49,8 @@
         <label class="form-label fw-bold">活発度</label>
         <div class="d-flex gap-2">
           <% Dog.activity_levels.keys.each do |act| %>
-            <%= f.radio_button :activity_level, act, class: "btn-check", id: "act_#{act}" %>
-            <%= f.label "act_#{act}", activity_i18n(act), class: "btn btn-outline-warning rounded-pill px-4" %>
+            <%= f.radio_button :activity_level, act, class: "btn-check", id: "dog_activity_level_#{act}" %>
+            <%= f.label "activity_level_#{act}", activity_i18n(act), class: "btn btn-outline-warning rounded-pill px-4" %>
           <% end %>
         </div>
       </div>

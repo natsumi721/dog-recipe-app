@@ -8,7 +8,7 @@ class DogsController < ApplicationController
     @dog.user = User.first  # 仮に最初のユーザーを関連付ける。実際にはログインユーザーを使用するべき。
 
     if @dog.save
-      redirect_to root_path, notice: "情報登録完了！！"
+      redirect_to "#", notice: "情報登録完了！！"
     else
       render :new, status: :unprocessable_entity
     end
