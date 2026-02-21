@@ -15,4 +15,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "homes#top"
   resources :dogs, only: %i[new create]
+  resources :dogs do
+    member do
+      get :complete
+    end
+  end
 end
+

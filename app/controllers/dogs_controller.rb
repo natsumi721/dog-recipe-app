@@ -8,11 +8,17 @@ class DogsController < ApplicationController
     @dog.user = User.first  # 仮に最初のユーザーを関連付ける。実際にはログインユーザーを使用するべき。
 
     if @dog.save
-      redirect_to "#", notice: "情報登録完了！！"
+      redirect_to complete_dog_path(@dog)
     else
+      flash.now[:alert] = "情報の保存に失敗しました。入力内容を確認してください。"
       render :new, status: :unprocessable_entity
     end
   end
+
+    # 完了画面へリダイレクト
+    def complete
+      @dog = Dog.find(params[:id])
+    end
 
   private
 
