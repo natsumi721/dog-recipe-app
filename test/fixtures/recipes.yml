@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  life_stage: 1
+  body_type: 1
+  activity_level: 1
+  ingredients: MyText
+  instructions: MyText
+  nutrition_note: MyText
+
+two:
+  name: MyString
+  description: MyText
+  life_stage: 1
+  body_type: 1
+  activity_level: 1
+  ingredients: MyText
+  instructions: MyText
+  nutrition_note: MyText
