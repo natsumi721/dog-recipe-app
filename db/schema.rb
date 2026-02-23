@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_02_22_121648) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "life_stage"
+    t.integer "age_stage"
     t.integer "body_type"
     t.integer "activity_level"
     t.text "ingredients"
