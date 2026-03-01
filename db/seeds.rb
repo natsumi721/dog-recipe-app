@@ -11,7 +11,7 @@
 # 例: レシピの初期データを作成
 Recipe.destroy_all
 
-#子犬・細身、おだやか
+# 子犬・細身、おだやか
 Recipe.create!(
   name: "鶏ももとかぼちゃの成長サポートごはん",
   age_stage: :puppy,
@@ -19,8 +19,8 @@ Recipe.create!(
   activity_level: :low,
 
   description: "体重を増やしたい痩せ型の子犬向けレシピ",
-  
-  ingredients: <<~TEXT
+
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
       ■ 小型犬（〜5kg）
         ・鶏もも肉（皮つき） … 40g
@@ -45,14 +45,13 @@ Recipe.create!(
         ・ブロッコリー … 30g
         ・卵黄 … 1.5個
         ・亜麻仁オイル … 小さじ1.5
-        
+    #{'    '}
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
-        水の量を少し多めにして炊くと、より柔らかくなります。  
+        水の量を少し多めにして炊くと、より柔らかくなります。#{'  '}
 
     ② かぼちゃとブロッコリーを加熱
         かぼちゃは皮を剥き、種を除いた状態で1cm角程度に切ります。ブロッコリーは小房に分けます。鍋で茹でるか、電子レンジで加熱して柔らかくします。
@@ -72,7 +71,6 @@ Recipe.create!(
       フードは減らさないようにしてください。
 
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で高タンパク、成長サポート
@@ -91,7 +89,7 @@ Recipe.create!(
   activity_level: :low,
 
   description: "体重を増やしたい痩せ型の子犬向けレシピ",
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
     ■ 小型犬（〜5kg）
         ・牛赤身肉 … 35g
@@ -114,9 +112,9 @@ Recipe.create!(
          ・プレーンヨーグルト … 大さじ1.5
         ・すりごま … 小さじ1.5
   TEXT
-  ,
 
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもを加熱
         皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、電子レンジで加熱して柔らかくします。
         電子レンジを利用する場合はキッチンペーパーを濡らして包み、ラップをして4分ほど加熱してください。
@@ -137,7 +135,7 @@ Recipe.create!(
         フードはそのままで良いですが、急激に体重が増えるようであれば5〜10%減らしてください。
 
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ 牛肉で高タンパク、成長サポート
@@ -182,10 +180,10 @@ Recipe.create!(
         ・卵黄 … 1.5個
         ・オリーブオイル … 小さじ1.5
   TEXT
-  ,
+
 
   instructions: <<~TEXT,
-    ① 白米をやわらかめに炊く  
+    ① 白米をやわらかめに炊く#{'  '}
         炊飯器で白米をやわらかめに炊いてください。
         水の量を少し多めにして炊くと、より柔らかくなります。
 
@@ -206,7 +204,7 @@ Recipe.create!(
         よく冷ましてから与えてください。
         フードは減らさず与えてください。便が緩くなる場合はオイルを半分にしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 生鮭でDHA補給、成長サポート
     ✔ にんじんとブロッコリーでビタミンと食物繊維を補給
@@ -246,7 +244,7 @@ Recipe.create!(
       ・かぼちゃ … 80g
       ・亜麻仁オイル … 小さじ1.5
   TEXT
-  ,
+
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -267,7 +265,7 @@ Recipe.create!(
         よく冷ましてから与えてください。
         フードは減らさずに与えてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏レバーで鉄分とビタミンAを補給、成長サポート
     ✔ 鶏むね肉で高タンパク、筋力維持
@@ -306,9 +304,8 @@ Recipe.create!(
       ・にんじん … 50g
       ・ごま油 … 小さじ3/4
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
         水の量を少し多めにして炊くと、より柔らかくなります。
@@ -329,7 +326,6 @@ Recipe.create!(
         よく冷ましてから与えてください。
 
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 豚ヒレ肉で高タンパク、成長サポート
@@ -337,10 +333,10 @@ Recipe.create!(
     ✔ にんじんでビタミンと食物繊維を補給
     ✔ ごま油で良質な脂質をプラス
   TEXT
-
 )
 
-#子犬・細身・普通
+
+# 子犬・細身・普通
 Recipe.create!(
   name: "鶏むね肉と卵のそぼろ風ごはん",
   age_stage: :puppy,
@@ -373,12 +369,11 @@ Recipe.create!(
         ・卵黄 … 1.5個
 
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
-        水の量を少し多めにして炊くと、より柔らかくなります。  
+        水の量を少し多めにして炊くと、より柔らかくなります。#{'  '}
 
     ② にんじんとさつまいもを加熱
         にんじんは細かく刻んで茹でるか、キッチンペーパーをしっかりと濡らし、人参に包んで電子レンジで加熱してください。
@@ -440,7 +435,6 @@ Recipe.create!(
         ・ブロッコリー … 45g
         ・やぎミルク … 大さじ1.5
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -555,11 +549,10 @@ Recipe.create!(
         ・白米 … 150g
         ・にんじん … 45g
 TEXT
-,
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
-        炊飯器で白米をやわらかめに炊いてください。  
+        炊飯器で白米をやわらかめに炊いてください。#{'  '}
         水の量を少し多めにして炊くと、より柔らかくなります。
 
     ② にんじんを加熱
@@ -614,7 +607,6 @@ Recipe.create!(
         ・にんじん … 45g
         ・プレーンヨーグルト … 大さじ1.5
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -643,7 +635,7 @@ Recipe.create!(
   TEXT
 )
 
-#子犬・細身・活発
+# 子犬・細身・活発
 Recipe.create!(
   name: "鶏ももと卵のスタミナごはん",
   age_stage: :puppy,
@@ -674,7 +666,6 @@ Recipe.create!(
         ・卵黄 … 1.5個
         ・亜麻仁オイル … 小さじ3/4
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -733,7 +724,6 @@ Recipe.create!(
         ・にんじん … 45g
         ・プレーンヨーグルト … 大さじ1.5
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -790,7 +780,6 @@ Recipe.create!(
         ・小松菜 … 90g
         ・すりごま … 小さじ1.5
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① マグロを加熱
@@ -970,7 +959,7 @@ Recipe.create!(
   TEXT
 )
 
-#子犬・普通・おだやか
+# 子犬・普通・おだやか
 Recipe.create!(
   name: "鶏むね肉とブロッコリーの成長ごはん",
   age_stage: :puppy,
@@ -1110,8 +1099,8 @@ Recipe.create!(
   activity_level: :low,
 
   description: "成長サポートはしつつ体型維持のできる子犬向けレシピ",
-  
-  ingredients: <<~TEXT
+
+  ingredients: <<~TEXT,
     【成犬1日分目安】
     ・豚ヒレ肉 … 130g
     ・かぼちゃ … 200g
@@ -1119,8 +1108,8 @@ Recipe.create!(
     ・絹豆腐 … 100g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① かぼちゃを加熱
         皮を剥いたかぼちゃを1cm角程度に切り、鍋で茹でるか、濡れたキッチンペーパーで巻き電子レンジで5分加熱して柔らかくします。
         加熱が足りないようであればさらに加熱してください。
@@ -1144,7 +1133,7 @@ Recipe.create!(
         しっかりと冷ましてから与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 豚ヒレ肉で高タンパク、筋力維持
     ✔ 豆腐で消化を促す
@@ -1232,7 +1221,7 @@ Recipe.create!(
   TEXT
 )
 
-#子犬・普通・普通
+# 子犬・普通・普通
 Recipe.create!(
   name: "鶏むねと卵の成長サポート",
   age_stage: :puppy,
@@ -1559,7 +1548,7 @@ Recipe.create!(
   TEXT
 )
 
-#小犬・普通体型・活発
+# 小犬・普通体型・活発
 Recipe.create!(
   name: "鶏ももと卵のエネルギー強化サポート",
   age_stage: :puppy,
@@ -1845,7 +1834,7 @@ Recipe.create!(
   TEXT
 )
 
-#小犬・肥満・おだやか
+# 小犬・肥満・おだやか
 
 Recipe.create!(
   name: "鶏むねと野菜たっぷり成長サポート",
@@ -2131,7 +2120,7 @@ Recipe.create!(
   TEXT
 )
 
-#子犬・肥満・普通
+# 子犬・肥満・普通
 
 Recipe.create!(
   name: "鶏むねと野菜たっぷり軽めサポート",
@@ -2141,7 +2130,7 @@ Recipe.create!(
 
   description: "成長を止めずに脂質を抑え、満腹感を高める高タンパクサポートトッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬（〜5kg）
@@ -2159,9 +2148,8 @@ Recipe.create!(
     ・ブロッコリー … 160g
     ・にんじん … 110g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     【下準備】
     すべて必ず加熱してから与えてください。生のまま与えないようお願いいたします。
 
@@ -2192,7 +2180,7 @@ Recipe.create!(
     1食あたり全体量の1/4を使用します。
     フード量は減らさず、トッピングは総量の10〜20％以内にしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 高タンパク維持
     ✔ 低脂質設計
@@ -2201,14 +2189,14 @@ Recipe.create!(
 )
 
 Recipe.create!(
-  title: "白身魚と豆腐のやさしい成長サポート",
+  name: "白身魚と豆腐のやさしい成長サポート",
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :medium,
 
   description: "低脂質なタラを使用し、成長を維持しながら体重増加を穏やかに整えるトッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬
@@ -2225,9 +2213,9 @@ Recipe.create!(
     ・タラ … 360g
     ・絹豆腐 … 300g
     ・かぼちゃ … 150g
-  TEXT,
+  TEXT
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     ① タラを加熱
     骨を全て取り除き、沸騰後に入れ5〜6分加熱します。
@@ -2250,7 +2238,6 @@ Recipe.create!(
     1食あたり全体の1/4量をフードへ混ぜます。
     フード量は減らさないでください。
   TEXT
-   ,
 
   nutrition_note: <<~TEXT
     ✔ 白身魚で脂質を抑える
@@ -2267,7 +2254,7 @@ Recipe.create!(
 
   description: "低脂質な豚ヒレを使用し、筋肉を維持しながら脂質を抑える成長期サポートトッピング",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬（〜5kg）
@@ -2282,9 +2269,8 @@ Recipe.create!(
       ・豚ヒレ肉 … 320g
       ・小松菜 … 220g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     ① 豚ヒレ肉を加熱
         2cm角に切ります。鍋で水から加熱し、沸騰後弱火で7〜8分加熱してください。
@@ -2311,7 +2297,7 @@ Recipe.create!(
 
         ※総合栄養食は減らさず、トッピングは全体量の10〜15％以内にしてください。
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ 低脂質高タンパク
@@ -2328,7 +2314,7 @@ Recipe.create!(
 
   description: "抗酸化野菜を組み合わせ、脂質を抑えながら筋肉量維持を意識したトッピング",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬
@@ -2346,9 +2332,8 @@ Recipe.create!(
       ・トマト … 220g
       ・ピーマン … 120g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     ① 牛赤身肉
         2cm角に切ります。茹でる場合は水から加熱し、沸騰後7〜8分加熱してください。
@@ -2377,7 +2362,6 @@ Recipe.create!(
 
         ※総合栄養食は減らしません。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 抗酸化サポート
@@ -2394,7 +2378,7 @@ Recipe.create!(
 
   description: "腹持ちを高めつつ脂質を抑えた成長期向けトッピング",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬
@@ -2412,9 +2396,8 @@ Recipe.create!(
       ・さつまいも … 280g
       ・ブロッコリー … 160g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     【下準備】
     すべて必ず加熱してください。
 
@@ -2443,7 +2426,6 @@ Recipe.create!(
 
         ※総合栄養食は減らさず、トッピングは10〜15％以内にしてください。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 腹持ちサポート
@@ -2452,16 +2434,16 @@ Recipe.create!(
   TEXT
 )
 
-#子犬・肥満・活発
+# 子犬・肥満・活発
 Recipe.create!(
-  title: "鶏むねと野菜のアクティブ調整ごはん",
+  name: "鶏むねと野菜のアクティブ調整ごはん",
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
 
   description: "活発な子犬の筋肉を維持しながら脂質を抑える高タンパク調整トッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬（〜5kg）
@@ -2482,9 +2464,8 @@ Recipe.create!(
     ・ブロッコリー … 160g
     ・にんじん … 110g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     ① 白米を炊く
         通常よりやや柔らかめに炊いてください。
@@ -2518,7 +2499,6 @@ Recipe.create!(
 
         ※総合栄養食は減らさず、トッピングは全体量の10〜15％以内にしてください。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 高タンパクで筋肉保護
@@ -2528,14 +2508,14 @@ Recipe.create!(
 )
 
 Recipe.create!(
-  title: "牛赤身とさつまいもの筋肉キープごはん",
+  name: "牛赤身とさつまいもの筋肉キープごはん",
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
 
   description: "活発な子犬のエネルギーを確保しながら脂質を抑える筋肉維持トッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬
@@ -2553,9 +2533,8 @@ Recipe.create!(
     ・さつまいも … 280g
     ・ブロッコリー … 160g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     【下準備】
     脂身の多い部位は必ず取り除いてください。
@@ -2591,7 +2570,7 @@ Recipe.create!(
         与える際は常温に戻してください。
 
         ※総合栄養食は基本減らしません。
-  TEXT,
+  TEXT
 
   nutrition_note: <<~TEXT
     ✔ 高タンパクで筋肉維持
@@ -2601,14 +2580,14 @@ Recipe.create!(
 )
 
 Recipe.create!(
-  title: "鮭少量と豆腐の軽タンパクごはん",
+  name: "鮭少量と豆腐の軽タンパクごはん",
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
 
   description: "DHAを確保しながら脂質を抑え、豆腐でタンパク質を補う成長期向け調整トッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬（〜5kg）
@@ -2626,9 +2605,8 @@ Recipe.create!(
     ・絹豆腐（水切り後）… 300g
     ・小松菜 … 160g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     ① 鮭の加熱
         骨を確認しながら切り分けます。骨は全て取り除きましょう。
@@ -2661,7 +2639,6 @@ Recipe.create!(
 
         ※総合栄養食は減らさず、トッピングは全体量の10〜15％以内にしてください。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ DHAを確保しつつ脂質は最小限
@@ -2671,14 +2648,14 @@ Recipe.create!(
 )
 
 Recipe.create!(
-  title: "豚ヒレとかぼちゃの軽エネルギーごはん",
+  name: "豚ヒレとかぼちゃの軽エネルギーごはん",
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
 
   description: "低脂質な豚ヒレを中心に、活動量分のエネルギーを少量のかぼちゃで補う成長期向けトッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬
@@ -2696,9 +2673,8 @@ Recipe.create!(
     ・かぼちゃ … 220g
     ・小松菜 … 160g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     【下準備】
     脂身は必ず取り除いてください。
@@ -2732,7 +2708,6 @@ Recipe.create!(
 
         ※活発でも脂質は増やしません。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 低脂質高タンパク
@@ -2742,14 +2717,14 @@ Recipe.create!(
 )
 
 Recipe.create!(
-  title: "鶏むねと玄米のアクティブ成長ごはん",
+  name: "鶏むねと玄米のアクティブ成長ごはん",
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
 
   description: "活動量に合わせて玄米を少量使用し、血糖の急上昇を抑えながら筋肉維持を意識したトッピング（2日分・4食分）",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ■ 小型犬
@@ -2767,9 +2742,8 @@ Recipe.create!(
     ・玄米（炊いた状態）… 320g
     ・小松菜 … 160g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
 
     ① 玄米を炊く
         水を通常より1.2倍程度多めにし、
@@ -2796,7 +2770,7 @@ Recipe.create!(
 
         ※総合栄養食は減らさず、トッピングは10〜15％以内。
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ 玄米で血糖安定
@@ -2810,7 +2784,7 @@ Recipe.create!(
 
 
 
-#成犬・細身・おだやか
+# 成犬・細身・おだやか
 
 Recipe.create!(
   name: "鶏ももと白米のエネルギー補給ごはん",
@@ -2820,7 +2794,7 @@ Recipe.create!(
 
   description: "体重を増やしたい痩せ型の成犬向けレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
         ingredients: <<~TEXT
       ■ 小型犬（〜5kg）
@@ -2839,9 +2813,8 @@ Recipe.create!(
         ・にんじん … 45g
 
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 炊飯器で白米をやわらかめに炊く
          水の量を少し多めにして炊くと、より柔らかくなります。
 
@@ -2856,13 +2829,13 @@ Recipe.create!(
        愛犬の好みの食感になるように、鶏ももを細かく刻んだり、にんじんを潰したりして調整してください。
         よく冷ましてから与えてください。
 
-    ☆ ひとことアドバイス ☆    
+    ☆ ひとことアドバイス ☆#{'    '}
       もし圧力鍋があれば、人参と鶏ももを一緒に加圧調理するのもおすすめです。
        そうすることで、鶏ももから出る旨味が人参に染み込み、より美味しいご飯になります。
        その後、炊き上がったご飯と混ぜ合わせてください。
        フードの量は減らさずに与えてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で高タンパク。
     ✔ カロリー増設計
@@ -2894,9 +2867,8 @@ Recipe.create!(
         ・さつまいも … 180g
         ・卵 … 1.5個
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① さつまいもを加熱
          さつまいもを1cm角程度に切り、鍋で茹でるか、電子レンジで加熱して柔らかくします。
          フォークで簡単に潰せるくらいまで加熱してください。
@@ -2930,7 +2902,7 @@ Recipe.create!(
 
   description: "体重を増やしたい痩せ型の成犬向けレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
       【2日分（4食分）目安】
       ■ 小型犬（〜5kg）
         ・生鮭 … 50g
@@ -2948,7 +2920,6 @@ Recipe.create!(
         ・白米 … 180g
 
   TEXT
-  ,
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -3004,7 +2975,6 @@ Recipe.create!(
         ・かぼちゃ … 120g
 
     TEXT
-    ,
 
     instructions: <<~TEXT,
     ① かぼちゃを加熱
@@ -3014,7 +2984,7 @@ Recipe.create!(
     ② 豚肉を茹でる
         事前に脂身の多い部分は取り除きましょう。カットした豚肉を茹で、脂が浮いてきたら軽くすくいます。
         豚肉がしっかりと火が通るまで茹でてください。
-     
+    #{' '}
     ③ 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
         水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3032,13 +3002,13 @@ Recipe.create!(
 
 Recipe.create!(
     name: "洋風チキンと野菜のリゾット",
-    age_stage: :adult,  
+    age_stage: :adult,
     body_type: :thin,
     activity_level: :low,
 
     description: "体重を増やしたい痩せ型の成犬向けレシピ",
 
-    ingredients: <<~TEXT
+    ingredients: <<~TEXT,
       【2日分（4食分）目安】
       ■ 小型犬（〜5kg）
          ・鶏むね肉（皮無し） … 50g
@@ -3061,9 +3031,8 @@ Recipe.create!(
         ・ブロッコリー … 60g
         ・オリーブオイル … 小さじ1.5
     TEXT
-     ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
       炊飯器で炊く。水の量を少し多めにして炊くと、より柔らかくなります。
 
@@ -3080,7 +3049,6 @@ Recipe.create!(
       よく冷ましてから与えてください。
 
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
       - 鶏むね肉で高タンパク低脂質
@@ -3089,7 +3057,7 @@ Recipe.create!(
   TEXT
 )
 
-#成犬・細身・普通
+# 成犬・細身・普通
 
 Recipe.create!(
     name: "牛肉と野菜のエネルギーご飯",
@@ -3099,7 +3067,7 @@ Recipe.create!(
 
     description: "活動分のエネルギー補給ができる成犬向けレシピ",
 
-    ingredients: <<~TEXT
+  ingredients: <<~TEXT,
       【2日分（4食分）目安】
       ▪ 小型犬（〜5kg目安）
         ・牛肉 … 70g
@@ -3118,9 +3086,8 @@ Recipe.create!(
         ・にんじん … 50g
         ・ブロッコリー … 50g
     TEXT
-    ,
 
-  nstructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
         水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3140,11 +3107,10 @@ Recipe.create!(
         しっかりと冷ましてから与えてください。
         フードは2〜3割減らして併用がおすすめです。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 牛肉で高タンパク、筋力維持
-    ✔ 白米多めで活動エネルギー補填 
+    ✔ 白米多めで活動エネルギー補填#{' '}
     ✔︎ 野菜でビタミンと食物繊維を補給
   TEXT
 )
@@ -3157,7 +3123,7 @@ Recipe.create!(
 
     description: "活動分のエネルギー補給ができる成犬向けレシピ",
 
-    ingredients: <<~TEXT
+    ingredients: <<~TEXT,
       【2日分（4食分）目安】
       ▪ 小型犬（〜5kg目安）
         ・鶏もも肉 … 70g
@@ -3168,21 +3134,20 @@ Recipe.create!(
         ・鶏もも肉 … 120g
         ・さつまいも … 160g
         ・小松菜 … 30g
-    
+
        ■ 大型犬（16kg〜）
          ・鶏もも肉 … 220g
          ・さつまいも … 280g
          ・小松菜 … 50g
 
-        
+      #{'  '}
     TEXT
-    ,
 
-    instructions: <<~TEXT
+    instructions: <<~TEXT,
     ① さつまいもを加熱
          皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、電子レンジで加熱して柔らかくします。
          フォークで簡単に潰せるくらいまで加熱してください。
-        
+    #{'    '}
 
     ② 鶏もも肉を加熱
         鶏もも肉を適当な大きさに切り、鍋で茹でます。脂が浮いてきたら軽くすくいます。
@@ -3197,7 +3162,6 @@ Recipe.create!(
           よく冷ましてから与えてください。フードは３割ほど減らしましょう。
 
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で高タンパク、筋力維持
@@ -3214,7 +3178,7 @@ Recipe.create!(
 
   description: "活動分のエネルギー補給ができる成犬向けレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -3236,8 +3200,8 @@ Recipe.create!(
         ・ブロッコリー … 50g
 
   TEXT
-,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
     水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3259,7 +3223,7 @@ Recipe.create!(
     生鮭を茹でた際のスープを少し加えると、より美味しくなります。
     よく冷ましてから与えてください。フードは3〜4割ほど減らしてください。
   TEXT
-,
+
   nutrition_note: <<~TEXT
     ✔ 生鮭でDHA補給
     ✔ 卵で必須アミノ酸強化
@@ -3276,7 +3240,7 @@ Recipe.create!(
 
   description: "活動分のエネルギー補給ができる成犬向けレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -3294,8 +3258,8 @@ Recipe.create!(
         ・白米 … 300g
         ・かぼちゃ … 160g
   TEXT
-,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① かぼちゃを加熱
     皮を剥き、タネを除いたかぼちゃを1cm角程度に切り、鍋で茹でるか、電子レンジで加熱して柔らかくします。
     電子レンジを利用する場合はキッチンペーパーを濡らして包み、ラップをして4分ほど加熱してください。
@@ -3313,12 +3277,12 @@ Recipe.create!(
     もしパサつくのが気になる場合は、ヤギミルクを加えてもシチュー風で美味しくなります。
     よく冷ましてから与えてください。フードは３割ほど減らしてください。
   TEXT
-,
+
   nutrition_note: <<~TEXT
     ✔ 低糖質高タンパクの豚ヒレ肉で筋力維持
-    ✔ かぼちゃで穏やかな糖質をプラス 
+    ✔ かぼちゃで穏やかな糖質をプラス#{' '}
   TEXT
-) 
+)
 
 Recipe.create!(
   name: "鶏ももと玄米の栄養満点ごはん",
@@ -3328,7 +3292,7 @@ Recipe.create!(
 
   description: "活動分のエネルギー補給ができる成犬向けレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -3347,8 +3311,8 @@ Recipe.create!(
          ・にんじん … 50g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
 
     ① 玄米をやわらかめに炊く
     炊飯器で玄米をやわらかめに炊いてください
@@ -3369,7 +3333,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。フードは３割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で高タンパク、筋力維持
     ✔ 玄米で活動エネルギー補填、腹持ちアップ
@@ -3377,16 +3341,16 @@ Recipe.create!(
   TEXT
 )
 
-#成犬・細身・活発
+# 成犬・細身・活発
 Recipe.create!(
-  name: "鶏もものリゾット"
+  name: "鶏もものリゾット",
   age_stage: :adult,
   body_type: :thin,
   activity_level: :high,
 
   description: "活発な成犬のエネルギー補給におすすめのレシピ",
-  
-  ingredients: <<~TEXT
+
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3409,8 +3373,8 @@ Recipe.create!(
       ・ブロッコリー … 100g
       ・トマト … 50g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
     水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3430,7 +3394,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。フードは４割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で高タンパク、皮付きにすることで筋力維持とエネルギー補給を両立
     ✔ 白米で活動エネルギー補填
@@ -3445,8 +3409,8 @@ Recipe.create!(
   activity_level: :high,
 
   description: "活発な成犬のエネルギー補給におすすめのレシピ",
-  
-  ingredients: <<~TEXT
+
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3455,8 +3419,8 @@ Recipe.create!(
     ・小松菜 … 30g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもを加熱
     皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、電子レンジで4分加熱して柔らかくします。
     加熱が足りないようであればさらに加熱してください。
@@ -3475,7 +3439,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛肉で高タンパク、筋力維持
     ✔ さつまいもで活動エネルギー補填
@@ -3491,19 +3455,18 @@ Recipe.create!(
 
   description: "活発な成犬のエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【成犬1日分目安】
     ・生鮭（皮付き・塩分はNG） … 120g
     ・白米 … 180g
     ・卵 … 1個
     ・ブロッコリー … 30g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
-    水の量を少し多めにして炊くと、より柔らかくなります。  
+    水の量を少し多めにして炊くと、より柔らかくなります。#{'  '}
 
     ② ブロッコリーを加熱
     沸騰したお湯に入れ、5分〜7分ほど茹でてください。電子レンジを利用する場合はキッチンペーパーを濡らして包み、ラップをして4分ほど加熱してください。
@@ -3521,7 +3484,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 生鮭でDHA補給
     ✔ 卵で必須アミノ酸強化
@@ -3537,15 +3500,15 @@ Recipe.create!(
 
   description: "活発な成犬のエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【成犬1日分目安】
     ・豚ヒレ肉 … 130g
     ・じゃがいも … 200g
     ・人参 … 30g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① じゃがいもを加熱
     皮を剥いたじゃがいもを1cm角程度に切り、鍋で茹でるか、濡れたキッチンペーパーで巻き電子レンジで4分加熱して柔らかくします。
     加熱が足りないようであればさらに加熱してください。
@@ -3563,7 +3526,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 豚ヒレ肉で高タンパク、筋力維持
     ✔ じゃがいもで活動エネルギー補填
@@ -3579,7 +3542,7 @@ Recipe.create!(
 
   description: "活発な成犬のエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【成犬1日分目安】
     ・鶏むね肉（皮無し） … 130g
     ・玄米 … 180g
@@ -3587,8 +3550,8 @@ Recipe.create!(
     ・オリーブオイル … 小さじ1/2
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
     炊飯器で玄米をやわらかめに炊いてください
     吸収時間を長めに取り、水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3608,16 +3571,16 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 玄米で活動エネルギー補填、腹持ちアップ
     ✔ 小松菜でビタミンと食物繊維を補給
     ✔ オリーブオイルで良質な脂質をプラス
   TEXT
-) 
+)
 
-#成犬・普通・おだやか
+# 成犬・普通・おだやか
 
 Recipe.create!(
   name: "白身魚とさつまいものやさしい和ごはん",
@@ -3627,7 +3590,7 @@ Recipe.create!(
 
   description: "穏やかに過ごす成犬向け。消化にやさしく、適度なエネルギーを確保したバランスごはん。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3651,8 +3614,8 @@ Recipe.create!(
       ・人参 … 60g
       ・しめじ … 45g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもの加熱
     さつまいもは皮をむき、1cm角ほどの小さめサイズにカットしてください。
     鍋で水から茹で、竹串がすっと通る柔らかさになるまで加熱します。
@@ -3679,7 +3642,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     体重が増えやすい場合はさらに調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 白身魚で消化に優しいタンパク質補給
     ✔ さつまいもで穏やかなエネルギー補給
@@ -3697,7 +3660,7 @@ Recipe.create!(
 
   description: "おだやかに過ごす成犬向け。適度な脂質を含みつつ、胃腸に優しい設計の和風バランス食。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3721,8 +3684,8 @@ Recipe.create!(
       ・ほうれん草 … 70g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米を炊く
     白米は通常よりやや水を多めにして炊いてください。
     柔らかめに炊くことで消化が良くなります。
@@ -3748,7 +3711,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     体型が維持できているかを見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で適度な脂質とタンパク質補給
     ✔ 白米で安定したエネルギー供給
@@ -3766,7 +3729,7 @@ Recipe.create!(
 
   description: "穏やかに過ごす成犬向け。良質な脂質と植物性タンパク質を組み合わせた、消化にやさしい腸内サポートレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3790,8 +3753,8 @@ Recipe.create!(
       ・小松菜 … 70g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① かぼちゃの加熱
     かぼちゃは皮を取り除き、小さめの角切りにしてください。
     鍋で水から茹で、フォークで簡単に潰せる柔らかさまでしっかり加熱します。
@@ -3821,7 +3784,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     便の状態を確認しながら微調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鮭でDHA・EPA補給
     ✔ 豆腐で消化しやすい植物性タンパク質
@@ -3839,7 +3802,7 @@ Recipe.create!(
 
   description: "穏やかに過ごす成犬向け。鉄分補給と食物繊維を意識したバランス設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3863,8 +3826,8 @@ Recipe.create!(
       ・人参 … 60g
       ・キャベツ … 90g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 押し麦を炊く
     押し麦は水を多めにし、やわらかく炊いてください。
     芯が残らないよう、しっかり吸水させてから炊飯します。
@@ -3889,7 +3852,7 @@ Recipe.create!(
     フードは小型犬は1割、中型犬は1〜2割、大型犬は2割減らして与えてください。
     体重維持を確認しながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛赤身で鉄分補給
     ✔ 押し麦で食物繊維強化
@@ -3906,7 +3869,7 @@ Recipe.create!(
 
   description: "穏やかに過ごす成犬向け。低脂質で胃腸に優しい和風バランスレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -3930,8 +3893,8 @@ Recipe.create!(
       ・人参 … 60g
       ・しいたけ … 45g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 里芋の下処理
     里芋は皮をむき、小さくカットしてください。
     ぬめりを軽く洗い流した後、柔らかくなるまで茹でます。
@@ -3956,7 +3919,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     便の状態を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 低脂質高タンパク設計
     ✔ 里芋で胃腸をやさしく保護
@@ -3966,17 +3929,17 @@ Recipe.create!(
 )
 
 
-#成犬・普通・普通
+# 成犬・普通・普通
 
 Recipe.create!(
   name: "鶏むね肉と雑穀米のバランスごはん",
   age_stage: :adult,
   body_type: :normal,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "活動量が標準的な成犬向け。高タンパクと適量炭水化物で、日常の健康維持を支える基本設計レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4000,8 +3963,8 @@ Recipe.create!(
       ・人参 … 60g
       ・小松菜 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 雑穀米を炊く
     雑穀米は通常よりやや水を多めにして炊いてください。
     炊飯前に30分ほど浸水させると、より消化しやすくなります。
@@ -4029,7 +3992,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     体型維持を確認しながら微調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で良質なタンパク質確保
     ✔ 雑穀米でビタミンB群と食物繊維補給
@@ -4042,11 +4005,11 @@ Recipe.create!(
   name: "白身魚とじゃがいものナチュラルごはん",
   age_stage: :adult,
   body_type: :normal,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "活動量が標準的な成犬向け。消化にやさしい魚と適度な炭水化物でバランスを整えるレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4070,8 +4033,8 @@ Recipe.create!(
       ・人参 … 60g
       ・ブロッコリー … 85g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① じゃがいもの加熱
     じゃがいもは皮をむき、小さめの角切りにしてください。
     水から茹で、完全に柔らかくなるまで加熱します。
@@ -4096,7 +4059,7 @@ Recipe.create!(
     フードは小型犬は1割、中型犬は1〜2割、大型犬は2割減らして与えてください。
     体重が増減しないか確認しながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 白身魚で消化の良いタンパク質補給
     ✔ じゃがいもで安定したエネルギー供給
@@ -4109,11 +4072,11 @@ Recipe.create!(
   name: "牛赤身と玄米のスタンダードごはん",
   age_stage: :adult,
   body_type: :normal,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "活動量が標準的な成犬向け。鉄分を補いながら、安定したエネルギーを供給するバランス設計レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4137,8 +4100,8 @@ Recipe.create!(
       ・人参 … 60g
       ・かぼちゃ … 170g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米を炊く
     玄米は洗った後、1時間ほど浸水させてください。
     水をやや多めにし、やわらかめに炊きます。
@@ -4166,7 +4129,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     体型を維持できているか確認しながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛赤身で鉄分補給
     ✔ 玄米で安定した血糖コントロール
@@ -4179,11 +4142,11 @@ Recipe.create!(
   name: "鶏もも肉と押し麦のエネルギーごはん",
   age_stage: :adult,
   body_type: :normal,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "標準的な活動量の成犬向け。適度な脂質と食物繊維を組み合わせた日常維持レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4207,8 +4170,8 @@ Recipe.create!(
       ・人参 … 60g
       ・小松菜 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 押し麦を炊く
     押し麦は水を多めにしてやわらかく炊いてください。
     芯が残らないよう十分に加熱します。
@@ -4233,7 +4196,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     体重を確認しながら微調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で適度な脂質補給
     ✔ 押し麦で食物繊維強化
@@ -4246,11 +4209,11 @@ Recipe.create!(
   name: "サバとさつまいもの栄養ごはん",
   age_stage: :adult,
   body_type: :normal,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "標準活動量の成犬向け。良質な脂質を含む青魚で皮膚・被毛ケアを意識したレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4274,8 +4237,8 @@ Recipe.create!(
       ・人参 … 60g
       ・ほうれん草 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもの加熱
     皮をむき、小さくカットします。
     水から茹で、完全に柔らかくなるまで加熱してください。
@@ -4300,7 +4263,7 @@ Recipe.create!(
     フードは小型犬は1割、中型犬は1〜2割、大型犬は2割減らして与えてください。
     体型維持を確認しながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 青魚でEPA・DHA補給
     ✔ さつまいもで安定エネルギー
@@ -4309,7 +4272,7 @@ Recipe.create!(
   TEXT
 )
 
-#成犬・普通・活発
+# 成犬・普通・活発
 
 Recipe.create!(
   name: "牛肉とさつまいものパワーごはん",
@@ -4319,7 +4282,7 @@ Recipe.create!(
 
   description: "運動量が多い成犬向け。筋肉維持と持続エネルギーを両立したスタミナレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4343,8 +4306,8 @@ Recipe.create!(
       ・人参 … 70g
       ・小松菜 … 75g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもの下処理
     さつまいもは皮をむき、1cmほどの小さめの角切りにしてください。
     鍋に水を入れ、さつまいもを水から茹でます。
@@ -4374,7 +4337,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らして与えてください。
     運動量が多く体重が減る場合は、減らす量を少し調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛赤身肉で筋肉維持の高タンパク
     ✔ さつまいもで持続エネルギー補給
@@ -4391,7 +4354,7 @@ Recipe.create!(
 
   description: "活発な成犬向け。筋肉回復と皮膚・被毛ケアを同時にサポートする栄養設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4415,8 +4378,8 @@ Recipe.create!(
       ・かぼちゃ … 200g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米を炊く
     玄米は洗った後、1時間ほど浸水させてください。
     水をやや多めにして炊飯器で柔らかめに炊きます。
@@ -4444,7 +4407,7 @@ Recipe.create!(
     フードは小型犬は1割、中型犬は1〜2割、大型犬は2割ほど減らして与えてください。
     活動量が多く体重が減る場合は減量を少し調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ サーモンでEPA・DHA補給
     ✔ 玄米で持続エネルギー供給
@@ -4461,7 +4424,7 @@ Recipe.create!(
 
   description: "運動量の多い成犬向け。消化の良い魚と安定エネルギーで活動を支えるレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4485,8 +4448,8 @@ Recipe.create!(
       ・小松菜 … 85g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米を炊く
     白米はやや水を多めにして炊いてください。
     柔らかめに炊くことで消化が良くなります。
@@ -4512,7 +4475,7 @@ Recipe.create!(
     フードは小型犬は1割、中型犬は1〜2割、大型犬は2割減らしてください。
     活動量が特に多い日は減量を少なめに調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ タラで消化の良いタンパク質
     ✔ 白米で即効性エネルギー補給
@@ -4529,7 +4492,7 @@ Recipe.create!(
 
   description: "活発な成犬向け。疲労回復と筋肉維持を意識した高タンパク設計レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4553,8 +4516,8 @@ Recipe.create!(
       ・ブロッコリー … 85g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米を炊く
     玄米は1時間ほど浸水させてください。
     水を多めにしてやわらかく炊きます。
@@ -4582,7 +4545,7 @@ Recipe.create!(
     フードは小型犬は1〜2割、中型犬は2割、大型犬は2〜3割減らしてください。
     運動量と体重変化を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 豚ヒレで高タンパク・低脂質
     ✔ 玄米で持続エネルギー
@@ -4599,7 +4562,7 @@ Recipe.create!(
 
   description: "活発に動く成犬向け。消化の良い白米でしっかりエネルギー補給し、鶏もも肉で筋肉維持を支えるスタミナ設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4623,8 +4586,8 @@ Recipe.create!(
       ・人参 … 70g
       ・キャベツ … 100g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊きます
     白米は軽く洗い、30分ほど浸水させてください。
     活発な成犬は消化吸収が大切ですので、通常よりやや水を多めにして炊きます。
@@ -4664,7 +4627,7 @@ Recipe.create!(
     大型犬は2〜3割を目安に減らしてください。
     体重や運動量の変化に応じて必ず調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で良質タンパク質とエネルギー補給
     ✔ 白米は消化が良く、活発な犬の持久力を支える
@@ -4675,7 +4638,7 @@ Recipe.create!(
 )
 
 
-#成犬・肥満・おだやか
+# 成犬・肥満・おだやか
 
 Recipe.create!(
   name: "鶏むね肉と野菜のまんぷくごはん",
@@ -4684,7 +4647,7 @@ Recipe.create!(
   activity_level: :low,
 
   description: "体重管理が必要な成犬向けのレシピ",
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4708,8 +4671,8 @@ Recipe.create!(
       ・ブロッコリー … 100g
       ・トマト … 50g
   TEXT
-  , 
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
 
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
@@ -4732,7 +4695,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。フードは４割減らして与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 白米は控えめにしてカロリーコントロール
@@ -4748,7 +4711,7 @@ Recipe.create!(
 
   description: "体重管理が必要な成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4771,8 +4734,8 @@ Recipe.create!(
 
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
     水の量を少し多めにして炊くと、より柔らかくなります。
@@ -4780,7 +4743,7 @@ Recipe.create!(
 
     ② 牛肉を加熱
     小さめにカットし、茹でて完全に火を通してください。
-    脂が浮いてきたら軽く取り除きましょう。  
+    脂が浮いてきたら軽く取り除きましょう。#{'  '}
 
     ③ にんじんとブロッコリーを加熱
     にんじんは細かく刻んで茹でるか、キッチンペーパーをしっかりと濡らし、人参を包んで電子レンジで加熱してください。
@@ -4792,7 +4755,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。フードは４割減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛肉で高タンパク、筋力維持
     ✔ 白米は控えめにしてカロリーコントロール
@@ -4809,7 +4772,7 @@ Recipe.create!(
 
   description: "体重管理が必要な成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4828,11 +4791,11 @@ Recipe.create!(
       ・小松菜 … 60g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 豚ひれ肉を加熱
     小さめにカットし、茹でて完全に火を通してください。
-    脂が浮いてきたら軽く取り除きましょう。  
+    脂が浮いてきたら軽く取り除きましょう。#{'  '}
 
     ② 小松菜を加熱
     小松菜を鍋で茹でるか、水で濡らしたキッチンペーパーに巻いて電子レンジで加熱して柔らかくします
@@ -4848,7 +4811,7 @@ Recipe.create!(
     フードは４割ほど減らして与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 豚ひれ肉で高タンパク、筋力維持
     ✔ 豆腐で低カロリー高タンパク、満腹感アップ
@@ -4864,7 +4827,7 @@ Recipe.create!(
 
   description: "体重管理が必要な成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4883,8 +4846,8 @@ Recipe.create!(
     ・トマト … 50g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① タラを加熱
     骨を除き、7分ほど茹でてください。脂が多く出る場合には軽く取り除いてください。
     焼いても構いませんが、油を使わずに調理することをおすすめします。
@@ -4892,7 +4855,7 @@ Recipe.create!(
     ② 小松菜を加熱
     小松菜を鍋で茹でるか、水で濡らしたキッチンペーパーに巻いて電子レンジで加熱して柔らかくします
     3分で取り出し、まだ固いようであれば、さらに加熱してください。
-    細かく刻んでおきましょう。  
+    細かく刻んでおきましょう。#{'  '}
 
     ③ トマトを加熱
     トマトは湯煎して皮を剥き、細かく刻んでください。トマト缶を使用する場合は、汁ごと鍋に入れて温めてください。
@@ -4902,13 +4865,13 @@ Recipe.create!(
     フードは３割〜４割ほど減らして与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ タラで高タンパク、低脂質、DHA補給
     ✔ 小松菜でビタミンと食物繊維を補給
     ✔ トマトでビタミンとリコピンを補給
   TEXT
-) 
+)
 
 Recipe.create!(
   name: "鶏むねと玄米のそぼろ風ごはん",
@@ -4917,7 +4880,7 @@ Recipe.create!(
   activity_level: :low,
 
   description: "体重管理が必要な成犬向けのレシピ",
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4939,12 +4902,12 @@ Recipe.create!(
       ・ブロッコリー … 80g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
     炊飯器で玄米をやわらかめに炊いてください
     吸収時間を長めに取り、水の量を少し多めにして炊くと、より柔らかくなります。
-    
+
 
     ② 鶏むね肉を加熱
     鶏むね肉を小さくカットし、鍋で茹でます。脂が浮いてきたら軽くすくいます。
@@ -4963,7 +4926,7 @@ Recipe.create!(
     フードは３割ほど減らして与えてください。大型犬は、体重の増量次第では４割ほど減らしてください。
 
   TEXT
-  , 
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 玄米は控えめにしてカロリーコントロール
@@ -4972,7 +4935,7 @@ Recipe.create!(
 )
 
 
-#成犬・肥満・普通
+# 成犬・肥満・普通
 Recipe.create!(
   name: "鶏むね肉でパワーアップごはん",
   age_stage: :adult,
@@ -4981,7 +4944,7 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -4989,23 +4952,23 @@ Recipe.create!(
      ・白米 … 40g
      ・人参 … 15g
      ・ブロッコリー … 25g
- 
+
     ■ 中型犬（6〜15kg）
      ・鶏むね肉 … 130g
      ・白米 … 80g
      ・人参 … 30g
      ・ブロッコリー … 40g
-  
+
     ■ 大型犬（16kg~）
      ・鶏むね肉 … 220g
      ・白米 … 140g
      ・人参 … 50g
      ・ブロッコリー … 70g
 
-     
+    #{' '}
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
     水の量を少し多めにして炊くと、より柔らかくなります。
@@ -5026,7 +4989,7 @@ Recipe.create!(
     しっかりと冷ましてから与えてください。フードは３割ほど減らして与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 白米は控えめにしてカロリーコントロール
@@ -5042,7 +5005,7 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5061,8 +5024,8 @@ Recipe.create!(
       ・小松菜 … 60g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもを加熱
     皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、電子レンジで4分加熱して、一度取り出し少し混ぜます。
     その後2分追加で加熱してください。
@@ -5083,10 +5046,10 @@ Recipe.create!(
     フードは３割ほど減らして与えてください。大型犬は体重の増量次第では４割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛肉で高タンパク、筋力維持
-    ✔ さつまいもで活動エネルギー補填 
+    ✔ さつまいもで活動エネルギー補填#{' '}
     ✔ 小松菜でビタミンと食物繊維を補給
   TEXT
 )
@@ -5099,7 +5062,7 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5121,16 +5084,16 @@ Recipe.create!(
       ・じゃがいも … 2個
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① じゃがいもを加熱
     皮を剥いたじゃがいもを1cm角程度に切り、鍋で茹でるか、濡れたキッチンペーパーで巻き電子レンジで4分加熱して柔らかくします。
     一度取り出し、加熱が足りないようであればさらに加熱してください。
     フォークで簡単に潰せるくらいまで加熱してください。
-    
+
     ② 豚ひれ肉を加熱
     小さめにカットし、茹でて完全に火を通してください。
-    脂が浮いてきたら軽く取り除きましょう。  
+    脂が浮いてきたら軽く取り除きましょう。#{'  '}
 
     ③ 小松菜を加熱
     小松菜を鍋で茹でるか、水で濡らしたキッチンペーパーに巻いて電子レンジで加熱して柔らかくします
@@ -5146,9 +5109,9 @@ Recipe.create!(
     フードは３割ほど減らして与えてください。大型犬は体重の増量次第では４割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
-    ✔ 豚ひれ肉で高タンパク、筋力維持 
+    ✔ 豚ひれ肉で高タンパク、筋力維持#{' '}
     ✔ じゃがいもで活動エネルギー補填
     ✔ 小松菜でビタミンと食物繊維を補給
     ✔ トマトでビタミンとリコピンを補給
@@ -5163,7 +5126,7 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5185,8 +5148,8 @@ Recipe.create!(
       ・ピーマン … 40g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① ブロッコリーを加熱
     ブロッコリーは小房に分けて鍋で茹でるか、濡らしたキッチンペーパーで包み電子レンジで4分加熱して柔らかくします。
     もしまだ固いようであれば、さらに加熱してください。房も茎も食べられるように、フォークで簡単に潰せるくらいまで加熱してください。
@@ -5209,7 +5172,7 @@ Recipe.create!(
     フードは３割ほど減らして与えてください。大型犬は体重の増量次第では４割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 生鮭で高タンパク、DHA補給
     ✔ 豆腐で低カロリー高タンパク、満腹感アップ
@@ -5225,7 +5188,7 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5239,7 +5202,7 @@ Recipe.create!(
       ・玄米 … 80g
       ・人参 … 30g
       ・ブロッコリー … 40g
-    
+
     ■ 大型犬（16kg~）
       ・鶏むね肉 … 220g
       ・玄米 … 140g
@@ -5247,8 +5210,8 @@ Recipe.create!(
       ・ブロッコリー … 70g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
     炊飯器で玄米をやわらかめに炊いてください
     吸収時間を長めに取り、水の量を少し多めにして炊くと、より柔らかくなります。
@@ -5271,7 +5234,7 @@ Recipe.create!(
 
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 玄米は控えめにしてカロリーコントロール
@@ -5287,7 +5250,7 @@ Recipe.create!(
   activity_level: :high,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したい成犬向けのレシピ",
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5309,8 +5272,8 @@ Recipe.create!(
       ・ブロッコリー … 80g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
     水の量を少し多めにして炊くと、より柔らかくなります。
@@ -5332,7 +5295,7 @@ Recipe.create!(
     フードは３割ほど減らして与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 白米で活動エネルギー補填
@@ -5348,7 +5311,7 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5370,8 +5333,8 @@ Recipe.create!(
       ・トマト … 50g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① さつまいもを加熱
     皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、少量の水を入れて電子レンジで4分加熱して、一度取り出し少し混ぜます。
     その後2分追加で加熱してください。
@@ -5396,7 +5359,7 @@ Recipe.create!(
     フードは３割ほど減らして与えてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛肉で高タンパク、筋力維持
     ✔ さつまいもで活動エネルギー補填
@@ -5413,7 +5376,7 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5436,8 +5399,8 @@ Recipe.create!(
 
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① ブロッコリーを加熱
     ブロッコリーは小房に分けて鍋で茹でるか、濡らしたキッチンペーパーで包み電子レンジで4分加熱して柔らかくします。
     もしまだ固いようであれば、さらに加熱してください。房も茎も食べられるように、フォークで簡単に潰せるくらいまで加熱してください。
@@ -5461,7 +5424,7 @@ Recipe.create!(
 
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 生鮭で高タンパク、DHA補給
     ✔ 豆腐で低カロリー高タンパク、満腹感アップ
@@ -5475,9 +5438,9 @@ Recipe.create!(
   body_type: :overweight,
   activity_level: :high,
 
-  description: "運動量に見合ったエネルギー補給とダイエットを両立したい成犬向けのレシピ",  
+  description: "運動量に見合ったエネルギー補給とダイエットを両立したい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
     ▪ 小型犬（〜5kg目安）
       ・豚ヒレ肉 … 80g
@@ -5495,8 +5458,8 @@ Recipe.create!(
       ・小松菜 … 70g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① かぼちゃを加熱
     皮を剥ぎ、種を取り除いたかぼちゃを1cm角程度に切り、鍋で茹でるか、水で濡らしたキッチンペーパーに包んで電子レンジで4分加熱します。
     一度取り出し、加熱が足りないようであればさらに加熱してください。
@@ -5513,11 +5476,11 @@ Recipe.create!(
 
     ④ ①②③を混ぜ合わせる。
     かぼちゃの自然な甘みで美味しく仕上がります。
-    しっかりと冷ましてから与えてください。  
+    しっかりと冷ましてから与えてください。#{'  '}
     フードは小型犬は２割、中・大型犬は３割ほど減らして与えてください。大型犬は体重の増量次第では４割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 豚ヒレ肉で高タンパク、筋力維持
     ✔ かぼちゃで活動エネルギー補填とビタミン補給、甘みで食いつきアップ
@@ -5533,7 +5496,7 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したい成犬向けのレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5558,8 +5521,8 @@ Recipe.create!(
       ・かつお節 … 8g
 
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
     炊飯器で玄米をやわらかめに炊いてください。
     吸収時間を長めに取り、水の量を少し多めにして炊くと、より柔らかくなります。
@@ -5580,7 +5543,7 @@ Recipe.create!(
     フードは小型犬は２割、中・大型犬は３割ほど減らして与えてください。大型犬は体重の増量次第では４割ほど減らしてください。
 
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 玄米は控えめにしてカロリーコントロール
@@ -5590,7 +5553,7 @@ Recipe.create!(
 )
 
 
-#老犬・痩せ型・穏やか
+# 老犬・痩せ型・穏やか
 
 Recipe.create!(
   name: "鶏ささみと豆腐のやわらか煮込みごはん",
@@ -5600,7 +5563,7 @@ Recipe.create!(
 
   description: "噛む力が弱くなった老犬向け。高タンパクで消化にやさしく、やわらかく仕上げた体重維持サポートレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5624,8 +5587,8 @@ Recipe.create!(
       ・かぼちゃ … 120g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     白米は軽く洗い、30分ほど浸水させてください。
     水は通常より多めに入れ、やわらかめに炊きます。
@@ -5662,7 +5625,7 @@ Recipe.create!(
     大型犬は3割ほど減らして様子を見てください。
     体重増加を確認しながら必ず調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ ささみで高タンパク・低脂肪
     ✔ 豆腐でやわらかく消化サポート
@@ -5680,7 +5643,7 @@ Recipe.create!(
 
   description: "EPA・DHAで脳と関節をサポート。やわらかく仕上げた、老犬の体力維持向けエネルギーレシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5704,8 +5667,8 @@ Recipe.create!(
       ・小松菜 … 85g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにして炊き、やわらかめに仕上げてください。
     炊き上がったら軽く潰しておきます。
@@ -5739,7 +5702,7 @@ Recipe.create!(
     大型犬は3割ほど減らしてください。
     体重の増減を見ながら必ず調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鮭でEPA・DHA補給（脳・関節サポート）
     ✔ じゃがいもでエネルギー確保
@@ -5755,11 +5718,9 @@ Recipe.create!(
   body_type: :thin,
   activity_level: :low,
 
-  description: "噛む力が
-  
-  弱くなった老犬向け。鶏ひき肉でなめらかに仕上げ、かぼちゃでエネルギーを補う体重維持レシピ。",
+  description: "噛む力が弱くなった老犬向け。鶏ひき肉でなめらかに仕上げ、かぼちゃでエネルギーを補う体重維持レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5783,8 +5744,8 @@ Recipe.create!(
       ・大根 … 120g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を通常より多めにし、芯が残らないようやわらかく炊いてください。
     炊き上がったら軽く潰しておきます。
@@ -5811,7 +5772,7 @@ Recipe.create!(
     フードは小型犬2割、中型犬2〜3割、
     大型犬3割減らし、体重を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ ひき肉で咀嚼しやすい
     ✔ かぼちゃでエネルギー補給
@@ -5828,7 +5789,7 @@ Recipe.create!(
 
   description: "飲み込みやすさ重視。里芋の自然なとろみで、老犬でも安心して食べられるやさしい設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5852,8 +5813,8 @@ Recipe.create!(
       ・小松菜 … 85g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
     水を多めにして炊き、軽く潰します。
 
@@ -5877,7 +5838,7 @@ Recipe.create!(
 
     フードは2〜3割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 白身魚で消化にやさしいタンパク質
     ✔ 里芋で自然なとろみ
@@ -5893,7 +5854,7 @@ Recipe.create!(
 
   description: "エネルギー強化型。牛ひき肉と卵で体重増加をサポートしつつ、ふんわり仕上げで食べやすく。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5917,8 +5878,8 @@ Recipe.create!(
       ・かぼちゃ … 150g
       ・ほうれん草 … 80g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
     水を多めにしてください。
 
@@ -5940,7 +5901,7 @@ Recipe.create!(
 
     フードは2〜3割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛ひき肉でエネルギー補給
     ✔ 卵で吸収率アップ
@@ -5948,17 +5909,17 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・痩せ型、普通
+# 老犬・痩せ型、普通
 
 Recipe.create!(
   name: "鶏もも肉とさつまいものやわらか栄養ごはん",
   age_stage: :senior,
   body_type: :thin,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "普通の活動量がある痩せ型老犬向け。エネルギー補給を強化しながらも、やわらかく消化に配慮した体重増加サポート設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -5982,8 +5943,8 @@ Recipe.create!(
       ・ブロッコリー … 85g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊きます
     白米は洗った後、30分浸水させてください。
     水をやや多めにして炊き、芯が残らないようにしてください。
@@ -6016,7 +5977,7 @@ Recipe.create!(
     大型犬3割を目安に減らしてください。
     体重の増え方を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で高タンパクとエネルギー補給
     ✔ さつまいもで持続エネルギー
@@ -6029,11 +5990,11 @@ Recipe.create!(
   name: "鮭と豆腐のまろやか体力サポートごはん",
   age_stage: :senior,
   body_type: :thin,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "EPA・DHAで関節と脳を支えつつ、豆腐でやわらかく仕上げた老犬向け体力維持レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6057,8 +6018,8 @@ Recipe.create!(
       ・かぼちゃ … 170g
       ・小松菜 … 85g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにして炊き、軽く潰しておきます。
 
@@ -6086,7 +6047,7 @@ Recipe.create!(
     フードは2〜3割減らしてください。
     体重を確認しながら微調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鮭で関節と脳をサポート
     ✔ 豆腐で消化にやさしいタンパク質
@@ -6099,11 +6060,11 @@ Recipe.create!(
   name: "鶏むね肉と里芋の和風とろみ煮ごはん",
   age_stage: :senior,
   body_type: :thin,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "里芋の自然なとろみで飲み込みやすく仕上げた和食風レシピ。消化に配慮しながら体重増加をサポートします。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6127,8 +6088,8 @@ Recipe.create!(
       ・人参 … 70g
       ・小松菜 … 85g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     洗米後30分浸水させ、水を多めにして炊いてください。
     芯が残らないようにし、炊き上がったら軽く潰します。
@@ -6156,7 +6117,7 @@ Recipe.create!(
 
     フードは2〜3割減らし、体重を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク
     ✔ 里芋のとろみで嚥下サポート
@@ -6169,11 +6130,11 @@ Recipe.create!(
   name: "タラとかぼちゃのやさしい和風煮ごはん",
   age_stage: :senior,
   body_type: :thin,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "白身魚で消化にやさしく、かぼちゃでエネルギー補給。和風のやわらか煮込み仕立て。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6197,8 +6158,8 @@ Recipe.create!(
       ・大根 … 150g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
     水を多めにして炊いてください。
 
@@ -6220,7 +6181,7 @@ Recipe.create!(
 
     フードは2〜3割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 白身魚で消化負担軽減
     ✔ かぼちゃで体重増加サポート
@@ -6232,11 +6193,11 @@ Recipe.create!(
   name: "鶏ひき肉と豆腐の和風あんかけごはん",
   age_stage: :senior,
   body_type: :thin,
-  activity_level: :normal,
+  activity_level: :medium,
 
   description: "あんかけ風に仕上げて飲み込みやすく。痩せ型老犬の体重増加をやさしく支えます。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6260,8 +6221,8 @@ Recipe.create!(
       ・かぼちゃ … 170g
       ・ほうれん草 … 80g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊き、軽く潰します。
 
     ② かぼちゃを完全に潰せるまで煮ます。
@@ -6280,7 +6241,7 @@ Recipe.create!(
     フードは2〜3割減らし、
     体重増加を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ あんかけ風で嚥下サポート
     ✔ 高タンパクで体重増加設計
@@ -6288,7 +6249,7 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・細身・活発
+# 老犬・細身・活発
 
 Recipe.create!(
   name: "鶏もも肉とさつまいもの活力サポートごはん",
@@ -6298,7 +6259,7 @@ Recipe.create!(
 
   description: "活発に動く細身の老犬向け。消化に配慮しながら、持久力と体重増加を両立するエネルギー強化レシピ。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6322,8 +6283,8 @@ Recipe.create!(
       ・ブロッコリー … 85g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     洗米後30分浸水させ、水をやや多めにして炊いてください。
     芯が残らないようにし、炊き上がったら軽く潰します。
@@ -6356,7 +6317,7 @@ Recipe.create!(
     大型犬2〜3割減らしてください。
     活動量と体重変化を見ながら必ず調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で筋肉維持
     ✔ さつまいもで持久力サポート
@@ -6373,7 +6334,7 @@ Recipe.create!(
 
   description: "活発な老犬の関節と筋肉を支える設計。良質脂質と高タンパクで体重増加をサポートします。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6397,8 +6358,8 @@ Recipe.create!(
       ・かぼちゃ … 240g
       ・小松菜 … 85g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにし、軽く潰しておきます。
 
@@ -6425,7 +6386,7 @@ Recipe.create!(
     フードは1〜2割減らす程度にし、
     活動量が多い日は減らしすぎないよう調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鮭の良質脂質で関節サポート
     ✔ 豆腐で消化に配慮
@@ -6441,7 +6402,7 @@ Recipe.create!(
 
   description: "活発に動く細身の老犬向け。鉄分とタンパク質を強化し、筋肉維持と体力向上を支える設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6465,8 +6426,8 @@ Recipe.create!(
       ・小松菜 … 85g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
     水を多めにして炊き、軽く潰してください。
 
@@ -6489,7 +6450,7 @@ Recipe.create!(
     フードは1〜2割減らし、
     体重と活動量に応じて調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 牛肉で鉄分と筋力維持
     ✔ かぼちゃで持続エネルギー
@@ -6505,7 +6466,7 @@ Recipe.create!(
 
   description: "吸収率を高める卵を加えた設計。消化に配慮しつつ、活発な老犬のエネルギー不足を防ぎます。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6529,8 +6490,8 @@ Recipe.create!(
       ・さつまいも … 240g
       ・ほうれん草 … 80g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
 
     ② さつまいもを柔らかく煮て、
@@ -6553,7 +6514,7 @@ Recipe.create!(
     フードは1〜2割減らし、
     活動量が多い日は減らしすぎないようにしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 卵で吸収率向上
     ✔ 鶏むねで高タンパク
@@ -6569,7 +6530,7 @@ Recipe.create!(
 
   description: "軽やかな白身魚で消化に配慮しつつ、じゃがいもでエネルギーを強化した活発老犬向け設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6593,8 +6554,8 @@ Recipe.create!(
       ・ブロッコリー … 85g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
 
     ② じゃがいもを小さく切り、
@@ -6614,7 +6575,7 @@ Recipe.create!(
     フードは1〜2割減らし、
     体重増加を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 白身魚で消化負担軽減
     ✔ じゃがいもで持久力強化
@@ -6622,7 +6583,7 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・普通・おだやか
+# 老犬・普通・おだやか
 Recipe.create!(
   name: "白身魚と大根のやわらか和風ごはん",
   age_stage: :senior,
@@ -6631,7 +6592,7 @@ Recipe.create!(
 
   description: "おだやかに過ごす老犬向け。脂質を抑えつつ、消化にやさしい白身魚と根菜で内臓に負担をかけない設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6655,8 +6616,8 @@ Recipe.create!(
       ・人参 … 70g
       ・小松菜 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水をやや多めにして炊きます。
     老犬なので通常よりやわらかめにしてください。
@@ -6681,7 +6642,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重変化を見ながら調整。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 白身魚で低脂質タンパク質
     ✔ 大根で消化サポート
@@ -6698,7 +6659,7 @@ Recipe.create!(
 
   description: "おだやかな老犬向け。高タンパク・低脂質で、やわらかく食べやすい消化重視メニュー。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6722,8 +6683,8 @@ Recipe.create!(
       ・かぼちゃ … 120g
       ・キャベツ … 85g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水を多めにし、消化しやすく炊きます。
 
@@ -6745,7 +6706,7 @@ Recipe.create!(
     フードは1〜2割減らしてください。
     活動量が少ない日はやや少なめに。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ ささみで低脂質タンパク
     ✔ 豆腐で消化しやすい植物性タンパク
@@ -6762,7 +6723,7 @@ Recipe.create!(
 
   description: "穏やかに過ごす老犬向け。里芋の自然なとろみで飲み込みやすく、脂質を抑えつつ旨味を感じられる和風設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6786,8 +6747,8 @@ Recipe.create!(
       ・人参 … 70g
       ・小松菜 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水を多めにし、消化しやすい状態に。
 
@@ -6810,7 +6771,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鮭で良質タンパクとEPA
     ✔ 里芋のとろみで嚥下サポート
@@ -6827,7 +6788,7 @@ Recipe.create!(
 
   description: "消化にやさしい和風みぞれ煮。水分多めで腎臓負担にも配慮した軽やか設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6851,8 +6812,8 @@ Recipe.create!(
       ・大根 … 170g
       ・人参 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く。
 
     ② 鶏むね肉を茹でる
@@ -6872,7 +6833,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 低脂質・高タンパク
     ✔ 水分豊富で老犬向き
@@ -6889,7 +6850,7 @@ Recipe.create!(
 
   description: "噛む力が弱くなってきた老犬にも与えやすい、やわらか雑炊スタイル。低脂質で内臓にやさしい。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6913,8 +6874,8 @@ Recipe.create!(
       ・かぼちゃ … 120g
       ・ほうれん草 … 60g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米を多めの水で炊き、雑炊状に。
 
     ② たらを加熱
@@ -6932,7 +6893,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ たらで低脂質タンパク
     ✔ 豆腐でやわらかさと消化性
@@ -6941,7 +6902,7 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・普通・普通
+# 老犬・普通・普通
 
 Recipe.create!(
   name: "鶏むね肉と納豆のやわらか和風ごはん",
@@ -6951,7 +6912,7 @@ Recipe.create!(
 
   description: "普通運動量の老犬向け。納豆の発酵パワーで腸内環境を整えつつ、低脂質で体重維持をサポートする和風設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -6975,8 +6936,8 @@ Recipe.create!(
       ・かぼちゃ … 140g
       ・小松菜 … 65g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     消化を考え、水をやや多めに。
 
@@ -6999,7 +6960,7 @@ Recipe.create!(
     フードは1〜2割減らしてください。
     体重維持を見ながら微調整。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 納豆で腸内環境サポート
     ✔ 鶏むね肉で低脂質タンパク
@@ -7016,7 +6977,7 @@ Recipe.create!(
 
   description: "やさしく栄養補給したい老犬向け。山芋の自然なとろみで嚥下をサポートし、適度なエネルギー補給もできる設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7040,8 +7001,8 @@ Recipe.create!(
       ・人参 … 75g
       ・白菜 … 170g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く。
 
     ② 白身魚を加熱
@@ -7060,7 +7021,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 山芋で自然なとろみ
     ✔ 白身魚で低脂質タンパク
@@ -7077,7 +7038,7 @@ Recipe.create!(
 
   description: "上品な白身魚で脂質を抑えつつ、さつまいもで自然なエネルギー補給。普通運動量の老犬向け和風設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7101,8 +7062,8 @@ Recipe.create!(
       ・人参 … 75g
       ・小松菜 … 65g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く。
 
     ② 鯛を加熱
@@ -7122,7 +7083,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鯛で高品質タンパク
     ✔ さつまいもで安定エネルギー
@@ -7139,7 +7100,7 @@ Recipe.create!(
 
   description: "やわらかく飲み込みやすい設計。適度な炭水化物と高タンパクで穏やかな体力維持をサポート。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7163,8 +7124,8 @@ Recipe.create!(
       ・白菜 … 200g
       ・人参 … 70g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く。
 
     ② ささみを茹でる
@@ -7183,7 +7144,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ ささみで低脂質タンパク
     ✔ 長芋で消化サポート
@@ -7200,7 +7161,7 @@ Recipe.create!(
 
   description: "低脂質ながら適度な栄養補給ができる設計。豆腐でやわらかさをプラスした老犬向け和風ごはん。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7224,8 +7185,8 @@ Recipe.create!(
       ・ほうれん草 … 75g
       ・かぼちゃ … 140g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く。
 
     ② たらを加熱
@@ -7244,7 +7205,7 @@ Recipe.create!(
 
     フードは1〜2割減らしてください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ たらで高タンパク低脂質
     ✔ 豆腐で消化性アップ
@@ -7253,7 +7214,7 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・普通・活発
+# 老犬・普通・活発
 
 Recipe.create!(
   name: "鮭とさつまいもの活力和風ごはん",
@@ -7263,7 +7224,7 @@ Recipe.create!(
 
   description: "活発に動く老犬向け。良質な脂質を含む鮭と、持続エネルギー源のさつまいもで体力維持をサポートする設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7287,8 +7248,8 @@ Recipe.create!(
       ・人参 … 85g
       ・小松菜 … 80g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水をやや多めにして炊いてください。
     活発とはいえ老犬ですので、消化しやすい硬さに仕上げます。
@@ -7313,7 +7274,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     運動量と体重の変化を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鮭で良質タンパク質とEPA
     ✔ さつまいもで持続エネルギー補給
@@ -7330,7 +7291,7 @@ Recipe.create!(
 
   description: "活動量の多い老犬向け。適度な脂質と消化にやさしい山芋で、体力維持と食べやすさを両立。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7354,8 +7315,8 @@ Recipe.create!(
       ・白菜 … 230g
       ・人参 … 85g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水を少し多めにして炊いてください。
     胃腸への負担を軽減するためです。
@@ -7380,7 +7341,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重維持を確認しながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏もも肉で筋肉維持サポート
     ✔ 山芋で消化と嚥下を補助
@@ -7397,7 +7358,7 @@ Recipe.create!(
 
   description: "活発な老犬向け。ぶりの良質な脂とタンパク質で筋肉維持をサポートしつつ、大根で消化に配慮した和風設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7421,8 +7382,8 @@ Recipe.create!(
       ・人参 … 85g
       ・小松菜 … 80g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水を少し多めにして炊いてください。
     活発でも老犬のため、消化しやすさを優先します。
@@ -7447,7 +7408,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重と運動量を見ながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ ぶりで高タンパク・良質脂質
     ✔ 大根で消化サポート
@@ -7464,7 +7425,7 @@ Recipe.create!(
 
   description: "腸内環境を整えながら体力維持をサポート。活発な老犬に適した発酵パワー活用メニュー。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7488,8 +7449,8 @@ Recipe.create!(
       ・かぼちゃ … 170g
       ・白菜 … 180g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水を少し多めにしてください。
 
@@ -7513,7 +7474,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重増加が見られる場合は量を微調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ 鶏むね肉で高タンパク
     ✔ 納豆で腸内環境サポート
@@ -7530,7 +7491,7 @@ Recipe.create!(
 
   description: "消化にやさしく、それでいてエネルギーも確保。里芋のとろみで飲み込みをサポートする活発シニア向け設計。",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
     ▪ 小型犬（〜5kg目安）
@@ -7554,8 +7515,8 @@ Recipe.create!(
       ・人参 … 85g
       ・小松菜 … 80g
   TEXT
-  ,
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水を多めにして炊いてください。
 
@@ -7579,7 +7540,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     運動量と体重の変化を確認しながら調整してください。
   TEXT
-  ,
+
   nutrition_note: <<~TEXT
     ✔ たらで高タンパク低脂質
     ✔ 里芋で自然なとろみとエネルギー補給
@@ -7588,7 +7549,7 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・肥満・穏やか
+# 老犬・肥満・穏やか
 
 Recipe.create!(
   name: "白身魚と豆腐のふわとろ和風あんかけごはん",
@@ -7598,7 +7559,7 @@ Recipe.create!(
 
   description: "肥満傾向の穏やかな老犬向け。低脂質・高たんぱくで満足感を出しながら体重管理をサポートする和風レシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -7625,9 +7586,9 @@ Recipe.create!(
         ・小松菜 … 85g
         ・白米 … 360g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水をやや多めにして炊きます。
     老犬なので、指で軽くつぶせる程度のやわらかさにしてください。
@@ -7656,7 +7617,6 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重変化を見ながら調整してください。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ 白身魚で低脂質高たんぱく
@@ -7675,7 +7635,7 @@ Recipe.create!(
 
   description: "体重管理が必要な老犬向け。低脂質ささみと食物繊維で満足感を出す軽めの雑炊レシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -7699,9 +7659,9 @@ Recipe.create!(
         ・しめじ … 100g
         ・白米 … 330g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊く
     水を多めにして、雑炊向きのやわらかさに炊きます。
     老犬でも飲み込みやすい状態にしてください。
@@ -7726,7 +7686,6 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重変化を見ながら量を微調整してください。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ ささみで超低脂質たんぱく質
@@ -7745,7 +7704,7 @@ Recipe.create!(
 
   description: "肥満傾向の穏やかな老犬向け。低脂質の鶏むね肉とおからでかさ増しし、満腹感を高めた体重管理レシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
 ▪ 小型犬（〜5kg目安）
@@ -7769,9 +7728,9 @@ Recipe.create!(
   ・人参 … 115g
   ・白米 … 330g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊く
     水を多めにして炊きます。
     老犬のため、粒感がほぼなくなる程度までやわらかくしてください。
@@ -7798,7 +7757,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重変化を確認しながら調整してください。
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ 低脂質むね肉で筋肉維持
@@ -7816,7 +7775,7 @@ Recipe.create!(
 
   description: "低脂質な白身魚を中心に、やわらかく仕上げた満足感のある軽め雑炊レシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -7832,7 +7791,7 @@ Recipe.create!(
         ・大根 … 130g
         ・無調整豆乳 … 85ml
         ・白米 … 200g
- 
+
       ■ 大型犬（16kg〜）
         ・タラ … 390g
         ・ブロッコリー … 155g
@@ -7840,9 +7799,9 @@ Recipe.create!(
         ・無調整豆乳 … 140ml
         ・白米 … 330g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊く
     水を多めにし、雑炊向きのやわらかさに炊きます。
 
@@ -7869,7 +7828,6 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重の増減を見ながら量を調整してください。
   TEXT
-  ,
 
   nutrition_note: <<~TEXT
     ✔ タラで低脂質高たんぱく
@@ -7888,7 +7846,7 @@ Recipe.create!(
 
   description: "脂質を抑えながらしっかりたんぱく質を補給できる、穏やかな老犬向けとろみ仕立てレシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -7912,9 +7870,8 @@ Recipe.create!(
         ・えのき … 100g
         ・白米 … 330g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊く
     水を多めにして炊きます。
     老犬でも飲み込みやすい柔らかさにしてください。
@@ -7939,7 +7896,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     定期的に体重チェックを行ってください。
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ 超低脂質ささみで体重管理
@@ -7950,7 +7907,7 @@ Recipe.create!(
   TEXT
 )
 
-#老犬・肥満・普通
+# 老犬・肥満・普通
 
 Recipe.create!(
   name: "鶏むね肉と高野豆腐のやわらか和風リゾット",
@@ -7960,7 +7917,7 @@ Recipe.create!(
 
   description: "肥満傾向だが日常的に動く老犬向け。低脂質むね肉と高野豆腐で筋肉維持を意識した体重管理レシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
        ▪ 小型犬（〜5kg目安）
@@ -7969,7 +7926,7 @@ Recipe.create!(
         ・大根 … 75g
         ・人参 … 40g
         ・白米 … 130g
- 
+
       ■ 中型犬（6〜15kg）
         ・鶏むね肉 … 300g
         ・高野豆腐（戻し後） … 120g
@@ -7984,9 +7941,8 @@ Recipe.create!(
         ・人参 … 115g
         ・白米 … 380g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水をやや多めにして炊きます。
     老犬なので、軽く潰せる程度のやわらかさにしてください。
@@ -8015,7 +7971,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     活動量に応じて微調整してください。
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ むね肉で高たんぱく・低脂質
@@ -8025,7 +7981,7 @@ Recipe.create!(
   TEXT
 )
 
-{
+Recipe.create!(
   name: "タラと納豆のやさしいとろみ雑炊",
   age_stage: :senior,
   body_type: :overweight,
@@ -8033,7 +7989,7 @@ Recipe.create!(
 
   description: "発酵食品を取り入れた、消化に配慮した老犬向け低脂質雑炊レシピ",
 
-  ingredients: <<~TEXT
+  ingredients: <<~TEXT,
     【2日分（4食分）目安】
 
       ▪ 小型犬（〜5kg目安）
@@ -8057,9 +8013,8 @@ Recipe.create!(
         ・小松菜 … 115g
         ・白米 … 350g
   TEXT
-  ,
 
-  instructions: <<~TEXT
+  instructions: <<~TEXT,
     ① 白米をやわらかく炊く
     水を多めにして炊きます。
     老犬でも飲み込みやすい状態にしてください。
@@ -8088,7 +8043,7 @@ Recipe.create!(
     フードは小型犬1割、中型犬1〜2割、大型犬2割程度減らしてください。
     体重と便の状態を見ながら調整してください。
   TEXT
-  ,
+
 
   nutrition_note: <<~TEXT
     ✔ タラで低脂質高たんぱく
@@ -8097,4 +8052,464 @@ Recipe.create!(
     ✔ 発酵食品を活かした消化配慮設計
     ✔ 体重管理＋筋肉維持バランス型
   TEXT
-}
+)
+
+Recipe.create!(
+  name: "白身魚とおからの満腹サポートやわらかごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :medium,
+
+  description: "低脂質の白身魚におからを合わせ、満腹感を高めながら筋肉維持を意識した老犬向け体重管理レシピ。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・白身魚（タラなど）… 140g
+      ・生おから … 60g
+      ・白米 … 110g
+      ・大根 … 80g
+      ・小松菜 … 35g
+
+    ■ 中型犬（6〜15kg）
+      ・白身魚（タラなど）… 240g
+      ・生おから … 100g
+      ・白米 … 190g
+      ・大根 … 140g
+      ・小松菜 … 60g
+
+    ■ 大型犬（16kg~）
+      ・白身魚（タラなど）… 390g
+      ・生おから … 165g
+      ・白米 … 320g
+      ・大根 … 230g
+      ・小松菜 … 100g
+  TEXT
+
+  instructions: <<~TEXT,
+    ① 白米をやわらかく炊きます
+    水を多めにして炊き、老犬でも飲み込みやすい状態にしてください。
+
+    ② 白身魚を丁寧に加熱します
+    骨と皮を必ず取り除きます。
+    茹でて中心まで完全に火を通し、細かくほぐしてください。
+
+    ③ 大根をやわらかく煮ます
+    小さく刻み、指で潰せる硬さまで加熱してください。
+
+    ④ 小松菜を細かくします
+    やわらかく加熱後、さらに包丁で細かく刻んでください。
+
+    ⑤ おからを加えます
+    水分を含ませながら軽く煮込み、全体をしっとり仕上げます。
+
+    ⑥ 全体をなじませます
+    弱火で2〜3分加熱し、とろみのある状態に整えてください。
+
+    ⑦ 冷ましてから与えてください
+    必ず人肌以下にしてください。
+
+    フードは2割程度減らしてください。
+    体重の増減を確認しながら微調整してください。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ 白身魚で低脂質高たんぱく
+    ✔ おからで満腹感アップ
+    ✔ 食物繊維で腸内環境サポート
+    ✔ 筋肉維持を意識した体重管理設計
+  TEXT
+)
+
+Recipe.create!(
+  name: "タラと納豆の腸内サポートとろみごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :medium,
+
+  description: "発酵食品を取り入れ、腸内環境を整えながら体重管理を行う老犬向けやわらかレシピ。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・タラ … 160g
+      ・ひきわり納豆 … 60g
+      ・白米 … 115g
+      ・大根 … 80g
+      ・小松菜 … 40g
+
+    ■ 中型犬（6〜15kg）
+      ・タラ … 270g
+      ・ひきわり納豆 … 100g
+      ・白米 … 200g
+      ・大根 … 140g
+      ・小松菜 … 70g
+
+    ■ 大型犬（16kg~）
+      ・タラ … 450g
+      ・ひきわり納豆 … 170g
+      ・白米 … 330g
+      ・大根 … 230g
+      ・小松菜 … 115g
+  TEXT
+
+  instructions: <<~TEXT,
+    ① 白米をやわらかく炊きます
+    水を多めにして炊き、軽く潰せる程度にしてください。
+
+    ② タラを加熱します
+    骨と皮を完全に取り除きます。
+    茹でて中心まで火を通し、細かくほぐしてください。
+
+    ③ 大根をやわらかくします
+    小さく刻み、完全に潰せる硬さまで煮てください。
+
+    ④ 小松菜を細かく刻みます
+    やわらかく加熱後、さらに細かくしてください。
+
+    ⑤ 納豆を加えます
+    加熱は軽く温める程度にとどめ、煮立たせないでください。
+
+    ⑥ 全体をなじませます
+    水分を少し残し、とろみのある状態に仕上げます。
+
+    ⑦ 冷ましてから与えてください
+    必ず人肌以下にしてください。
+
+    フードは2割減らしてください。
+    体重変動を見ながら調整してください。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ タラで低脂質高たんぱく
+    ✔ 納豆で腸内環境サポート
+    ✔ 消化吸収を助ける設計
+    ✔ 体重管理＋代謝維持バランス型
+  TEXT
+)
+
+# 老犬・肥満・活発
+
+Recipe.create!(
+  name: "ささみとひじきの代謝サポートごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :high,
+
+  description: "高タンパク・低脂肪のささみを中心に、代謝を支える海藻と野菜を組み合わせた老犬・肥満・活発タイプ向けレシピ。筋肉を守りながら脂肪を増やしにくい設計です。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・鶏ささみ … 140g
+      ・白米 … 80g
+      ・キャベツ … 80g
+      ・人参 … 40g
+      ・乾燥ひじき（水戻し後）… 20g
+
+    ■ 中型犬（6〜15kg）
+      ・鶏ささみ … 240g
+      ・白米 … 140g
+      ・キャベツ … 140g
+      ・人参 … 70g
+      ・乾燥ひじき（水戻し後）… 35g
+
+    ■ 大型犬（16kg~）
+      ・鶏ささみ … 400g
+      ・白米 … 230g
+      ・キャベツ … 230g
+      ・人参 … 120g
+      ・乾燥ひじき（水戻し後）… 60g
+  TEXT
+
+  instructions: <<~TEXT,
+     ① 白米をやわらかく炊きます
+      水を多めにして炊き、軽く潰せる程度にしてください。
+
+    ② ひじきを戻します
+      たっぷりの水に20分浸し、
+      その後沸騰したお湯で3分茹でてください。
+
+    ③ ささみを茹でます
+      沸騰したお湯で弱火8〜10分茹で、
+      中心まで完全に火を通します。
+      冷ましてから細かく裂きます。
+
+    ④ 野菜を加熱します
+      キャベツ・人参を細かく刻み、
+      小鍋で弱火7〜8分蒸し煮にします。
+      指で潰せる柔らかさにしてください。
+
+    ⑤ すべてを合わせます
+      弱火で2〜3分なじませ、
+      しっとりまとまる状態に仕上げます。
+
+    ⑥ 必ず人肌以下に冷ましてから与えてください。
+
+    フードは3割減らしてください。
+    体重と便の状態を確認しながら微調整してください。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ ささみで筋肉維持
+    ✔ 低脂肪設計で体重管理
+    ✔ ひじきでミネラル補給
+    ✔ 活発でも太りにくい構成
+  TEXT
+)
+
+Recipe.create!(
+  name: "白身魚と豆腐の関節サポートごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :high,
+
+  description: "脂肪の少ない白身魚と豆腐で筋肉を守りつつ、関節に配慮したやわらか設計。活発な老犬の体を軽く支えるごはんです。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・たら（皮なし）… 150g
+      ・絹ごし豆腐 … 100g
+      ・白米 … 75g
+      ・ブロッコリー … 70g
+      ・かぼちゃ … 60g
+
+    ■ 中型犬（6〜15kg）
+      ・たら（皮なし）… 260g
+      ・絹ごし豆腐 … 170g
+      ・白米 … 130g
+      ・ブロッコリー … 120g
+      ・かぼちゃ … 100g
+
+    ■ 大型犬（16kg~）
+      ・たら（皮なし）… 430g
+      ・絹ごし豆腐 … 280g
+      ・白米 … 210g
+      ・ブロッコリー … 200g
+      ・かぼちゃ … 170g
+  TEXT
+
+  instructions: <<~TEXT,
+    ① 白米をやわらかく炊きます
+      水を多めにして炊き、軽く潰せる程度にしてください。
+
+
+    ② たらを蒸します
+      蒸し器で弱火8〜10分加熱し、
+      骨と皮を完全に取り除きます。
+      ほぐして細かくしてください。
+
+    ③ ブロッコリーとかぼちゃを加熱します
+      小さく刻み、
+      弱火で10分蒸し煮にします。
+      指で簡単に潰せる硬さに仕上げます。
+
+    ④ 豆腐を準備します
+      軽く水切りをし、なめらかに崩します。
+
+    ⑤ すべてを弱火で3分ほど軽く煮込みます
+      全体がとろっとまとまれば完成です。
+
+    ⑥ 人肌以下に冷ましてから与えてください。
+
+      フードは3割減らしてください。
+      運動量が多い日は2割減に調整しても問題ありません。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ 白身魚で高タンパク・低脂肪
+    ✔ 豆腐で消化にやさしく筋肉維持
+    ✔ 関節に配慮したやわらか設計
+    ✔ 活発でも体重管理しやすい構成
+  TEXT
+)
+
+Recipe.create!(
+  name: "まぐろ赤身とオクラの関節ケアごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :high,
+
+  description: "脂肪の少ないまぐろ赤身で筋肉を守り、オクラの粘りで関節と腸をサポート。動ける体を軽く維持する設計です。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・まぐろ赤身 … 150g
+      ・白米 … 70g
+      ・オクラ … 70g
+      ・かぼちゃ … 60g
+      ・キャベツ … 60g
+
+    ■ 中型犬（6〜15kg）
+      ・まぐろ赤身 … 260g
+      ・白米 … 120g
+      ・オクラ … 120g
+      ・かぼちゃ … 100g
+      ・キャベツ … 100g
+
+    ■ 大型犬（16kg~）
+      ・まぐろ赤身 … 430g
+      ・白米 … 200g
+      ・オクラ … 200g
+      ・かぼちゃ … 170g
+      ・キャベツ … 170g
+  TEXT
+
+  instructions: <<~TEXT,
+    ① 白米をやわらかく炊きます
+    水を1.3倍にし、弱火15分。
+
+    ② まぐろを加熱します
+    小さく切り、沸騰したお湯で弱火8分茹でます。
+    中まで完全に火を通します。
+
+    ③ オクラを下処理します
+    板ずり後、3分茹でて細かく刻みます。
+
+    ④ かぼちゃ・キャベツを弱火10分蒸し煮にします。
+
+    ⑤ 全体を弱火で3分なじませます。
+
+    ⑥ 人肌以下に冷ましてから与えてください。
+
+    フードは3割減らしてください。
+    運動量が多い日は2割減まで調整可能です。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ まぐろで高タンパク
+    ✔ オクラで腸と関節サポート
+    ✔ 低脂肪でも動ける設計
+    ✔ 活発シニア向け体重管理
+  TEXT
+)
+
+Recipe.create!(
+  name: "胸肉と豆苗の軽やか筋肉維持ごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :high,
+
+  description: "低脂肪の胸肉で筋肉量を守り、抗酸化野菜を組み合わせたアクティブ老犬向け軽量設計レシピ。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・鶏むね肉 … 150g
+      ・白米 … 75g
+      ・豆苗 … 70g
+      ・ズッキーニ … 80g
+      ・人参 … 40g
+
+    ■ 中型犬（6〜15kg）
+      ・鶏むね肉 … 260g
+      ・白米 … 130g
+      ・豆苗 … 120g
+      ・ズッキーニ … 140g
+      ・人参 … 70g
+
+    ■ 大型犬（16kg~）
+      ・鶏むね肉 … 430g
+      ・白米 … 210g
+      ・豆苗 … 200g
+      ・ズッキーニ … 230g
+      ・人参 … 120g
+  TEXT
+
+  instructions: <<~TEXT,
+    ① 白米を弱火15分で炊き、軽く潰します。
+
+    ② 鶏胸肉を加熱します
+    小さく刻み、沸騰したお湯で弱火10分茹でます。
+    中心まで完全加熱してください。
+
+    ③ 野菜を蒸し煮にします
+    すべて細かく刻み、弱火10分。
+    指で潰せる柔らかさに仕上げます。
+
+    ④ 全体を弱火で3分なじませます。
+
+    ⑤ 人肌以下に冷ましてから与えてください。
+
+    フードは3割減らしてください。
+    体型の変化に合わせて2〜3割で調整してください。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ 鶏むね肉で高タンパク低脂肪
+    ✔ 抗酸化野菜で老化ケア
+    ✔ 活発でも脂肪を増やしにくい
+    ✔ 筋肉を守る設計
+  TEXT
+)
+
+Recipe.create!(
+  name: "鶏むね肉と大根のアクティブ代謝ごはん",
+  age_stage: :senior,
+  body_type: :overweight,
+  activity_level: :high,
+
+  description: "低脂肪・高タンパクの鹿肉を使用し、代謝を意識した根菜と組み合わせた活発な老犬向け設計。筋肉を守りながら体脂肪を増やしにくい構成です。",
+
+  ingredients: <<~TEXT,
+    【2日分（4食分）目安】
+
+    ▪ 小型犬（〜5kg目安）
+      ・鶏むね肉 … 150g
+      ・白米 … 75g
+      ・大根 … 100g
+      ・人参 … 40g
+      ・小松菜 … 30g
+
+    ■ 中型犬（6〜15kg）
+      ・鶏むね肉 … 260g
+      ・白米 … 130g
+      ・大根 … 170g
+      ・人参 … 70g
+      ・小松菜 … 50g
+
+    ■ 大型犬（16kg~）
+      ・鶏むね肉 … 430g
+      ・白米 … 210g
+      ・大根 … 280g
+      ・人参 … 120g
+      ・小松菜 … 85g
+  TEXT
+
+  instructions: <<~TEXT,
+    ① 白米を炊きます
+    水を1.3倍にし、弱火で15分炊きます。
+    炊き上がったら軽く潰します。
+
+    ② 鶏むね肉を加熱します
+    小さく刻み、沸騰したお湯で弱火10分茹でます。
+    中心まで完全に火を通してください。
+
+    ③ 野菜を柔らかくします
+    大根・人参を小さく刻み、
+    弱火で10〜12分蒸し煮にします。
+    小松菜は別で3分茹で、細かく刻みます。
+
+    ④ 全体を弱火で3分なじませます。
+
+    ⑤ 必ず人肌以下に冷ましてから与えてください。
+
+    フードは3割減らしてください。
+    体重が順調に落ちている場合は2割減に調整可能です。
+  TEXT
+
+  nutrition_note: <<~TEXT
+    ✔ 鶏むね肉で高タンパク低脂肪
+    ✔ 大根で消化サポート
+    ✔ 筋肉維持を優先した設計
+    ✔ 活発な老犬の代謝維持
+  TEXT
+)
