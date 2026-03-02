@@ -1,19 +1,17 @@
 services:
   db:
-    image: mysql:8.4
-    platform: linux/amd64
-    restart: always
+    image: postgres:15
     environment:
-      TZ: Asia/Tokyo
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: myapp_development
-    volumes:
-      - mysql_data:/var/lib/mysql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dog_recipe_app_development
     ports:
-      - "3306:3306"
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-ppassword"]
-      interval: 10s
+      test: ["CMD", "pg_isready", "-U", "root"]
+      interval: 5s
       timeout: 5s
       retries: 5
 
@@ -21,7 +19,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid && ./bin/dev"
+    command: bash -c "bundle install && rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0"
+
     tty: true
     stdin_open: true
     volumes:
@@ -29,10 +28,8 @@ services:
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/myapp/node_modules
     environment:
-      TZ: Asia/Tokyo
-      DATABASE_HOST: db
-      DATABASE_USERNAME: root
-      DATABASE_PASSWORD: password
+      POSTGRES_HOST: db
+      POSTGRES_PASSWORD: password
     ports:
       - "3000:3000"
     depends_on:
@@ -40,6 +37,6 @@ services:
         condition: service_healthy
 
 volumes:
+  postgres_data:
   bundle_data:
-  mysql_data:
   node_modules:
