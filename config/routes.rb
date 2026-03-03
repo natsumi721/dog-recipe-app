@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "homes#top"
   resources :dogs, only: %i[new create]
-  resources :recipes, only: [:index]
+  resources :recipes, only: [:index, :show]
   resources :dogs do
     member do
       get :complete
