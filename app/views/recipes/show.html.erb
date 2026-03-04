@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <div class="card shadow p-5 rounded-4">
+
+    <h2 class="fw-bold mb-3">
+      <%= @recipe.name %>
+    </h2>
+
+    <p class="text-muted mb-4">
+      <%= @recipe.description %>
+    </p>
+
+    <hr>
+
+    <h5 class="fw-bold mt-4">材料</h5>
+    <pre><%= @recipe.ingredients %></pre>
+
+    <h5 class="fw-bold mt-4">作り方</h5>
+    <pre><%= @recipe.instructions %></pre>
+
+    <h5 class="fw-bold mt-4">栄養ポイント</h5>
+    <pre><%= @recipe.nutrition_note %></pre>
+
+  </div>
+  <div class="texxt-center mt -5">
+  <%= link_to "戻る", request.referer || recipes_path,
+            class: "btn btn-outline-secondary rounded-pill px-5" %>
+    </div>
+</div>

@@ -11,4 +11,25 @@ class Dog < ApplicationRecord
   validates :age_stage, presence: true
   validates :body_type, presence: true
   validates :activity_level, presence: true
+
+  attribute :allergies, :string, array: true, default: []
+
+  def recommended_recipes
+  recipes = Recipe.where(
+    age_stage: age_stage,
+    body_type: body_type,
+    activity_level: activity_level
+  )
+
+  return recipes.order("RANDOM()").limit(3) unless allergies.present?
+
+    recipes = recipes.to_a.reject do |recipe|
+      allergies.any? do |a|
+        base = a.gsub("肉", "")
+        recipe.ingredients.include?(base)
+      end
+    end
+
+    recipes.sample(3)
+  end
 end

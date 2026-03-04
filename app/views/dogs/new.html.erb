@@ -57,13 +57,25 @@
 
       <!-- アレルギー -->
       <div class="mb-4">
-        <%= f.label :allergies, "アレルギー", class: "form-label fw-bold" %>
-        <%= f.select :allergies,
-          ["牛肉","鶏肉","ラム肉","豚肉","牛乳","チーズ","ヨーグルト","卵","小麦","大豆","トウモロコシ","魚","魚介類"],
-          { include_blank: "選択してください" },
-          class: "form-select rounded-pill" %>
-      </div>
+  <label class="form-label fw-bold">アレルギー</label>
 
+  <div class="d-flex flex-wrap gap-2">
+    <% ["牛肉","鶏肉","豚肉","牛乳","チーズ","ヨーグルト","卵","小麦","大豆","トウモロコシ","魚","魚介類"].each_with_index do |item, i| %>
+
+  <% input_id = "allergy_#{i}" %>
+
+  <%= f.check_box :allergies,
+        { multiple: true, class: "btn-check", id: input_id },
+        item,
+        nil %>
+
+  <%= label_tag input_id,
+        item,
+        class: "btn btn-outline-warning rounded-pill px-4" %>
+
+<% end %>
+  </div>
+</div>
       <div class="d-grid">
         <%= f.submit "レシピを提案してもらう",
             class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>

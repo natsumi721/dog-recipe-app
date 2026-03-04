@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold">おすすめレシピ</h2>
+
+  <div class="row g-4">
+    <% @recipes.each do |recipe| %>
+      <div class="col-md-4">
+        <div class="card recipe-card h-100 shadow-sm p-4 text-center d-flex flex-column">
+          <h5 class="fw-bold mb-3"><%= recipe.name %></h5>
+          <p class="text-muted small mb-4">
+            <%= recipe.description %>
+          </p>
+
+          <%= link_to "詳細を見る",
+                recipe_path(recipe),
+                class: "btn btn-warning rounded-pill px-4 text-white mt-auto" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
