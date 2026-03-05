@@ -68,7 +68,7 @@
 
 ## 使用する技術スタック
 - 使用するフレームワーク/ Ruby on Rails
-- データベース/ MySQL
+- データベース/ PostgreSQL
 - デプロイ先 / Render
 - 使用予定のライブラリ / Ransack（検索機能）
                       Kaminari（ページネーション）

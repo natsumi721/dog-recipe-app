@@ -60,7 +60,7 @@
   <label class="form-label fw-bold">アレルギー</label>
 
   <div class="d-flex flex-wrap gap-2">
-    <% ["牛肉","鶏肉","豚肉","牛乳","チーズ","ヨーグルト","卵","小麦","大豆","トウモロコシ","魚","魚介類"].each_with_index do |item, i| %>
+    <% ["牛肉","鶏肉","豚肉","牛乳","チーズ","ヨーグルト","卵","鹿肉","納豆(大豆)","鮭","マグロ","タラ"].each_with_index do |item, i| %>
 
   <% input_id = "allergy_#{i}" %>
 
@@ -77,10 +77,14 @@
   </div>
 </div>
       <div class="d-grid">
-        <%= f.submit "レシピを提案してもらう",
+        <%= f.submit "登録する",
             class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
       </div>
 
     <% end %>
+    <div class="text-left mt-4">
+      <%= link_to "← 戻る", root_path,
+          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+    </div>
   </div>
 </div>
