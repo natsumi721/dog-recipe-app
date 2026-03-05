@@ -1,28 +1,54 @@
-<div class="container mt-5">
-  <div class="card shadow p-5 rounded-4">
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow-lg p-5 rounded-4 border-0">
 
-    <h2 class="fw-bold mb-3">
-      <%= @recipe.name %>
+    <!-- タイトル -->
+    <h2 class="fw-bold mb-3 text-center" style="color: #f4a300;">
+      🐶 <%= @recipe.name %>
     </h2>
 
-    <p class="text-muted mb-4">
+    <!-- 説明 -->
+    <p class="text-muted text-center mb-4 fs-5">
       <%= @recipe.description %>
     </p>
 
-    <hr>
+    <hr class="my-4">
 
-    <h5 class="fw-bold mt-4">材料</h5>
-    <pre><%= @recipe.ingredients %></pre>
+    <!-- 材料 -->
+    <div class="mb-4">
+      <h5 class="fw-bold mb-3" style="color: #f4a300;">
+        🥕 材料
+      </h5>
+      <div class="bg-light p-3 rounded-3">
+        <%= simple_format(@recipe.ingredients) %>
+      </div>
+    </div>
 
-    <h5 class="fw-bold mt-4">作り方</h5>
-    <pre><%= @recipe.instructions %></pre>
+    <!-- 作り方 -->
+    <div class="mb-4">
+      <h5 class="fw-bold mb-3" style="color: #f4a300;">
+        🍳 作り方
+      </h5>
+      <div class="bg-light p-3 rounded-3">
+        <%= simple_format(@recipe.instructions) %>
+      </div>
+    </div>
 
-    <h5 class="fw-bold mt-4">栄養ポイント</h5>
-    <pre><%= @recipe.nutrition_note %></pre>
+    <!-- 栄養ポイント -->
+    <div class="mb-4">
+      <h5 class="fw-bold mb-3" style="color: #f4a300;">
+        🌟 栄養ポイント
+      </h5>
+      <div class="bg-warning bg-opacity-25 p-3 rounded-3">
+        <%= simple_format(@recipe.nutrition_note) %>
+      </div>
+    </div>
+
+    <!-- 戻るボタン -->
+    <div class="text-center mt-4">
+      <%= link_to "← 戻る",
+            request.referer || recipes_path,
+            class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+    </div>
 
   </div>
-  <div class="texxt-center mt -5">
-  <%= link_to "戻る", request.referer || recipes_path,
-            class: "btn btn-outline-secondary rounded-pill px-5" %>
-    </div>
 </div>
