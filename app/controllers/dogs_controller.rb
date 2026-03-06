@@ -1,4 +1,5 @@
 class DogsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create, :complete]
   def new
     @dog = Dog.new
   end

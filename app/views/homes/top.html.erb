@@ -16,8 +16,10 @@
       <%= image_tag "top.jpeg", alt: "dog recipe", class: "img-fluid" %>
     </div>
 
-    <%= link_to "愛犬のためだけのレシピを探す", new_dog_path, class: "primary-button" %>
-    <p class="note">※情報登録することで、その子にあったレシピが検索できます</p>
+    <%= link_to "ユーザー登録してレシピを見る", signup_path, class: "primary-button" %><br>
+
+    <%= link_to "登録せずレシピを見る", new_dog_path, class: "primary-button" %>
+    <p class="note">※情報登録することで、より快適に利用できます</p>
   </section>
 
 
@@ -50,7 +52,7 @@
     <h2>今日から始める、<br>健康な手作り生活。</h2>
     <p>あなたの愛犬に、最高のトッピングをプレゼントしましょう。</p>
 
-    <%= link_to "試してみる", new_dog_path, class: "secondary-button" %>
+    <%= link_to "登録する", signup_path, class: "secondary-button" %>
   </section>
 
 </div>
