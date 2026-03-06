@@ -17,20 +17,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <header>
-    <% if current_user %>
-
-      <span>こんにちは <%= current_user.name %></span>
-      <%= button_to "ログアウト", logout_path, method: :delete %>
-
-    <% else %>
-
-      <%= link_to "ログイン", login_path %>
-     <%= link_to "新規登録", signup_path %>
-
-    <% end %>
-  </header>
-
+  <%= render "shared/header" unless controller_name.in?(["users", "user_sessions"]) %>
+  
   <body>
   <% if flash[:notice] %>
   <div class="alert alert-success text-center">

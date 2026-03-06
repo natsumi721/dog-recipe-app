@@ -2,9 +2,14 @@
 
 <%= form_with model: @user do |f| %>
 
+<<div>
+  <%= f.label :last_name, "姓" %>
+  <%= f.text_field :last_name %>
+</div>
+
 <div>
-<%= f.label :name %>
-<%= f.text_field :name %>
+  <%= f.label :first_name, "名" %>
+  <%= f.text_field :first_name %>
 </div>
 
 <div>
