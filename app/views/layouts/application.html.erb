@@ -17,8 +17,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <%= render "shared/header" unless controller_name.in?(["users", "user_sessions"]) %>
-  
+  <%= render "shared/header" unless controller_name.in?(["users", "user_sessions","homes"]) %>
+
   <body>
   <% if flash[:notice] %>
   <div class="alert alert-success text-center">
