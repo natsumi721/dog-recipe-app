@@ -3,34 +3,32 @@
   <head>
     <title><%= content_for(:title) || "dog-recipe" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <%= render "shared/header" unless controller_name.in?(["users", "user_sessions","homes"]) %>
-
   <body>
-  <% if flash[:notice] %>
-  <div class="alert alert-success text-center">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 
-<% if flash[:alert] %>
-  <div class="alert alert-danger text-center">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
+    <% unless controller_name.in?(["users", "user_sessions","homes"]) %>
+      <%= render "shared/header" %>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-success text-center">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-danger text-center">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
       redirect_to root_path, notice: "ログインしました"
     else
       flash.now[:alert] = "ログイン情報が違います"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
