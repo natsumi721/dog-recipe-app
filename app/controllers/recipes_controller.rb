@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    skip_before_action :require_login, only: [ :index, :show ]
+    skip_before_action :require_login, only: [:index, :show]
     def index
        if params[:dog_id]
           dog = Dog.find(params[:dog_id])

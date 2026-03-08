@@ -1,0 +1,9 @@
+<h1>愛犬情報一覧</h1>
+
+<% @dogs.each do |dog| %>
+  <div>
+    <p><%= dog.name %></p>
+
+    <%= link_to "レシピを見る", recipes_path(dog_id: dog.id) %>
+  </div>
+<% end %>

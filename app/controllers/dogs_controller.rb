@@ -5,15 +5,18 @@ class DogsController < ApplicationController
   end
 
   def create
-    @dog = Dog.new(dog_params)
-    @dog.user = User.first  # 仮に最初のユーザーを関連付ける。実際にはログインユーザーを使用するべき。
-
+    @dog = current_user.dogs.build(dog_params)
+   
     if @dog.save
       redirect_to complete_dog_path(@dog)
     else
       flash.now[:alert] = "情報の保存に失敗しました。入力内容を確認してください。"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @dogs = current_user.dog
   end
 
     # 完了画面へリダイレクト
