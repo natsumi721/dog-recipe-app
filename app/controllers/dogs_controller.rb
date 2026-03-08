@@ -19,6 +19,20 @@ class DogsController < ApplicationController
     @dogs = current_user.dog
   end
 
+  def edit
+    #最後に登録/更新された愛犬情報
+    @dog = current_user.dogs.order(updated_at: :desc).first
+  end
+
+  def update
+    if @dog.update(dog_params)
+      redirect_to complete_dog_path(@dog), notice: "愛犬情報を更新しました"
+    else
+      flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
     # 完了画面へリダイレクト
     def complete
       @dog = Dog.find(params[:id])

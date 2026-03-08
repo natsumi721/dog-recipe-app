@@ -1,9 +1,48 @@
-<h1>愛犬情報一覧</h1>
-
-<% @dogs.each do |dog| %>
-  <div>
-    <p><%= dog.name %></p>
-
-    <%= link_to "レシピを見る", recipes_path(dog_id: dog.id) %>
+<% content_for(:title, "愛犬情報の確認") %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1>愛犬情報の確認</h1>
+      
+      <% if @dogs.present? %>
+        <% @dogs.each do |dog| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3 class="card-title"><%= dog.name %>ちゃん</h3>
+              
+              <dl class="row">
+                <dt class="col-sm-3">体のサイズ</dt>
+                <dd class="col-sm-9"><%= dog.size_i18n %></dd>
+                
+                <dt class="col-sm-3">年齢</dt>
+                <dd class="col-sm-9"><%= dog.age_stage_i18n %></dd>
+                
+                <dt class="col-sm-3">体型</dt>
+                <dd class="col-sm-9"><%= dog.body_type_i18n %></dd>
+                
+                <dt class="col-sm-3">活動量</dt>
+                <dd class="col-sm-9"><%= dog.activity_level_i18n %></dd>
+                
+                <dt class="col-sm-3">アレルギー</dt>
+                <dd class="col-sm-9">
+                  <% if dog.allergies.present? %>
+                    <%= dog.allergies.join(", ") %>
+                  <% else %>
+                    なし
+                  <% end %>
+                </dd>
+              </dl>
+              
+              <%= link_to "編集する", edit_dog_path(dog), class: "btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>愛犬情報が登録されていません。</p>
+        <%= link_to "愛犬情報を登録する", new_dog_path, class: "btn btn-primary" %>
+      <% end %>
+      
+      <%= link_to "レシピを見る", recipes_path, class: "btn btn-secondary" %>
+    </div>
   </div>
-<% end %>
+</div>

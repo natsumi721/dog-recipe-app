@@ -1,10 +1,67 @@
-<header>
-  <% if current_user %>
-    こんにちは <%= current_user.first_name %>
-    <%= button_to "ログアウト", logout_path, method: :delete %>
-  <% else %>
-    <%= link_to "ログイン", login_path %>
-    <%= link_to "新規登録", signup_path %>
-    <%= link_to "愛犬登録内容の変更", dogs_path %>
-  <% end %>
+<header class="custom-header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid px-4">
+      <!-- トグルボタンを先に配置（左側に表示） -->
+      <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- ロゴ部分：常に表示（アプリ名固定） -->
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+        <span class="brand-text">🐾 わんわんヘルスケア</span>
+      <% end %>
+
+      <!-- ナビゲーション -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav align-items-lg-center">
+          <% if current_user %>
+            <!-- ログイン後の表示 -->
+            
+            <!-- ユーザー名表示 -->
+            <div class="nav-item user-greeting me-3">
+              <span class="greeting-text">
+                こんにちは、<strong><%= current_user.first_name %></strong>さん 🐾
+              </span>
+            </div>
+            
+            <!-- レシピを投稿するボタン -->
+            <div class="nav-item me-2">
+              <%= link_to "レシピを投稿する", "#", class: "btn btn-outline-warning rounded-pill px-4" %>
+            </div>
+            
+            <!-- 愛犬情報の変更ボタン -->
+            <div class="nav-item me-2">
+              <% if current_user.dogs.any? %>
+                <%= link_to "愛犬情報の変更", edit_dog_path(current_user.dogs.first), class: "btn btn-outline-warning rounded-pill px-4" %>
+              <% else %>
+                <%= link_to "愛犬を登録", new_dog_path, class: "btn btn-outline-warning rounded-pill px-4" %>
+              <% end %>
+            </div>
+            
+            <!-- アプリの使い方ボタン -->
+            <div class="nav-item me-2">
+              <%= link_to "アプリの使い方", "#", class: "btn btn-outline-warning rounded-pill px-4" %>
+            </div>
+            
+            <!-- ログアウトボタン -->
+            <div class="nav-item">
+              <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-outline-warning rounded-pill px-4" %>
+            </div>
+            
+          <% else %>
+            <!-- ログイン前の表示 -->
+            <div class="nav-item me-2">
+              <%= link_to "ログイン", login_path, class: "btn btn-outline-warning rounded-pill px-4" %>
+            </div>
+            <div class="nav-item me-2">
+              <%= link_to "新規登録", signup_path, class: "btn btn-outline-warning rounded-pill px-4" %>
+            </div>
+            <div class="nav-item">
+              <%= link_to "アプリの使い方", "#", class: "btn btn-outline-warning rounded-pill px-4" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
 </header>

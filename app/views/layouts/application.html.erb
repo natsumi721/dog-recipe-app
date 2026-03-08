@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "dog-recipe" %></title>
+    <title>わんわんヘルスケア</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   </head>
 
   <body>
-
-    <% unless controller_name.in?(["users", "user_sessions","homes"]) %>
-      <%= render "shared/header" %>
-    <% end %>
-
+    <%= render 'shared/header' %>
+    
+    <!-- フラッシュメッセージがあれば表示 -->
     <% if flash[:notice] %>
-      <div class="alert alert-success text-center">
-        <%= flash[:notice] %>
-      </div>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
     <% end %>
-
     <% if flash[:alert] %>
-      <div class="alert alert-danger text-center">
-        <%= flash[:alert] %>
-      </div>
+      <div class="alert alert-danger"><%= flash[:alert] %></div>
     <% end %>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 各ページの内容 -->
     <%= yield %>
-
   </body>
 </html>
