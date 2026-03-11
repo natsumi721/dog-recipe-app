@@ -7,17 +7,13 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    @user = login(params[:email], params[:password])
+      @user = login(params[:email], params[:password])
 
     if @user
-      # 愛犬情報があればレシピページへ、なければ愛犬情報登録へ
-      if @user.dogs.exists?
-        dog = @user.dogs.first # 最後に使用した愛犬情報
-        redirect_to recipes_path(dog_id: dog.id), notice: "ログインしました"
-      else
-        redirect_to new_dog_path, notice: "愛犬の情報を登録してください"
-      end
+      # ログイン成功: ダッシュボードへ
+      redirect_to dashboard_path, notice: "ログインしました"
     else
+      # ログイン失敗: ログイン画面を再表示
       flash.now[:alert] = "ログイン情報が違います"
       render :new, status: :unprocessable_entity
     end

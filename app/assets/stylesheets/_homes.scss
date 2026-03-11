@@ -344,3 +344,67 @@ html {
   padding: 15px;
   border-radius: 15px;
 }
+
+/* ===================================
+   ダッシュボード用スタイル
+   =================================== */
+
+.dashboard-container {
+  min-height: calc(100vh - 80px);
+  padding-top: 40px;
+}
+
+.dashboard-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3) !important;
+}
+
+.dashboard-card .card-body {
+  padding: 2rem;
+}
+
+.dashboard-card i {
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover i {
+  transform: scale(1.2);
+}
+
+/* カードのアイコンサイズ */
+.dashboard-card .display-4 {
+  font-size: 3rem;
+}
+
+/* カードのタイトル */
+.dashboard-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* カードの説明文 */
+.dashboard-card p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding-top: 20px;
+  }
+  
+  .dashboard-card .display-4 {
+    font-size: 2rem;
+  }
+  
+  .dashboard-card h3 {
+    font-size: 1.25rem;
+  }
+}

@@ -6,7 +6,7 @@ class DogsController < ApplicationController
 
   def create
     @dog = current_user.dogs.build(dog_params)
-   
+
     if @dog.save
       redirect_to complete_dog_path(@dog)
     else
@@ -20,7 +20,7 @@ class DogsController < ApplicationController
   end
 
   def edit
-    #最後に登録/更新された愛犬情報
+    # 最後に登録/更新された愛犬情報
     @dog = current_user.dogs.order(updated_at: :desc).first
   end
 

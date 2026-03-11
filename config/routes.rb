@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # 不要な行を削除
   # get "user_sessions/new"
   # get "user_sessions/create"
   # get "user_sessions/destroy"
@@ -11,6 +10,9 @@ Rails.application.routes.draw do
   # ユーザー登録
   get "signup", to: "users#new"
   post "users", to: "users#create"
+
+  # ログイン後のダッシュボード
+  get "dashboard", to: "homes#dashboard"
 
   # ログイン・ログアウト
   get "login", to: "user_sessions#new"

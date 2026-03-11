@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
     redirect_to new_dog_path
   end
-  
+
   def skip_dog_check?
     # ログアウト時は愛犬チェックをスキップ
     controller_name == "user_sessions" && action_name == "destroy"
