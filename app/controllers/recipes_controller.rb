@@ -4,9 +4,8 @@ class RecipesController < ApplicationController
 
     def index
        if params[:dog_id].present?
-          dog = Dog.find(params[:dog_id])
+          dog = current_user.dogs.find(params[:dog_id])
           @recipes = dog.recommended_recipes
-          @dog = dog
 
        elsif params[:age_stage].present?
           # 未ログインユーザーのフィルタリング条件から取得
@@ -26,5 +25,14 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
+    end
+
+    def select_dog
+      @dogs = current_user.dogs
+    end
+
+    def new
+      @dog = current_user.dogs.find(params[:dog_id])
+      # レシピ検索のロジック...
     end
 end

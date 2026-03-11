@@ -6,14 +6,20 @@
 
   <div class="row justify-content-center">
     <!-- レシピを見る -->
-    <div class="col-md-4 mb-4">
+    <div class="col-md-6 mb-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body text-center">
           <i class="bi bi-book" style="font-size: 3rem; color: #FF8C00;"></i>
           <h3 class="card-title mt-3">レシピを見る</h3>
           <p class="card-text">愛犬に合ったレシピを探しましょう</p>
-          <% if @dogs.exists? %>
-            <%= link_to "レシピを見る", recipes_path(dog_id: @dogs.first.id), class: "btn btn-warning btn-lg" %>
+          <% if current_user.dogs.exists? %>
+            <% if current_user.dogs.count == 1 %>
+              <%# 1頭の場合: 直接レシピ検索へ %>
+              <%= link_to "レシピを見る", new_recipe_path(dog_id: current_user.dogs.first.id), class: "btn btn-warning btn-lg" %>
+            <% else %>
+              <%# 複数頭の場合: 愛犬選択画面へ %>
+              <%= link_to "レシピを見る", select_dog_recipes_path, class: "btn btn-warning btn-lg" %>
+            <% end %>
           <% else %>
             <p class="text-muted">愛犬情報を登録してください</p>
             <%= link_to "愛犬情報を登録", new_dog_path, class: "btn btn-outline-warning" %>
@@ -22,15 +28,21 @@
       </div>
     </div>
 
-    <!-- 愛犬情報の変更 -->
-    <div class="col-md-4 mb-4">
+    <!-- 愛犬情報 -->
+    <div class="col-md-6 mb-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body text-center">
           <i class="bi bi-heart" style="font-size: 3rem; color: #FF8C00;"></i>
           <h3 class="card-title mt-3">愛犬情報</h3>
           <p class="card-text">愛犬の情報を管理しましょう</p>
-          <% if @dogs.exists? %>
-            <%= link_to "情報を変更", edit_dog_path(@dogs.first), class: "btn btn-warning btn-lg" %>
+          <% if current_user.dogs.exists? %>
+            <% if current_user.dogs.count == 1 %>
+              <%# 1頭の場合: 直接編集画面へ %>
+              <%= link_to "情報を変更", edit_dog_path(current_user.dogs.first), class: "btn btn-warning btn-lg" %>
+            <% else %>
+              <%# 複数頭の場合: 愛犬選択画面へ %>
+              <%= link_to "情報を変更", select_dog_dogs_path, class: "btn btn-warning btn-lg" %>
+            <% end %>
           <% else %>
             <%= link_to "情報を登録", new_dog_path, class: "btn btn-warning btn-lg" %>
           <% end %>
@@ -39,13 +51,25 @@
     </div>
 
     <!-- レシピを投稿 -->
-    <div class="col-md-4 mb-4">
+    <div class="col-md-6 mb-4">
       <div class="card h-100 shadow-sm">
         <div class="card-body text-center">
           <i class="bi bi-pencil-square" style="font-size: 3rem; color: #FF8C00;"></i>
           <h3 class="card-title mt-3">レシピを投稿</h3>
           <p class="card-text">あなたのレシピをシェアしましょう</p>
           <%= link_to "投稿する", "#", class: "btn btn-warning btn-lg" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- 愛犬の追加 ★新規追加★ -->
+    <div class="col-md-6 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body text-center">
+          <i class="bi bi-plus-circle" style="font-size: 3rem; color: #FF8C00;"></i>
+          <h3 class="card-title mt-3">愛犬の追加</h3>
+          <p class="card-text">新しい愛犬を登録しましょう</p>
+          <%= link_to "愛犬を追加", new_dog_path, class: "btn btn-warning btn-lg" %>
         </div>
       </div>
     </div>

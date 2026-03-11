@@ -12,4 +12,8 @@ class HomesController < ApplicationController
       @user = current_user
       @dogs = @user.dogs
     end
+
+    def show
+      @dogs = current_user.dogs
+    end
 end

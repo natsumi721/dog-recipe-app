@@ -32,11 +32,19 @@ Rails.application.routes.draw do
 
   # 愛犬情報
   resources :dogs do
+    collection do
+      get :select_dog  # 愛犬選択画面(情報変更用)
+    end
     member do
       get :complete
     end
   end
 
   # レシピ
-  resources :recipes, only: [ :index, :show ]
+  resources :recipes, only: [ :index, :show ] do
+    collection do
+      get :select_dog  # 愛犬選択画面(レシピ閲覧用)
+    end
+  end
 end
+
