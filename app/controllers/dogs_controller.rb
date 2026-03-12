@@ -1,7 +1,7 @@
 class DogsController < ApplicationController
   skip_before_action :require_login, only: [ :new, :create, :complete ]
   before_action :set_dog, only: [:edit, :update, :destroy]
-  
+
   def new
     @dog = Dog.new
   end
@@ -51,8 +51,6 @@ class DogsController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     redirect_to dashboard_path, alert: "愛犬が見つかりませんでした"
   end
-
-
 
   def dog_params
     params.require(:dog).permit(

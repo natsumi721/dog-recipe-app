@@ -14,7 +14,7 @@
               <div class="ms-4 flex-grow-1">
                 <h3 class="card-title mb-2"><%= dog.name %></h3>
                 <p class="card-text text-muted mb-0">
-                  <%= dog.age_stage %> / <%= dog.size %> / <%= dog.body_type %>
+                  <%= dog.age_stage_i18n %> / <%= dog.size_i18n %> / <%= dog.body_type_i18n %>
                 </p>
               </div>
               <%= link_to "レシピを見る", recipes_path(dog_id: dog.id), class: "btn btn-warning" %>

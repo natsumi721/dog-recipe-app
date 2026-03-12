@@ -1,0 +1,25 @@
+ja:
+  defaults:
+    flash_message:
+      created: "%{item}を作成しました"
+      updated: "%{item}を更新しました"
+      deleted: "%{item}を削除しました"
+      not_created: "%{item}を作成できませんでした"
+      not_updated: "%{item}を更新できませんでした"
+      not_deleted: "%{item}を削除できませんでした"
+      require_login: "ログインしてください"
+  
+  helpers:
+    submit:
+      create: "登録"
+      submit: "保存"
+      update: "更新"
+    label:
+      email: "メールアドレス"
+      password: "パスワード"
+  
+  recipes:
+    select_dog:
+      title: "レシピを見る愛犬を選択してください"
+      subtitle: "どの子のレシピを見ますか?"
+      view_recipes: "レシピを見る"
