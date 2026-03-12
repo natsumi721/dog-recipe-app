@@ -62,4 +62,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "sorcery", "0.16.3"
+gem "sorcery", "0.18.0"
