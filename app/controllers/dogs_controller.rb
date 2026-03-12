@@ -20,6 +20,7 @@ class DogsController < ApplicationController
   def index
     @dogs = current_user.dogs
   end
+
   
   # 愛犬選択画面（レシピ用）★
   def select_dog
@@ -37,6 +38,9 @@ class DogsController < ApplicationController
       flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
   end
 
     # 完了画面へリダイレクト
