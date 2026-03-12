@@ -59,10 +59,9 @@
       <div class="mb-4">
         <label class="form-label fw-bold">アレルギー</label>
 
-        <div class="d-flex flex-wrap gap-2">
-          <% ["牛肉","鶏肉","豚肉","牛乳","チーズ","ヨーグルト","卵","鹿肉","納豆(大豆)","鮭","マグロ","タラ"].each_with_index do |item, i| %>
-
-            <% input_id = "allergy_#{i}" %>
+         <div class="d-flex flex-wrap gap-2">
+          <% Dog::ALLERGIES.each_with_index do |item, i| %>
+             <% input_id = "allergy_#{i}" %>
 
             <%= f.check_box :allergies,
                   { multiple: true, class: "btn-check", id: input_id },
@@ -72,7 +71,6 @@
             <%= label_tag input_id,
                   item,
                   class: "btn btn-outline-warning rounded-pill px-4" %>
-
           <% end %>
         </div>
       </div>

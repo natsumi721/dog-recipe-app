@@ -6,7 +6,7 @@ module EnumI18n
       # クラスメソッド: 選択肢を取得
       define_singleton_method("#{enum_name.to_s.pluralize}_i18n") do
         send(enum_name.to_s.pluralize).keys.map do |key|
-          [I18n.t("activerecord.enums.#{model_name.i18n_key}.#{enum_name}.#{key}"), key]
+          [ I18n.t("activerecord.enums.#{model_name.i18n_key}.#{enum_name}.#{key}"), key ]
         end
       end
 

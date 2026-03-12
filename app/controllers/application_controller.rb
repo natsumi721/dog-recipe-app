@@ -20,6 +20,6 @@ class ApplicationController < ActionController::Base
 
   def not_authenticated
     # ログインが必要なページにアクセスした際の処理
-    redirect_to login_path, alert: t('defaults.flash_message.require_login')
+    redirect_to login_path, alert: t("defaults.flash_message.require_login")
   end
 end

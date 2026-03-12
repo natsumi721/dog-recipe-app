@@ -1,6 +1,6 @@
 class DogsController < ApplicationController
   skip_before_action :require_login, only: [ :new, :create, :complete ]
-  before_action :set_dog, only: [:edit, :update, :destroy]
+  before_action :set_dog, only: [ :edit, :update, :destroy ]
 
   def new
     @dog = Dog.new
@@ -21,19 +21,18 @@ class DogsController < ApplicationController
     @dogs = current_user.dogs
   end
 
-  
+
   # 愛犬選択画面（レシピ用）★
   def select_dog
     @dogs = current_user.dogs
   end
 
   def edit
-  
   end
 
   def update
     if @dog.update(dog_params)
-      redirect_to complete_dog_path(@dog), notice: "愛犬情報を更新しました"
+      redirect_to dashboard_path(@dog), notice: "愛犬情報を更新しました"
     else
       flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
       render :edit, status: :unprocessable_entity

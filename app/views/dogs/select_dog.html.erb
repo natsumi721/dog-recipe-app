@@ -14,10 +14,10 @@
               <div class="ms-4 flex-grow-1">
                 <h3 class="card-title mb-2"><%= dog.name %></h3>
                 <p class="card-text text-muted mb-0">
-                  <%= dog.age_stage_i18n %> / <%= dog.size_i18n %> / <%= dog.body_type_i18n %>
+                  <%= dog.age_stage_i18n %> / <%= dog.size_i18n %> / <%= dog.body_type_i18n %> / <%= dog.allergies_i18n %>
                 </p>
               </div>
-              <%= link_to "情報を変更", edit_dog_path(dog), class: "btn btn-warning" %>
+              <%= link_to "選択する", edit_dog_path(dog), class: "btn btn-warning" %>
             </div>
           </div>
         </div>
@@ -26,6 +26,6 @@
   </div>
 
   <div class="text-center mt-4">
-    <%= link_to "ダッシュボードに戻る", dashboard_path, class: "btn btn-secondary" %>
+    <%= link_to "戻る", dashboard_path, class: "btn btn-secondary" %>
   </div>
 </div>
