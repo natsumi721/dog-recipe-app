@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path, notice: "登録しました"
+      auto_login(@user) # ログイン状態にする
+      redirect_to root_path, notice: "登録ありがとうございます！次に愛犬の情報を登録してください。"
     else
       render :new
     end

@@ -1,0 +1,410 @@
+/* ===================================
+   ヘッダーを画面上部に固定
+   =================================== */
+
+.custom-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE5B4 100%);
+  box-shadow: 0 2px 10px rgba(255, 193, 7, 0.2);
+  border-bottom: 3px solid #FFD54F;
+}
+
+.custom-header .navbar {
+  padding: 1rem 0;
+}
+
+/* ヘッダーの高さ分、コンテンツを下にずらす */
+body {
+  padding-top: 80px;
+}
+
+@media (max-width: 991px) {
+  body {
+    padding-top: 70px;
+  }
+}
+
+/* ===================================
+   ハンバーガーメニューのカスタマイズ
+   =================================== */
+
+/* メニューを開いたときの内容を少し下に配置 */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .navbar-nav {
+    padding: 10px 0;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-bottom: 12px;
+  }
+}
+
+/* ===================================
+   ボタンの色を落ち着いた色に変更
+   =================================== */
+
+/* 🔥 重要: !important を追加してBootstrapのスタイルを上書き */
+.custom-header .btn-outline-warning {
+  color: #6c757d !important;
+  border-color: #6c757d !important;
+  background-color: transparent !important;
+}
+
+.custom-header .btn-outline-warning:hover {
+  color: #fff !important;
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+
+/* 塗りつぶしボタンの色調整 */
+.custom-header .btn-warning {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  color: #fff !important;
+}
+
+.custom-header .btn-warning:hover {
+  background-color: #5a6268 !important;
+  border-color: #545b62 !important;
+}
+
+/* ===================================
+   ユーザー名表示の色調整
+   =================================== */
+
+.user-greeting {
+  background: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+}
+
+.user-greeting .greeting-text {
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.user-greeting .greeting-text strong {
+  color: #495057;
+  font-size: 1.05rem;
+}
+
+/* ===================================
+   トグルボタンのスタイル調整
+   =================================== */
+
+.navbar-toggler {
+  border: 1px solid #6c757d !important;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(108, 117, 125, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+/* ===================================
+   ロゴ部分
+   =================================== */
+
+.navbar-brand {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FF8C00;
+  text-shadow: 2px 2px 4px rgba(255, 193, 7, 0.3);
+  letter-spacing: 1px;
+}
+
+/* ===================================
+   ボタン共通スタイル
+   =================================== */
+
+.custom-header .btn {
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-width: 2px;
+  box-shadow: 0 2px 6px rgba(108, 117, 125, 0.2);
+}
+
+.custom-header .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+/* ===================================
+   レスポンシブ対応
+   =================================== */
+
+@media (max-width: 991px) {
+  .custom-header .navbar-nav {
+    padding-top: 1rem;
+  }
+  
+  .custom-header .nav-item {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  
+  .custom-header .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .user-greeting {
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .navbar-brand {
+    font-size: 1rem;
+  }
+}
+
+/* ===================================
+   ホバーアニメーション
+   =================================== */
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.navbar-brand:hover {
+  animation: bounce 0.6s ease;
+}
+
+/* ===================================
+   ログアウトボタンのフォーム調整
+   =================================== */
+
+.custom-header form {
+  margin: 0;
+  display: inline-block;
+}
+
+.custom-header form button {
+  cursor: pointer;
+}
+
+/* ===================================
+   ナビゲーションアイテムの間隔調整
+   =================================== */
+
+.custom-header .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+/* ===================================
+   スムーズスクロール
+   =================================== */
+
+html {
+  scroll-padding-top: 80px;
+}
+
+/* ===================================
+   TOPページ用スタイル
+   =================================== */
+
+.top-container {
+  font-family: "Helvetica Neue", sans-serif;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* ヒーロー */
+.hero h1 {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.accent {
+  color: #f59e0b;
+}
+
+.sub-text {
+  margin: 20px 0;
+  color: #666;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  margin: 20px auto;
+}
+
+/* ボタン */
+.primary-button {
+  display: inline-block;
+  background-color: #f59e0b;
+  color: white;
+  padding: 14px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.primary-button:hover {
+  opacity: 0.8;
+}
+
+.note {
+  font-size: 12px;
+  color: #999;
+  margin-top: 10px;
+}
+
+/* process */
+.process {
+  margin-top: 80px;
+}
+
+.steps {
+  margin-top: 30px;
+}
+
+.step {
+  margin-bottom: 30px;
+}
+
+.step h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* CTA */
+.cta {
+  background-color: #f59e0b;
+  color: white;
+  padding: 60px 20px;
+  border-radius: 30px;
+  margin-top: 80px;
+}
+
+.secondary-button {
+  display: inline-block;
+  background-color: white;
+  color: #f59e0b;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* ===================================
+   レシピカード用スタイル
+   =================================== */
+
+.recipe-card {
+  border-radius: 20px;
+  transition: 0.3s ease;
+  background-color: #ffffff;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.recipe-pre {
+  white-space: pre-wrap;
+  font-family: inherit;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+/* ===================================
+   ダッシュボード用スタイル
+   =================================== */
+
+.dashboard-container {
+  min-height: calc(100vh - 80px);
+  padding-top: 40px;
+}
+
+.dashboard-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3) !important;
+}
+
+.dashboard-card .card-body {
+  padding: 2rem;
+}
+
+.dashboard-card i {
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover i {
+  transform: scale(1.2);
+}
+
+/* カードのアイコンサイズ */
+.dashboard-card .display-4 {
+  font-size: 3rem;
+}
+
+/* カードのタイトル */
+.dashboard-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* カードの説明文 */
+.dashboard-card p {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding-top: 20px;
+  }
+  
+  .dashboard-card .display-4 {
+    font-size: 2rem;
+  }
+  
+  .dashboard-card h3 {
+    font-size: 1.25rem;
+  }
+}
