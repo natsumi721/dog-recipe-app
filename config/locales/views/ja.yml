@@ -8,6 +8,7 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       not_deleted: "%{item}を削除できませんでした"
       require_login: "ログインしてください"
+      confirm_delete: "本当に削除しますか？"
   
   helpers:
     submit:

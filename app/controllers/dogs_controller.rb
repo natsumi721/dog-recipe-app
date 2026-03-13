@@ -21,7 +21,6 @@ class DogsController < ApplicationController
     @dogs = current_user.dogs
   end
 
-
   # 愛犬選択画面（レシピ用）★
   def select_dog
     @dogs = current_user.dogs
@@ -40,6 +39,11 @@ class DogsController < ApplicationController
   end
 
   def destroy
+    if @dog.destroy
+      redirect_to dogs_path, notice: t("defaults.flash_message.deleted", item: "愛犬"), status: :see_other
+    else
+      redirect_to dogs_path, alert: t("defaults.flash_message.not_deleted", item: "愛犬"), status: :see_other
+    end
   end
 
     # 完了画面へリダイレクト
@@ -66,3 +70,4 @@ class DogsController < ApplicationController
     )
   end
 end
+
