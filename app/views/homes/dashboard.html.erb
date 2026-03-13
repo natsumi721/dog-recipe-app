@@ -15,7 +15,7 @@
           <% if current_user.dogs.exists? %>
             <% if current_user.dogs.count == 1 %>
               <%# 1頭の場合: 直接レシピ検索へ %>
-              <%= link_to "レシピを見る", new_recipe_path(dog_id: current_user.dogs.first.id), class: "btn btn-warning btn-lg" %>
+              <%= link_to "レシピを見る", recipes_path(dog_id: current_user.dogs.first.id), class: "btn btn-warning btn-lg" %>
             <% else %>
               <%# 複数頭の場合: 愛犬選択画面へ %>
               <%= link_to "レシピを見る", select_dog_recipes_path, class: "btn btn-warning btn-lg" %>

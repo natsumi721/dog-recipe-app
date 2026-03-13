@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
           @recipes = @dog.recommended_recipes
 
        else
-        @recipes =Recipe.limit(3)
+        @recipes = Recipe.limit(3)
        end
     end
 
@@ -29,10 +29,5 @@ class RecipesController < ApplicationController
 
     def select_dog
       @dogs = current_user.dogs
-    end
-
-    def new
-      @dog = current_user.dogs.find(params[:dog_id])
-      # レシピ検索のロジック...
     end
 end
