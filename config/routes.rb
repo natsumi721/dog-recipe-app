@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   root "homes#top"
 
   # 愛犬情報
-  resources :dogs, except: [:show] do
+  resources :dogs, except: [ :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(情報変更用)
     end

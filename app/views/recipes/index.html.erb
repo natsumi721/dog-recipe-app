@@ -16,13 +16,16 @@
         </div>
       </div>
     <% end %>
-    <div><%= link_to "戻る", new_dog_path,
-            class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
-          <% if current_user %>
-          <%= link_to "ダッシュボードへ", dashboard_path,
-              class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
-      <% end %>
-
-        </div>
+    <div>
+    <% if current_user %>
+      <!-- ログインユーザーには「ダッシュボードへ」ボタンのみ表示 -->
+      <%= link_to "ホームに戻る", dashboard_path,
+          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+    <% else %>
+      <!-- 未ログインユーザーには「戻る」ボタンのみ表示 -->
+      <%= link_to "戻る", new_dog_path,
+          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+    <% end %>
+    </div>
   </div>
 </div>

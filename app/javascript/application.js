@@ -2,4 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
-import "bootstrap"
+
+// Bootstrapをグローバルに設定（削除確認ダイアログで使用）
+window.bootstrap = bootstrap

@@ -86,7 +86,7 @@
           <%= button_to "#{dog.name}ちゃんの情報を削除",
               dog_path(dog),
               method: :delete,
-              form: { data: { turbo_confirm: "本当に削除しますか？" } },
+              data: { turbo_confirm: "本当に削除しますか？", turbo:true },
               class: "btn btn-outline-danger rounded-pill px-4" %>
            </div>
       <% end %>
