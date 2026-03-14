@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold">ブックマーク一覧</h2><
+
+<% if @bookmark_recipes.present? %>
+  <% @bookmark_recipes.each do |recipe| %>
+    <div>
+      <h2><%= link_to recipe.title, recipe_path(recipe) %></h2>
+      <p><%= recipe.description %></p>
+    </div>
+  <% end %>
+<% else %>
+  <p>ブックマークしたレシピがありません</p>
+<% end %>

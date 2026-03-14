@@ -25,6 +25,11 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
+        @bookmark = current_user.bookmarks.find_by(recipe: @recipe)
+    end
+
+    def bookmarks
+      @bookmark_recipes = current_user.bookmark_recipes.includes(:user).order(created_at: :desc)
     end
 
     def select_dog

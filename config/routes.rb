@@ -44,6 +44,9 @@ Rails.application.routes.draw do
   resources :recipes, only: [ :index, :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(レシピ閲覧用)
+      get :bookmarks   #ブックマーク
     end
   end
+
+  resources :bookmarks, only: %i[create destroy]
 end
