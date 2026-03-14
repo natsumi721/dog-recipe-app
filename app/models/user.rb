@@ -13,7 +13,7 @@ class User < ApplicationRecord
     has_many :bookmark_recipes, through: :bookmarks, source: :recipe
 
     # デフォルトスコープで削除済みユーザーを除外
-    default_scope { where(deleted_at: nil) } if column_names.include?('deleted_at')
+    default_scope { where(deleted_at: nil) } if column_names.include?("deleted_at")
 
     # 論理削除メソッド
     def soft_delete
