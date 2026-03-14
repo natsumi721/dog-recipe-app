@@ -15,17 +15,25 @@
 
     <!-- 材料 -->
     <div class="mb-4">
-      <h5 class="fw-bold mb-3" style="color: #f4a300;">
-        🥕 材料
-      </h5>
-          <!-- ブックマークボタン -->
-      <% if @bookmark.present? %>
-        <%= button_to "ブックマーク解除", bookmark_path(@bookmark), method: :delete, class: "btn btn-secondary" %>
-        <i class="bi bi-trash-fill"></i>
-      <% else %>
-        <%= button_to "ブックマークする", bookmarks_path(recipe_id: @recipe.id), method: :post, class: "btn btn-primary" %>
-        <i class="bi bi-pencil-fill"></i>
-      <% end %>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold mb-0" style="color: #f4a300;">
+          🥕 材料
+        </h5>
+        <!-- ブックマークボタン（ログインユーザーのみ表示） -->
+        <% if logged_in? %>
+          <div>
+            <% if @bookmark.present? %>
+                <%= button_to bookmark_path(@bookmark), method: :delete, class: "btn btn-link p-0 border-0", style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #999; filter: grayscale(100%);" do %>
+                 <span style="filter: grayscale(0%);">🦴 ブックマークを外す 🦴</span>
+             <% end %>
+          <% else %>
+            <%= button_to bookmarks_path(recipe_id: @recipe.id), method: :post, class: "btn btn-link p-0 border-0", style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #ff6b9d; " do %>
+            <span>🦴 ブックマーク 🦴</span>
+          <% end %>
+        <% end %>
+          </div>
+        <% end %>
+      </div>
       <div class="bg-light p-3 rounded-3">
         <%= simple_format(@recipe.ingredients) %>
       </div>
