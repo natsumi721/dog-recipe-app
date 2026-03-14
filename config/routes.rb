@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   resources :dogs, except: [ :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(情報変更用)
+      get :complete, action: :complete, as: :complete_guest  # ゲスト用
     end
     member do
       get :complete

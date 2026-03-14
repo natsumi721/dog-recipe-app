@@ -7,21 +7,52 @@ class DogsController < ApplicationController
   end
 
   def create
-    @dog = current_user.dogs.build(dog_params)
-
-    if @dog.save
-      redirect_to complete_dog_path(@dog)
+    # ログインしているかどうかで処理を分岐
+    if logged_in?
+      # ログインユーザーの場合、DBに保存
+      @dog = current_user.dogs.build(dog_params)
+      
+      if @dog.save
+        redirect_to complete_dog_path(@dog), notice: "愛犬情報を登録しました!"
+      else
+        flash.now[:alert] = "情報の保存に失敗しました。入力内容を確認してください。"
+        render :new, status: :unprocessable_entity
+      end
     else
-      flash.now[:alert] = "情報の保存に失敗しました。入力内容を確認してください。"
-      render :new, status: :unprocessable_entity
+      # ゲストユーザーの場合、セッションに保存
+      @dog = Dog.new(dog_params)
+      
+      if @dog.valid?
+        session[:guest_dog] = dog_params.to_h
+        # 完了ページへリダイレクト(guest=trueをパラメータで渡す)
+        redirect_to complete_guest_dogs_path
+      else
+        flash.now[:alert] = "情報の保存に失敗しました。入力内容を確認してください。"
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
+  # 完了ページ(ログインユーザーとゲストユーザー共通)
+  def complete
+    if logged_in?
+      # ログインユーザーの場合、DBから取得
+      @dog = current_user.dogs.find(params[:id])
+    else
+      # ゲストユーザーの場合、セッションから取得
+      if session[:guest_dog].present?
+        @dog = Dog.new(session[:guest_dog])
+      else
+        redirect_to root_path, alert: "犬情報が見つかりませんでした"
+      end
+    end
+  end
+
+  # 以下省略
   def index
     @dogs = current_user.dogs
   end
 
-  # 愛犬選択画面（レシピ用）★
   def select_dog
     @dogs = current_user.dogs
   end
@@ -31,7 +62,7 @@ class DogsController < ApplicationController
 
   def update
     if @dog.update(dog_params)
-      redirect_to dashboard_path(@dog), notice: "愛犬情報を更新しました"
+      redirect_to dashboard_path, notice: "愛犬情報を更新しました"
     else
       flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
       render :edit, status: :unprocessable_entity
@@ -45,11 +76,6 @@ class DogsController < ApplicationController
       redirect_to dogs_path, alert: t("defaults.flash_message.not_deleted", item: "愛犬"), status: :see_other
     end
   end
-
-    # 完了画面へリダイレクト
-    def complete
-      @dog = Dog.find(params[:id])
-    end
 
   private
 
@@ -68,5 +94,9 @@ class DogsController < ApplicationController
       :activity_level,
       allergies: []
     )
+  end
+
+  def logged_in?
+    current_user.present?
   end
 end

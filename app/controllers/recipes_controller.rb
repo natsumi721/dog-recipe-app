@@ -25,7 +25,10 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
+        # ログインしている場合のみブックマーク情報を取得
+      if logged_in?
         @bookmark = current_user.bookmarks.find_by(recipe: @recipe)
+      end
     end
 
     def bookmarks
