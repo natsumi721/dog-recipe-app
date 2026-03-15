@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true 
 
   # enum :size, { small: 0, medium: 1, large: 2 }, prefix: true
   enum :age_stage, { puppy: 0, adult: 1, senior: 2 }, prefix: true
