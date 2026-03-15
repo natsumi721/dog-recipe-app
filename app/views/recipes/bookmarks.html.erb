@@ -1,8 +1,9 @@
 <div class="container mt-5">
-  <h2 class="text-center mb-4 fw-bold">おすすめレシピ</h2>
+  <h2 class="text-center mb-4 fw-bold">🔍ブックマーク一覧🔍</h2>
 
   <div class="row g-4">
-    <% @recipes.each do |recipe| %>
+    <% if @bookmark_recipes.present? %>
+    <% @bookmark_recipes.each do |recipe| %>
       <div class="col-md-4">
         <div class="card recipe-card h-100 shadow-sm p-4 text-center d-flex flex-column">
           <h5 class="fw-bold mb-3"><%= recipe.name %></h5>
@@ -15,17 +16,16 @@
                 class: "btn btn-warning rounded-pill px-4 text-white mt-auto" %>
         </div>
       </div>
+    <% end %> 
+    <% else %>
+      <p class="text-center">ブックマークしたレシピがありません</p>
     <% end %>
-    <div>
-    <% if current_user %>
-      <!-- ログインユーザーには「ダッシュボードへ」ボタンのみ表示 -->
+  </div>
+
+    <div class="text-center mt-5">
       <%= link_to "ホームに戻る", dashboard_path,
           class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
-    <% else %>
-      <!-- 未ログインユーザーには「戻る」ボタンのみ表示 -->
-      <%= link_to "戻る", new_dog_path,
-          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
-    <% end %>
+   
     </div>
   </div>
 </div>

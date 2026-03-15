@@ -1,48 +1,62 @@
 <% content_for(:title, "愛犬情報の確認") %>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <h1>愛犬情報の確認</h1>
-      
-      <% if @dogs.present? %>
-        <% @dogs.each do |dog| %>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h3 class="card-title"><%= dog.name %>ちゃん</h3>
+
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow p-4 rounded-4">
+    
+    <h2 class="text-center mb-4 fw-bold">愛犬情報の確認</h2>
+
+    <% if @dogs.present? %>
+      <% @dogs.each do |dog| %>
+        <div class="card mb-4 border-warning" style="border-width: 2px;">
+          <div class="card-body p-4">
+            <h3 class="card-title text-warning fw-bold mb-3">
+              🐕 <%= dog.name %>ちゃん
+            </h3>
+            
+            <dl class="row mb-0">
+              <dt class="col-sm-4 mb-3 fw-bold">体のサイズ</dt>
+              <dd class="col-sm-8 mb-3"><%= dog.size_i18n %></dd>
               
-              <dl class="row">
-                <dt class="col-sm-3">体のサイズ</dt>
-                <dd class="col-sm-9"><%= dog.size_i18n %></dd>
-                
-                <dt class="col-sm-3">年齢</dt>
-                <dd class="col-sm-9"><%= dog.age_stage_i18n %></dd>
-                
-                <dt class="col-sm-3">体型</dt>
-                <dd class="col-sm-9"><%= dog.body_type_i18n %></dd>
-                
-                <dt class="col-sm-3">活動量</dt>
-                <dd class="col-sm-9"><%= dog.activity_level_i18n %></dd>
-                
-                <dt class="col-sm-3">アレルギー</dt>
-                <dd class="col-sm-9">
-                  <% if dog.allergies.present? %>
-                    <%= dog.allergies.join(", ") %>
-                  <% else %>
-                    なし
-                  <% end %>
-                </dd>
-              </dl>
+              <dt class="col-sm-4 mb-3 fw-bold">年齢</dt>
+              <dd class="col-sm-8 mb-3"><%= dog.age_stage_i18n %></dd>
               
-              <%= link_to "編集する", edit_dog_path(dog), class: "btn btn-primary" %>
+              <dt class="col-sm-4 mb-3 fw-bold">体型</dt>
+              <dd class="col-sm-8 mb-3"><%= dog.body_type_i18n %></dd>
+              
+              <dt class="col-sm-4 mb-3 fw-bold">活動量</dt>
+              <dd class="col-sm-8 mb-3"><%= dog.activity_level_i18n %></dd>
+              
+              <dt class="col-sm-4 mb-3 fw-bold">アレルギー</dt>
+              <dd class="col-sm-8 mb-3">
+                <% if dog.allergies.present? %>
+                  <%= dog.allergies.join(", ") %>
+                <% else %>
+                  なし
+                <% end %>
+              </dd>
+            </dl>
+            
+            <div class="text-center mt-3">
+              <%= link_to "✏️ 編集する", 
+                  edit_dog_path(dog), 
+                  class: "btn btn-warning rounded-pill px-5 fw-bold text-white" %>
             </div>
           </div>
-        <% end %>
-      <% else %>
-        <p>愛犬情報が登録されていません。</p>
-        <%= link_to "愛犬情報を登録する", new_dog_path, class: "btn btn-primary" %>
+        </div>
       <% end %>
-      
-      <%= link_to "レシピを見る", recipes_path, class: "btn btn-secondary" %>
+    <% else %>
+      <div class="text-center py-5">
+        <p class="text-muted mb-4">愛犬情報が登録されていません。</p>
+        <%= link_to "愛犬情報を登録する", 
+            new_dog_path, 
+            class: "btn btn-warning btn-lg rounded-pill px-5 fw-bold text-white" %>
+      </div>
+    <% end %>
+    
+    <div class="text-left mt-4">
+      <%= link_to "← 戻る", 
+          dashboard_path, 
+          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
     </div>
   </div>
 </div>

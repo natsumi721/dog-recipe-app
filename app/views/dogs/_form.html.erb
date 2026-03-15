@@ -81,6 +81,15 @@
       </div>
 
     <% end %>
+      <% if dog.persisted? %>
+        <div class="text-center mt-3">
+          <%= button_to "#{dog.name}ちゃんの情報を削除",
+              dog_path(dog),
+              method: :delete,
+              data: { turbo_confirm: "本当に削除しますか？", turbo:true },
+              class: "btn btn-outline-danger rounded-pill px-4" %>
+           </div>
+      <% end %>
 
     <div class="text-left mt-4">
       <%= link_to "← 戻る", root_path,

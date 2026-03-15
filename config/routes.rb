@@ -31,9 +31,10 @@ Rails.application.routes.draw do
   root "homes#top"
 
   # 愛犬情報
-  resources :dogs do
+  resources :dogs, except: [ :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(情報変更用)
+      get :complete, action: :complete, as: :complete_guest  # ゲスト用
     end
     member do
       get :complete
@@ -44,6 +45,9 @@ Rails.application.routes.draw do
   resources :recipes, only: [ :index, :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(レシピ閲覧用)
+      get :bookmarks   # ブックマーク
     end
   end
+
+  resources :bookmarks, only: %i[create destroy]
 end
