@@ -11,7 +11,7 @@ class DogsController < ApplicationController
     if logged_in?
       # ログインユーザーの場合、DBに保存
       @dog = current_user.dogs.build(dog_params)
-      
+
       if @dog.save
         redirect_to complete_dog_path(@dog), notice: "愛犬情報を登録しました!"
       else
@@ -21,7 +21,7 @@ class DogsController < ApplicationController
     else
       # ゲストユーザーの場合、セッションに保存
       @dog = Dog.new(dog_params)
-      
+
       if @dog.valid?
         session[:guest_dog] = dog_params.to_h
         # 完了ページへリダイレクト(guest=trueをパラメータで渡す)
