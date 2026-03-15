@@ -45,7 +45,6 @@ Recipe.create!(
         ・ブロッコリー … 30g
         ・卵黄 … 1.5個
         ・亜麻仁オイル … 小さじ1.5
-    #{'    '}
   TEXT
 
   instructions: <<~TEXT,
