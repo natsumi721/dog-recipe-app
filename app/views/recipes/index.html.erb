@@ -11,7 +11,7 @@
           </p>
 
           <%= link_to "詳細を見る",
-                recipe_path(recipe),
+                recipe_path(recipe,  dog_id: @dog&.id, return_to: request.fullpath),
                 class: "btn btn-warning rounded-pill px-4 text-white mt-auto" %>
         </div>
       </div>

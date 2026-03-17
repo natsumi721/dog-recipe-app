@@ -30,7 +30,7 @@
                 <span style="filter: grayscale(0%);">🦴 ブックマークを外す 🦴</span>
               <% end %>
           <% else %>
-                <%= link_to bookmarks_path(recipe_id: @recipe.id, return_to: request.fullpath), 
+                <%= link_to bookmarks_path(recipe_id: @recipe.id, dog_id: @dog&.id, return_to: request.fullpath), 
                           data: { turbo_method: :post },
                           class: "btn btn-link p-0 border-0", 
                           style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #ff6b9d;" do %>
@@ -68,7 +68,7 @@
     <!-- 戻るボタン -->
     <div class="text-center mt-4">
       <%= link_to "← 戻る",
-            request.referer || recipes_path,
+            @return_to.presence || recipes_path,
             class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
     </div>
   </div>

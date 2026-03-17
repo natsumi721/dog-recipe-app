@@ -1,0 +1,31 @@
+<!-- app/views/recipes/bookmarks_list.html.erb -->
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h1 class="display-4"><%= @dog.name %> のブックマーク</h1>
+    <p class="lead">お気に入りのレシピ一覧</p>
+  </div>
+
+  <% if @bookmark_recipes.present? %>
+    <div class="row">
+      <% @bookmark_recipes.each do |recipe| %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><%= recipe.name %></h5>
+              <p class="card-text"><%= recipe.description %></p>
+              <%= link_to "詳細を見る", recipe_path(recipe, dog_id: @dog.id, return_to: request.fullpath), class: "btn btn-warning" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-info text-center">
+      まだブックマークがありません
+    </div>
+  <% end %>
+
+  <div class="text-center mt-4">
+    <%= link_to "戻る", dashboard_path, class: "btn btn-secondary" %>
+  </div>
+</div>
