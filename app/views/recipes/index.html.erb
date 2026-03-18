@@ -17,14 +17,15 @@
       </div>
     <% end %>
     <div>
+    <div class="text-center mt-4">
     <% if current_user %>
       <!-- ログインユーザーには「ダッシュボードへ」ボタンのみ表示 -->
       <%= link_to "ホームに戻る", dashboard_path,
-          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+          class: "btn btn-secondary btn-lg" %>
     <% else %>
       <!-- 未ログインユーザーには「戻る」ボタンのみ表示 -->
       <%= link_to "戻る", new_dog_path,
-          class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+          class: "btn btn-secondary btn-lg" %>
     <% end %>
     </div>
   </div>

@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
-      # ログインしている場合のみブックマーク情報を取得
+  # ログインしている場合のみブックマーク情報を取得
   if logged_in?
     # 🐶 dog_id が渡されている場合
     if params[:dog_id].present?
@@ -52,18 +52,18 @@ class RecipesController < ApplicationController
     # 🐶 dog選択後 or 1頭のみ
     if params[:dog_id].present?
       @dog = dogs.find(params[:dog_id])
-      
+
       @bookmark_recipes = current_user.bookmarks
                                    .where(dog_id: @dog.id)
                                    .includes(:recipe)
                                    .map(&:recipe)
-      
+
       # 🐶 bookmarks_list.html.erb を表示
       render :bookmarks_list
     else
       # 🐶 複数頭のときだけ選択画面
       @dogs = dogs
-      
+
       # 🐶 bookmarks_select.html.erb を表示
       render :bookmarks_select
     end

@@ -1,19 +1,18 @@
-<!-- app/views/recipes/bookmarks_list.html.erb -->
 <div class="container mt-5">
   <div class="text-center mb-5">
-    <h1 class="display-4"><%= @dog.name %> のブックマーク</h1>
+    <h1 class="text-center mb-4 fw-bold"><%= @dog.name %> ちゃんのブックマーク</h1>
     <p class="lead">お気に入りのレシピ一覧</p>
   </div>
 
-  <% if @bookmark_recipes.present? %>
-    <div class="row">
+      <div class="row g-4">
+    <% if @bookmark_recipes.present? %>
+        <div class="col-md-4">
       <% @bookmark_recipes.each do |recipe| %>
-        <div class="col-md-4 mb-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title"><%= recipe.name %></h5>
-              <p class="card-text"><%= recipe.description %></p>
-              <%= link_to "詳細を見る", recipe_path(recipe, dog_id: @dog.id, return_to: request.fullpath), class: "btn btn-warning" %>
+        <div class="card recipe-card h-100 shadow-sm p-4 text-center d-flex flex-column">
+    
+              <h5 class="fw-bold mb-3"><%= recipe.name %></h5>
+              <p class="text-muted small mb-4"><%= recipe.description %></p>
+              <%= link_to "詳細を見る", recipe_path(recipe, dog_id: @dog.id, return_to: request.fullpath), class:  "btn btn-warning rounded-pill px-4 text-white mt-auto" %>
             </div>
           </div>
         </div>
@@ -26,6 +25,4 @@
   <% end %>
 
   <div class="text-center mt-4">
-    <%= link_to "戻る", dashboard_path, class: "btn btn-secondary" %>
-  </div>
-</div>
+    <%= link_to "戻る", dashboard_path,  class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
