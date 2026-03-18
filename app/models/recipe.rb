@@ -15,7 +15,6 @@ class Recipe < ApplicationRecord
 
 
   validates :name, presence: true
-  validates :title, presence: true
   validates :description, presence: true
 
   has_many :bookmarks, dependent: :destroy
