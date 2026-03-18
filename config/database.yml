@@ -34,8 +34,8 @@ test:
   encoding: unicode
   database: dog_recipe_app_test
   username: postgres
-  password: postgres
-  host: localhost
+  password: password
+  host: db
   port: 5432
 
 # As with config/credentials.yml, you never want to store sensitive information,
