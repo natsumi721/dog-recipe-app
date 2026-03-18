@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_03_14_052904) do
+ActiveRecord::Schema[7.2].define(version: 2026_03_17_060410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_14_052904) do
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "dog_id"
+    t.index ["dog_id"], name: "index_bookmarks_on_dog_id"
     t.index ["recipe_id"], name: "index_bookmarks_on_recipe_id"
     t.index ["user_id", "recipe_id"], name: "index_bookmarks_on_user_id_and_recipe_id", unique: true
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
@@ -65,6 +67,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_14_052904) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bookmarks", "dogs"
   add_foreign_key "bookmarks", "recipes"
   add_foreign_key "bookmarks", "users"
   add_foreign_key "dogs", "users"

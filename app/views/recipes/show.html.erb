@@ -14,31 +14,79 @@
     <hr class="my-4">
 
     <!-- 材料 -->
-    <div class="mb-4">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="fw-bold mb-0" style="color: #f4a300;">
-          🥕 材料
-        </h5>
-        <!-- ブックマークボタン（ログインユーザーのみ表示） -->
-        <% if logged_in? %>
-          <div>
-            <% if @bookmark.present? %>
-                <%= button_to bookmark_path(@bookmark), method: :delete, class: "btn btn-link p-0 border-0", style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #999; filter: grayscale(100%);" do %>
-                 <span style="filter: grayscale(0%);">🦴 ブックマークを外す 🦴</span>
-             <% end %>
-          <% else %>
-            <%= button_to bookmarks_path(recipe_id: @recipe.id), method: :post, class: "btn btn-link p-0 border-0", style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #ff6b9d; " do %>
+<div class="mb-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold mb-0" style="color: #f4a300;">
+      🥕 材料
+    </h5>
+    <!-- ブックマークボタン（ログインユーザーのみ表示） -->
+    <% if logged_in? %>
+      <div>
+        <% if @bookmark.present? %>
+          <%= link_to bookmark_path(@bookmark, return_to: request.fullpath), 
+                    data: { turbo_method: :delete, turbo_confirm: "本当にブックマークを外しますか?" },
+                    class: "btn btn-link p-0 border-0", 
+                    style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #999; filter: grayscale(100%);" do %>
+            <span style="filter: grayscale(0%);">🦴 ブックマークを外す 🦴</span>
+          <% end %>
+        <% else %>
+          <%= link_to bookmarks_path(recipe_id: @recipe.id, dog_id: @dog&.id, return_to: request.fullpath), 
+                    data: { turbo_method: :post },
+                    class: "btn btn-link p-0 border-0", 
+                    style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #ff6b9d;" do %>
             <span>🦴 ブックマーク 🦴</span>
           <% end %>
         <% end %>
-          </div>
-        <% end %>
       </div>
-      <div class="bg-light p-3 rounded-3">
-        <%= simple_format(@recipe.ingredients) %>
+    <% end %>
+  </div>
+
+  <!-- 見出し部分 -->
+  <p class="text-muted mb-3"><%= @recipe.ingredients_header %></p>
+
+  <!-- サイズ選択タブ -->
+  <ul class="nav nav-tabs" id="ingredientsTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="small-tab" data-bs-toggle="tab" data-bs-target="#small" type="button" role="tab">
+        小型犬（〜5kg）
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="medium-tab" data-bs-toggle="tab" data-bs-target="#medium" type="button" role="tab">
+        中型犬（6〜15kg）
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="large-tab" data-bs-toggle="tab" data-bs-target="#large" type="button" role="tab">
+        大型犬（16kg〜）
+      </button>
+    </li>
+  </ul>
+
+  <!-- タブコンテンツ -->
+  <div class="tab-content" id="ingredientsTabContent">
+    <!-- 小型犬 -->
+    <div class="tab-pane fade show active" id="small" role="tabpanel">
+      <div class="bg-light p-3 rounded-3 mt-3">
+        <%= simple_format(@recipe.ingredients_for_size(:small)) %>
       </div>
     </div>
 
+    <!-- 中型犬 -->
+    <div class="tab-pane fade" id="medium" role="tabpanel">
+      <div class="bg-light p-3 rounded-3 mt-3">
+        <%= simple_format(@recipe.ingredients_for_size(:medium)) %>
+      </div>
+    </div>
+
+    <!-- 大型犬 -->
+    <div class="tab-pane fade" id="large" role="tabpanel">
+      <div class="bg-light p-3 rounded-3 mt-3">
+        <%= simple_format(@recipe.ingredients_for_size(:large)) %>
+      </div>
+    </div>
+  </div>
+</div>
     <!-- 作り方 -->
     <div class="mb-4">
       <h5 class="fw-bold mb-3" style="color: #f4a300;">
@@ -62,8 +110,8 @@
     <!-- 戻るボタン -->
     <div class="text-center mt-4">
       <%= link_to "← 戻る",
-            request.referer || recipes_path,
-            class: "btn btn-warning rounded-pill px-5 fw-bold text-white shadow-sm" %>
+            @return_to.presence || recipes_path,
+            class: "btn btn-secondary btn-lg" %>
     </div>
   </div>
 </div>

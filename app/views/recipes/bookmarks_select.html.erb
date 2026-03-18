@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="text-center mb-5">
-    <h1 class="display-4">どのわんちゃんのレシピを見ますか?</h1>
-    <p class="lead">レシピを見たい愛犬を選択してください</p>
+    <h1 class="display-4">どのわんちゃんのブックマークをみますか?</h1>
+    <p class="lead">愛犬を選択してください</p>
   </div>
 
   <div class="row justify-content-center">
@@ -13,12 +13,8 @@
               <i class="bi bi-heart-fill" style="font-size: 3rem; color: #FF8C00;"></i>
               <div class="ms-4 flex-grow-1">
                 <h3 class="card-title mb-2"><%= dog.name %></h3>
-                <p class="card-text text-muted mb-0">
-                  <%= dog.age_stage_i18n %> / <%= dog.size_i18n %> / <%= dog.body_type_i18n %> / <%= dog.allergies_i18n %>
-                </p>
-                </p>
               </div>
-              <%= link_to "レシピを見る", recipes_path(dog_id: dog.id), class: "btn btn-warning" %>
+              <%= link_to "選択する", bookmarks_recipes_path(dog_id: dog.id), class: "btn btn-warning" %>
             </div>
           </div>
         </div>
@@ -30,4 +26,3 @@
     <%= link_to "戻る", dashboard_path, class: "btn btn-secondary btn-lg" %>
   </div>
 </div>
-
