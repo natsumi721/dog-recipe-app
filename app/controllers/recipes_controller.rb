@@ -4,8 +4,8 @@ class RecipesController < ApplicationController
 
     def index
        if params[:dog_id].present?
-          dog = current_user.dogs.find(params[:dog_id])
-          @recipes = dog.recommended_recipes
+          @dog = current_user.dogs.find(params[:dog_id])
+          @recipes = @dog.recommended_recipes
 
        elsif params[:age_stage].present? || session[:guest_dog].present?
           # 未ログインユーザーのフィルタリング条件から取得
@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
             allergies: params[:allergies] || dog_data["allergies"] || []  # ← セッションから取得
           )
           @recipes = @dog.recommended_recipes
-
+          @dog = current_user.dogs.first if logged_in?
        else
         @recipes = Recipe.limit(3)
        end
@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
     else
       # 🐶 1頭だけの場合は自動で設定
       @dog = current_user.dogs.first
-      @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog)
+      @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog
     end
   end
       @return_to = params[:return_to]
