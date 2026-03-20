@@ -6,8 +6,8 @@
 
       <div class="row g-4">
     <% if @bookmark_recipes.present? %>
-        <div class="col-md-4">
       <% @bookmark_recipes.each do |recipe| %>
+        <div class="col-md-4">
         <div class="card recipe-card h-100 shadow-sm p-4 text-center d-flex flex-column">
     
               <h5 class="fw-bold mb-3"><%= recipe.name %></h5>
@@ -15,7 +15,6 @@
               <%= link_to "詳細を見る", recipe_path(recipe, dog_id: @dog.id, return_to: request.fullpath), class:  "btn btn-warning rounded-pill px-4 text-white mt-auto" %>
             </div>
           </div>
-        </div>
       <% end %>
     </div>
   <% else %>
