@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
     skip_before_action :require_login, only: [ :index, :show ]
     skip_before_action :check_dog_profile, only: [ :index, :show ]
 
+
     def index
        if params[:dog_id].present?
           @dog = current_user.dogs.find(params[:dog_id])
@@ -26,20 +27,24 @@ class RecipesController < ApplicationController
 
     def show
         @recipe = Recipe.find(params[:id])
-  # ログインしている場合のみブックマーク情報を取得
-  if logged_in?
-    # 🐶 dog_id が渡されている場合
-    if params[:dog_id].present?
-      @dog = current_user.dogs.find(params[:dog_id])
-      @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog)
-    else
-      # 🐶 1頭だけの場合は自動で設定
-      @dog = current_user.dogs.first
-      @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog
+        # ログインしている場合のみブックマーク情報を取得
+        set_ogp
+
+      if logged_in?
+       # 🐶 dog_id が渡されている場合
+       if params[:dog_id].present?
+          @dog = current_user.dogs.find(params[:dog_id])
+          @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog)
+       else
+          # 🐶 1頭だけの場合は自動で設定
+          @dog = current_user.dogs.first
+          @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog
+
+       end
+      end
+          @return_to = params[:return_to]
     end
-  end
-      @return_to = params[:return_to]
-    end
+
 
     def bookmarks
     dogs = current_user.dogs
@@ -71,5 +76,18 @@ class RecipesController < ApplicationController
 
   def select_dog
     @dogs = current_user.dogs
+  end
+
+
+  def set_ogp
+    set_meta_tags(
+      title: @recipe.name,
+      description: @recipe.nutrition_note,
+      og: {
+        title: @recipe.name,
+        description: @recipe.nutrition_note,
+        image: view_context.image_url("ogp.png")
+      }
+     )
   end
 end
