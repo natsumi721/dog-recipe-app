@@ -48,7 +48,6 @@ class DogsController < ApplicationController
     end
   end
 
-  # 以下省略
   def index
     @dogs = current_user.dogs
   end
