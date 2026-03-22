@@ -20,4 +20,11 @@ RSpec.describe User, type: :model do
     user = build(:user, password_confirmation: nil)
     expect(user).to be_invalid
   end
+
+  it "ユーザーは複数の犬を持てる" do
+    user = create(:user)
+    create_list(:dog, 2, user: user)
+
+    expect(user.dogs.count).to eq(2)
+  end
 end

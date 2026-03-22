@@ -48,7 +48,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
-
+  Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
   # RSpec Rails uses metadata to mix in different behaviours to your tests,
   # for example enabling you to call `get` and `post` in request specs. e.g.:
   #
