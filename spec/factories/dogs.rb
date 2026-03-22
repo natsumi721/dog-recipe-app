@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :dog do
-    name { "ポチ" }
+    sequence(:name) { |n| "ポチ#{n}" }
     size { :small }
     age_stage { :adult }
     body_type { :normal }

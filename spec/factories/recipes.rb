@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :recipe do
-    name { "テストレシピ" }
+    sequence(:name) { |n| "テストレシピ#{n}" }
     description { "テスト用の説明" }
     age_stage { :adult }
     body_type { :normal }
