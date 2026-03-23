@@ -11,7 +11,7 @@ class BookmarksController < ApplicationController
     end
 
     # 🐶 dog_id を保存
-    current_user.bookmarks.create(recipe: recipe, dog: dog)
+    current_user.bookmarks.create!(recipe: recipe, dog: dog)
 
     # 🔙 元のページに戻る
     redirect_to params[:return_to] || recipes_path, success: t(".success")

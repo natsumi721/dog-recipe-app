@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
 
     def index
-       if params[:dog_id].present?
+       if params[:dog_id].present? && logged_in?
           @dog = current_user.dogs.find(params[:dog_id])
           @recipes = @dog.recommended_recipes
 
