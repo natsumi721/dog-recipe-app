@@ -7,15 +7,17 @@ RSpec.describe "Bookmark", type: :system do
 
   it "ログインユーザーはブックマークできる" do
     visit login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: "password"
-    click_button "ログイン"
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: "password"
+    click_button "ログインする"
+    expect(page).to have_current_path(dashboard_path)
+
 
     visit recipe_path(recipe, dog_id: dog.id)
 
-    click_button "ブックマーク"
+    expect(page).to have_content("ブックマーク")
 
-    expect(page).to have_content("ブックマークしました")
+    click_link "🦴 ブックマーク 🦴"
   end
 
   it "未ログインユーザーにはボタンが表示されない" do

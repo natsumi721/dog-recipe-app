@@ -36,4 +36,16 @@ RSpec.describe "Bookmarks", type: :request do
       }.to change(Bookmark, :count).by(-1)
     end
   end
+   context "未ログイン" do
+  before do
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user).and_return(nil)
+  end
+
+  it "未ログインユーザーはブックマークできない" do
+    post bookmarks_path, params: { recipe_id: recipe.id, dog_id: dog1.id }
+
+    expect(response).to redirect_to(login_path)
+  end
+end
 end
