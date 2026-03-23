@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "ログイン", type: :system do
   let(:user) { create(:user, email: "test@example.com", password: "password") }
-
+  let!(:dog) { create(:dog, user: user) }
   it "正しい情報でログインできる" do
     visit login_path
 
@@ -11,7 +11,8 @@ RSpec.describe "ログイン", type: :system do
     click_button "ログイン"
 
     expect(page).to have_current_path(dashboard_path)
-    expect(page).to have_content("ログアウト") # ログイン成功の証拠
+  expect(page).to have_content('ログインしました')
+  expect(page).to have_content('レシピを見る') # ← ダッシュボードの要素で確認
   end
 
   it "間違ったパスワードだとログインできない" do
