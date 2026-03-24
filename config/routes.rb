@@ -50,4 +50,10 @@ Rails.application.routes.draw do
   end
 
   resources :bookmarks, only: %i[create destroy]
+
+  #管理者画面
+    namespace :admin do
+    resources :recipes, only: [:index, :show, :update]
+    get 'dashboard', to: 'dashboard#index'
+  end
 end

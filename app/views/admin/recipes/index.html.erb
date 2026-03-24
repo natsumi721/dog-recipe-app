@@ -1,0 +1,7 @@
+<h2>未承認レシピ一覧</h2>
+
+<% @recipes.each do |recipe| %>
+  <div>
+    <%= link_to recipe.title, admin_recipe_path(recipe) %>
+  </div>
+<% end %>

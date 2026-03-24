@@ -1,0 +1,7 @@
+<h2><%= @recipe.title %></h2>
+<p><%= @recipe.content %></p>
+
+<%= form_with model: [:admin, @recipe], method: :patch do |f| %>
+  <%= f.submit "承認する" %>
+  <%= f.submit "却下する" %>
+<% end %>
