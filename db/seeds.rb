@@ -8512,3 +8512,10 @@ Recipe.create!(
     ✔ 活発な老犬の代謝維持
   TEXT
 )
+
+User.find_or_create_by!(email: "admin@example.com") do |user|
+  user.name = "admin"
+  user.password = "password"
+  user.password_confirmation = "password"
+  user.admin = true
+end

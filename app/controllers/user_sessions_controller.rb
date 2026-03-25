@@ -10,8 +10,12 @@ class UserSessionsController < ApplicationController
       @user = login(params[:email], params[:password])
 
     if @user
-      # ログイン成功: ダッシュボードへ
+      if @user.admin?
+        redirect_to admin_recipes_path, notice: "管理者としてログインしました"
+      else
+      # ログイン成功:
       redirect_to dashboard_path, notice: "ログインしました"
+      end
     else
       # ログイン失敗: ログイン画面を再表示
       flash.now[:alert] = "ログイン情報が違います"

@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
           @recipes = @dog.recommended_recipes
           @dog = current_user.dogs.first if logged_in?
        else
-        @recipes = Recipe.limit(3)
+        @recipes = Recipe.published.limit(3)
        end
     end
 

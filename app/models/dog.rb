@@ -29,7 +29,7 @@ class Dog < ApplicationRecord
   attribute :allergies, :string, array: true, default: []
 
   def recommended_recipes
-  recipes = Recipe.where(
+  recipes = Recipe.published.where(
     age_stage: age_stage,
     body_type: body_type,
     activity_level: activity_level

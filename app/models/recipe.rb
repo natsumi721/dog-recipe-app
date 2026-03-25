@@ -6,6 +6,9 @@ class Recipe < ApplicationRecord
   enum :body_type, { thin: 0, normal: 1, overweight: 2 }, prefix: true
   enum :activity_level, { low: 0, medium: 1, high: 2 }, prefix: true
 
+  # 管理者画面
+  enum status: { draft: 0, published: 1, rejected: 2 }
+
   include EnumI18n
   # enum の日本語化を有効にする
   enum_i18n :size

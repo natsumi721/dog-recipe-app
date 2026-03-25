@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   private
 
   def check_dog_profile
+    return unless logged_in?
+    return if current_user.admin?
     # ログイン済みで、愛犬情報がない場合のみ愛犬登録ページへ
     return unless current_user.dogs.empty?
     return if controller_name.in?(%w[dogs user_sessions])
