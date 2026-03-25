@@ -11,9 +11,9 @@ class UserSessionsController < ApplicationController
 
     if @user
       if @user.admin?
-        redirect_to admin_dashboard_path, notice: "管理者としてログインしました"
+        redirect_to admin_recipes_path, notice: "管理者としてログインしました"
       else
-      # ログイン成功: ダッシュボードへ
+      # ログイン成功:
       redirect_to dashboard_path, notice: "ログインしました"
       end
     else

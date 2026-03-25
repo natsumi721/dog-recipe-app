@@ -2,6 +2,6 @@
 
 <% @recipes.each do |recipe| %>
   <div>
-    <%= link_to recipe.title, admin_recipe_path(recipe) %>
+    <%= link_to recipe.name, admin_recipe_path(recipe) %>
   </div>
 <% end %>
