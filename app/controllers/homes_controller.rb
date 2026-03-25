@@ -3,7 +3,6 @@ class HomesController < ApplicationController
     skip_before_action :check_dog_profile, only: [ :top ]
 
     def top
-      Recipe.update_all(status: 1)
       # ログイン済みの場合はダッシュボードへ
       redirect_to dashboard_path if logged_in?
     end
