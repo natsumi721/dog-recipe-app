@@ -1,7 +1,7 @@
 class Admin::RecipesController < ApplicationController
     before_action :require_login
     before_action :require_admin
-    before_action :set_recipe, only: [:show, :update]
+    before_action :set_recipe, only: [ :show, :update ]
 
 
     def index
