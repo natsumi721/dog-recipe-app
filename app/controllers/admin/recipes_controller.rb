@@ -1,18 +1,17 @@
 class Admin::RecipesController < ApplicationController
     before_action :require_login
     before_action :require_admin
+    before_action :set_recipe, only: [:show, :update]
+
 
     def index
       @recipes = Recipe.draft
     end
 
     def show
-      @recipe = Recipe.find(params[:id])
     end
 
     def update
-      @recipe = Recipe.find(params[:id])
-
       if params[:commit] == "承認する"
         @recipe.published!
       elsif params[:commit] == "却下する"
@@ -23,6 +22,10 @@ class Admin::RecipesController < ApplicationController
     end
 
     private
+
+    def set_recipe
+       @recipe = Recipe.find(params[:id])
+    end
 
     def require_admin
       redirect_to root_path unless current_user.admin?
