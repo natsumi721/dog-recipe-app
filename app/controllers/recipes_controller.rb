@@ -90,4 +90,18 @@ class RecipesController < ApplicationController
       }
      )
   end
+
+  def adjusted_ingredients_for(size)
+    return ingredients if adjusted_multiplier.blank?
+
+    multiplier = adjusted_multiplier
+
+    text = ingredients_for_size(size)
+
+    text.gsub(/(\d+(\.\d+)?)g/) do |match|
+      amount = match.to_f
+      new_amount = (amount * multiplier).round
+      "#{new_amount}g"
+    end
+  end
 end

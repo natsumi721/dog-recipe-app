@@ -29,23 +29,41 @@ class Dog < ApplicationRecord
   attribute :allergies, :string, array: true, default: []
 
   def recommended_recipes
-  recipes = Recipe.published.where(
-    age_stage: age_stage,
-    body_type: body_type,
-    activity_level: activity_level
-  )
+  recipes = Recipe.published.to_a
 
-  return recipes.order("RANDOM()").limit(3) unless allergies.present?
-
-    recipes = recipes.to_a.reject do |recipe|
-      allergies.any? do |a|
-        base = a.gsub("肉", "")
-        recipe.ingredients.include?(base)
+    # ① アレルギー除外（暫定）
+    if allergies.present?
+      recipes = recipes.reject do |recipe|
+        allergies.any? do |a|
+          recipe.ingredients.include?(a) ||
+          recipe.ingredients.include?(a.gsub("肉", ""))
+        end
       end
     end
 
-    recipes.sample(3)
+    # ② スコアリング
+    scored = recipes.map do |recipe|
+      score = 0
+      score += 1 if recipe.age_stage == age_stage
+      score += 1 if recipe.body_type == body_type
+      score += 1 if recipe.activity_level == activity_level
+      [recipe, score]
+    end
+
+    # ③ スコア順で並べて上位取得
+    top_recipes = scored
+                    .sort_by { |_, score| -score }
+                    .map(&:first)
+                    .take(5)
+
+    # ④ レシピを犬に合わせて調整
+    top_recipes.map do |recipe|
+      adjusted = RecipeAdjuster.new(recipe, self).call
+       PortionAdjuster.new(adjusted, self).call
+    end
   end
+
+    
 
   def allergies_i18n
     return "なし" if allergies.blank?
