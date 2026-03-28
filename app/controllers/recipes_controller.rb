@@ -49,12 +49,12 @@ class RecipesController < ApplicationController
     def bookmarks
     dogs = current_user.dogs
 
-    # 🐶 1頭だけなら自動でその子のブックマークへ
+    # 1頭だけなら自動でその子のブックマークへ
     if params[:dog_id].blank? && dogs.count == 1
       return redirect_to bookmarks_recipes_path(dog_id: dogs.first.id)
     end
 
-    # 🐶 dog選択後 or 1頭のみ
+    # dog選択後 or 1頭のみ
     if params[:dog_id].present?
       @dog = dogs.find(params[:dog_id])
 
@@ -63,13 +63,13 @@ class RecipesController < ApplicationController
                                    .includes(:recipe)
                                    .map(&:recipe)
 
-      # 🐶 bookmarks_list.html.erb を表示
+      # bookmarks_list.html.erb を表示
       render :bookmarks_list
     else
-      # 🐶 複数頭のときだけ選択画面
+      # 複数頭のときだけ選択画面
       @dogs = dogs
 
-      # 🐶 bookmarks_select.html.erb を表示
+      # bookmarks_select.html.erb を表示
       render :bookmarks_select
     end
   end

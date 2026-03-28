@@ -31,7 +31,7 @@ class Dog < ApplicationRecord
   def recommended_recipes
   recipes = Recipe.published.to_a
 
-    # ① アレルギー除外（暫定）
+    # アレルギー除外（暫定）
     if allergies.present?
       recipes = recipes.reject do |recipe|
         allergies.any? do |a|
@@ -41,7 +41,7 @@ class Dog < ApplicationRecord
       end
     end
 
-    # ② スコアリング
+    # スコアリング
     scored = recipes.map do |recipe|
       score = 0
       score += 1 if recipe.age_stage == age_stage
@@ -50,13 +50,15 @@ class Dog < ApplicationRecord
       [recipe, score]
     end
 
-    # ③ スコア順で並べて上位取得
+    #  スコア順で並べて上位取得
     top_recipes = scored
                     .sort_by { |_, score| -score }
                     .map(&:first)
-                    .take(5)
+                    .take(20)
 
-    # ④ レシピを犬に合わせて調整
+    top_recipes = top_recipes.sample(5)
+
+    #  レシピを犬に合わせて調整
     top_recipes.map do |recipe|
       adjusted = RecipeAdjuster.new(recipe, self).call
        PortionAdjuster.new(adjusted, self).call
