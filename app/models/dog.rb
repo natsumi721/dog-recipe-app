@@ -47,7 +47,7 @@ class Dog < ApplicationRecord
       score += 1 if recipe.age_stage == age_stage
       score += 1 if recipe.body_type == body_type
       score += 1 if recipe.activity_level == activity_level
-      [recipe, score]
+      [ recipe, score ]
     end
 
     #  スコア順で並べて上位取得
@@ -65,7 +65,7 @@ class Dog < ApplicationRecord
     end
   end
 
-    
+
 
   def allergies_i18n
     return "なし" if allergies.blank?

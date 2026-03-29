@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_29_035003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0, null: false
-    t.json "base_ingredients"
+    t.json "ingredients_json"
   end
 
   create_table "users", force: :cascade do |t|

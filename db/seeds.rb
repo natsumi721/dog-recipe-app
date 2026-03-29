@@ -21,31 +21,15 @@ Recipe.create!(
   description: "体重を増やしたい痩せ型の子犬向けレシピ",
 
   ingredients_json: {
-  small: [
-    { name: "鶏もも肉（皮つき）", amount: 40, unit: "g", tags: ["chicken"] },
-    { name: "白米", amount: 30, unit: "g", tags: ["rice"] },
-    { name: "かぼちゃ", amount: 30, unit: "g" },
-    { name: "ブロッコリー", amount: 10, unit: "g" },
-    { name: "卵黄", amount: 0.5, unit: "piece", tags: ["egg"] },
-    { name: "亜麻仁オイル", amount: 0.5, unit: "tsp" }
-  ],
-  medium: [
-    { name: "鶏もも肉（皮つき）", amount: 80, unit: "g", tags: ["chicken"] },
-    { name: "白米", amount: 60, unit: "g", tags: ["rice"] },
-    { name: "かぼちゃ", amount: 60, unit: "g" },
-    { name: "ブロッコリー", amount: 20, unit: "g" },
-    { name: "卵黄", amount: 1, unit: "piece", tags: ["egg"]  },
-    { name: "亜麻仁オイル", amount: 1, unit: "tsp" }
-  ],
-  large: [
-    { name: "鶏もも肉（皮つき）", amount: 130, unit: "g", tags: ["chicken"] },
-    { name: "白米", amount: 100, unit: "g", tags: ["rice"] },
-    { name: "かぼちゃ", amount: 95, unit: "g" },
-    { name: "ブロッコリー", amount: 30, unit: "g" },
-    { name: "卵黄", amount: 1.5, unit: "piece", tags: ["egg"]  },
-    { name: "亜麻仁オイル", amount: 1.5, unit: "tsp" }
-  ]
-}
+    medium: [
+      { name: "鶏もも肉(皮つき)", amount: 80, unit: "g", tags: [ "chicken" ] },
+      { name: "白米", amount: 60, unit: "g", tags: [ "rice" ] },
+      { name: "かぼちゃ", amount: 60, unit: "g" },
+      { name: "ブロッコリー", amount: 20, unit: "g" },
+      { name: "卵黄", amount: 1, unit: "piece", tags: [ "egg" ] },
+      { name: "亜麻仁オイル", amount: 1, unit: "tsp" }
+    ]
+  },
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -2892,7 +2876,7 @@ Recipe.create!(
        愛犬の好みの食感になるように、鶏ももを細かく刻んだり、にんじんを潰したりして調整してください。
         よく冷ましてから与えてください。
 
-  
+
   TEXT
 
   nutrition_note: <<~TEXT
@@ -3043,7 +3027,7 @@ Recipe.create!(
     ② 豚肉を茹でる
         事前に脂身の多い部分は取り除きましょう。カットした豚肉を茹で、脂が浮いてきたら軽くすくいます。
         豚肉がしっかりと火が通るまで茹でてください。
-    
+
     ③ 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
         水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3199,7 +3183,7 @@ Recipe.create!(
          ・さつまいも … 280g
          ・小松菜 … 50g
 
-      
+
     TEXT
 
     instructions: <<~TEXT,
@@ -5068,7 +5052,7 @@ Recipe.create!(
      ・人参 … 50g
      ・ブロッコリー … 70g
 
-   
+
   TEXT
 
   instructions: <<~TEXT,
@@ -6543,7 +6527,7 @@ Recipe.create!(
 
     ② かぼちゃを完全に柔らかく煮ます。
     小さく切り、指で潰せるまで加熱してください。
-    
+
 
     ③ 牛もも肉を丁寧に加熱します。
     脂身を取り除き、小さくカットします。
@@ -6685,7 +6669,7 @@ Recipe.create!(
     鍋でじっくり茹で、指で潰せる状態まで加熱してください。
     電子レンジを利用する場合には濡らしたキッチンペーパーで包み、ラップをして加熱してください。
     3分ほど加熱し、その後は様子を見ながら追加で加熱してください。
-   
+
 
     ③ タラの処理
     骨と皮を完全に取り除いてください。
