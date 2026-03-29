@@ -27,7 +27,7 @@ class IngredientAdjuster
     end
   end
 
-  # 🥚 卵とか
+  #  卵とか
   def adjust_piece
     value = @ingredient[:amount] * @multiplier
 

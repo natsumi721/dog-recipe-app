@@ -20,32 +20,32 @@ Recipe.create!(
 
   description: "体重を増やしたい痩せ型の子犬向けレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・鶏もも肉（皮つき） … 40g
-        ・白米 … 30g
-        ・かぼちゃ … 30g
-        ・ブロッコリー … 10g
-        ・卵黄 … 1/2個
-        ・亜麻仁オイル … 小さじ1/2
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉（皮つき） … 80g
-        ・白米 … 60g
-        ・かぼちゃ … 60g
-        ・ブロッコリー … 20g
-        ・卵黄 … 1個
-        ・亜麻仁オイル … 小さじ1
-
-      ■ 大型犬（16kg〜）
-        ・鶏もも肉（皮つき） … 130g
-        ・白米 … 100g
-        ・かぼちゃ … 95g
-        ・ブロッコリー … 30g
-        ・卵黄 … 1.5個
-        ・亜麻仁オイル … 小さじ1.5
-  TEXT
+  ingredients_json: {
+  small: [
+    { name: "鶏もも肉（皮つき）", amount: 40, unit: "g", tags: ["chicken"] },
+    { name: "白米", amount: 30, unit: "g", tags: ["rice"] },
+    { name: "かぼちゃ", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 10, unit: "g" },
+    { name: "卵黄", amount: 0.5, unit: "piece", tags: ["egg"] },
+    { name: "亜麻仁オイル", amount: 0.5, unit: "tsp" }
+  ],
+  medium: [
+    { name: "鶏もも肉（皮つき）", amount: 80, unit: "g", tags: ["chicken"] },
+    { name: "白米", amount: 60, unit: "g", tags: ["rice"] },
+    { name: "かぼちゃ", amount: 60, unit: "g" },
+    { name: "ブロッコリー", amount: 20, unit: "g" },
+    { name: "卵黄", amount: 1, unit: "piece", tags: ["egg"]  },
+    { name: "亜麻仁オイル", amount: 1, unit: "tsp" }
+  ],
+  large: [
+    { name: "鶏もも肉（皮つき）", amount: 130, unit: "g", tags: ["chicken"] },
+    { name: "白米", amount: 100, unit: "g", tags: ["rice"] },
+    { name: "かぼちゃ", amount: 95, unit: "g" },
+    { name: "ブロッコリー", amount: 30, unit: "g" },
+    { name: "卵黄", amount: 1.5, unit: "piece", tags: ["egg"]  },
+    { name: "亜麻仁オイル", amount: 1.5, unit: "tsp" }
+  ]
+}
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
