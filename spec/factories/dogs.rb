@@ -6,5 +6,6 @@ FactoryBot.define do
     body_type { :normal }
     activity_level { :medium }
     allergies { [] }
+    association :user
   end
 end

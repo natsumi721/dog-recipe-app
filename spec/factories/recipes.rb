@@ -8,5 +8,6 @@ FactoryBot.define do
     ingredients { "鶏肉" }
     instructions { "焼く" }
     nutrition_note { "栄養あり" }
+    status { :published }
   end
 end

@@ -36,11 +36,11 @@ class IngredientAdjuster
     amount = ingredient_value("amount")
 
     case unit
-    when "g"
+    when "g", "ml"
       adjust_grams(amount)
     when "piece"
       adjust_piece(amount)
-    when "tsp"
+    when "tsp", "tbsp", "cup"
       adjust_teaspoon(amount)
     else
       amount
@@ -60,7 +60,7 @@ class IngredientAdjuster
   end
 
   def adjust_teaspoon(amount)
-    (amount.to_f * @multiplier).round(1)
+    (amount * @multiplier).round(1) # 小数点以下1桁で丸める
   end
 
   # 0 または 5 に丸めるメソッド

@@ -17,7 +17,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
@@ -71,17 +71,17 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
   ingredients_json: {
   medium: [
-    { name: "牛赤身肉", amount: 17.5, unit: "g", tags: [ "beef" ] },  
-    { name: "さつまいも", amount: 20, unit: "g" },          
-    { name: "小松菜", amount: 7.5, unit: "g" },            
-    { name: "プレーンヨーグルト", amount: 0.75, unit: "tbsp", tags: [ "yogurt" ] }, 
-    { name: "すりごま", amount: 0.25, unit: "tsp" }         
+    { name: "牛赤身肉", amount: 17.5, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 20, unit: "g" },
+    { name: "小松菜", amount: 7.5, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 0.75, unit: "tbsp", tags: [ "yogurt" ] },
+    { name: "すりごま", amount: 0.25, unit: "tsp" }
   ]
 },
 
@@ -123,18 +123,18 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
   ingredients_json: {
   medium: [
-    { name: "生鮭(皮付き)", amount: 17.5, unit: "g", tags: ["fish"] },    
-    { name: "白米", amount: 15, unit: "g", tags: ["rice"] },           
-    { name: "にんじん", amount: 7.5, unit: "g" },                   
-    { name: "ブロッコリー", amount: 7.5, unit: "g" },                  
-    { name: "卵黄", amount: 0.25, unit: "piece", tags: ["egg"] },    
-    { name: "オリーブオイル", amount: 0.25, unit: "tsp" }                
+    { name: "生鮭(皮付き)", amount: 17.5, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 15, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 7.5, unit: "g" },
+    { name: "ブロッコリー", amount: 7.5, unit: "g" },
+    { name: "卵黄", amount: 0.25, unit: "piece", tags: [ "egg" ] },
+    { name: "オリーブオイル", amount: 0.25, unit: "tsp" }
   ]
 },
 
@@ -174,17 +174,17 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
   ingredients_json: {
   medium: [
-    { name: "鶏レバー", amount: 7.5, unit: "g", tags: ["chicken"] },     
-    { name: "鶏むね肉(皮なし)", amount: 15, unit: "g", tags: ["chicken"] }, 
-    { name: "白米", amount: 15, unit: "g", tags: ["rice"] },              
-    { name: "かぼちゃ", amount: 12.5, unit: "g" },                      
-    { name: "亜麻仁オイル", amount: 0.25, unit: "tsp" }                  
+    { name: "鶏レバー", amount: 7.5, unit: "g", tags: [ "chicken" ] },
+    { name: "鶏むね肉(皮なし)", amount: 15, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 15, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 12.5, unit: "g" },
+    { name: "亜麻仁オイル", amount: 0.25, unit: "tsp" }
   ]
 },
 
@@ -222,15 +222,15 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
   ingredients_json: {
   medium: [
-    { name: "豚ヒレ肉", amount: 17.5, unit: "g", tags: ["pork"] },        # 70g ÷ 4
+    { name: "豚ヒレ肉", amount: 17.5, unit: "g", tags: [ "pork" ] },        # 70g ÷ 4
     { name: "絹ごし豆腐", amount: 15, unit: "g" },                        # 60g ÷ 4
-    { name: "白米", amount: 15, unit: "g", tags: ["rice"] },              # 60g ÷ 4
+    { name: "白米", amount: 15, unit: "g", tags: [ "rice" ] },              # 60g ÷ 4
     { name: "にんじん", amount: 7.5, unit: "g" },                         # 30g ÷ 4
     { name: "ごま油", amount: 0.125, unit: "tsp" }                        # 小さじ1/2 ÷ 4
   ]
@@ -272,7 +272,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
@@ -340,7 +340,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
@@ -402,7 +402,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
@@ -459,7 +459,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
@@ -519,7 +519,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
   ingredients: <<~TEXT,
@@ -576,7 +576,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
   ingredients: <<~TEXT,
@@ -638,7 +638,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
   ingredients: <<~TEXT,
@@ -695,7 +695,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
   ingredients: <<~TEXT,
@@ -749,7 +749,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
   ingredients: <<~TEXT,
@@ -802,7 +802,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
   ingredients: <<~TEXT,
@@ -844,7 +844,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
   ingredients: <<~TEXT,
@@ -906,7 +906,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
   ingredients: <<~TEXT,
@@ -951,7 +951,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
   ingredients: <<~TEXT,
@@ -1009,7 +1009,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level:  :low,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
   ingredients: <<~TEXT,
@@ -1069,7 +1069,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
 
@@ -1132,7 +1132,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
   ingredients: <<~TEXT,
@@ -1182,7 +1182,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
   ingredients: <<~TEXT,
@@ -1239,7 +1239,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "総合栄養食にプラスしてタンパク質バランスを整える補助トッピング",
 
@@ -1311,7 +1311,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "エネルギーを安定的に補助",
 
@@ -1377,7 +1377,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "低脂質高タンパクで消化に配慮した補助トッピング",
 
@@ -1443,7 +1443,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "エネルギー・筋肉形成を補助するトッピング",
 
@@ -1504,7 +1504,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "DHAを意識し、脳と神経の発達を補助するトッピング",
 
@@ -1570,7 +1570,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこ向けに脂質とタンパク質を強化する補助トッピング",
 
@@ -1629,7 +1629,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "筋肉維持と持久力を意識したエネルギー補助トッピング",
 
@@ -1680,7 +1680,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "DHAとエネルギー密度を高めた発達サポートトッピング",
 
@@ -1733,7 +1733,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "高タンパクかつ腸内環境にも配慮した活発なわんこ向け補助トッピング",
 
@@ -1796,7 +1796,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "高タンパク設計に適度な脂質を加えた活発なわんこ向け補助トッピング",
 
@@ -1862,7 +1862,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "高タンパクを維持しつつ脂質と炭水化物を控えめに設計した肥満傾向の補助",
 
@@ -1922,7 +1922,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "DHAを確保しながら脂質を抑えた肥満傾向の補助トッピング",
 
@@ -1978,7 +1978,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "低脂質かつ消化に配慮した高タンパク補助トッピング",
 
@@ -2033,7 +2033,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "低脂質な白身魚を使用し、筋肉維持を最優先に設計した肥満傾向の子犬向け補助トッピング",
 
@@ -2094,7 +2094,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "玄米を少量使用し、血糖上昇を緩やかに設計した肥満傾向の子犬向け補助トッピング",
 
@@ -2153,7 +2153,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "脂質を抑え、満腹感を高める高タンパクサポートトッピング",
 
@@ -2220,7 +2220,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "低脂質なタラを使用し、成長を維持しながら体重増加を穏やかに整えるトッピング",
 
@@ -2279,7 +2279,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "低脂質な豚ヒレを使用し、筋肉を維持しながら脂質を抑える成長期サポートトッピング",
 
@@ -2340,7 +2340,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "抗酸化野菜を組み合わせ、脂質を抑えながら筋肉量維持を意識したトッピング",
 
@@ -2405,7 +2405,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "腹持ちを高めつつ脂質を抑えたトッピング",
 
@@ -2471,7 +2471,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこの筋肉を維持しながら脂質を抑える高タンパク調整トッピング",
 
@@ -2544,7 +2544,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこのエネルギーを確保しながら脂質を抑える筋肉維持トッピング",
 
@@ -2617,7 +2617,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "DHAを確保しながら脂質を抑え、豆腐でタンパク質を補う成長期向け調整トッピング",
 
@@ -2686,7 +2686,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "低脂質な豚ヒレを中心に、活動量分のエネルギーを少量のかぼちゃで補う成長期向けトッピング",
 
@@ -2756,7 +2756,7 @@ Recipe.create!(
   age_stage: :puppy,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活動量に合わせて玄米を少量使用し、血糖の急上昇を抑えながら筋肉維持を意識したトッピング",
 
@@ -2827,7 +2827,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたいわんこ向けレシピ",
 
@@ -2880,7 +2880,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "じんわり体重を増やしたいわんこ向けレシピ",
 
@@ -2933,7 +2933,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
@@ -2989,7 +2989,7 @@ Recipe.create!(
     age_stage: :adult,
     body_type: :thin,
     activity_level: :low,
-    status: :published, 
+    status: :published,
 
     description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
@@ -3041,7 +3041,7 @@ Recipe.create!(
     age_stage: :adult,
     body_type: :thin,
     activity_level: :low,
-    status: :published, 
+    status: :published,
 
     description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
@@ -3101,7 +3101,7 @@ Recipe.create!(
     age_stage: :adult,
     body_type: :thin,
     activity_level: :medium,
-    status: :published, 
+    status: :published,
 
     description: "活動分のエネルギー補給ができるレシピ",
 
@@ -3158,7 +3158,7 @@ Recipe.create!(
     age_stage: :adult,
     body_type: :thin,
     activity_level: :medium,
-    status: :published, 
+    status: :published,
 
     description: "活動分のエネルギー補給ができるレシピ",
 
@@ -3213,7 +3213,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "活動分のエネルギー補給ができるレシピ",
 
@@ -3276,7 +3276,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "活動分のエネルギー補給ができるレシピ",
 
@@ -3329,7 +3329,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "活動分のエネルギー補給ができるレシピ",
 
@@ -3388,7 +3388,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
@@ -3449,7 +3449,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
@@ -3505,7 +3505,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
@@ -3564,7 +3564,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
@@ -3618,7 +3618,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
@@ -3679,7 +3679,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "穏やかに過ごすわんこ向け。消化にやさしく、適度なエネルギーを確保したバランスごはん。",
 
@@ -3750,7 +3750,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "おだやかに過ごすわんこ向け。適度な脂質を含みつつ、胃腸に優しい設計の和風バランス食。",
 
@@ -3820,7 +3820,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "穏やかに過ごすわんこ向け。良質な脂質と植物性タンパク質を組み合わせた、消化にやさしい腸内サポートレシピ。",
 
@@ -3894,7 +3894,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "穏やかに過ごすわんこ向け。鉄分補給と食物繊維を意識したバランス設計。",
 
@@ -3962,7 +3962,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "穏やかに過ごすわんこ向け。低脂質で胃腸に優しい和風バランスレシピ。",
 
@@ -4033,7 +4033,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "活動量が標準的なわんこ向け。高タンパクと適量炭水化物で、日常の健康維持を支える基本設計レシピ。",
 
@@ -4103,7 +4103,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "活動量が標準的なわんこ向け。消化にやさしい魚と適度な炭水化物でバランスを整えるレシピ。",
 
@@ -4171,7 +4171,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "活動量が標準的なわんこ向け。鉄分を補いながら、安定したエネルギーを供給するバランス設計レシピ。",
 
@@ -4242,7 +4242,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "標準的な活動量のわんこ向け。適度な脂質と食物繊維を組み合わせた日常維持レシピ。",
 
@@ -4310,7 +4310,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "標準活動量のわんこ向け。良質な脂質を含む青魚で皮膚・被毛ケアを意識したレシピ。",
 
@@ -4380,7 +4380,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量が多いわんこ向け。筋肉維持と持続エネルギーを両立したスタミナレシピ。",
 
@@ -4453,7 +4453,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこ向け。筋肉回復と皮膚・被毛ケアを同時にサポートする栄養設計。",
 
@@ -4524,7 +4524,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量の多いわんこ向け。消化の良い魚と安定エネルギーで活動を支えるレシピ。",
 
@@ -4593,7 +4593,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこ向け。疲労回復と筋肉維持を意識した高タンパク設計レシピ。",
 
@@ -4664,7 +4664,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発に動くわんこ向け。消化の良い白米でしっかりエネルギー補給し、鶏もも肉で筋肉維持を支えるスタミナ設計。",
 
@@ -4751,7 +4751,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重管理が必要なわんこ向けのレシピ",
   ingredients: <<~TEXT,
@@ -4815,7 +4815,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重管理が必要なわんこ向けのレシピ",
 
@@ -4877,7 +4877,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重管理が必要なわんこ向けのレシピ",
 
@@ -4933,7 +4933,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重管理が必要なわんこ向けのレシピ",
 
@@ -4988,7 +4988,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重管理が必要なわんこ向けのレシピ",
   ingredients: <<~TEXT,
@@ -5052,7 +5052,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
@@ -5114,7 +5114,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
@@ -5172,7 +5172,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
@@ -5237,7 +5237,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
@@ -5300,7 +5300,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
@@ -5364,7 +5364,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
   ingredients: <<~TEXT,
@@ -5425,7 +5425,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
@@ -5491,7 +5491,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
@@ -5556,7 +5556,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
@@ -5613,7 +5613,7 @@ Recipe.create!(
   age_stage: :adult,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
@@ -5681,7 +5681,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "高タンパクで消化にやさしく、やわらかく仕上げた体重維持サポートレシピ。",
 
@@ -5761,7 +5761,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "EPA・DHAで脳と関節をサポート。やわらかく仕上げた体力維持向けエネルギーレシピ。",
 
@@ -5838,7 +5838,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "鶏ひき肉でなめらかに仕上げ、かぼちゃでエネルギーを補う体重維持レシピ。",
 
@@ -5907,7 +5907,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "飲み込みやすさ重視。里芋の自然なとろみで、どんなわんこでも安心して食べられるやさしい設計。",
 
@@ -5973,7 +5973,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "エネルギー強化型。牛ひき肉と卵で体重増加をサポートしつつ、ふんわり仕上げで食べやすく。",
 
@@ -6039,7 +6039,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "普通の活動量があるわんこ向け。エネルギー補給を強化しながらも、やわらかく消化に配慮した体重増加サポート設計。",
 
@@ -6114,7 +6114,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "EPA・DHAで関節と脳を支えつつ、豆腐でやわらかく仕上げた体力維持レシピ。",
 
@@ -6184,7 +6184,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "里芋の自然なとろみで飲み込みやすく仕上げた和食風レシピ。消化に配慮しながら体重増加をサポートします。",
 
@@ -6254,7 +6254,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "白身魚で消化にやさしく、かぼちゃでエネルギー補給。和風のやわらか煮込み仕立て。",
 
@@ -6320,7 +6320,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "あんかけ風に仕上げて飲み込みやすく。痩せ型わんこの体重増加をやさしく支えます。",
 
@@ -6390,7 +6390,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発に動く細身のわんこ向け。消化に配慮しながら、持久力と体重増加を両立するエネルギー強化レシピ。",
 
@@ -6466,7 +6466,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこの関節と筋肉を支える設計。良質脂質と高タンパクで体重増加をサポートします。",
 
@@ -6539,7 +6539,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発に動く細身のわんこ向け。鉄分とタンパク質を強化し、筋肉維持と体力向上を支える設計。",
 
@@ -6606,7 +6606,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "吸収率を高める卵を加えた設計。消化に配慮しつつ、活発な老犬のエネルギー不足を防ぎます。",
 
@@ -6680,7 +6680,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :thin,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "軽やかな白身魚で消化に配慮しつつ、じゃがいもでエネルギーを強化した活発わんこ向け設計。",
 
@@ -6753,7 +6753,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "おだやかに過ごすわんこ向け。脂質を抑えつつ、消化にやさしい白身魚と根菜で内臓に負担をかけない設計。",
 
@@ -6822,7 +6822,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "おだやかなわんこ向け。高タンパク・低脂質で、やわらかく食べやすい消化重視メニュー。",
 
@@ -6888,7 +6888,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "穏やかに過ごすわんこ向け。里芋の自然なとろみで飲み込みやすく、脂質を抑えつつ旨味を感じられる和風設計。",
 
@@ -6954,7 +6954,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "消化にやさしい和風みぞれ煮。水分多めで腎臓負担にも配慮した軽やか設計。",
 
@@ -7018,7 +7018,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "やわらか雑炊スタイル。低脂質で内臓にやさしい。",
 
@@ -7087,7 +7087,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "普通運動量のわんこ向け。納豆の発酵パワーで腸内環境を整えつつ、低脂質で体重維持をサポートする和風設計。",
 
@@ -7155,7 +7155,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "やさしく栄養補給したいわんこ向け。山芋の自然なとろみで嚥下をサポートし、適度なエネルギー補給もできる設計。",
 
@@ -7220,7 +7220,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "上品な白身魚で脂質を抑えつつ、さつまいもで自然なエネルギー補給。普通運動量のわんこ向け和風設計。",
 
@@ -7286,7 +7286,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "やわらかく飲み込みやすい設計。適度な炭水化物と高タンパクで穏やかな体力維持をサポート。",
 
@@ -7354,7 +7354,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "低脂質ながら適度な栄養補給ができる設計。豆腐でやわらかさをプラスした和風ごはん。",
 
@@ -7424,7 +7424,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発に動くわんこ向け。良質な脂質を含む鮭と、持続エネルギー源のさつまいもで体力維持をサポートする設計。",
 
@@ -7492,7 +7492,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活動量の多いわんこ向け。適度な脂質と消化にやさしい山芋で、体力維持と食べやすさを両立。",
 
@@ -7560,7 +7560,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "活発なわんこ向け。ぶりの良質な脂とタンパク質で筋肉維持をサポートしつつ、大根で消化に配慮した和風設計。",
 
@@ -7627,7 +7627,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "腸内環境を整えながら体力維持をサポート。活発なわんこに適した発酵パワー活用メニュー。",
 
@@ -7694,7 +7694,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :normal,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "消化にやさしく、それでいてエネルギーも確保。里芋のとろみで飲み込みをサポート",
 
@@ -7763,7 +7763,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "肥満傾向の穏やかなわんこ向け。低脂質・高たんぱくで満足感を出しながら体重管理をサポートする和風レシピ",
 
@@ -7840,7 +7840,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "体重管理が必要なわんこ向け。低脂質ささみと食物繊維で満足感を出す軽めの雑炊レシピ",
 
@@ -7910,7 +7910,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "肥満傾向の穏やかなわんこ向け。低脂質の鶏むね肉とおからでかさ増しし、満腹感を高めた体重管理レシピ",
 
@@ -7982,7 +7982,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "低脂質な白身魚を中心に、やわらかく仕上げた満足感のある軽め雑炊レシピ",
 
@@ -8054,7 +8054,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :low,
-  status: :published, 
+  status: :published,
 
   description: "脂質を抑えながらしっかりたんぱく質を補給できる、穏やかなわんこ向けとろみ仕立てレシピ",
 
@@ -8126,7 +8126,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "肥満傾向だが日常的に動くわんこ向け。低脂質むね肉と高野豆腐で筋肉維持を意識した体重管理レシピ",
 
@@ -8199,7 +8199,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "発酵食品を取り入れた、消化に配慮した低脂質雑炊レシピ",
 
@@ -8273,7 +8273,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "低脂質の白身魚におからを合わせ、満腹感を高めながら筋肉維持を意識した体重管理レシピ。",
 
@@ -8342,7 +8342,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :medium,
-  status: :published, 
+  status: :published,
 
   description: "発酵食品を取り入れ、腸内環境を整えながら体重管理を行うレシピ。",
 
@@ -8413,7 +8413,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "高タンパク・低脂肪のささみを中心に、代謝を支える海藻と野菜を組み合わせたレシピ。筋肉を守りながら脂肪を増やしにくい設計です。",
 
@@ -8483,7 +8483,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "脂肪の少ない白身魚と豆腐で筋肉を守りつつ、関節に配慮したやわらか設計。活発なわんこの体を軽く支えるごはんです。",
 
@@ -8552,7 +8552,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "脂肪の少ないまぐろ赤身で筋肉を守り、オクラの粘りで関節と腸をサポート。動ける体を軽く維持する設計です。",
 
@@ -8621,7 +8621,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "低脂肪の胸肉で筋肉量を守り、抗酸化野菜を組み合わせたアクティブわんこ向け軽量設計レシピ。",
 
@@ -8686,7 +8686,7 @@ Recipe.create!(
   age_stage: :senior,
   body_type: :overweight,
   activity_level: :high,
-  status: :published, 
+  status: :published,
 
   description: "低脂肪・高タンパクの鹿肉を使用し、代謝を意識した根菜と組み合わせた活発なわんこ向け設計。筋肉を守りながら体脂肪を増やしにくい構成です。",
 

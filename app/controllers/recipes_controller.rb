@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
         age_stage: params[:age_stage] || dog_data["age_stage"],
         body_type: params[:body_type] || dog_data["body_type"],
         activity_level: params[:activity_level] || dog_data["activity_level"],
+        size: params[:size] || dog_data["size"],
         allergies: params[:allergies] || dog_data["allergies"] || []
       )
       @recipes = @dog.recommended_recipes
