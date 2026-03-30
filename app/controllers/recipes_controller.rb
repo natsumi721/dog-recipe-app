@@ -42,14 +42,15 @@ class RecipesController < ApplicationController
              current_user.dogs.first
     end
 
+
     # ブックマーク情報を取得
     @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog.present?
 
     # JSON形式のレシピの場合、各サイズ用に調整された材料を取得
     if @recipe.json_format? && @dog.present?
-      @adjusted_ingredients_small = @recipe.adjusted_ingredients(@dog, :small)
-      @adjusted_ingredients_medium = @recipe.adjusted_ingredients(@dog, :medium)
-      @adjusted_ingredients_large = @recipe.adjusted_ingredients(@dog, :large)
+      @adjusted_ingredients = @recipe.adjusted_ingredients(@dog, @dog.size.to_sym)
+    else
+      @adjusted_ingredients = []  # 空の配列で初期化
     end
   end
 

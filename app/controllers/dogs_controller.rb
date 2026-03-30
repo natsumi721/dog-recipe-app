@@ -94,6 +94,10 @@ class DogsController < ApplicationController
       :size,
       allergies: []
     )
+
+     permitted[:allergies] = Array(permitted[:allergies]).reject(&:blank?)
+
+     permitted
   end
 
   def logged_in?

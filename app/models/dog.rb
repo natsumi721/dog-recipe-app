@@ -1,12 +1,28 @@
 class Dog < ApplicationRecord
   belongs_to :user, optional: true
-  serialize :allergies, type: Array, coder: YAML
+  serialize :allergies, coder: JSON, type: Array
 
-  # アレルギー情報を定数として定義
+  # アレルギー情報（表示用）
   ALLERGIES = [
     "牛肉", "鶏肉", "豚肉", "牛乳", "チーズ", "ヨーグルト",
     "卵", "鹿肉", "納豆(大豆)", "鮭", "マグロ", "タラ"
   ].freeze
+
+  # 👇 追加：日本語 → 英語タグ変換
+  ALLERGY_MAP = {
+    "牛肉" => "beef",
+    "鶏肉" => "chicken",
+    "豚肉" => "pork",
+    "牛乳" => "milk",
+    "チーズ" => "dairy",
+    "ヨーグルト" => "dairy",
+    "卵" => "egg",
+    "鹿肉" => "venison",
+    "納豆(大豆)" => "soy",
+    "鮭" => "salmon",
+    "マグロ" => "tuna",
+    "タラ" => "cod"
+  }.freeze
 
   enum :size, { small: 0, medium: 1, large: 2 }, prefix: true
   enum :age_stage, { puppy: 0, adult: 1, senior: 2 }, prefix: true
@@ -14,7 +30,6 @@ class Dog < ApplicationRecord
   enum :activity_level, { low: 0, medium: 1, high: 2 }, prefix: true
 
   include EnumI18n
-  # enum の日本語化を有効にする
   enum_i18n :size
   enum_i18n :age_stage
   enum_i18n :body_type
@@ -26,17 +41,30 @@ class Dog < ApplicationRecord
   validates :body_type, presence: true
   validates :activity_level, presence: true
 
-  attribute :allergies, :string, array: true, default: []
-
   def recommended_recipes
-  recipes = Recipe.published.to_a
+    recipes = Recipe.published.to_a
 
-    # アレルギー除外（暫定）
+    # 🔥 アレルギー除外（TEXT + JSON + tag対応）
     if allergies.present?
       recipes = recipes.reject do |recipe|
         allergies.any? do |a|
-          recipe.ingredients.include?(a) ||
-          recipe.ingredients.include?(a.gsub("肉", ""))
+          tag = ALLERGY_MAP[a]
+
+          if recipe.ingredients_json.present?
+            ingredients = recipe.ingredients_json.values.flatten
+
+            ingredients.any? do |ing|
+              ing["name"]&.include?(a) ||
+              (tag && ing["tags"]&.include?(tag))
+            end
+
+          elsif recipe.ingredients.present?
+            recipe.ingredients.include?(a) ||
+            recipe.ingredients.include?(a.gsub("肉", ""))
+
+          else
+            false
+          end
         end
       end
     end
@@ -50,7 +78,7 @@ class Dog < ApplicationRecord
       [ recipe, score ]
     end
 
-    #  スコア順で並べて上位取得
+    # 上位取得
     top_recipes = scored
                     .sort_by { |_, score| -score }
                     .map(&:first)
@@ -58,14 +86,12 @@ class Dog < ApplicationRecord
 
     top_recipes = top_recipes.sample(5)
 
-    #  レシピを犬に合わせて調整
+    # 調整
     top_recipes.map do |recipe|
       adjusted = RecipeAdjuster.new(recipe, self).call
-       PortionAdjuster.new(adjusted, self).call
+      PortionAdjuster.new(adjusted, self).call
     end
   end
-
-
 
   def allergies_i18n
     return "なし" if allergies.blank?
