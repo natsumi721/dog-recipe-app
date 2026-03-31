@@ -8,7 +8,7 @@ class Dog < ApplicationRecord
     "卵", "鹿肉", "納豆(大豆)", "鮭", "マグロ", "タラ"
   ].freeze
 
-  # 👇 追加：日本語 → 英語タグ変換
+  # 日本語 → 英語タグ変換
   ALLERGY_MAP = {
     "牛肉" => "beef",
     "鶏肉" => "chicken",
@@ -19,9 +19,10 @@ class Dog < ApplicationRecord
     "卵" => "egg",
     "鹿肉" => "venison",
     "納豆(大豆)" => "soy",
-    "鮭" => "salmon",
-    "マグロ" => "tuna",
-    "タラ" => "cod"
+    "魚" => "fish",
+    "米" => "rice",
+    "雑穀米" => "grain"
+
   }.freeze
 
   enum :size, { small: 0, medium: 1, large: 2 }, prefix: true

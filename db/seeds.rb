@@ -276,35 +276,20 @@ Recipe.create!(
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・鶏むね肉（皮なし） … 45g
-        ・白米 … 50g
-        ・にんじん … 15g
-        ・さつまいも … 20g
-        ・卵黄 … 1/2個
-
-      ■ 中型犬（6〜15kg）
-        ・鶏むね肉（皮なし） … 90g
-        ・白米 … 100g
-        ・にんじん … 30g
-        ・さつまいも … 40g
-        ・卵黄 … 1個
-
-      ■ 大型犬（16kg〜）
-        ・鶏むね肉（皮なし） … 135g
-        ・白米 … 150g
-        ・にんじん … 45g
-        ・さつまいも … 60g
-        ・卵黄 … 1.5個
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 90, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 100, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "さつまいも", amount: 40, unit: "g" },
+    { name: "卵黄", amount: 1, unit: "piece", tags: [ "egg" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
-        水の量を少し多めにして炊くと、より柔らかくなります。#{'  '}
+        水の量を少し多めにして炊くと、より柔らかくなります。
 
     ② にんじんとさつまいもを加熱
         にんじんは細かく刻んで茹でるか、キッチンペーパーをしっかりと濡らし、人参に包んで電子レンジで加熱してください。
@@ -343,31 +328,15 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
-
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・牛赤身肉 … 40g
-        ・白米 … 50g
-        ・かぼちゃ … 35g
-        ・ブロッコリー … 15g
-        ・やぎミルク … 小さじ2
-
-      ■ 中型犬（6〜15kg）
-        ・牛赤身肉 … 80g
-        ・白米 … 100g
-        ・かぼちゃ … 70g
-        ・ブロッコリー … 30g
-        ・やぎミルク … 大さじ1
-
-      ■ 大型犬（16kg〜）
-        ・牛赤身肉 … 120g
-        ・白米 … 150g
-        ・かぼちゃ … 105g
-        ・ブロッコリー … 45g
-        ・やぎミルク … 大さじ1.5
-  TEXT
-
+ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 80, unit: "g", tags: [ "beef" ] },
+    { name: "白米", amount: 100, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 70, unit: "g" },
+    { name: "ブロッコリー", amount: 30, unit: "g" },
+    { name: "やぎミルク", amount: 1, unit: "tbsp", tags: [ "milk" ] }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         飯器で白米をやわらかめに炊いてください。
@@ -406,27 +375,14 @@ Recipe.create!(
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・生鮭（皮付き） … 40g
-        ・じゃがいも … 40g
-        ・にんじん … 15g
-        ・小松菜 … 15g
-
-      ■ 中型犬（6〜15kg）
-        ・生鮭（皮付き） … 80g
-        ・じゃがいも … 80g
-        ・にんじん … 30g
-        ・小松菜 … 30g
-
-      ■ 大型犬（16kg〜）
-        ・生鮭（皮付き） … 120g
-        ・じゃがいも … 120g
-        ・にんじん … 45g
-        ・小松菜 … 45g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "生鮭（皮付き）", amount: 80, unit: "g", tags: [ "fish" ] },
+    { name: "じゃがいも", amount: 80, unit: "g" },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "小松菜", amount: 30, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① じゃがいもとにんじんを加熱
         じゃがいもは皮を剥き、1cm角程度に切り、鍋で茹でるか、電子レンジで加熱して柔らかくします。
@@ -463,27 +419,14 @@ Recipe.create!(
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・豚ヒレ肉 … 50g
-        ・絹ごし豆腐 … 40g
-        ・白米 … 50g
-        ・にんじん … 15g
-
-      ■ 中型犬（6〜15kg）
-        ・豚ヒレ肉 … 100g
-        ・絹ごし豆腐 … 80g
-        ・白米 … 100g
-        ・にんじん … 30g
-
-      ■ 大型犬（16kg〜）
-        ・豚ヒレ肉 … 150g
-        ・絹ごし豆腐 … 120g
-        ・白米 … 150g
-        ・にんじん … 45g
-TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 100, unit: "g", tags: [ "pork" ] },
+    { name: "絹ごし豆腐", amount: 80, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 100, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
         炊飯器で白米をやわらかめに炊いてください。
@@ -522,26 +465,14 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・鶏もも肉（皮つき） … 45g
-        ・玄米（やわらかめ） … 40g
-        ・にんじん … 15g
-        ・プレーンヨーグルト … 小さじ2
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉（皮つき） … 90g
-        ・玄米（やわらかめ） … 80g
-        ・にんじん … 30g
-        ・プレーンヨーグルト … 大さじ1
-
-      ■ 大型犬（16kg〜）
-        ・鶏もも肉（皮つき） … 135g
-        ・玄米（やわらかめ） … 120g
-        ・にんじん … 45g
-        ・プレーンヨーグルト … 大さじ1.5
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮つき）", amount: 90, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米（やわらかめ）", amount: 80, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 1, unit: "tbsp", tags: [ "dairy" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -579,29 +510,15 @@ Recipe.create!(
   status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・鶏もも肉（皮つき） … 50g
-        ・白米 … 60g
-        ・にんじん … 15g
-        ・卵黄 … 1/2個
-        ・亜麻仁オイル … 小さじ1/4
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉（皮つき） … 100g
-        ・白米 … 120g
-        ・にんじん … 30g
-        ・卵黄 … 1個
-        ・亜麻仁オイル … 小さじ1/2
-
-      ■ 大型犬（16kg〜）
-        ・鶏もも肉（皮つき） … 150g
-        ・白米 … 180g
-        ・にんじん … 45g
-        ・卵黄 … 1.5個
-        ・亜麻仁オイル … 小さじ3/4
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮つき）", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "卵黄", amount: 1, unit: "piece", tags: [ "egg" ] },
+    { name: "亜麻仁オイル", amount: 0.5, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -641,26 +558,14 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートと活動エネルギー補給ができるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・鶏もも肉（皮つき） … 50g
-        ・玄米（やわらかめ） … 50g
-        ・にんじん … 15g
-        ・プレーンヨーグルト … 小さじ2
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉（皮つき） … 100g
-        ・玄米（やわらかめ） … 100g
-        ・にんじん … 30g
-        ・プレーンヨーグルト … 大さじ1
-
-      ■ 大型犬（16kg〜）
-        ・鶏もも肉（皮つき） … 150g
-        ・玄米（やわらかめ） … 150g
-        ・にんじん … 45g
-        ・プレーンヨーグルト … 大さじ1.5
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮つき）", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米（やわらかめ）", amount: 100, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 1, unit: "tbsp", tags: [ "dairy" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -698,26 +603,14 @@ Recipe.create!(
   status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・赤身マグロ … 50g
-        ・さつまいも … 60g
-        ・小松菜 … 30g
-        ・すりごま … 小さじ1/2
-
-      ■ 中型犬（6〜15kg）
-        ・赤身マグロ … 100g
-        ・さつまいも … 120g
-        ・小松菜 … 60g
-        ・すりごま … 小さじ1
-
-      ■ 大型犬（16kg〜）
-        ・赤身マグロ … 150g
-        ・さつまいも … 180g
-        ・小松菜 … 90g
-        ・すりごま … 小さじ1.5
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "赤身マグロ", amount: 100, unit: "g", tags: [ "fish" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "小松菜", amount: 60, unit: "g" },
+    { name: "すりごま", amount: 1, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① マグロを加熱
@@ -752,26 +645,14 @@ Recipe.create!(
   status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・生鮭 … 50g
-        ・じゃがいも … 60g
-        ・小松菜 … 30g
-        ・オリーブオイル … 小さじ1/2
-
-      ■ 中型犬（6〜15kg）
-        ・生鮭 … 100g
-        ・じゃがいも … 120g
-        ・小松菜 … 60g
-        ・オリーブオイル … 小さじ1
-
-      ■ 大型犬（16kg〜）
-        ・生鮭 … 150g
-        ・じゃがいも … 180g
-        ・小松菜 … 90g
-        ・オリーブオイル … 小さじ1.5
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: 100, unit: "g", tags: [ "fish" ] },
+    { name: "じゃがいも", amount: 120, unit: "g" },
+    { name: "小松菜", amount: 60, unit: "g" },
+    { name: "オリーブオイル", amount: 1, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 生鮭を加熱
@@ -805,13 +686,14 @@ Recipe.create!(
   status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
-  ingredients: <<~TEXT,
-    【子犬1回調理目安】
-    ・豚ひれ … 100g
-    ・かぼちゃ … 120g
-    ・ピーマン … 60g
-    ・卵黄 … １つ
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ひれ", amount: 100, unit: "g", tags: [ "pork" ] },
+    { name: "かぼちゃ", amount: 120, unit: "g" },
+    { name: "ピーマン", amount: 60, unit: "g" },
+    { name: "卵黄", amount: 1, unit: "piece", tags: [ "egg" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 豚ヒレを加熱
@@ -847,30 +729,15 @@ Recipe.create!(
   status: :published,
 
   description: "消費エネルギーを補充でき、筋肉発達ができるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・鶏むね肉 … 50g
-        ・白米 … 60g
-        ・ブロッコリー … 30g
-        ・プレーンヨーグルト … 小さじ1
-        ・亜麻仁オイル … 小さじ1/4
-
-      ■ 中型犬（6〜15kg）
-        ・鶏むね肉 … 100g
-        ・白米 … 120g
-        ・ブロッコリー … 60g
-        ・プレーンヨーグルト … 小さじ2
-        ・亜麻仁オイル … 小さじ1/2
-
-      ■ 大型犬（16kg〜）
-        ・鶏むね肉 … 150g
-        ・白米 … 180g
-        ・ブロッコリー … 90g
-        ・プレーンヨーグルト … 大さじ1
-        ・亜麻仁オイル … 小さじ3/4
-  TEXT
-
+ ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 2, unit: "tsp", tags: [ "dairy" ] },
+    { name: "亜麻仁オイル", amount: 0.5, unit: "tsp" }
+  ]
+},
   instructions: <<~TEXT,
     ① 炊飯器で白米をやわらかめに炊く
         水の量を少し多めにして炊くと、より柔らかくなります。
@@ -909,14 +776,15 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-    ・鶏むね肉 … 100g
-    ・白米 … 120g
-    ・ブロッコリー … 60g
-    ・プレーンヨーグルト … 小さじ１杯
-    ・亜麻仁オイル … 小さじ1/2
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 1, unit: "tsp", tags: [ "dairy" ] },
+    { name: "亜麻仁オイル", amount: 0.5, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 炊飯器で白米をやわらかめに炊く
@@ -954,26 +822,14 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-      ・生鮭 … 1匹
-      ・さつまいも … 84g
-      ・ブロッコリー … 42g
-      ・トマト … 1/2
-
-      ■ 中型犬（6〜15kg）
-      ・生鮭 … 1匹
-      ・さつまいも … 120g
-      ・ブロッコリー … 60g
-      ・トマト … 1個
-
-      ■ 大型犬（16kg〜）
-      ・生鮭 … 1匹
-      ・さつまいも … 180g
-      ・ブロッコリー … 90g
-      ・トマト … 1個
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: 100, unit: "g", tags: [ "fish" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "トマト", amount: 1, unit: "piece" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 生鮭を加熱
@@ -1012,29 +868,15 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-      ・鶏むね肉 … 70g
-      ・白米 … 84g
-      ・ブロッコリー … 42g
-      ・プレーンヨーグルト … 小さじ1
-      ・亜麻仁オイル … 小さじ1/2
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 100g
-      ・白米 … 120g
-      ・ブロッコリー … 60g
-      ・プレーンヨーグルト … 小さじ1
-      ・亜麻仁オイル … 小さじ1/2
-
-    ■ 大型犬（16kg〜）
-      ・鶏むね肉 … 150g
-      ・白米 … 180g
-      ・ブロッコリー … 90g
-      ・プレーンヨーグルト … 小さじ2
-      ・亜麻仁オイル … 小さじ1
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g" },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 2, unit: "tsp", tags: [ "dairy" ] },
+    { name: "亜麻仁オイル", amount: 0.5, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 炊飯器で白米をやわらかめに炊く
@@ -1073,27 +915,14 @@ Recipe.create!(
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-    ■ 小型犬（〜5kg）
-    ・豚ヒレ肉 … 91g
-    ・かぼちゃ … 140g
-    ・小松菜 … 21g
-    ・絹豆腐 … 70g
-
-    ■ 中型犬（6〜15kg）
-    ・豚ヒレ肉 … 130g
-    ・かぼちゃ … 200g
-    ・小松菜 … 30g
-    ・絹豆腐 … 100g
-
-     ■ 大型犬（16kg〜）
-    ・豚ヒレ肉 … 195g
-    ・かぼちゃ … 300g
-    ・小松菜 … 45g
-    ・絹豆腐 … 150g
-
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 130, unit: "g", tags: [ "pork" ] },
+    { name: "かぼちゃ", amount: 200, unit: "g" },
+    { name: "小松菜", amount: 30, unit: "g" },
+    { name: "絹豆腐", amount: 100, unit: "g", tags: [ "soy" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① かぼちゃを加熱
@@ -1135,24 +964,13 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-         ■ 小型犬（〜5kg）
-        ・牛肉 … 70g
-        ・白米 … 125g
-        ・にんじん … 40g
-
-         ■ 中型犬（6〜15kg）
-        ・牛肉 … 100g
-        ・白米 … 180g
-        ・にんじん … 60g
-
-        ■ 大型犬（16kg〜）
-        ・牛肉 … 150g
-        ・白米 … 270g
-        ・にんじん … 90g
-  TEXT
-
+ ingredients_json: {
+  medium: [
+    { name: "牛肉", amount: 100, unit: "g", tags: [ "beef" ] },
+    { name: "白米", amount: 180, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 60, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
    ① 炊飯器で白米をやわらかめに炊く
          水の量を少し多めにして炊くと、より柔らかくなります。
@@ -1185,28 +1003,14 @@ Recipe.create!(
   status: :published,
 
   description: "成長サポートはしつつ体型維持のできるレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-       ■ 小型犬（〜5kg）
-      ・鶏もも肉（皮なし） … 70g
-      ・玄米 … 84g
-      ・にんじん … 21g
-      ・プレーンヨーグルト（無糖） … 大さじ1
-
-      ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし） … 100g
-      ・玄米 … 120g
-      ・にんじん … 30g
-      ・プレーンヨーグルト（無糖） … 大さじ1
-
-       ■ 大型犬（16kg〜）
-      ・鶏もも肉（皮なし） … 150g
-      ・玄米 … 180g
-      ・にんじん … 45g
-      ・プレーンヨーグルト（無糖） … 大さじ1.5
-
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮なし）", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米", amount: 120, unit: "g" },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "プレーンヨーグルト", amount: 1, unit: "tbsp", tags: [ "dairy" ] }
+  ]
+},
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
         炊飯器で玄米をやわらかめに炊いてください。
@@ -1243,28 +1047,14 @@ Recipe.create!(
 
   description: "総合栄養食にプラスしてタンパク質バランスを整える補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・鶏むね肉（皮なし） … 80g
-      ・卵 … 1個
-      ・にんじん … 20g
-      ・小松菜 … 15g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし） … 160g
-      ・卵 … 2個
-      ・にんじん … 40g
-      ・小松菜 … 30g
-
-    ■ 大型犬（16kg〜）
-      ・鶏むね肉（皮なし） … 260g
-      ・卵 … 3個
-      ・にんじん … 70g
-      ・小松菜 … 50g
-  TEXT
-
+ ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 160, unit: "g", tags: [ "chicken" ] },
+    { name: "卵", amount: 2, unit: "piece", tags: [ "egg" ] },
+    { name: "にんじん", amount: 40, unit: "g" },
+    { name: "小松菜", amount: 30, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 鶏むね肉の下準備
         鶏むね肉は余分な脂や筋を取り除きます。
@@ -1315,25 +1105,13 @@ Recipe.create!(
 
   description: "エネルギーを安定的に補助",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・牛赤身肉 … 80g
-      ・さつまいも … 60g
-      ・小松菜 … 15g
-
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 160g
-      ・さつまいも … 120g
-      ・小松菜 … 30g
-
-    ■ 大型犬（16kg〜）
-      ・牛赤身肉 … 260g
-      ・さつまいも … 200g
-      ・小松菜 … 50g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 160, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "小松菜", amount: 30, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① さつまいもの下処理
         皮を厚めにむき、小さめの角切りにします。
@@ -1381,24 +1159,13 @@ Recipe.create!(
 
   description: "低脂質高タンパクで消化に配慮した補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・豚ヒレ肉 … 90g
-      ・じゃがいも … 100g
-      ・絹豆腐 … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・豚ヒレ肉 … 180g
-      ・じゃがいも … 200g
-      ・絹豆腐 … 120g
-
-    ■ 大型犬（16kg〜）
-      ・豚ヒレ肉 … 300g
-      ・じゃがいも … 330g
-      ・絹豆腐 … 200g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 180, unit: "g", tags: [ "pork" ] },
+    { name: "じゃがいも", amount: 200, unit: "g" },
+    { name: "絹豆腐", amount: 120, unit: "g", tags: [ "soy" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① じゃがいもの下準備
@@ -1447,25 +1214,13 @@ Recipe.create!(
 
   description: "エネルギー・筋肉形成を補助するトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・鶏もも肉（皮なし） … 100g
-      ・かぼちゃ … 80g
-      ・白米（炊いたもの） … 40g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし） … 200g
-      ・かぼちゃ … 160g
-      ・白米（炊いたもの） … 80g
-
-    ■ 大型犬（16kg〜）
-      ・鶏もも肉（皮なし） … 330g
-      ・かぼちゃ … 260g
-      ・白米（炊いたもの） … 140g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "かぼちゃ", amount: 160, unit: "g" },
+    { name: "白米（炊いたもの）", amount: 80, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米を準備
         柔らかめに炊いたものを使用します。
@@ -1508,24 +1263,13 @@ Recipe.create!(
 
   description: "DHAを意識し、脳と神経の発達を補助するトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・生鮭（骨なし） … 80g
-      ・ブロッコリー … 30g
-      ・白米（炊いたもの） … 40g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（骨なし） … 160g
-      ・ブロッコリー … 60g
-      ・白米（炊いたもの） … 80g
-
-    ■ 大型犬（16kg〜）
-      ・生鮭（骨なし） … 260g
-      ・ブロッコリー … 100g
-      ・白米（炊いたもの） … 140g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭（骨なし）", amount: 160, unit: "g", tags: [ "fish" ] },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "白米（炊いたもの）", amount: 80, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米を準備する
@@ -1574,25 +1318,13 @@ Recipe.create!(
 
   description: "活発なわんこ向けに脂質とタンパク質を強化する補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・鶏もも肉（皮つき） … 120g
-      ・白米（炊き上がり） … 160g
-      ・卵 … 1個
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮つき） … 200g
-      ・白米（炊き上がり） … 260g
-      ・卵 … 2個
-
-    ■ 大型犬（16kg〜）
-      ・鶏もも肉（皮つき） … 320g
-      ・白米（炊き上がり） … 420g
-      ・卵 … 3個
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮つき）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "白米（炊き上がり）", amount: 260, unit: "g" },
+    { name: "卵", amount: 2, unit: "piece", tags: [ "egg" ] }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米の準備
         炊飯器で通常より水を1割ほど多めにして炊いてください。
@@ -1633,21 +1365,12 @@ Recipe.create!(
 
   description: "筋肉維持と持久力を意識したエネルギー補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・牛赤身肉 … 120g
-      ・さつまいも … 200g
-
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 200g
-      ・さつまいも … 320g
-
-    ■ 大型犬（16kg〜）
-      ・牛赤身肉 … 320g
-      ・さつまいも … 520g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 200, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 320, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① さつまいもの下準備
@@ -1684,24 +1407,13 @@ Recipe.create!(
 
   description: "DHAとエネルギー密度を高めた発達サポートトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・生鮭（骨なし） … 120g
-      ・じゃがいも … 240g
-      ・オリーブオイル … 小さじ1
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（骨なし） … 200g
-      ・じゃがいも … 400g
-      ・オリーブオイル … 小さじ2
-
-    ■ 大型犬（16kg〜）
-      ・生鮭（骨なし） … 320g
-      ・じゃがいも … 650g
-      ・オリーブオイル … 小さじ3
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭（骨なし）", amount: 200, unit: "g", tags: [ "fish" ] },
+    { name: "じゃがいも", amount: 400, unit: "g" },
+    { name: "オリーブオイル", amount: 2, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 鮭の加熱
@@ -1737,24 +1449,13 @@ Recipe.create!(
 
   description: "高タンパクかつ腸内環境にも配慮した活発なわんこ向け補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・豚ヒレ肉 … 120g
-      ・白米（炊き上がり） … 160g
-      ・プレーンヨーグルト（無糖） … 40g
-
-    ■ 中型犬（6〜15kg）
-      ・豚ヒレ肉 … 200g
-      ・白米（炊き上がり） … 260g
-      ・プレーンヨーグルト（無糖） … 70g
-
-    ■ 大型犬（16kg〜）
-      ・豚ヒレ肉 … 320g
-      ・白米（炊き上がり） … 420g
-      ・プレーンヨーグルト（無糖） … 120g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 200, unit: "g", tags: [ "pork" ] },
+    { name: "白米（炊き上がり）", amount: 260, unit: "g" },
+    { name: "プレーンヨーグルト（無糖）", amount: 70, unit: "g", tags: [ "dairy" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米の準備
@@ -1800,24 +1501,13 @@ Recipe.create!(
 
   description: "高タンパク設計に適度な脂質を加えた活発なわんこ向け補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・鶏むね肉（皮なし） … 120g
-      ・かぼちゃ … 240g
-      ・植物油 … 小さじ1
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし） … 200g
-      ・かぼちゃ … 400g
-      ・植物油 … 小さじ2
-
-    ■ 大型犬（16kg〜）
-      ・鶏むね肉（皮なし） … 320g
-      ・かぼちゃ … 650g
-      ・植物油 … 小さじ3
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "かぼちゃ", amount: 400, unit: "g" },
+    { name: "亜麻仁オイル", amount: 2, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① かぼちゃの下準備
@@ -1866,27 +1556,13 @@ Recipe.create!(
 
   description: "高タンパクを維持しつつ脂質と炭水化物を控えめに設計した肥満傾向の補助",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・鶏むね肉（皮なし） … 160g
-      ・白米（炊き上がり） … 120g
-      ・ブロッコリー … 120g
-      ・にんじん … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし） … 260g
-      ・白米（炊き上がり） … 200g
-      ・ブロッコリー … 200g
-      ・にんじん … 100g
-
-    ■ 大型犬（16kg〜）
-      ・鶏むね肉（皮なし） … 400g
-      ・白米（炊き上がり） … 300g
-      ・ブロッコリー … 320g
-      ・にんじん … 160g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "かぼちゃ", amount: 400, unit: "g" },
+    { name: "オリーブオイル", amount: 2, unit: "tsp" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米の準備
@@ -1926,24 +1602,14 @@ Recipe.create!(
 
   description: "DHAを確保しながら脂質を抑えた肥満傾向の補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・生鮭 … 140g
-      ・さつまいも … 120g
-      ・小松菜 … 100g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭 … 220g
-      ・さつまいも … 200g
-      ・小松菜 … 180g
-
-    ■ 大型犬（16kg〜）
-      ・生鮭 … 360g
-      ・さつまいも … 300g
-      ・小松菜 … 300g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 260, unit: "g", tags: [ "chicken" ] },
+    { name: "白米（炊き上がり）", amount: 200, unit: "g" },
+    { name: "ブロッコリー", amount: 200, unit: "g" },
+    { name: "にんじん", amount: 100, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 鮭の下処理
@@ -1982,24 +1648,13 @@ Recipe.create!(
 
   description: "低脂質かつ消化に配慮した高タンパク補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-      ・豚ヒレ肉 … 160g
-      ・絹豆腐 … 120g
-      ・小松菜 … 100g
-
-    ■ 中型犬
-      ・豚ヒレ肉 … 260g
-      ・絹豆腐 … 200g
-      ・小松菜 … 180g
-
-    ■ 大型犬
-      ・豚ヒレ肉 … 400g
-      ・絹豆腐 … 320g
-      ・小松菜 … 300g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 260, unit: "g", tags: [ "pork" ] },
+    { name: "絹豆腐", amount: 200, unit: "g", tags: [ "soy" ] },
+    { name: "小松菜", amount: 180, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 豚ヒレの加熱
@@ -2037,24 +1692,13 @@ Recipe.create!(
 
   description: "低脂質な白身魚を使用し、筋肉維持を最優先に設計した肥満傾向の子犬向け補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・真鱈（骨なし） … 180g
-      ・ブロッコリー … 140g
-      ・白米（炊き上がり） … 80g
-
-    ■ 中型犬（6〜15kg）
-      ・真鱈（骨なし） … 300g
-      ・ブロッコリー … 240g
-      ・白米（炊き上がり） … 140g
-
-    ■ 大型犬（16kg〜）
-      ・真鱈（骨なし） … 460g
-      ・ブロッコリー … 380g
-      ・白米（炊き上がり） … 220g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "たら（骨なし）", amount: 300, unit: "g", tags: [ "fish" ] },
+    { name: "ブロッコリー", amount: 240, unit: "g" },
+    { name: "白米（炊き上がり）", amount: 140, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① タラの下処理
@@ -2098,24 +1742,13 @@ Recipe.create!(
 
   description: "玄米を少量使用し、血糖上昇を緩やかに設計した肥満傾向の子犬向け補助トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・鶏むね肉（皮なし） … 160g
-      ・玄米（炊き上がり） … 100g
-      ・にんじん … 80g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし） … 260g
-      ・玄米（炊き上がり） … 170g
-      ・にんじん … 140g
-
-    ■ 大型犬（16kg〜）
-      ・鶏むね肉（皮なし） … 400g
-      ・玄米（炊き上がり） … 260g
-      ・にんじん … 220g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 260, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米（炊き上がり）", amount: 170, unit: "g" },
+    { name: "にんじん", amount: 140, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米の準備
@@ -2157,28 +1790,15 @@ Recipe.create!(
 
   description: "脂質を抑え、満腹感を高める高タンパクサポートトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-    ・鶏むね肉（皮なし）… 120g
-    ・ブロッコリー … 60g
-    ・にんじん … 40g
-
-    ■ 中型犬（5〜15kg）
-    ・鶏むね肉（皮なし）… 200g
-    ・ブロッコリー … 100g
-    ・にんじん … 70g
-
-    ■ 大型犬（15kg〜）
-    ・鶏むね肉（皮なし）… 320g
-    ・ブロッコリー … 160g
-    ・にんじん … 110g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "ブロッコリー", amount: 100, unit: "g" },
+    { name: "にんじん", amount: 70, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
-    【下準備】
-    すべて必ず加熱してから与えてください。生のまま与えないようお願いいたします。
 
     ① 鶏むね肉
     ■ 茹でる場合
@@ -2223,25 +1843,13 @@ Recipe.create!(
   status: :published,
 
   description: "低脂質なタラを使用し、成長を維持しながら体重増加を穏やかに整えるトッピング",
-
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-    ・タラ … 140g
-    ・絹豆腐 … 120g
-    ・かぼちゃ … 60g
-
-    ■ 中型犬
-    ・タラ … 240g
-    ・絹豆腐 … 200g
-    ・かぼちゃ … 100g
-
-    ■ 大型犬
-    ・タラ … 360g
-    ・絹豆腐 … 300g
-    ・かぼちゃ … 150g
-  TEXT
+ingredients_json: {
+  medium: [
+    { name: "タラ", amount: 240, unit: "g", tags: [ "fish" ] },
+    { name: "絹豆腐", amount: 200, unit: "g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: 100, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -2283,21 +1891,13 @@ Recipe.create!(
 
   description: "低脂質な豚ヒレを使用し、筋肉を維持しながら脂質を抑える成長期サポートトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-      ・豚ヒレ肉 … 120g
-      ・小松菜 … 80g
-
-    ■ 中型犬（6〜15kg）
-      ・豚ヒレ肉 … 200g
-      ・小松菜 … 140g
-
-    ■ 大型犬（16kg〜）
-      ・豚ヒレ肉 … 320g
-      ・小松菜 … 220g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 200, unit: "g", tags: [ "pork" ] },
+    { name: "小松菜", amount: 140, unit: "g" },
+    { name: "ピーマン", amount: 80, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -2310,7 +1910,7 @@ Recipe.create!(
 
         加熱後は細かく刻みます。
 
-    ② 小松菜を加熱
+    ② 小松菜とピーマンを加熱
         3cm程度に切ります。 茹でる場合は沸騰後3〜4分加熱します。電子レンジの場合は
         大さじ1の水を加え、600Wで2分加熱します。
         硬い場合は30秒ずつ追加してください。
@@ -2344,24 +1944,13 @@ Recipe.create!(
 
   description: "抗酸化野菜を組み合わせ、脂質を抑えながら筋肉量維持を意識したトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-      ・牛赤身肉 … 120g
-      ・トマト … 80g
-      ・ピーマン … 50g
-
-    ■ 中型犬
-      ・牛赤身肉 … 200g
-      ・トマト … 140g
-      ・ピーマン … 80g
-
-    ■ 大型犬
-      ・牛赤身肉 … 320g
-      ・トマト … 220g
-      ・ピーマン … 120g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 200, unit: "g", tags: [ "beef" ] },
+    { name: "トマト", amount: 140, unit: "g" },
+    { name: "ピーマン", amount: 80, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -2409,25 +1998,13 @@ Recipe.create!(
 
   description: "腹持ちを高めつつ脂質を抑えたトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-      ・鶏むね肉（皮なし） … 120g
-      ・さつまいも … 100g
-      ・ブロッコリー … 60g
-
-    ■ 中型犬
-      ・鶏むね肉（皮なし） … 200g
-      ・さつまいも … 170g
-      ・ブロッコリー … 100g
-
-    ■ 大型犬
-      ・鶏むね肉（皮なし） … 320g
-      ・さつまいも … 280g
-      ・ブロッコリー … 160g
-  TEXT
-
+ ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "さつまいも", amount: 170, unit: "g" },
+    { name: "ブロッコリー", amount: 100, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     【下準備】
     すべて必ず加熱してください。
@@ -2475,27 +2052,14 @@ Recipe.create!(
 
   description: "活発なわんこの筋肉を維持しながら脂質を抑える高タンパク調整トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-    ・鶏むね肉（皮なし） … 120g
-    ・白米（炊いた状態） … 120g
-    ・ブロッコリー … 60g
-    ・にんじん … 40g
-
-    ■ 中型犬（6〜15kg）
-    ・鶏むね肉（皮なし） … 200g
-    ・白米（炊いた状態） … 200g
-    ・ブロッコリー … 100g
-    ・にんじん … 70g
-
-    ■ 大型犬（16kg〜）
-    ・鶏むね肉（皮なし） … 320g
-    ・白米（炊いた状態） … 320g
-    ・ブロッコリー … 160g
-    ・にんじん … 110g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 200, unit: "g", tags: [ "rice" ] },
+    { name: "ブロッコリー", amount: 100, unit: "g" },
+    { name: "にんじん", amount: 70, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -2548,25 +2112,13 @@ Recipe.create!(
 
   description: "活発なわんこのエネルギーを確保しながら脂質を抑える筋肉維持トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-    ・牛赤身肉 … 120g
-    ・さつまいも … 100g
-    ・ブロッコリー … 60g
-
-    ■ 中型犬
-    ・牛赤身肉 … 200g
-    ・さつまいも … 170g
-    ・ブロッコリー … 100g
-
-    ■ 大型犬
-    ・牛赤身肉 … 320g
-    ・さつまいも … 280g
-    ・ブロッコリー … 160g
-  TEXT
-
+  ingredients_json: {
+    medium: [
+    { name: "牛赤身肉", amount: 200, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 170, unit: "g" },
+    { name: "ブロッコリー", amount: 100, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
 
     【下準備】
@@ -2621,24 +2173,13 @@ Recipe.create!(
 
   description: "DHAを確保しながら脂質を抑え、豆腐でタンパク質を補う成長期向け調整トッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬（〜5kg）
-    ・生鮭（皮なし）… 80g
-    ・絹豆腐（水切り後）… 120g
-    ・小松菜 … 60g
-
-    ■ 中型犬（6〜15kg）
-    ・生鮭（皮なし）… 140g
-    ・絹豆腐（水切り後）… 200g
-    ・小松菜 … 100g
-
-    ■ 大型犬（16kg〜）
-    ・生鮭（皮なし）… 220g
-    ・絹豆腐（水切り後）… 300g
-    ・小松菜 … 160g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭（皮なし）", amount: 140, unit: "g", tags: [ "fish" ] },
+    { name: "絹豆腐（水切り後）", amount: 200, unit: "g", tags: [ "soy" ] },
+    { name: "小松菜", amount: 100, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -2690,25 +2231,13 @@ Recipe.create!(
 
   description: "低脂質な豚ヒレを中心に、活動量分のエネルギーを少量のかぼちゃで補う成長期向けトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-    ・豚ヒレ肉 … 120g
-    ・かぼちゃ … 80g
-    ・小松菜 … 60g
-
-    ■ 中型犬
-    ・豚ヒレ肉 … 200g
-    ・かぼちゃ … 140g
-    ・小松菜 … 100g
-
-    ■ 大型犬
-    ・豚ヒレ肉 … 320g
-    ・かぼちゃ … 220g
-    ・小松菜 … 160g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 200, unit: "g", tags: [ "pork" ] },
+    { name: "かぼちゃ", amount: 140, unit: "g" },
+    { name: "小松菜", amount: 100, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
 
     【下準備】
@@ -2760,24 +2289,13 @@ Recipe.create!(
 
   description: "活動量に合わせて玄米を少量使用し、血糖の急上昇を抑えながら筋肉維持を意識したトッピング",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ■ 小型犬
-    ・鶏むね肉（皮なし）… 120g
-    ・玄米（炊いた状態）… 120g
-    ・小松菜 … 60g
-
-    ■ 中型犬
-    ・鶏むね肉（皮なし）… 200g
-    ・玄米（炊いた状態）… 200g
-    ・小松菜 … 100g
-
-    ■ 大型犬
-    ・鶏むね肉（皮なし）… 320g
-    ・玄米（炊いた状態）… 320g
-    ・小松菜 … 160g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米", amount: 200, unit: "g", tags: [ "rice" ] },
+    { name: "小松菜", amount: 100, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -2831,25 +2349,13 @@ Recipe.create!(
 
   description: "体重を増やしたいわんこ向けレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-        ingredients: <<~TEXT
-      ■ 小型犬（〜5kg）
-        ・鶏もも肉 … 50g
-        ・白米 … 60g
-        ・にんじん … 15g
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉 … 100g
-        ・白米 … 120g
-         ・にんじん … 30g
-
-      ■ 大型犬（16kg〜）
-        ・鶏もも肉 … 150g
-        ・白米 … 180g
-        ・にんじん … 45g
-
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 炊飯器で白米をやわらかめに炊く
@@ -2884,23 +2390,13 @@ Recipe.create!(
 
   description: "じんわり体重を増やしたいわんこ向けレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・牛肉（赤身中心） … 45g
-         ・さつまいも … 60g
-        ・卵 … 1/2個
-
-      ■ 中型犬（6〜15kg）
-        ・牛肉（赤身中心） … 90g
-        ・さつまいも … 120g
-        ・卵 … 1個
-
-      ■ 大型犬（16kg〜）
-        ・牛肉（赤身中心） … 135g
-        ・さつまいも … 180g
-        ・卵 … 1.5個
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛肉（赤身中心）", amount: 90, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "卵", amount: 1, unit: "piece", tags: [ "egg" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① さつまいもを加熱
@@ -2937,24 +2433,13 @@ Recipe.create!(
 
   description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
-  ingredients: <<~TEXT,
-      【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・生鮭 … 50g
-        ・ブロッコリー … 20g
-        ・白米 … 60g
-
-      ■ 中型犬（6〜15kg）
-        ・生鮭 … 100g
-        ・ブロッコリー … 40g
-        ・白米 … 120g
-
-      ■ 大型犬（16kg〜）
-        ・生鮭 … 150g
-        ・ブロッコリー … 60g
-        ・白米 … 180g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: 100, unit: "g", tags: [ "fish" ] },
+    { name: "ブロッコリー", amount: 40, unit: "g" },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -2993,24 +2478,13 @@ Recipe.create!(
 
     description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
-    ingredients: <<~TEXT,
-        【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-        ・豚肉（脂身少なめ） … 50g
-        ・白米 … 60g
-        ・かぼちゃ … 40g
-
-      ■ 中型犬（6〜15kg）
-        ・豚肉（脂身少なめ） … 100g
-        ・白米 … 120g
-        ・かぼちゃ … 80g
-
-      ■ 大型犬（16kg〜）
-        ・豚肉（脂身少なめ） … 150g
-        ・白米 … 180g
-        ・かぼちゃ … 120g
-
-    TEXT
+   ingredients_json: {
+  medium: [
+    { name: "豚肉（脂身少なめ）", amount: 100, unit: "g", tags: [ "pork" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 80, unit: "g" }
+  ]
+},
 
     instructions: <<~TEXT,
     ① かぼちゃを加熱
@@ -3045,30 +2519,15 @@ Recipe.create!(
 
     description: "体重を増やしたい痩せ型のわんこ向けレシピ",
 
-    ingredients: <<~TEXT,
-      【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-         ・鶏むね肉（皮無し） … 50g
-         ・白米 … 60g
-         ・にんじん … 15g
-         ・ブロッコリー … 20g
-         ・オリーブオイル … 小さじ1/2
-
-      ■ 中型犬（6〜15kg）
-         ・鶏むね肉（皮無し） … 100g
-         ・白米 … 120g
-         ・にんじん … 30g
-         ・ブロッコリー … 40g
-         ・オリーブオイル … 小さじ1
-
-      ■ 大型犬（16kg〜）
-        ・鶏むね肉（皮無し） … 150g
-        ・白米 … 180g
-        ・にんじん … 45g
-        ・ブロッコリー … 60g
-        ・オリーブオイル … 小さじ1.5
-    TEXT
-
+    ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 100, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 40, unit: "g" },
+    { name: "オリーブオイル", amount: 1, unit: "tsp" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
       炊飯器で炊く。水の量を少し多めにして炊くと、より柔らかくなります。
@@ -3105,25 +2564,14 @@ Recipe.create!(
 
     description: "活動分のエネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-      【2日分（4食分）目安】
-      ▪ 小型犬（〜5kg目安）
-        ・牛肉 … 70g
-        ・白米 … 110g
-        ・にんじん … 15g
-        ・ブロッコリー … 15g
-
-      ■ 中型犬（6〜15kg）
-        ・牛肉 … 110g
-        ・白米 … 180g
-        ・にんじん … 30g
-        ・ブロッコリー … 30g
-      ■ 大型犬（16kg〜）
-        ・牛肉 … 200g
-        ・白米 … 320g
-        ・にんじん … 50g
-        ・ブロッコリー … 50g
-    TEXT
+ ingredients_json: {
+  medium: [
+    { name: "牛肉", amount: 110, unit: "g", tags: [ "beef" ] },
+    { name: "白米", amount: 180, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 30, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -3162,26 +2610,13 @@ Recipe.create!(
 
     description: "活動分のエネルギー補給ができるレシピ",
 
-    ingredients: <<~TEXT,
-      【2日分（4食分）目安】
-      ▪ 小型犬（〜5kg目安）
-        ・鶏もも肉 … 70g
-        ・さつまいも … 100g
-        ・小松菜 … 15g
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉 … 120g
-        ・さつまいも … 160g
-        ・小松菜 … 30g
-
-       ■ 大型犬（16kg〜）
-         ・鶏もも肉 … 220g
-         ・さつまいも … 280g
-         ・小松菜 … 50g
-
-
-    TEXT
-
+   ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: 120, unit: "g", tags: [ "chicken" ] },
+    { name: "さつまいも", amount: 160, unit: "g" },
+    { name: "小松菜", amount: 30, unit: "g" }
+  ]
+},
     instructions: <<~TEXT,
     ① さつまいもを加熱
          皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、電子レンジで加熱して柔らかくします。
@@ -3217,28 +2652,14 @@ Recipe.create!(
 
   description: "活動分のエネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・生鮭 … 70g
-        ・白米 … 110g
-        ・卵 … 1/2個
-        ・ブロッコリー … 15g
-
-     ■ 中型犬（6〜15kg）
-        ・生鮭 … 110g
-        ・白米 … 170g
-        ・卵 … 1個
-        ・ブロッコリー … 30g
-
-      ■ 大型犬（16kg〜）
-        ・生鮭 … 200g
-        ・白米 … 300g
-        ・卵 … 1個
-        ・ブロッコリー … 50g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: 110, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 170, unit: "g", tags: [ "rice" ] },
+    { name: "卵", amount: 1, unit: "piece", tags: [ "egg" ] },
+    { name: "ブロッコリー", amount: 30, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -3280,24 +2701,13 @@ Recipe.create!(
 
   description: "活動分のエネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・豚ヒレ肉 … 70g
-        ・白米 … 110g
-        ・かぼちゃ … 60g
-
-      ■ 中型犬（6〜15kg）
-        ・豚ヒレ肉 … 120g
-        ・白米 … 170g
-        ・かぼちゃ … 100g
-
-      ■ 大型犬（16kg〜）
-        ・豚ヒレ肉 … 220g
-        ・白米 … 300g
-        ・かぼちゃ … 160g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 120, unit: "g", tags: [ "pork" ] },
+    { name: "白米", amount: 170, unit: "g" },
+    { name: "かぼちゃ", amount: 100, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① かぼちゃを加熱
@@ -3333,25 +2743,13 @@ Recipe.create!(
 
   description: "活動分のエネルギー補給ができるレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・鶏もも肉 … 70g
-        ・玄米 … 100g
-        ・にんじん … 15g
-
-      ■ 中型犬（6〜15kg）
-        ・鶏もも肉 … 120g
-        ・玄米 … 160g
-        ・にんじん … 30g
-
-      ■ 大型犬（16kg〜）
-         ・鶏もも肉 … 220g
-         ・玄米 … 280g
-         ・にんじん … 50g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: 120, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米", amount: 160, unit: "g" },
+    { name: "にんじん", amount: 30, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -3391,31 +2789,15 @@ Recipe.create!(
   status: :published,
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
-
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮無し） … 80g
-      ・白米 … 40g
-      ・人参 … 15g
-      ・ブロッコリー … 40g
-      ・トマト … 15g
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 130g
-      ・白米 … 80g
-      ・人参 … 30g
-      ・ブロッコリー … 60g
-      ・トマト … 30g
-
-    ■ 大型犬（16kg〜）
-      ・鶏むね肉 … 220g
-      ・白米 … 140g
-      ・人参 … 50g
-      ・ブロッコリー … 100g
-      ・トマト … 50g
-  TEXT
-
+ingredients_json: {
+  medium: [
+    { name: "鶏むね肉（皮なし）", amount: 130, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 80, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "トマト", amount: 30, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     炊飯器で白米をやわらかめに炊いてください。
@@ -3453,25 +2835,13 @@ Recipe.create!(
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-    ・牛肉 … 130g
-    ・さつまいも … 200g
-    ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-    ・牛肉 … 170g
-    ・さつまいも … 260g
-    ・小松菜 … 40g
-
-    ■ 大型犬（16kg〜）
-    ・牛肉 … 260g
-    ・さつまいも … 400g
-    ・小松菜 … 60g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛肉", amount: 170, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 260, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① さつまいもを加熱
@@ -3509,26 +2879,14 @@ Recipe.create!(
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-      ■ 小型犬（〜5kg）
-      ・生鮭（皮付き・塩分はNG） … 120g
-      ・白米 … 180g
-      ・卵 … 1個
-      ・ブロッコリー … 30g
-
-      ■ 中型犬（6〜15kg）
-      ・生鮭（皮付き・塩分はNG） … 160g
-      ・白米 … 235g
-      ・卵 … 1個
-      ・ブロッコリー … 40g
-
-      ■ 大型犬（16kg〜）
-      ・生鮭（皮付き・塩分はNG） … 240g
-      ・白米 … 360g
-      ・卵 … 2個
-      ・ブロッコリー … 60g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭（皮付き）", amount: 160, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 235, unit: "g", tags: [ "rice" ] },
+    { name: "卵", amount: 1, unit: "piece", tags: [ "egg" ] },
+    { name: "ブロッコリー", amount: 40, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -3568,24 +2926,13 @@ Recipe.create!(
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-    ■ 小型犬（〜5kg）
-    ・豚ヒレ肉 … 130g
-    ・じゃがいも … 200g
-    ・人参 … 30g
-
-    ■ 中型犬（6〜15kg）
-    ・豚ヒレ肉 … 170g
-    ・じゃがいも … 260g
-    ・人参 … 40g
-
-    ■ 大型犬（16kg〜）
-    ・豚ヒレ肉 … 260g
-    ・じゃがいも … 400g
-    ・人参 … 60g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 170, unit: "g", tags: [ "pork" ] },
+    { name: "じゃがいも", amount: 260, unit: "g" },
+    { name: "にんじん", amount: 40, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① じゃがいもを加熱
@@ -3622,27 +2969,14 @@ Recipe.create!(
 
   description: "活発なわんこのエネルギー補給におすすめのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-    ■ 小型犬（〜5kg）
-    ・鶏むね肉（皮無し） … 130g
-    ・玄米 … 180g
-    ・小松菜 … 30g
-    ・オリーブオイル … 小さじ1/2
-
-    ■ 中型犬（6〜15kg）
-    ・鶏むね肉（皮無し） … 170g
-    ・玄米 … 235g
-    ・小松菜 … 40g
-    ・オリーブオイル … 小さじ1
-
-    ■ 大型犬（16kg〜）
-    ・鶏むね肉（皮無し） … 260g
-    ・玄米 … 360g
-    ・小松菜 … 60g
-    ・オリーブオイル … 小さじ1
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: 170, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米", amount: 235, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" },
+    { name: "オリーブオイル", amount: 1, unit: "tsp" }
+  ]
+},
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
     炊飯器で玄米をやわらかめに炊いてください
@@ -3683,30 +3017,15 @@ Recipe.create!(
 
   description: "穏やかに過ごすわんこ向け。消化にやさしく、適度なエネルギーを確保したバランスごはん。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・白身魚（タラなど）… 90g
-      ・さつまいも … 70g
-      ・小松菜 … 25g
-      ・人参 … 20g
-      ・しめじ … 15g
-
-    ■ 中型犬（6〜15kg）
-      ・白身魚（タラなど）… 150g
-      ・さつまいも … 120g
-      ・小松菜 … 40g
-      ・人参 … 35g
-      ・しめじ … 25g
-
-    ■ 大型犬（16kg~）
-      ・白身魚（タラなど）… 260g
-      ・さつまいも … 200g
-      ・小松菜 … 70g
-      ・人参 … 60g
-      ・しめじ … 45g
-  TEXT
+  ingredients_json: {
+    medium: [
+    { name: "白身魚（タラ）", amount: 150, unit: "g", tags: [ "fish" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "しめじ", amount: 25, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① さつまいもの加熱
@@ -3754,30 +3073,15 @@ Recipe.create!(
 
   description: "おだやかに過ごすわんこ向け。適度な脂質を含みつつ、胃腸に優しい設計の和風バランス食。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏もも肉（皮なし）… 90g
-      ・白米 … 70g
-      ・大根 … 40g
-      ・ほうれん草 … 25g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし）… 150g
-      ・白米 … 120g
-      ・大根 … 70g
-      ・ほうれん草 … 40g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・鶏もも肉（皮なし）… 260g
-      ・白米 … 200g
-      ・大根 … 120g
-      ・ほうれん草 … 70g
-      ・人参 … 60g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮なし）", amount: 150, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 120, unit: "g" },
+    { name: "大根", amount: 70, unit: "g" },
+    { name: "ほうれん草", amount: 40, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米を炊く
@@ -3824,30 +3128,15 @@ Recipe.create!(
 
   description: "穏やかに過ごすわんこ向け。良質な脂質と植物性タンパク質を組み合わせた、消化にやさしい腸内サポートレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（骨なし）… 80g
-      ・絹ごし豆腐 … 100g
-      ・かぼちゃ … 60g
-      ・小松菜 … 25g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（骨なし）… 140g
-      ・絹ごし豆腐 … 170g
-      ・かぼちゃ … 100g
-      ・小松菜 … 40g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・生鮭（骨なし）… 240g
-      ・絹ごし豆腐 … 280g
-      ・かぼちゃ … 170g
-      ・小松菜 … 70g
-      ・人参 … 60g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "生鮭（骨なし）", amount: 140, unit: "g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: 170, unit: "g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: 100, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① かぼちゃの加熱
@@ -3898,30 +3187,15 @@ Recipe.create!(
 
   description: "穏やかに過ごすわんこ向け。鉄分補給と食物繊維を意識したバランス設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・牛赤身肉 … 90g
-      ・玄米 … 60g
-      ・ブロッコリー … 30g
-      ・人参 … 20g
-      ・キャベツ … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 150g
-      ・玄米 … 100g
-      ・ブロッコリー … 50g
-      ・人参 … 35g
-      ・キャベツ … 50g
-
-    ■ 大型犬（16kg~）
-      ・牛赤身肉 … 260g
-      ・玄米 … 170g
-      ・ブロッコリー … 85g
-      ・人参 … 60g
-      ・キャベツ … 90g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 150, unit: "g", tags: [ "beef" ] },
+    { name: "玄米", amount: 100, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "キャベツ", amount: 50, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米を炊く
@@ -3966,31 +3240,15 @@ Recipe.create!(
 
   description: "穏やかに過ごすわんこ向け。低脂質で胃腸に優しい和風バランスレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ささみ … 90g
-      ・里芋 … 70g
-      ・小松菜 … 25g
-      ・人参 … 20g
-      ・しいたけ … 15g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ささみ … 150g
-      ・里芋 … 120g
-      ・小松菜 … 40g
-      ・人参 … 35g
-      ・しいたけ … 25g
-
-    ■ 大型犬（16kg~）
-      ・鶏ささみ … 260g
-      ・里芋 … 200g
-      ・小松菜 … 70g
-      ・人参 … 60g
-      ・しいたけ … 45g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: 150, unit: "g", tags: [ "chicken" ] },
+    { name: "里芋", amount: 120, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "しいたけ", amount: 25, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 里芋の下処理
     里芋は皮をむき、小さくカットしてください。
@@ -4037,31 +3295,15 @@ Recipe.create!(
 
   description: "活動量が標準的なわんこ向け。高タンパクと適量炭水化物で、日常の健康維持を支える基本設計レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮なし）… 100g
-      ・雑穀米 … 80g
-      ・ブロッコリー … 30g
-      ・人参 … 20g
-      ・小松菜 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし）… 170g
-      ・雑穀米 … 140g
-      ・ブロッコリー … 50g
-      ・人参 … 35g
-      ・小松菜 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉（皮なし）… 290g
-      ・雑穀米 … 240g
-      ・ブロッコリー … 85g
-      ・人参 … 60g
-      ・小松菜 … 70g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: 170, unit: "g", tags: [ "chicken" ] },
+    { name: "雑穀米", amount: 140, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 雑穀米を炊く
     雑穀米は通常よりやや水を多めにして炊いてください。
@@ -4107,30 +3349,15 @@ Recipe.create!(
 
   description: "活動量が標準的なわんこ向け。消化にやさしい魚と適度な炭水化物でバランスを整えるレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・白身魚（タラなど）… 100g
-      ・じゃがいも … 90g
-      ・キャベツ … 35g
-      ・人参 … 20g
-      ・ブロッコリー … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・白身魚（タラなど）… 170g
-      ・じゃがいも … 150g
-      ・キャベツ … 60g
-      ・人参 … 35g
-      ・ブロッコリー … 50g
-
-    ■ 大型犬（16kg~）
-      ・白身魚（タラなど）… 290g
-      ・じゃがいも … 260g
-      ・キャベツ … 100g
-      ・人参 … 60g
-      ・ブロッコリー … 85g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "タラ", amount: 170, unit: "g", tags: [ "fish" ] },
+    { name: "じゃがいも", amount: 150, unit: "g" },
+    { name: "キャベツ", amount: 60, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① じゃがいもの加熱
@@ -4138,8 +3365,8 @@ Recipe.create!(
     水から茹で、完全に柔らかくなるまで加熱します。
     フォークで簡単に潰せる状態まで火を通してください。
 
-    ② 白身魚の加熱
-    白身魚は必ず骨と皮を取り除いてください。
+    ② たらの加熱
+    たらは必ず骨と皮を取り除いてください。
     鍋で茹で、中心まで完全に火を通します。
     加熱後は細かくほぐし、骨が残っていないか必ず確認してください。
 
@@ -4175,30 +3402,15 @@ Recipe.create!(
 
   description: "活動量が標準的なわんこ向け。鉄分を補いながら、安定したエネルギーを供給するバランス設計レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・牛赤身肉 … 100g
-      ・玄米 … 80g
-      ・ブロッコリー … 30g
-      ・人参 … 20g
-      ・かぼちゃ … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 170g
-      ・玄米 … 140g
-      ・ブロッコリー … 50g
-      ・人参 … 35g
-      ・かぼちゃ … 100g
-
-    ■ 大型犬（16kg~）
-      ・牛赤身肉 … 290g
-      ・玄米 … 240g
-      ・ブロッコリー … 85g
-      ・人参 … 60g
-      ・かぼちゃ … 170g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 170, unit: "g", tags: [ "beef" ] },
+    { name: "玄米", amount: 140, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "かぼちゃ", amount: 100, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米を炊く
@@ -4246,30 +3458,15 @@ Recipe.create!(
 
   description: "標準的な活動量のわんこ向け。適度な脂質と食物繊維を組み合わせた日常維持レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏もも肉（皮なし）… 100g
-      ・押し麦 … 80g
-      ・キャベツ … 35g
-      ・人参 … 20g
-      ・小松菜 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし）… 170g
-      ・押し麦 … 140g
-      ・キャベツ … 60g
-      ・人参 … 35g
-      ・小松菜 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏もも肉（皮なし）… 290g
-      ・押し麦 … 240g
-      ・キャベツ … 100g
-      ・人参 … 60g
-      ・小松菜 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: 170, unit: "g", tags: [ "chicken" ] },
+    { name: "押し麦", amount: 140, unit: "g" },
+    { name: "キャベツ", amount: 60, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 押し麦を炊く
@@ -4314,30 +3511,15 @@ Recipe.create!(
 
   description: "標準活動量のわんこ向け。良質な脂質を含む青魚で皮膚・被毛ケアを意識したレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生サバ（骨なし）… 100g
-      ・さつまいも … 80g
-      ・ブロッコリー … 30g
-      ・人参 … 20g
-      ・ほうれん草 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・生サバ（骨なし）… 170g
-      ・さつまいも … 140g
-      ・ブロッコリー … 50g
-      ・人参 … 35g
-      ・ほうれん草 … 40g
-
-    ■ 大型犬（16kg~）
-      ・生サバ（骨なし）… 290g
-      ・さつまいも … 240g
-      ・ブロッコリー … 85g
-      ・人参 … 60g
-      ・ほうれん草 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生サバ（骨なし）", amount: 170, unit: "g", tags: [ "fish" ] },
+    { name: "さつまいも", amount: 140, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" },
+    { name: "ほうれん草", amount: 40, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① さつまいもの加熱
@@ -4384,30 +3566,15 @@ Recipe.create!(
 
   description: "運動量が多いわんこ向け。筋肉維持と持続エネルギーを両立したスタミナレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・牛赤身肉 … 110g
-      ・さつまいも … 100g
-      ・ブロッコリー … 30g
-      ・人参 … 25g
-      ・小松菜 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 190g
-      ・さつまいも … 170g
-      ・ブロッコリー … 50g
-      ・人参 … 40g
-      ・小松菜 … 45g
-
-     ■ 大型犬（16kg~）
-      ・牛赤身肉 … 320g
-      ・さつまいも … 290g
-      ・ブロッコリー … 85g
-      ・人参 … 70g
-      ・小松菜 … 75g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 190, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 170, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 40, unit: "g" },
+    { name: "小松菜", amount: 45, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① さつまいもの下処理
@@ -4457,30 +3624,15 @@ Recipe.create!(
 
   description: "活発なわんこ向け。筋肉回復と皮膚・被毛ケアを同時にサポートする栄養設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（骨なし）… 100g
-      ・玄米 … 90g
-      ・ブロッコリー … 30g
-      ・かぼちゃ … 70g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（骨なし）… 170g
-      ・玄米 … 150g
-      ・ブロッコリー … 50g
-      ・かぼちゃ … 120g
-      ・人参 … 35g
-
-     ■ 大型犬（16kg~）
-      ・生鮭（骨なし）… 290g
-      ・玄米 … 260g
-      ・ブロッコリー … 85g
-      ・かぼちゃ … 200g
-      ・人参 … 60g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭（骨なし）", amount: 170, unit: "g", tags: [ "fish" ] },
+    { name: "玄米", amount: 150, unit: "g", tags: [ "grain" ] },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "かぼちゃ", amount: 120, unit: "g" },
+    { name: "にんじん", amount: 35, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米を炊く
@@ -4528,31 +3680,15 @@ Recipe.create!(
 
   description: "運動量の多いわんこ向け。消化の良い魚と安定エネルギーで活動を支えるレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・タラ（骨なし）… 110g
-      ・白米 … 100g
-      ・かぼちゃ … 70g
-      ・小松菜 … 30g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・タラ（骨なし）… 190g
-      ・白米 … 170g
-      ・かぼちゃ … 120g
-      ・小松菜 … 50g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・タラ（骨なし）… 320g
-      ・白米 … 290g
-      ・かぼちゃ … 200g
-      ・小松菜 … 85g
-      ・人参 … 70g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "タラ（骨なし）", amount: 190, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 170, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 120, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 40, unit: "g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米を炊く
     白米はやや水を多めにして炊いてください。
@@ -4597,30 +3733,15 @@ Recipe.create!(
 
   description: "活発なわんこ向け。疲労回復と筋肉維持を意識した高タンパク設計レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・豚ヒレ肉 … 110g
-      ・玄米 … 90g
-      ・かぼちゃ … 80g
-      ・ブロッコリー … 30g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・豚ヒレ肉 … 190g
-      ・玄米 … 150g
-      ・かぼちゃ … 140g
-      ・ブロッコリー … 50g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・豚ヒレ肉 … 320g
-      ・玄米 … 260g
-      ・かぼちゃ … 230g
-      ・ブロッコリー … 85g
-      ・人参 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 190, unit: "g", tags: [ "pork" ] },
+    { name: "玄米", amount: 150, unit: "g", tags: [ "grain" ] },
+    { name: "かぼちゃ", amount: 140, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 40, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米を炊く
@@ -4668,30 +3789,15 @@ Recipe.create!(
 
   description: "活発に動くわんこ向け。消化の良い白米でしっかりエネルギー補給し、鶏もも肉で筋肉維持を支えるスタミナ設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏もも肉（皮なし）… 110g
-      ・白米 … 100g
-      ・ブロッコリー … 30g
-      ・人参 … 25g
-      ・キャベツ … 35g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし）… 190g
-      ・白米 … 170g
-      ・ブロッコリー … 50g
-      ・人参 … 40g
-      ・キャベツ … 60g
-
-    ■ 大型犬（16kg~）
-      ・鶏もも肉（皮なし）… 320g
-      ・白米 … 290g
-      ・ブロッコリー … 85g
-      ・人参 … 70g
-      ・キャベツ … 100g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉（皮なし）", amount: 190, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 170, unit: "g", tags: [ "rice" ] },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "にんじん", amount: 40, unit: "g" },
+    { name: "キャベツ", amount: 60, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊きます
@@ -4754,30 +3860,16 @@ Recipe.create!(
   status: :published,
 
   description: "体重管理が必要なわんこ向けのレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
 
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮無し） … 80g
-      ・白米 … 40g
-      ・人参 … 15g
-      ・ブロッコリー … 40g
-      ・トマト … 15g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 130g
-      ・白米 … 80g
-      ・人参 … 30g
-      ・ブロッコリー … 60g
-      ・トマト … 30g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 220g
-      ・白米 … 140g
-      ・人参 … 50g
-      ・ブロッコリー … 100g
-      ・トマト … 50g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: 130, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 80, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 60, unit: "g" },
+    { name: "トマト", amount: 30, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
 
@@ -4819,29 +3911,14 @@ Recipe.create!(
 
   description: "体重管理が必要なわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-    ・牛赤身肉 … 70g
-    ・白米 … 40g
-    ・にんじん … 15g
-    ・ブロッコリー … 40g
-
-    ■ 中型犬（6〜15kg）
-    ・牛赤身肉 … 110g
-    ・白米 … 80g
-    ・にんじん … 30g
-    ・ブロッコリー … 60g
-
-    ■ 大型犬（16kg~）
-    ・牛赤身肉 … 200g
-    ・白米 … 140g
-    ・にんじん … 50g
-    ・ブロッコリー … 100g
-
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: 110, unit: "g", tags: [ "beef" ] },
+    { name: "白米", amount: 80, unit: "g", tags: [ "rice" ] },
+    { name: "にんじん", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 60, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -4881,25 +3958,13 @@ Recipe.create!(
 
   description: "体重管理が必要なわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-    ・豚ひれ肉 … 80g
-    ・絹ごし豆腐 … 60g
-    ・小松菜 … 15g
-
-    ■ 中型犬（6〜15kg）
-     ・豚ひれ肉 … 120g
-     ・絹ごし豆腐 … 100g
-     ・小松菜 … 30g
-
-     ■ 大型犬（16kg~）
-      ・豚ひれ肉 … 220g
-      ・絹ごし豆腐 … 180g
-      ・小松菜 … 60g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: 120, unit: "g", tags: [ "pork" ] },
+    { name: "絹ごし豆腐", amount: 100, unit: "g", tags: [ "soy" ] },
+    { name: "小松菜", amount: 30, unit: "g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 豚ひれ肉を加熱
@@ -4937,25 +4002,14 @@ Recipe.create!(
 
   description: "体重管理が必要なわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
+  ingredients_json: {
+  medium: [
 
-    ▪ 小型犬（〜5kg目安）
-    ・・タラ … 80g
-    ・小松菜 … 40g
-    ・トマト … 15g
-
-    ■ 中型犬（6〜15kg）
-    ・タラ … 120g
-    ・小松菜 … 70g
-    ・トマト … 30g
-
-    ■ 大型犬（16kg~）
-    ・タラ … 220g
-    ・小松菜 … 120g
-    ・トマト … 50g
-
-  TEXT
+  { name: "タラ", amount: "120g" },
+  { name: "小松菜", amount: "70g" },
+  { name: "トマト", amount: "30g" }
+]
+  },
 
   instructions: <<~TEXT,
     ① タラを加熱
@@ -4983,36 +4037,23 @@ Recipe.create!(
   TEXT
 )
 
-Recipe.create!(
-  name: "鶏むねと玄米のそぼろ風ごはん",
-  age_stage: :adult,
-  body_type: :overweight,
-  activity_level: :low,
-  status: :published,
+  Recipe.create!(
+    name: "鶏むねと玄米のそぼろ風ごはん",
+    age_stage: :adult,
+    body_type: :overweight,
+    activity_level: :low,
+    status: :published,
 
-  description: "体重管理が必要なわんこ向けのレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
+    description: "体重管理が必要なわんこ向けのレシピ",
 
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉 … 80g
-      ・玄米 … 40g
-      ・人参 … 15g
-      ・ブロッコリー … 25g
-
-     ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 130g
-      ・玄米 … 80g
-      ・人参 … 30g
-      ・ブロッコリー … 40g
-
-     ■ 大型犬（16kg~）
-      ・鶏むね肉 … 220g
-      ・玄米 … 140g
-      ・人参 … 50g
-      ・ブロッコリー … 80g
-
-  TEXT
+    ingredients_json: {
+    medium: [
+    { name: "鶏むね肉", amount: "130g" },
+    { name: "玄米", amount: "80g", tags: [ "grain" ] },
+    { name: "人参", amount: "30g" },
+    { name: "ブロッコリー", amount: "40g" }
+    ]
+    },
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -5038,7 +4079,7 @@ Recipe.create!(
 
   TEXT
 
-  nutrition_note: <<~TEXT
+  nutrition_note: <<~TEXT,
     ✔ 鶏むね肉で高タンパク、筋力維持
     ✔ 玄米は控えめにしてカロリーコントロール
     ✔ 人参とブロッコリーでビタミンと食物繊維を補給、満腹感アップ
@@ -5056,29 +4097,17 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【【2日分（4食分）目安】
 
-    ▪ 小型犬（〜5kg目安）
-     ・鶏むね肉（皮無し） … 80g
-     ・白米 … 40g
-     ・人参 … 15g
-     ・ブロッコリー … 25g
+  ingredients_json: {
+  medium: [
 
-    ■ 中型犬（6〜15kg）
-     ・鶏むね肉 … 130g
-     ・白米 … 80g
-     ・人参 … 30g
-     ・ブロッコリー … 40g
+  { name: "鶏むね肉", amount: "130g" },
+  { name: "白米", amount: "80g" },
+  { name: "人参", amount: "30g" },
+  { name: "ブロッコリー", amount: "40g" }
+]
 
-    ■ 大型犬（16kg~）
-     ・鶏むね肉 … 220g
-     ・白米 … 140g
-     ・人参 … 50g
-     ・ブロッコリー … 70g
-
-
-  TEXT
+  },
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -5118,25 +4147,15 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
+  ingredients_json: {
+  medium: [
 
-    ▪ 小型犬（〜5kg目安）
-      ・牛赤身肉 … 80g
-      ・さつまいも … 40g
-      ・小松菜 … 15g
+  { name: "牛赤身肉", amount: "130g" },
+  { name: "さつまいも", amount: "60g" },
+  { name: "小松菜", amount: "30g" }
 
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 130g
-      ・さつまいも … 60g
-      ・小松菜 … 30g
-
-    ■ 大型犬（16kg~）
-      ・牛赤身肉 … 220g
-      ・さつまいも … 100g
-      ・小松菜 … 60g
-
-  TEXT
+]
+  },
 
   instructions: <<~TEXT,
     ① さつまいもを加熱
@@ -5175,29 +4194,15 @@ Recipe.create!(
   status: :published,
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
+ingredients_json: {
+  medium: [
+  { name: "豚ひれ肉", amount: "130g" },
+  { name: "小松菜", amount: "70g" },
+  { name: "トマト", amount: "60g" },
+  { name: "じゃがいも", amount: "1個" }
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・豚ひれ肉 … 80g
-      ・小松菜 … 40g
-      ・トマト … 30g
-      ・じゃがいも … 1/2個
-
-    ■ 中型犬（6〜15kg）
-      ・豚ひれ肉 … 130g
-      ・小松菜 … 70g
-      ・トマト … 60g
-      ・じゃがいも … 1個
-
-    ■ 大型犬（16kg~）
-       ・豚ひれ肉 … 220g
-      ・小松菜 … 120g
-      ・トマト … 100g
-      ・じゃがいも … 2個
-
-  TEXT
+]
+},
 
   instructions: <<~TEXT,
     ① じゃがいもを加熱
@@ -5241,28 +4246,15 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
+  ingredients_json: {
+  medium: [
+  { name: "生鮭", amount: "80g" },
+  { name: "絹ごし豆腐", amount: "100g" },
+  { name: "ブロッコリー", amount: "40g" },
+  { name: "ピーマン", amount: "20g" }
 
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭 … 50g
-      ・絹ごし豆腐 … 60g
-      ・ブロッコリー … 25g
-      ・ピーマン … 10g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭 … 80g
-      ・絹ごし豆腐 … 100g
-      ・ブロッコリー … 40g
-      ・ピーマン … 20g
-
-    ■ 大型犬（16kg~）
-      ・生鮭 … 150g
-      ・絹ごし豆腐 … 180g
-      ・ブロッコリー … 80g
-      ・ピーマン … 40g
-
-  TEXT
+]
+  },
 
   instructions: <<~TEXT,
     ① ブロッコリーを加熱
@@ -5304,28 +4296,13 @@ Recipe.create!(
 
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉 … 80g
-      ・玄米 … 40g
-      ・人参 … 15g
-      ・ブロッコリー … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 130g
-      ・玄米 … 80g
-      ・人参 … 30g
-      ・ブロッコリー … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 220g
-      ・玄米 … 140g
-      ・人参 … 50g
-      ・ブロッコリー … 70g
-
-  TEXT
+  ingredients_json: {
+  medium: [ { name: "鶏むね肉", amount: "130g" },
+  { name: "玄米", amount: "80g", tags: [ "grain" ] },
+  { name: "人参", amount: "30g" },
+  { name: "ブロッコリー", amount: "40g" }
+]
+  },
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -5367,28 +4344,15 @@ Recipe.create!(
   status: :published,
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
 
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮無し） … 80g
-      ・白米 … 60g
-      ・人参 … 15g
-      ・ブロッコリー … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 130g
-      ・白米 … 100g
-      ・人参 … 30g
-      ・ブロッコリー … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 230g
-      ・白米 … 180g
-      ・人参 … 50g
-      ・ブロッコリー … 80g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "130g", tags: [ "chicken" ] },
+    { name: "白米", amount: "100g", tags: [ "rice" ] },
+    { name: "人参", amount: "30g" },
+    { name: "ブロッコリー", amount: "40g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -5429,29 +4393,14 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・牛赤身肉 … 80g
-      ・さつまいも … 50g
-      ・小松菜 … 20g
-      ・トマト … 15g
-
-    ■ 中型犬（6〜15kg）
-      ・牛赤身肉 … 130g
-      ・さつまいも … 70g
-      ・小松菜 … 40g
-      ・トマト … 30g
-
-    ■ 大型犬（16kg~）
-      ・牛赤身肉 … 230g
-      ・さつまいも … 120g
-      ・小松菜 … 70g
-      ・トマト … 50g
-
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "牛赤身肉", amount: "130g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: "70g" },
+    { name: "小松菜", amount: "40g" },
+    { name: "トマト", amount: "30g" }
+  ]
+},
   instructions: <<~TEXT,
     ① さつまいもを加熱
     皮を剥いたさつまいもを1cm角程度に切り、鍋で茹でるか、少量の水を入れて電子レンジで4分加熱して、一度取り出し少し混ぜます。
@@ -5495,29 +4444,14 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭 … 60g
-      ・絹ごし豆腐 … 60g
-      ・ブロッコリー … 25g
-      ・ピーマン … 10g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭 … 100g
-      ・絹ごし豆腐 … 100g
-      ・ブロッコリー … 40g
-      ・ピーマン … 20g
-
-    ■ 大型犬（16kg~）
-      ・生鮭 … 180g
-      ・絹ごし豆腐 … 180g
-      ・ブロッコリー … 80g
-      ・ピーマン … 40g
-
-
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: "100g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: "100g", tags: [ "soy" ] },
+    { name: "ブロッコリー", amount: "40g" },
+    { name: "ピーマン", amount: "20g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① ブロッコリーを加熱
@@ -5560,24 +4494,13 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-    ▪ 小型犬（〜5kg目安）
-      ・豚ヒレ肉 … 80g
-      ・かぼちゃ … 50g
-      ・小松菜 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・豚ヒレ肉 … 130g
-      ・かぼちゃ … 70g
-      ・小松菜 … 40g
-
-    ■ 大型犬（16kg~）
-      ・豚ヒレ肉 … 230g
-      ・かぼちゃ … 120g
-      ・小松菜 … 70g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "豚ヒレ肉", amount: "130g", tags: [ "pork" ] },
+    { name: "かぼちゃ", amount: "70g" },
+    { name: "小松菜", amount: "40g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① かぼちゃを加熱
@@ -5617,31 +4540,15 @@ Recipe.create!(
 
   description: "運動量に見合ったエネルギー補給とダイエットを両立したいわんこ向けのレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉 … 80g
-      ・玄米 … 60g
-      ・人参 … 15g
-      ・ブロッコリー … 25g
-      ・かつお節 … 2g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 130g
-      ・玄米 … 100g
-      ・人参 … 30g
-      ・ブロッコリー … 40g
-      ・かつお節 … 5g
-
-     ■ 大型犬（16kg~）
-      ・鶏むね肉 … 230g
-      ・玄米 … 180g
-      ・人参 … 50g
-      ・ブロッコリー … 80g
-      ・かつお節 … 8g
-
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "130g", tags: [ "chicken" ] },
+    { name: "玄米", amount: "100g", tags: [ "grain" ] },
+    { name: "人参", amount: "30g" },
+    { name: "ブロッコリー", amount: "40g" },
+    { name: "かつお節", amount: "5g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 玄米をやわらかめに炊く
@@ -5685,30 +4592,15 @@ Recipe.create!(
 
   description: "高タンパクで消化にやさしく、やわらかく仕上げた体重維持サポートレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ささみ … 90g
-      ・絹ごし豆腐 … 80g
-      ・白米 … 90g
-      ・かぼちゃ … 40g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ささみ … 160g
-      ・絹ごし豆腐 … 150g
-      ・白米 … 150g
-      ・かぼちゃ … 70g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・鶏ささみ … 280g
-      ・絹ごし豆腐 … 260g
-      ・白米 … 260g
-      ・かぼちゃ … 120g
-      ・人参 … 60g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: "160g", tags: [ "chicken" ] },
+    { name: "絹ごし豆腐", amount: "150g", tags: [ "soy" ] },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "70g" },
+    { name: "人参", amount: "35g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
@@ -5765,31 +4657,15 @@ Recipe.create!(
 
   description: "EPA・DHAで脳と関節をサポート。やわらかく仕上げた体力維持向けエネルギーレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（皮なし）… 90g
-      ・じゃがいも … 80g
-      ・白米 … 80g
-      ・小松菜 … 30g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（皮なし）… 160g
-      ・じゃがいも … 140g
-      ・白米 … 140g
-      ・小松菜 … 50g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・生鮭（皮なし）… 270g
-      ・じゃがいも … 240g
-      ・白米 … 240g
-      ・小松菜 … 85g
-      ・人参 … 60g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: "160g", tags: [ "fish" ] },
+    { name: "じゃがいも", amount: "140g" },
+    { name: "白米", amount: "140g", tags: [ "rice" ] },
+    { name: "小松菜", amount: "50g" },
+    { name: "人参", amount: "35g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにして炊き、やわらかめに仕上げてください。
@@ -5842,30 +4718,15 @@ Recipe.create!(
 
   description: "鶏ひき肉でなめらかに仕上げ、かぼちゃでエネルギーを補う体重維持レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ひき肉 … 100g
-      ・白米 … 90g
-      ・かぼちゃ … 60g
-      ・大根 … 40g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ひき肉 … 170g
-      ・白米 … 150g
-      ・かぼちゃ … 100g
-      ・大根 … 70g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・鶏ひき肉 … 290g
-      ・白米 … 260g
-      ・かぼちゃ … 170g
-      ・大根 … 120g
-      ・人参 … 60g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "鶏ひき肉", amount: "170g", tags: [ "chicken" ] },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "100g" },
+    { name: "大根", amount: "70g" },
+    { name: "人参", amount: "35g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
@@ -5911,31 +4772,15 @@ Recipe.create!(
 
   description: "飲み込みやすさ重視。里芋の自然なとろみで、どんなわんこでも安心して食べられるやさしい設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・タラ … 90g
-      ・里芋 … 100g
-      ・白米 … 80g
-      ・小松菜 … 30g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・タラ … 160g
-      ・里芋 … 170g
-      ・白米 … 140g
-      ・小松菜 … 50g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・タラ … 270g
-      ・里芋 … 290g
-      ・白米 … 240g
-      ・小松菜 … 85g
-      ・人参 … 60g
-  TEXT
-
+ ingredients_json: {
+  medium: [
+    { name: "タラ", amount: "160g", tags: [ "fish" ] },
+    { name: "里芋", amount: "170g" },
+    { name: "白米", amount: "140g", tags: [ "rice" ] },
+    { name: "小松菜", amount: "50g" },
+    { name: "人参", amount: "35g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
     水を多めにして炊き、軽く潰します。
@@ -5977,31 +4822,15 @@ Recipe.create!(
 
   description: "エネルギー強化型。牛ひき肉と卵で体重増加をサポートしつつ、ふんわり仕上げで食べやすく。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・牛ひき肉 … 90g
-      ・卵 … 1個
-      ・白米 … 90g
-      ・かぼちゃ … 50g
-      ・ほうれん草 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・牛ひき肉 … 160g
-      ・卵 … 2個
-      ・白米 … 150g
-      ・かぼちゃ … 85g
-      ・ほうれん草 … 45g
-
-    ■ 大型犬（16kg~）
-      ・牛ひき肉 … 270g
-      ・卵 … 3個
-      ・白米 … 260g
-      ・かぼちゃ … 150g
-      ・ほうれん草 … 80g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "牛ひき肉", amount: "160g", tags: [ "beef" ] },
+    { name: "卵", amount: "2個", tags: [ "egg" ] },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "85g" },
+    { name: "ほうれん草", amount: "45g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
     水を多めにしてください。
@@ -6043,30 +4872,15 @@ Recipe.create!(
 
   description: "普通の活動量があるわんこ向け。エネルギー補給を強化しながらも、やわらかく消化に配慮した体重増加サポート設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏もも肉（皮なし）… 110g
-      ・白米 … 95g
-      ・さつまいも … 70g
-      ・ブロッコリー … 30g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし）… 190g
-      ・白米 … 160g
-      ・さつまいも … 120g
-      ・ブロッコリー … 50g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏もも肉（皮なし）… 320g
-      ・白米 … 270g
-      ・さつまいも … 210g
-      ・ブロッコリー … 85g
-      ・人参 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: "190g", tags: [ "chicken" ] },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: "120g" },
+    { name: "ブロッコリー", amount: "50g" },
+    { name: "人参", amount: "40g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊きます
@@ -6118,31 +4932,15 @@ Recipe.create!(
 
   description: "EPA・DHAで関節と脳を支えつつ、豆腐でやわらかく仕上げた体力維持レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（皮なし）… 100g
-      ・絹ごし豆腐 … 90g
-      ・白米 … 85g
-      ・かぼちゃ … 60g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（皮なし）… 170g
-      ・絹ごし豆腐 … 150g
-      ・白米 … 145g
-      ・かぼちゃ … 100g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・生鮭（皮なし）… 290g
-      ・絹ごし豆腐 … 260g
-      ・白米 … 250g
-      ・かぼちゃ … 170g
-      ・小松菜 … 85g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: "170g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: "150g" },
+    { name: "白米", amount: "145g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "100g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにして炊き、軽く潰しておきます。
@@ -6188,30 +4986,15 @@ Recipe.create!(
 
   description: "里芋の自然なとろみで飲み込みやすく仕上げた和食風レシピ。消化に配慮しながら体重増加をサポートします。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮なし）… 100g
-      ・白米 … 90g
-      ・里芋 … 100g
-      ・人参 … 25g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし）… 170g
-      ・白米 … 150g
-      ・里芋 … 170g
-      ・人参 … 40g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉（皮なし）… 290g
-      ・白米 … 260g
-      ・里芋 … 290g
-      ・人参 … 70g
-      ・小松菜 … 85g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "170g", tags: [ "chicken" ] },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "里芋", amount: "170g" },
+    { name: "人参", amount: "40g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
@@ -6258,30 +5041,15 @@ Recipe.create!(
 
   description: "白身魚で消化にやさしく、かぼちゃでエネルギー補給。和風のやわらか煮込み仕立て。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・タラ … 100g
-      ・白米 … 85g
-      ・かぼちゃ … 80g
-      ・大根 … 50g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・タラ … 170g
-      ・白米 … 145g
-      ・かぼちゃ … 140g
-      ・大根 … 85g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・タラ … 290g
-      ・白米 … 250g
-      ・かぼちゃ … 240g
-      ・大根 … 150g
-      ・人参 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "タラ", amount: "170g", tags: [ "fish" ] },
+    { name: "白米", amount: "145g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "140g" },
+    { name: "大根", amount: "85g" },
+    { name: "人参", amount: "40g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
@@ -6324,31 +5092,15 @@ Recipe.create!(
 
   description: "あんかけ風に仕上げて飲み込みやすく。痩せ型わんこの体重増加をやさしく支えます。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ひき肉 … 100g
-      ・絹ごし豆腐 … 90g
-      ・白米 … 90g
-      ・かぼちゃ … 60g
-      ・ほうれん草 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ひき肉 … 170g
-      ・絹ごし豆腐 … 150g
-      ・白米 … 150g
-      ・かぼちゃ … 100g
-      ・ほうれん草 … 45g
-
-    ■ 大型犬（16kg~）
-      ・鶏ひき肉 … 290g
-      ・絹ごし豆腐 … 260g
-      ・白米 … 260g
-      ・かぼちゃ … 170g
-      ・ほうれん草 … 80g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏ひき肉", amount: "170g", tags: [ "chicken" ] },
+    { name: "絹ごし豆腐", amount: "150g" },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "100g" },
+    { name: "ほうれん草", amount: "45g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊き、軽く潰します。
       水を多めにして炊いてください。
@@ -6394,31 +5146,15 @@ Recipe.create!(
 
   description: "活発に動く細身のわんこ向け。消化に配慮しながら、持久力と体重増加を両立するエネルギー強化レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏もも肉（皮なし）… 120g
-      ・白米 … 100g
-      ・さつまいも … 90g
-      ・ブロッコリー … 30g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉（皮なし）… 210g
-      ・白米 … 170g
-      ・さつまいも … 160g
-      ・ブロッコリー … 50g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏もも肉（皮なし）… 350g
-      ・白米 … 290g
-      ・さつまいも … 270g
-      ・ブロッコリー … 85g
-      ・人参 … 70g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: "210g", tags: [ "chicken" ] },
+    { name: "白米", amount: "170g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: "160g" },
+    { name: "ブロッコリー", amount: "50g" },
+    { name: "人参", amount: "40g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     洗米後30分浸水させ、水をやや多めにして炊いてください。
@@ -6470,30 +5206,15 @@ Recipe.create!(
 
   description: "活発なわんこの関節と筋肉を支える設計。良質脂質と高タンパクで体重増加をサポートします。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（皮なし）… 110g
-      ・絹ごし豆腐 … 90g
-      ・白米 … 95g
-      ・かぼちゃ … 80g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭（皮なし）… 190g
-      ・絹ごし豆腐 … 150g
-      ・白米 … 160g
-      ・かぼちゃ … 140g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・生鮭（皮なし）… 320g
-      ・絹ごし豆腐 … 260g
-      ・白米 … 270g
-      ・かぼちゃ … 240g
-      ・小松菜 … 85g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: "190g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: "150g" },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "140g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
@@ -6543,30 +5264,15 @@ Recipe.create!(
 
   description: "活発に動く細身のわんこ向け。鉄分とタンパク質を強化し、筋肉維持と体力向上を支える設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・牛もも肉（脂身除く）… 110g
-      ・白米 … 100g
-      ・かぼちゃ … 90g
-      ・小松菜 … 30g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・牛もも肉（脂身除く）… 190g
-      ・白米 … 170g
-      ・かぼちゃ … 160g
-      ・小松菜 … 50g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・牛もも肉（脂身除く）… 320g
-      ・白米 … 290g
-      ・かぼちゃ … 270g
-      ・小松菜 … 85g
-      ・人参 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "牛もも肉", amount: "190g", tags: [ "beef" ] },
+    { name: "白米", amount: "170g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "160g", tags: [] },
+    { name: "小松菜", amount: "50g", tags: [] },
+    { name: "人参", amount: "40g", tags: [] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
@@ -6610,31 +5316,15 @@ Recipe.create!(
 
   description: "吸収率を高める卵を加えた設計。消化に配慮しつつ、活発な老犬のエネルギー不足を防ぎます。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮なし）… 110g
-      ・卵 … 1個
-      ・白米 … 95g
-      ・さつまいも … 80g
-      ・ほうれん草 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉（皮なし）… 190g
-      ・卵 … 2個
-      ・白米 … 160g
-      ・さつまいも … 140g
-      ・ほうれん草 … 45g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉（皮なし）… 320g
-      ・卵 … 3個
-      ・白米 … 270g
-      ・さつまいも … 240g
-      ・ほうれん草 … 80g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "190g", tags: [ "chicken" ] },
+    { name: "卵", amount: "2個", tags: [ "egg" ] },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: "140g", tags: [] },
+    { name: "ほうれん草", amount: "45g", tags: [] }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
 
@@ -6684,30 +5374,15 @@ Recipe.create!(
 
   description: "軽やかな白身魚で消化に配慮しつつ、じゃがいもでエネルギーを強化した活発わんこ向け設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・タラ … 110g
-      ・白米 … 95g
-      ・じゃがいも … 90g
-      ・ブロッコリー … 30g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・タラ … 190g
-      ・白米 … 160g
-      ・じゃがいも … 160g
-      ・ブロッコリー … 50g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・タラ … 320g
-      ・白米 … 270g
-      ・じゃがいも … 270g
-      ・ブロッコリー … 85g
-      ・人参 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "タラ", amount: "190g", tags: [ "fish" ] },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "じゃがいも", amount: "160g", tags: [] },
+    { name: "ブロッコリー", amount: "50g", tags: [] },
+    { name: "人参", amount: "40g", tags: [] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます。
@@ -6757,30 +5432,15 @@ Recipe.create!(
 
   description: "おだやかに過ごすわんこ向け。脂質を抑えつつ、消化にやさしい白身魚と根菜で内臓に負担をかけない設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・白身魚（タラなど）… 120g
-      ・白米 … 80g
-      ・大根 … 60g
-      ・人参 … 25g
-      ・小松菜 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・白身魚 … 200g
-      ・白米 … 140g
-      ・大根 … 100g
-      ・人参 … 40g
-      ・小松菜 … 35g
-
-    ■ 大型犬（16kg~）
-      ・白身魚 … 330g
-      ・白米 … 240g
-      ・大根 … 170g
-      ・人参 … 70g
-      ・小松菜 … 60g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "白身魚", amount: "200g", tags: [ "fish" ] },
+    { name: "白米", amount: "140g", tags: [ "rice" ] },
+    { name: "大根", amount: "100g", tags: [] },
+    { name: "人参", amount: "40g", tags: [] },
+    { name: "小松菜", amount: "35g", tags: [] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -6826,31 +5486,15 @@ Recipe.create!(
 
   description: "おだやかなわんこ向け。高タンパク・低脂質で、やわらかく食べやすい消化重視メニュー。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ささみ … 110g
-      ・木綿豆腐 … 70g
-      ・白米 … 70g
-      ・かぼちゃ … 40g
-      ・キャベツ … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ささみ … 180g
-      ・木綿豆腐 … 120g
-      ・白米 … 120g
-      ・かぼちゃ … 70g
-      ・キャベツ … 50g
-
-    ■ 大型犬（16kg~）
-      ・鶏ささみ … 300g
-      ・木綿豆腐 … 200g
-      ・白米 … 200g
-      ・かぼちゃ … 120g
-      ・キャベツ … 85g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: "180g", tags: [ "chicken" ] },
+    { name: "木綿豆腐", amount: "120g", tags: [ "soy" ] },
+    { name: "白米", amount: "120g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: "70g", tags: [] },
+    { name: "キャベツ", amount: "50g", tags: [] }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水を多めにし、消化しやすく炊きます。
@@ -6892,31 +5536,15 @@ Recipe.create!(
 
   description: "穏やかに過ごすわんこ向け。里芋の自然なとろみで飲み込みやすく、脂質を抑えつつ旨味を感じられる和風設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（皮なし）… 110g
-      ・白米 … 80g
-      ・里芋 … 70g
-      ・人参 … 25g
-      ・小松菜 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭 … 180g
-      ・白米 … 140g
-      ・里芋 … 120g
-      ・人参 … 40g
-      ・小松菜 … 35g
-
-    ■ 大型犬（16kg~）
-      ・生鮭 … 300g
-      ・白米 … 240g
-      ・里芋 … 200g
-      ・人参 … 70g
-      ・小松菜 … 60g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: "180g", tags: [ "fish" ] },
+    { name: "白米", amount: "140g", tags: [ "rice" ] },
+    { name: "里芋", amount: "120g", tags: [] },
+    { name: "人参", amount: "40g", tags: [] },
+    { name: "小松菜", amount: "35g", tags: [] }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水を多めにし、消化しやすい状態に。
@@ -6958,30 +5586,15 @@ Recipe.create!(
 
   description: "消化にやさしい和風みぞれ煮。水分多めで腎臓負担にも配慮した軽やか設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮なし）… 120g
-      ・白米 … 75g
-      ・白菜 … 80g
-      ・大根 … 60g
-      ・人参 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 200g
-      ・白米 … 130g
-      ・白菜 … 140g
-      ・大根 … 100g
-      ・人参 … 35g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 330g
-      ・白米 … 220g
-      ・白菜 … 230g
-      ・大根 … 170g
-      ・人参 … 60g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "200g", tags: [ "chicken" ] },
+    { name: "白米", amount: "130g", tags: [ "rice" ] },
+    { name: "白菜", amount: "140g" },
+    { name: "大根", amount: "100g" },
+    { name: "人参", amount: "35g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く。
@@ -7022,31 +5635,15 @@ Recipe.create!(
 
   description: "やわらか雑炊スタイル。低脂質で内臓にやさしい。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・たら … 120g
-      ・白米 … 70g
-      ・木綿豆腐 … 60g
-      ・かぼちゃ … 40g
-      ・ほうれん草 … 20g
-
-    ■ 中型犬（6〜15kg）
-      ・たら … 200g
-      ・白米 … 120g
-      ・木綿豆腐 … 100g
-      ・かぼちゃ … 70g
-      ・ほうれん草 … 35g
-
-    ■ 大型犬（16kg~）
-      ・たら … 330g
-      ・白米 … 210g
-      ・木綿豆腐 … 170g
-      ・かぼちゃ … 120g
-      ・ほうれん草 … 60g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "たら", amount: "200g", tags: [ "fish" ] },
+    { name: "白米", amount: "120g", tags: [ "rice" ] },
+    { name: "木綿豆腐", amount: "100g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: "70g" },
+    { name: "ほうれん草", amount: "35g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊く
     白米を多めの水で炊き、雑炊状に。
@@ -7091,31 +5688,15 @@ Recipe.create!(
 
   description: "普通運動量のわんこ向け。納豆の発酵パワーで腸内環境を整えつつ、低脂質で体重維持をサポートする和風設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮なし）… 120g
-      ・白米 … 85g
-      ・ひきわり納豆 … 25g
-      ・かぼちゃ … 45g
-      ・小松菜 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 200g
-      ・白米 … 150g
-      ・ひきわり納豆 … 45g
-      ・かぼちゃ … 80g
-      ・小松菜 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 330g
-      ・白米 … 250g
-      ・ひきわり納豆 … 75g
-      ・かぼちゃ … 140g
-      ・小松菜 … 65g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "200g", tags: [ "chicken" ] },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "ひきわり納豆", amount: "45g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: "80g" },
+    { name: "小松菜", amount: "40g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     消化を考え、水をやや多めに。
@@ -7159,30 +5740,15 @@ Recipe.create!(
 
   description: "やさしく栄養補給したいわんこ向け。山芋の自然なとろみで嚥下をサポートし、適度なエネルギー補給もできる設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・白身魚（たらなど）… 120g
-      ・白米 … 90g
-      ・山芋 … 50g
-      ・人参 … 30g
-      ・白菜 … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・白身魚 … 200g
-      ・白米 … 160g
-      ・山芋 … 90g
-      ・人参 … 45g
-      ・白菜 … 100g
-
-    ■ 大型犬（16kg~）
-      ・白身魚 … 330g
-      ・白米 … 260g
-      ・山芋 … 150g
-      ・人参 … 75g
-      ・白菜 … 170g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "白身魚", amount: "200g", tags: [ "fish" ] },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "山芋", amount: "90g" },
+    { name: "人参", amount: "45g" },
+    { name: "白菜", amount: "100g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く。
@@ -7216,7 +5782,7 @@ Recipe.create!(
 )
 
 Recipe.create!(
-  name: "鯛とさつまいものやさしい炊き込み風",
+  name: "鯛とさつまいものちょっと贅沢炊き込みごはん",
   age_stage: :senior,
   body_type: :normal,
   activity_level: :medium,
@@ -7224,30 +5790,15 @@ Recipe.create!(
 
   description: "上品な白身魚で脂質を抑えつつ、さつまいもで自然なエネルギー補給。普通運動量のわんこ向け和風設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鯛（皮なし）… 120g
-      ・白米 … 90g
-      ・さつまいも … 60g
-      ・人参 … 30g
-      ・小松菜 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鯛 … 200g
-      ・白米 … 160g
-      ・さつまいも … 100g
-      ・人参 … 45g
-      ・小松菜 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鯛 … 330g
-      ・白米 … 270g
-      ・さつまいも … 170g
-      ・人参 … 75g
-      ・小松菜 … 65g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鯛", amount: "200g", tags: [ "fish" ] },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: "100g" },
+    { name: "人参", amount: "45g" },
+    { name: "小松菜", amount: "40g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く。
@@ -7290,30 +5841,15 @@ Recipe.create!(
 
   description: "やわらかく飲み込みやすい設計。適度な炭水化物と高タンパクで穏やかな体力維持をサポート。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ささみ … 120g
-      ・白米 … 85g
-      ・長芋 … 50g
-      ・白菜 … 70g
-      ・人参 … 25g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ささみ … 200g
-      ・白米 … 150g
-      ・長芋 … 90g
-      ・白菜 … 120g
-      ・人参 … 40g
-
-    ■ 大型犬（16kg~）
-      ・鶏ささみ … 330g
-      ・白米 … 250g
-      ・長芋 … 150g
-      ・白菜 … 200g
-      ・人参 … 70g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: "200g", tags: [ "chicken" ] },
+    { name: "白米", amount: "150g", tags: [ "rice" ] },
+    { name: "長芋", amount: "90g" },
+    { name: "白菜", amount: "120g" },
+    { name: "人参", amount: "40g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く。
@@ -7358,30 +5894,15 @@ Recipe.create!(
 
   description: "低脂質ながら適度な栄養補給ができる設計。豆腐でやわらかさをプラスした和風ごはん。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・たら … 120g
-      ・白米 … 90g
-      ・木綿豆腐 … 70g
-      ・ほうれん草 … 30g
-      ・かぼちゃ … 45g
-
-    ■ 中型犬（6〜15kg）
-      ・たら … 200g
-      ・白米 … 160g
-      ・木綿豆腐 … 120g
-      ・ほうれん草 … 45g
-      ・かぼちゃ … 80g
-
-    ■ 大型犬（16kg~）
-      ・たら … 330g
-      ・白米 … 260g
-      ・木綿豆腐 … 200g
-      ・ほうれん草 … 75g
-      ・かぼちゃ … 140g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "たら", amount: "200g", tags: [ "fish" ] },
+    { name: "白米", amount: "160g", tags: [ "rice" ] },
+    { name: "木綿豆腐", amount: "120g", tags: [ "soy" ] },
+    { name: "ほうれん草", amount: "45g" },
+    { name: "かぼちゃ", amount: "80g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く。
@@ -7428,31 +5949,15 @@ Recipe.create!(
 
   description: "活発に動くわんこ向け。良質な脂質を含む鮭と、持続エネルギー源のさつまいもで体力維持をサポートする設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・生鮭（皮なし）… 130g
-      ・白米 … 100g
-      ・さつまいも … 70g
-      ・人参 … 30g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・生鮭 … 220g
-      ・白米 … 180g
-      ・さつまいも … 120g
-      ・人参 … 50g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・生鮭 … 360g
-      ・白米 … 300g
-      ・さつまいも … 200g
-      ・人参 … 85g
-      ・小松菜 … 80g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "生鮭", amount: "220g", tags: [ "fish" ] },
+    { name: "白米", amount: "180g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: "120g" },
+    { name: "人参", amount: "50g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水をやや多めにして炊いてください。
@@ -7496,30 +6001,15 @@ Recipe.create!(
 
   description: "活動量の多いわんこ向け。適度な脂質と消化にやさしい山芋で、体力維持と食べやすさを両立。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏もも肉（皮なし）… 140g
-      ・白米 … 95g
-      ・山芋 … 60g
-      ・白菜 … 80g
-      ・人参 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏もも肉 … 230g
-      ・白米 … 170g
-      ・山芋 … 100g
-      ・白菜 … 140g
-      ・人参 … 50g
-
-    ■ 大型犬（16kg~）
-      ・鶏もも肉 … 380g
-      ・白米 … 290g
-      ・山芋 … 170g
-      ・白菜 … 230g
-      ・人参 … 85g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏もも肉", amount: "230g", tags: [ "chicken" ] },
+    { name: "白米", amount: "170g", tags: [ "rice" ] },
+    { name: "山芋", amount: "100g" },
+    { name: "白菜", amount: "140g" },
+    { name: "人参", amount: "50g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
@@ -7564,31 +6054,15 @@ Recipe.create!(
 
   description: "活発なわんこ向け。ぶりの良質な脂とタンパク質で筋肉維持をサポートしつつ、大根で消化に配慮した和風設計。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・ぶり（皮なし）… 130g
-      ・白米 … 100g
-      ・大根 … 80g
-      ・人参 … 30g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・ぶり … 220g
-      ・白米 … 180g
-      ・大根 … 140g
-      ・人参 … 50g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・ぶり … 360g
-      ・白米 … 300g
-      ・大根 … 230g
-      ・人参 … 85g
-      ・小松菜 … 80g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "ぶり", amount: "220g", tags: [ "fish" ] },
+    { name: "白米", amount: "180g", tags: [ "rice" ] },
+    { name: "大根", amount: "140g" },
+    { name: "人参", amount: "50g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水を少し多めにして炊いてください。
@@ -7631,30 +6105,15 @@ Recipe.create!(
 
   description: "腸内環境を整えながら体力維持をサポート。活発なわんこに適した発酵パワー活用メニュー。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉（皮なし）… 130g
-      ・白米 … 100g
-      ・ひきわり納豆 … 30g
-      ・かぼちゃ … 60g
-      ・白菜 … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 220g
-      ・白米 … 180g
-      ・ひきわり納豆 … 50g
-      ・かぼちゃ … 100g
-      ・白菜 … 110g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 360g
-      ・白米 … 300g
-      ・ひきわり納豆 … 85g
-      ・かぼちゃ … 170g
-      ・白菜 … 180g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "220g", tags: [ "chicken" ] },
+    { name: "白米", amount: "180g", tags: [ "rice" ] },
+    { name: "ひきわり納豆", amount: "50g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: "100g" },
+    { name: "白菜", amount: "110g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
@@ -7698,31 +6157,15 @@ Recipe.create!(
 
   description: "消化にやさしく、それでいてエネルギーも確保。里芋のとろみで飲み込みをサポート",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・たら … 130g
-      ・白米 … 100g
-      ・里芋 … 80g
-      ・人参 … 30g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・たら … 220g
-      ・白米 … 180g
-      ・里芋 … 140g
-      ・人参 … 50g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・たら … 360g
-      ・白米 … 300g
-      ・里芋 … 230g
-      ・人参 … 85g
-      ・小松菜 … 80g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "たら", amount: "220g", tags: [ "fish" ] },
+    { name: "白米", amount: "180g", tags: [ "rice" ] },
+    { name: "里芋", amount: "140g" },
+    { name: "人参", amount: "50g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやややわらかめに炊く
     水を多めにして炊いてください。
@@ -7767,34 +6210,16 @@ Recipe.create!(
 
   description: "肥満傾向の穏やかなわんこ向け。低脂質・高たんぱくで満足感を出しながら体重管理をサポートする和風レシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・白身魚 … 140g
-        ・木綿豆腐 … 110g
-        ・大根 … 70g
-        ・人参 … 35g
-        ・小松菜 … 30g
-        ・白米 … 120g
-
-      ■ 中型犬（6〜15kg）
-        ・白身魚 … 240g
-        ・木綿豆腐 … 180g
-        ・大根 … 130g
-        ・人参 … 60g
-        ・小松菜 … 50g
-        ・白米 … 220g
-
-      ■ 大型犬（16kg〜）
-        ・白身魚 … 390g
-        ・木綿豆腐 … 300g
-        ・大根 … 210g
-        ・人参 … 95g
-        ・小松菜 … 85g
-        ・白米 … 360g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "白身魚", amount: "240g", tags: [ "fish" ] },
+    { name: "木綿豆腐", amount: "180g", tags: [ "soy" ] },
+    { name: "大根", amount: "130g" },
+    { name: "人参", amount: "60g" },
+    { name: "小松菜", amount: "50g" },
+    { name: "白米", amount: "220g", tags: [ "rice" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
@@ -7844,30 +6269,15 @@ Recipe.create!(
 
   description: "体重管理が必要なわんこ向け。低脂質ささみと食物繊維で満足感を出す軽めの雑炊レシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・鶏ささみ … 160g
-        ・キャベツ … 80g
-        ・人参 … 40g
-        ・しめじ … 35g
-        ・白米 … 110g
-
-      ■ 中型犬（6〜15kg）
-        ・鶏ささみ … 270g
-        ・キャベツ … 140g
-        ・人参 … 70g
-        ・しめじ … 60g
-       ・白米 … 200g
-
-      ■ 大型犬（16kg〜）
-        ・鶏ささみ … 440g
-        ・キャベツ … 230g
-        ・人参 … 110g
-        ・しめじ … 100g
-        ・白米 … 330g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: "270g", tags: [ "chicken" ] },
+    { name: "キャベツ", amount: "140g" },
+    { name: "人参", amount: "70g" },
+    { name: "しめじ", amount: "60g" },
+    { name: "白米", amount: "200g", tags: [ "rice" ] }
+  ]
+},
 
 
   instructions: <<~TEXT,
@@ -7914,31 +6324,15 @@ Recipe.create!(
 
   description: "肥満傾向の穏やかなわんこ向け。低脂質の鶏むね肉とおからでかさ増しし、満腹感を高めた体重管理レシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-▪ 小型犬（〜5kg目安）
-  ・鶏むね肉 … 160g
-  ・生おから … 55g
-  ・白菜 … 80g
-  ・人参 … 40g
-  ・白米 … 110g
-
-■ 中型犬（6〜15kg）
-  ・鶏むね肉 … 280g
-  ・生おから … 95g
-  ・白菜 … 140g
-  ・人参 … 70g
-  ・白米 … 200g
-
-■ 大型犬（16kg〜）
-  ・鶏むね肉 … 460g
-  ・生おから … 150g
-  ・白菜 … 230g
-  ・人参 … 115g
-  ・白米 … 330g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "280g", tags: [ "chicken" ] },
+    { name: "生おから", amount: "95g", tags: [ "soy" ] },
+    { name: "白菜", amount: "140g" },
+    { name: "人参", amount: "70g" },
+    { name: "白米", amount: "200g", tags: [ "rice" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊く
@@ -7986,31 +6380,15 @@ Recipe.create!(
 
   description: "低脂質な白身魚を中心に、やわらかく仕上げた満足感のある軽め雑炊レシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・タラ … 140g
-        ・ブロッコリー … 55g
-        ・大根 … 75g
-        ・無調整豆乳 … 50ml
-        ・白米 … 110g
-
-      ■ 中型犬（6〜15kg）
-        ・タラ … 240g
-        ・ブロッコリー … 95g
-        ・大根 … 130g
-        ・無調整豆乳 … 85ml
-        ・白米 … 200g
-
-      ■ 大型犬（16kg〜）
-        ・タラ … 390g
-        ・ブロッコリー … 155g
-        ・大根 … 210g
-        ・無調整豆乳 … 140ml
-        ・白米 … 330g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "タラ", amount: "240g", tags: [ "fish" ] },
+    { name: "ブロッコリー", amount: "95g" },
+    { name: "大根", amount: "130g" },
+    { name: "無調整豆乳", amount: "85ml", tags: [ "soy" ] },
+    { name: "白米", amount: "200g", tags: [ "rice" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊く
@@ -8058,30 +6436,15 @@ Recipe.create!(
 
   description: "脂質を抑えながらしっかりたんぱく質を補給できる、穏やかなわんこ向けとろみ仕立てレシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・鶏ささみ … 160g
-        ・小松菜 … 35g
-        ・白菜 … 80g
-        ・えのき … 35g
-        ・白米 … 110g
-
-      ■ 中型犬（6〜15kg）
-        ・鶏ささみ … 270g
-        ・小松菜 … 60g
-        ・白菜 … 140g
-        ・えのき … 60g
-        ・白米 … 200g
-
-      ■ 大型犬（16kg〜）
-        ・鶏ささみ … 440g
-        ・小松菜 … 100g
-        ・白菜 … 230g
-        ・えのき … 100g
-        ・白米 … 330g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: "270g", tags: [ "chicken" ] },
+    { name: "小松菜", amount: "60g" },
+    { name: "白菜", amount: "140g" },
+    { name: "えのき", amount: "60g" },
+    { name: "白米", amount: "200g", tags: [ "rice" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊く
@@ -8130,31 +6493,15 @@ Recipe.create!(
 
   description: "肥満傾向だが日常的に動くわんこ向け。低脂質むね肉と高野豆腐で筋肉維持を意識した体重管理レシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-       ▪ 小型犬（〜5kg目安）
-        ・鶏むね肉 … 180g
-        ・高野豆腐（戻し後） … 70g
-        ・大根 … 75g
-        ・人参 … 40g
-        ・白米 … 130g
-
-      ■ 中型犬（6〜15kg）
-        ・鶏むね肉 … 300g
-        ・高野豆腐（戻し後） … 120g
-        ・大根 … 130g
-        ・人参 … 70g
-        ・白米 … 230g
-
-      ■ 大型犬（16kg〜）
-        ・鶏むね肉 … 500g
-        ・高野豆腐（戻し後） … 190g
-        ・大根 … 210g
-        ・人参 … 115g
-        ・白米 … 380g
-  TEXT
-
+ ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "300g", tags: [ "chicken" ] },
+    { name: "高野豆腐", amount: "120g", tags: [ "soy" ] },
+    { name: "大根", amount: "130g" },
+    { name: "人参", amount: "70g" },
+    { name: "白米", amount: "230g", tags: [ "rice" ] }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかめに炊く
     水をやや多めにして炊きます。
@@ -8203,30 +6550,15 @@ Recipe.create!(
 
   description: "発酵食品を取り入れた、消化に配慮した低脂質雑炊レシピ",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-      ▪ 小型犬（〜5kg目安）
-        ・タラ … 160g
-        ・ひきわり納豆 … 55g
-        ・白菜 … 80g
-        ・小松菜 … 40g
-        ・白米 … 120g
-
-      ■ 中型犬（6〜15kg）
-        ・タラ … 270g
-        ・ひきわり納豆 … 95g
-        ・白菜 … 140g
-       ・小松菜 … 70g
-        ・白米 … 210g
-
-      ■ 大型犬（16kg〜）
-        ・タラ … 440g
-        ・ひきわり納豆 … 155g
-        ・白菜 … 230g
-        ・小松菜 … 115g
-        ・白米 … 350g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "タラ", amount: "270g", tags: [ "fish" ] },
+    { name: "ひきわり納豆", amount: "95g", tags: [ "soy" ] },
+    { name: "白菜", amount: "140g" },
+    { name: "小松菜", amount: "70g" },
+    { name: "白米", amount: "210g", tags: [ "rice" ] }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊く
@@ -8277,31 +6609,15 @@ Recipe.create!(
 
   description: "低脂質の白身魚におからを合わせ、満腹感を高めながら筋肉維持を意識した体重管理レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・白身魚（タラなど）… 140g
-      ・生おから … 60g
-      ・白米 … 110g
-      ・大根 … 80g
-      ・小松菜 … 35g
-
-    ■ 中型犬（6〜15kg）
-      ・白身魚（タラなど）… 240g
-      ・生おから … 100g
-      ・白米 … 190g
-      ・大根 … 140g
-      ・小松菜 … 60g
-
-    ■ 大型犬（16kg~）
-      ・白身魚（タラなど）… 390g
-      ・生おから … 165g
-      ・白米 … 320g
-      ・大根 … 230g
-      ・小松菜 … 100g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "白身魚", amount: "240g", tags: [ "fish" ] },
+    { name: "生おから", amount: "100g", tags: [ "soy" ] },
+    { name: "白米", amount: "190g", tags: [ "rice" ] },
+    { name: "大根", amount: "140g" },
+    { name: "小松菜", amount: "60g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにして炊き、飲み込みやすい状態にしてください。
@@ -8346,31 +6662,15 @@ Recipe.create!(
 
   description: "発酵食品を取り入れ、腸内環境を整えながら体重管理を行うレシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・タラ … 160g
-      ・ひきわり納豆 … 60g
-      ・白米 … 115g
-      ・大根 … 80g
-      ・小松菜 … 40g
-
-    ■ 中型犬（6〜15kg）
-      ・タラ … 270g
-      ・ひきわり納豆 … 100g
-      ・白米 … 200g
-      ・大根 … 140g
-      ・小松菜 … 70g
-
-    ■ 大型犬（16kg~）
-      ・タラ … 450g
-      ・ひきわり納豆 … 170g
-      ・白米 … 330g
-      ・大根 … 230g
-      ・小松菜 … 115g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "タラ", amount: "270g", tags: [ "fish" ] },
+    { name: "ひきわり納豆", amount: "100g", tags: [ "soy" ] },
+    { name: "白米", amount: "200g", tags: [ "rice" ] },
+    { name: "大根", amount: "140g" },
+    { name: "小松菜", amount: "70g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を多めにして炊き、軽く潰せる程度にしてください。
@@ -8417,30 +6717,15 @@ Recipe.create!(
 
   description: "高タンパク・低脂肪のささみを中心に、代謝を支える海藻と野菜を組み合わせたレシピ。筋肉を守りながら脂肪を増やしにくい設計です。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏ささみ … 140g
-      ・白米 … 80g
-      ・キャベツ … 80g
-      ・人参 … 40g
-      ・乾燥ひじき（水戻し後）… 20g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏ささみ … 240g
-      ・白米 … 140g
-      ・キャベツ … 140g
-      ・人参 … 70g
-      ・乾燥ひじき（水戻し後）… 35g
-
-    ■ 大型犬（16kg~）
-      ・鶏ささみ … 400g
-      ・白米 … 230g
-      ・キャベツ … 230g
-      ・人参 … 120g
-      ・乾燥ひじき（水戻し後）… 60g
-  TEXT
+ ingredients_json: {
+  medium: [
+    { name: "鶏ささみ", amount: "240g", tags: [ "chicken" ] },
+    { name: "白米", amount: "140g", tags: [ "rice" ] },
+    { name: "キャベツ", amount: "140g" },
+    { name: "人参", amount: "70g" },
+    { name: "乾燥ひじき（水戻し後）", amount: "35g" }
+  ]
+},
 
   instructions: <<~TEXT,
      ① 白米をやわらかく炊きます
@@ -8487,31 +6772,15 @@ Recipe.create!(
 
   description: "脂肪の少ない白身魚と豆腐で筋肉を守りつつ、関節に配慮したやわらか設計。活発なわんこの体を軽く支えるごはんです。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・たら（皮なし）… 150g
-      ・絹ごし豆腐 … 100g
-      ・白米 … 75g
-      ・ブロッコリー … 70g
-      ・かぼちゃ … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・たら（皮なし）… 260g
-      ・絹ごし豆腐 … 170g
-      ・白米 … 130g
-      ・ブロッコリー … 120g
-      ・かぼちゃ … 100g
-
-    ■ 大型犬（16kg~）
-      ・たら（皮なし）… 430g
-      ・絹ごし豆腐 … 280g
-      ・白米 … 210g
-      ・ブロッコリー … 200g
-      ・かぼちゃ … 170g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "たら", amount: "260g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: "170g", tags: [ "soy" ] },
+    { name: "白米", amount: "130g", tags: [ "rice" ] },
+    { name: "ブロッコリー", amount: "120g" },
+    { name: "かぼちゃ", amount: "100g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
       水を多めにして炊き、軽く潰せる程度にしてください。
@@ -8556,31 +6825,15 @@ Recipe.create!(
 
   description: "脂肪の少ないまぐろ赤身で筋肉を守り、オクラの粘りで関節と腸をサポート。動ける体を軽く維持する設計です。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・まぐろ赤身 … 150g
-      ・白米 … 70g
-      ・オクラ … 70g
-      ・かぼちゃ … 60g
-      ・キャベツ … 60g
-
-    ■ 中型犬（6〜15kg）
-      ・まぐろ赤身 … 260g
-      ・白米 … 120g
-      ・オクラ … 120g
-      ・かぼちゃ … 100g
-      ・キャベツ … 100g
-
-    ■ 大型犬（16kg~）
-      ・まぐろ赤身 … 430g
-      ・白米 … 200g
-      ・オクラ … 200g
-      ・かぼちゃ … 170g
-      ・キャベツ … 170g
-  TEXT
-
+  ingredients_json: {
+  medium: [
+    { name: "まぐろ赤身", amount: "260g", tags: [ "fish" ] },
+    { name: "白米", amount: "120g", tags: [ "rice" ] },
+    { name: "オクラ", amount: "120g" },
+    { name: "かぼちゃ", amount: "100g" },
+    { name: "キャベツ", amount: "100g" }
+  ]
+},
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
     水を1.3倍にし、弱火15分。
@@ -8625,30 +6878,15 @@ Recipe.create!(
 
   description: "低脂肪の胸肉で筋肉量を守り、抗酸化野菜を組み合わせたアクティブわんこ向け軽量設計レシピ。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉 … 150g
-      ・白米 … 75g
-      ・豆苗 … 70g
-      ・ズッキーニ … 80g
-      ・人参 … 40g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 260g
-      ・白米 … 130g
-      ・豆苗 … 120g
-      ・ズッキーニ … 140g
-      ・人参 … 70g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 430g
-      ・白米 … 210g
-      ・豆苗 … 200g
-      ・ズッキーニ … 230g
-      ・人参 … 120g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "260g", tags: [ "chicken" ] },
+    { name: "白米", amount: "130g", tags: [ "rice" ] },
+    { name: "豆苗", amount: "120g" },
+    { name: "ズッキーニ", amount: "140g" },
+    { name: "人参", amount: "70g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米をやわらかく炊きます
@@ -8690,30 +6928,15 @@ Recipe.create!(
 
   description: "低脂肪・高タンパクの鹿肉を使用し、代謝を意識した根菜と組み合わせた活発なわんこ向け設計。筋肉を守りながら体脂肪を増やしにくい構成です。",
 
-  ingredients: <<~TEXT,
-    【2日分（4食分）目安】
-
-    ▪ 小型犬（〜5kg目安）
-      ・鶏むね肉 … 150g
-      ・白米 … 75g
-      ・大根 … 100g
-      ・人参 … 40g
-      ・小松菜 … 30g
-
-    ■ 中型犬（6〜15kg）
-      ・鶏むね肉 … 260g
-      ・白米 … 130g
-      ・大根 … 170g
-      ・人参 … 70g
-      ・小松菜 … 50g
-
-    ■ 大型犬（16kg~）
-      ・鶏むね肉 … 430g
-      ・白米 … 210g
-      ・大根 … 280g
-      ・人参 … 120g
-      ・小松菜 … 85g
-  TEXT
+  ingredients_json: {
+  medium: [
+    { name: "鶏むね肉", amount: "260g", tags: [ "chicken" ] },
+    { name: "白米", amount: "130g", tags: [ "rice" ] },
+    { name: "大根", amount: "170g" },
+    { name: "人参", amount: "70g" },
+    { name: "小松菜", amount: "50g" }
+  ]
+},
 
   instructions: <<~TEXT,
     ① 白米を炊きます
