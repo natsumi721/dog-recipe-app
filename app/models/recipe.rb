@@ -112,6 +112,27 @@ class Recipe < ApplicationRecord
     adjust_ingredients_for_size(size, multiplier)
   end
 
+  # multiplierを計算
+  def calculate_multiplier(dog)
+    multiplier = 1.0
+
+    # 年齢による調整
+    multiplier *= 1.2 if dog.age_stage_puppy?
+    multiplier *= 0.85 if dog.age_stage_senior?
+
+    # 体型による調整
+    multiplier *= 1.2 if dog.body_type_thin?
+    multiplier *= 0.9 if dog.body_type_overweight?
+
+    # 運動量による調整
+    multiplier *= 1.2 if dog.activity_level_high?
+    multiplier *= 0.9 if dog.activity_level_low?
+
+
+
+    multiplier
+  end
+
   private
 
   # 指定サイズの材料を調整
@@ -137,39 +158,24 @@ class Recipe < ApplicationRecord
     end
   end
 
-  # 単位に応じた量の計算
-  def calculate_amount(amount, unit, multiplier)
-    case unit
-    when "g"
-      (amount.to_f * multiplier).round
-    when "piece"
-      value = amount.to_f * multiplier
-      return 1 if value < 1
-      return 1 if value < 1.5
-      value.round
-    when "tsp"
-      (amount.to_f * multiplier).round(1)
-    else
-      amount
-    end
+# 単位に応じた量の計算
+def calculate_amount(amount, unit, multiplier)
+  case unit
+  when "g"
+    (amount.to_f * multiplier).round
+  when "piece"
+    value = amount.to_f * multiplier
+    return 1 if value < 1
+    return 1 if value < 1.5
+    value.round
+  when "tsp"
+    (amount.to_f * multiplier).round(1)
+  when "tbsp"
+    (amount.to_f * multiplier).round(1)
+  when "ml"
+    (amount.to_f * multiplier).round
+  else
+    amount
   end
-
-  # multiplierを計算
-  def calculate_multiplier(dog)
-    multiplier = 1.0
-
-    # 年齢による調整
-    multiplier *= 1.2 if dog.age_stage_puppy?
-    multiplier *= 0.85 if dog.age_stage_senior?
-
-    # 体型による調整
-    multiplier *= 1.2 if dog.body_type_thin?
-    multiplier *= 0.9 if dog.body_type_overweight?
-
-    # 運動量による調整
-    multiplier *= 1.2 if dog.activity_level_high?
-    multiplier *= 0.9 if dog.activity_level_low?
-
-    multiplier
-  end
+end
 end

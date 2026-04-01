@@ -87,12 +87,8 @@ class Dog < ApplicationRecord
 
     top_recipes = top_recipes.sample(5)
 
-    # 調整
-    top_recipes.map do |recipe|
-      adjusted = RecipeAdjuster.new(recipe, self).call
-      PortionAdjuster.new(adjusted, self).call
-    end
-  end
+    top_recipes
+   end
 
   def allergies_i18n
     return "なし" if allergies.blank?

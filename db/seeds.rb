@@ -4048,10 +4048,10 @@ Recipe.create!(
 
     ingredients_json: {
     medium: [
-    { name: "鶏むね肉", amount: "130g" },
-    { name: "玄米", amount: "80g", tags: [ "grain" ] },
-    { name: "人参", amount: "30g" },
-    { name: "ブロッコリー", amount: "40g" }
+    { name: "鶏むね肉", amount: 130, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米", amount: 80, unit: "g", tags: [ "grain" ] },
+    { name: "人参", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 40, unit: "g" }
     ]
     },
 
@@ -4101,10 +4101,10 @@ Recipe.create!(
   ingredients_json: {
   medium: [
 
-  { name: "鶏むね肉", amount: "130g" },
-  { name: "白米", amount: "80g" },
-  { name: "人参", amount: "30g" },
-  { name: "ブロッコリー", amount: "40g" }
+  { name: "鶏むね肉", amount: 130, unit: "g", tags: [ "chicken" ] },
+  { name: "白米", amount: 80, unit: "g", tags: [ "rice" ] },
+  { name: "人参", amount: 30, unit: "g" },
+  { name: "ブロッコリー", amount: 40, unit: "g" }
 ]
 
   },
@@ -4150,9 +4150,9 @@ Recipe.create!(
   ingredients_json: {
   medium: [
 
-  { name: "牛赤身肉", amount: "130g" },
-  { name: "さつまいも", amount: "60g" },
-  { name: "小松菜", amount: "30g" }
+  { name: "牛赤身肉", amount: 130, unit: "g", tags: [ "beef" ] },
+  { name: "さつまいも", amount: 60, unit: "g" },
+  { name: "小松菜", amount: 30, unit: "g" }
 
 ]
   },
@@ -4196,10 +4196,10 @@ Recipe.create!(
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 ingredients_json: {
   medium: [
-  { name: "豚ひれ肉", amount: "130g" },
-  { name: "小松菜", amount: "70g" },
-  { name: "トマト", amount: "60g" },
-  { name: "じゃがいも", amount: "1個" }
+  { name: "豚ひれ肉", amount: 130, unit: "g", tags: [ "pork" ] },
+  { name: "小松菜", amount: 70, unit: "g" },
+  { name: "トマト", amount: 60, unit: "g" },
+  { name: "じゃがいも", amount: 100, unit: "g" }
 
 ]
 },
@@ -4248,10 +4248,10 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-  { name: "生鮭", amount: "80g" },
-  { name: "絹ごし豆腐", amount: "100g" },
-  { name: "ブロッコリー", amount: "40g" },
-  { name: "ピーマン", amount: "20g" }
+  { name: "生鮭", amount: 80, unit: "g", tags: [ "fish" ] },
+  { name: "絹ごし豆腐", amount: 100, unit: "g", tags: [ "soy" ] },
+  { name: "ブロッコリー", amount: 40, unit: "g" },
+  { name: "ピーマン", amount: 20, unit: "g" }
 
 ]
   },
@@ -4297,10 +4297,10 @@ Recipe.create!(
   description: "体重管理をしつつ、筋力維持もしたいわんこ向けのレシピ",
 
   ingredients_json: {
-  medium: [ { name: "鶏むね肉", amount: "130g" },
-  { name: "玄米", amount: "80g", tags: [ "grain" ] },
-  { name: "人参", amount: "30g" },
-  { name: "ブロッコリー", amount: "40g" }
+  medium: [ { name: "鶏むね肉", amount: 130, unit: "g", tags: [ "chicken" ] },
+  { name: "玄米", amount: 80, unit: "g", tags: [ "grain" ] },
+  { name: "人参", amount: 30, unit: "g" },
+  { name: "ブロッコリー", amount: 40, unit: "g" }
 ]
   },
 
@@ -4347,10 +4347,10 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "130g", tags: [ "chicken" ] },
-    { name: "白米", amount: "100g", tags: [ "rice" ] },
-    { name: "人参", amount: "30g" },
-    { name: "ブロッコリー", amount: "40g" }
+    { name: "鶏むね肉", amount: 130, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 100, unit: "g", tags: [ "rice" ] },
+    { name: "人参", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 40, unit: "g" }
   ]
 },
 
@@ -4395,10 +4395,10 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "牛赤身肉", amount: "130g", tags: [ "beef" ] },
-    { name: "さつまいも", amount: "70g" },
-    { name: "小松菜", amount: "40g" },
-    { name: "トマト", amount: "30g" }
+    { name: "牛赤身肉", amount: 130, unit: "g", tags: [ "beef" ] },
+    { name: "さつまいも", amount: 70, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" },
+    { name: "トマト", amount: 30, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -4446,10 +4446,10 @@ Recipe.create!(
 
  ingredients_json: {
   medium: [
-    { name: "生鮭", amount: "100g", tags: [ "fish" ] },
-    { name: "絹ごし豆腐", amount: "100g", tags: [ "soy" ] },
-    { name: "ブロッコリー", amount: "40g" },
-    { name: "ピーマン", amount: "20g" }
+    { name: "生鮭", amount: 100, unit: "g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: 100, unit: "g", tags: [ "soy" ] },
+    { name: "ブロッコリー", amount: 40, unit: "g" },
+    { name: "ピーマン", amount: 20, unit: "g" }
   ]
 },
 
@@ -4496,9 +4496,9 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "豚ヒレ肉", amount: "130g", tags: [ "pork" ] },
-    { name: "かぼちゃ", amount: "70g" },
-    { name: "小松菜", amount: "40g" }
+    { name: "豚ヒレ肉", amount: 130, unit: "g", tags: [ "pork" ] },
+    { name: "かぼちゃ", amount: 70, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" }
   ]
 },
 
@@ -4542,11 +4542,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "130g", tags: [ "chicken" ] },
-    { name: "玄米", amount: "100g", tags: [ "grain" ] },
-    { name: "人参", amount: "30g" },
-    { name: "ブロッコリー", amount: "40g" },
-    { name: "かつお節", amount: "5g" }
+    { name: "鶏むね肉", amount: 130, unit: "g", tags: [ "chicken" ] },
+    { name: "玄米", amount: 100, unit: "g", tags: [ "grain" ] },
+    { name: "人参", amount: 30, unit: "g" },
+    { name: "ブロッコリー", amount: 40, unit: "g" },
+    { name: "かつお節", amount: 5, unit: "tsp" }
   ]
 },
 
@@ -4594,11 +4594,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏ささみ", amount: "160g", tags: [ "chicken" ] },
-    { name: "絹ごし豆腐", amount: "150g", tags: [ "soy" ] },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "70g" },
-    { name: "人参", amount: "35g" }
+    { name: "鶏ささみ", amount: 160, unit: "g", tags: [ "chicken" ] },
+    { name: "絹ごし豆腐", amount: 150, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 70, unit: "g" },
+    { name: "人参", amount: 35, unit: "g" }
   ]
 },
 
@@ -4659,11 +4659,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "生鮭", amount: "160g", tags: [ "fish" ] },
-    { name: "じゃがいも", amount: "140g" },
-    { name: "白米", amount: "140g", tags: [ "rice" ] },
-    { name: "小松菜", amount: "50g" },
-    { name: "人参", amount: "35g" }
+    { name: "生鮭", amount: 160, unit: "g", tags: [ "fish" ] },
+    { name: "じゃがいも", amount: 140, unit: "g" },
+    { name: "白米", amount: 140, unit: "g", tags: [ "rice" ] },
+    { name: "小松菜", amount: 50, unit: "g" },
+    { name: "人参", amount: 35, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -4720,11 +4720,11 @@ Recipe.create!(
 
  ingredients_json: {
   medium: [
-    { name: "鶏ひき肉", amount: "170g", tags: [ "chicken" ] },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "100g" },
-    { name: "大根", amount: "70g" },
-    { name: "人参", amount: "35g" }
+    { name: "鶏ひき肉", amount: 170, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 100, unit: "g" },
+    { name: "大根", amount: 70, unit: "g" },
+    { name: "人参", amount: 35, unit: "g" }
   ]
 },
 
@@ -4774,11 +4774,11 @@ Recipe.create!(
 
  ingredients_json: {
   medium: [
-    { name: "タラ", amount: "160g", tags: [ "fish" ] },
-    { name: "里芋", amount: "170g" },
-    { name: "白米", amount: "140g", tags: [ "rice" ] },
-    { name: "小松菜", amount: "50g" },
-    { name: "人参", amount: "35g" }
+    { name: "タラ", amount: 160, unit: "g", tags: [ "fish" ] },
+    { name: "里芋", amount: 170, unit: "g" },
+    { name: "白米", amount: 140, unit: "g", tags: [ "rice" ] },
+    { name: "小松菜", amount: 50, unit: "g" },
+    { name: "人参", amount: 35, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -4824,11 +4824,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "牛ひき肉", amount: "160g", tags: [ "beef" ] },
-    { name: "卵", amount: "2個", tags: [ "egg" ] },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "85g" },
-    { name: "ほうれん草", amount: "45g" }
+    { name: "牛ひき肉", amount: 160, unit: "g", tags: [ "beef" ] },
+    { name: "卵", amount: 1, unit: "piece", tags: [ "egg" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 85, unit: "g" },
+    { name: "ほうれん草", amount: 45, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -4874,11 +4874,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏もも肉", amount: "190g", tags: [ "chicken" ] },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "さつまいも", amount: "120g" },
-    { name: "ブロッコリー", amount: "50g" },
-    { name: "人参", amount: "40g" }
+    { name: "鶏もも肉", amount: 190, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "人参", amount: 40, unit: "g" }
   ]
 },
 
@@ -4934,11 +4934,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "生鮭", amount: "170g", tags: [ "fish" ] },
-    { name: "絹ごし豆腐", amount: "150g" },
-    { name: "白米", amount: "145g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "100g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "生鮭", amount: 170, unit: "g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: 150, unit: "g" },
+    { name: "白米", amount: 145, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 100, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -4988,11 +4988,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "170g", tags: [ "chicken" ] },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "里芋", amount: "170g" },
-    { name: "人参", amount: "40g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "鶏むね肉", amount: 170, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "里芋", amount: 170, unit: "g" },
+    { name: "人参", amount: 40, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
 
@@ -5043,11 +5043,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "タラ", amount: "170g", tags: [ "fish" ] },
-    { name: "白米", amount: "145g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "140g" },
-    { name: "大根", amount: "85g" },
-    { name: "人参", amount: "40g" }
+    { name: "タラ", amount: 170, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 145, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 140, unit: "g" },
+    { name: "大根", amount: 85, unit: "g" },
+    { name: "人参", amount: 40, unit: "g" }
   ]
 },
 
@@ -5094,11 +5094,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏ひき肉", amount: "170g", tags: [ "chicken" ] },
-    { name: "絹ごし豆腐", amount: "150g" },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "100g" },
-    { name: "ほうれん草", amount: "45g" }
+    { name: "鶏ひき肉", amount: 170, unit: "g", tags: [ "chicken" ] },
+    { name: "絹ごし豆腐", amount: 150, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 100, unit: "g" },
+    { name: "ほうれん草", amount: 45, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -5148,11 +5148,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏もも肉", amount: "210g", tags: [ "chicken" ] },
-    { name: "白米", amount: "170g", tags: [ "rice" ] },
-    { name: "さつまいも", amount: "160g" },
-    { name: "ブロッコリー", amount: "50g" },
-    { name: "人参", amount: "40g" }
+    { name: "鶏もも肉", amount: 210, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 170, unit: "g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: 160, unit: "g" },
+    { name: "ブロッコリー", amount: 50, unit: "g" },
+    { name: "人参", amount: 40, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -5208,11 +5208,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "生鮭", amount: "190g", tags: [ "fish" ] },
-    { name: "絹ごし豆腐", amount: "150g" },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "140g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "生鮭", amount: 190, unit: "g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: 150, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 140, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
 
@@ -5266,11 +5266,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "牛もも肉", amount: "190g", tags: [ "beef" ] },
-    { name: "白米", amount: "170g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "160g", tags: [] },
-    { name: "小松菜", amount: "50g", tags: [] },
-    { name: "人参", amount: "40g", tags: [] }
+    { name: "牛もも肉", amount: 190, unit: "g", tags: [ "beef" ] },
+    { name: "白米", amount: 170, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 160, unit: "g", tags: [] },
+    { name: "小松菜", amount: 50, unit: "g", tags: [] },
+    { name: "人参", amount: 40, unit: "g", tags: [] }
   ]
 },
 
@@ -5318,11 +5318,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "190g", tags: [ "chicken" ] },
-    { name: "卵", amount: "2個", tags: [ "egg" ] },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "さつまいも", amount: "140g", tags: [] },
-    { name: "ほうれん草", amount: "45g", tags: [] }
+    { name: "鶏むね肉", amount: 190, unit: "g", tags: [ "chicken" ] },
+    { name: "卵", amount: 2, unit: "piece", tags: [ "egg" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: 140, unit: "g", tags: [] },
+    { name: "ほうれん草", amount: 45, unit: "g", tags: [] }
   ]
 },
   instructions: <<~TEXT,
@@ -5376,11 +5376,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "タラ", amount: "190g", tags: [ "fish" ] },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "じゃがいも", amount: "160g", tags: [] },
-    { name: "ブロッコリー", amount: "50g", tags: [] },
-    { name: "人参", amount: "40g", tags: [] }
+    { name: "タラ", amount: 190, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "じゃがいも", amount: 160, unit: "g", tags: [] },
+    { name: "ブロッコリー", amount: 50, unit: "g", tags: [] },
+    { name: "人参", amount: 40, unit: "g", tags: [] }
   ]
 },
 
@@ -5434,11 +5434,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "白身魚", amount: "200g", tags: [ "fish" ] },
-    { name: "白米", amount: "140g", tags: [ "rice" ] },
-    { name: "大根", amount: "100g", tags: [] },
-    { name: "人参", amount: "40g", tags: [] },
-    { name: "小松菜", amount: "35g", tags: [] }
+    { name: "白身魚", amount: 200, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 140, unit: "g", tags: [ "rice" ] },
+    { name: "大根", amount: 100, unit: "g", tags: [] },
+    { name: "人参", amount: 40, unit: "g", tags: [] },
+    { name: "小松菜", amount: 35, unit: "g", tags: [] }
   ]
 },
 
@@ -5488,11 +5488,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏ささみ", amount: "180g", tags: [ "chicken" ] },
-    { name: "木綿豆腐", amount: "120g", tags: [ "soy" ] },
-    { name: "白米", amount: "120g", tags: [ "rice" ] },
-    { name: "かぼちゃ", amount: "70g", tags: [] },
-    { name: "キャベツ", amount: "50g", tags: [] }
+    { name: "鶏ささみ", amount: 180, unit: "g", tags: [ "chicken" ] },
+    { name: "木綿豆腐", amount: 120, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "かぼちゃ", amount: 70, unit: "g", tags: [] },
+    { name: "キャベツ", amount: 50, unit: "g", tags: [] }
   ]
 },
   instructions: <<~TEXT,
@@ -5538,11 +5538,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "生鮭", amount: "180g", tags: [ "fish" ] },
-    { name: "白米", amount: "140g", tags: [ "rice" ] },
-    { name: "里芋", amount: "120g", tags: [] },
-    { name: "人参", amount: "40g", tags: [] },
-    { name: "小松菜", amount: "35g", tags: [] }
+    { name: "生鮭", amount: 180, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 140, unit: "g", tags: [ "rice" ] },
+    { name: "里芋", amount: 120, unit: "g", tags: [] },
+    { name: "人参", amount: 40, unit: "g", tags: [] },
+    { name: "小松菜", amount: 35, unit: "g", tags: [] }
   ]
 },
   instructions: <<~TEXT,
@@ -5588,11 +5588,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "200g", tags: [ "chicken" ] },
-    { name: "白米", amount: "130g", tags: [ "rice" ] },
-    { name: "白菜", amount: "140g" },
-    { name: "大根", amount: "100g" },
-    { name: "人参", amount: "35g" }
+    { name: "鶏むね肉", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 130, unit: "g", tags: [ "rice" ] },
+    { name: "白菜", amount: 140, unit: "g" },
+    { name: "大根", amount: 100, unit: "g" },
+    { name: "人参", amount: 35, unit: "g" }
   ]
 },
 
@@ -5637,11 +5637,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "たら", amount: "200g", tags: [ "fish" ] },
-    { name: "白米", amount: "120g", tags: [ "rice" ] },
-    { name: "木綿豆腐", amount: "100g", tags: [ "soy" ] },
-    { name: "かぼちゃ", amount: "70g" },
-    { name: "ほうれん草", amount: "35g" }
+    { name: "たら", amount: 200, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "木綿豆腐", amount: 100, unit: "g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: 70, unit: "g" },
+    { name: "ほうれん草", amount: 35, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -5690,11 +5690,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "200g", tags: [ "chicken" ] },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "ひきわり納豆", amount: "45g", tags: [ "soy" ] },
-    { name: "かぼちゃ", amount: "80g" },
-    { name: "小松菜", amount: "40g" }
+    { name: "鶏むね肉", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "ひきわり納豆", amount: 45, unit: "g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: 80, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -5742,11 +5742,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "白身魚", amount: "200g", tags: [ "fish" ] },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "山芋", amount: "90g" },
-    { name: "人参", amount: "45g" },
-    { name: "白菜", amount: "100g" }
+    { name: "白身魚", amount: 200, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "山芋", amount: 90, unit: "g" },
+    { name: "人参", amount: 45, unit: "g" },
+    { name: "白菜", amount: 100, unit: "g" }
   ]
 },
 
@@ -5792,11 +5792,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鯛", amount: "200g", tags: [ "fish" ] },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "さつまいも", amount: "100g" },
-    { name: "人参", amount: "45g" },
-    { name: "小松菜", amount: "40g" }
+    { name: "鯛", amount: 200, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: 100, unit: "g" },
+    { name: "人参", amount: 45, unit: "g" },
+    { name: "小松菜", amount: 40, unit: "g" }
   ]
 },
 
@@ -5843,11 +5843,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏ささみ", amount: "200g", tags: [ "chicken" ] },
-    { name: "白米", amount: "150g", tags: [ "rice" ] },
-    { name: "長芋", amount: "90g" },
-    { name: "白菜", amount: "120g" },
-    { name: "人参", amount: "40g" }
+    { name: "鶏ささみ", amount: 200, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 150, unit: "g", tags: [ "rice" ] },
+    { name: "長芋", amount: 90, unit: "g" },
+    { name: "白菜", amount: 120, unit: "g" },
+    { name: "人参", amount: 40, unit: "g" }
   ]
 },
 
@@ -5896,11 +5896,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "たら", amount: "200g", tags: [ "fish" ] },
-    { name: "白米", amount: "160g", tags: [ "rice" ] },
-    { name: "木綿豆腐", amount: "120g", tags: [ "soy" ] },
-    { name: "ほうれん草", amount: "45g" },
-    { name: "かぼちゃ", amount: "80g" }
+    { name: "たら", amount: 200, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 160, unit: "g", tags: [ "rice" ] },
+    { name: "木綿豆腐", amount: 120, unit: "g", tags: [ "soy" ] },
+    { name: "ほうれん草", amount: 45, unit: "g" },
+    { name: "かぼちゃ", amount: 80, unit: "g" }
   ]
 },
 
@@ -5951,11 +5951,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "生鮭", amount: "220g", tags: [ "fish" ] },
-    { name: "白米", amount: "180g", tags: [ "rice" ] },
-    { name: "さつまいも", amount: "120g" },
-    { name: "人参", amount: "50g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "生鮭", amount: 220, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 180, unit: "g", tags: [ "rice" ] },
+    { name: "さつまいも", amount: 120, unit: "g" },
+    { name: "人参", amount: 50, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6003,11 +6003,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏もも肉", amount: "230g", tags: [ "chicken" ] },
-    { name: "白米", amount: "170g", tags: [ "rice" ] },
-    { name: "山芋", amount: "100g" },
-    { name: "白菜", amount: "140g" },
-    { name: "人参", amount: "50g" }
+    { name: "鶏もも肉", amount: 230, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 170, unit: "g", tags: [ "rice" ] },
+    { name: "山芋", amount: 100, unit: "g" },
+    { name: "白菜", amount: 140, unit: "g" },
+    { name: "人参", amount: 50, unit: "g" }
   ]
 },
 
@@ -6056,11 +6056,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "ぶり", amount: "220g", tags: [ "fish" ] },
-    { name: "白米", amount: "180g", tags: [ "rice" ] },
-    { name: "大根", amount: "140g" },
-    { name: "人参", amount: "50g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "ぶり", amount: 220, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 180, unit: "g", tags: [ "rice" ] },
+    { name: "大根", amount: 140, unit: "g" },
+    { name: "人参", amount: 50, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6107,11 +6107,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "220g", tags: [ "chicken" ] },
-    { name: "白米", amount: "180g", tags: [ "rice" ] },
-    { name: "ひきわり納豆", amount: "50g", tags: [ "soy" ] },
-    { name: "かぼちゃ", amount: "100g" },
-    { name: "白菜", amount: "110g" }
+    { name: "鶏むね肉", amount: 220, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 180, unit: "g", tags: [ "rice" ] },
+    { name: "ひきわり納豆", amount: 50, unit: "g", tags: [ "soy" ] },
+    { name: "かぼちゃ", amount: 100, unit: "g" },
+    { name: "白菜", amount: 110, unit: "g" }
   ]
 },
 
@@ -6159,11 +6159,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "たら", amount: "220g", tags: [ "fish" ] },
-    { name: "白米", amount: "180g", tags: [ "rice" ] },
-    { name: "里芋", amount: "140g" },
-    { name: "人参", amount: "50g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "たら", amount: 220, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 180, unit: "g", tags: [ "rice" ] },
+    { name: "里芋", amount: 140, unit: "g" },
+    { name: "人参", amount: 50, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6212,12 +6212,12 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "白身魚", amount: "240g", tags: [ "fish" ] },
-    { name: "木綿豆腐", amount: "180g", tags: [ "soy" ] },
-    { name: "大根", amount: "130g" },
-    { name: "人参", amount: "60g" },
-    { name: "小松菜", amount: "50g" },
-    { name: "白米", amount: "220g", tags: [ "rice" ] }
+    { name: "白身魚", amount: 240, unit: "g", tags: [ "fish" ] },
+    { name: "木綿豆腐", amount: 180, unit: "g", tags: [ "soy" ] },
+    { name: "大根", amount: 130, unit: "g" },
+    { name: "人参", amount: 60, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" },
+    { name: "白米", amount: 220, unit: "g", tags: [ "rice" ] }
   ]
 },
 
@@ -6271,11 +6271,11 @@ Recipe.create!(
 
  ingredients_json: {
   medium: [
-    { name: "鶏ささみ", amount: "270g", tags: [ "chicken" ] },
-    { name: "キャベツ", amount: "140g" },
-    { name: "人参", amount: "70g" },
-    { name: "しめじ", amount: "60g" },
-    { name: "白米", amount: "200g", tags: [ "rice" ] }
+    { name: "鶏ささみ", amount: 270, unit: "g", tags: [ "chicken" ] },
+    { name: "キャベツ", amount: 140, unit: "g" },
+    { name: "人参", amount: 70, unit: "g" },
+    { name: "しめじ", amount: 60, unit: "g" },
+    { name: "白米", amount: 200, unit: "g", tags: [ "rice" ] }
   ]
 },
 
@@ -6326,11 +6326,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "280g", tags: [ "chicken" ] },
-    { name: "生おから", amount: "95g", tags: [ "soy" ] },
-    { name: "白菜", amount: "140g" },
-    { name: "人参", amount: "70g" },
-    { name: "白米", amount: "200g", tags: [ "rice" ] }
+    { name: "鶏むね肉", amount: 280, unit: "g", tags: [ "chicken" ] },
+    { name: "生おから", amount: 95, unit: "g", tags: [ "soy" ] },
+    { name: "白菜", amount: 140, unit: "g" },
+    { name: "人参", amount: 70, unit: "g" },
+    { name: "白米", amount: 200, unit: "g", tags: [ "rice" ] }
   ]
 },
 
@@ -6382,11 +6382,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "タラ", amount: "240g", tags: [ "fish" ] },
-    { name: "ブロッコリー", amount: "95g" },
-    { name: "大根", amount: "130g" },
-    { name: "無調整豆乳", amount: "85ml", tags: [ "soy" ] },
-    { name: "白米", amount: "200g", tags: [ "rice" ] }
+    { name: "タラ", amount: 240, unit: "g", tags: [ "fish" ] },
+    { name: "ブロッコリー", amount: 95, unit: "g" },
+    { name: "大根", amount: 130, unit: "g" },
+    { name: "無調整豆乳", amount: 85, unit: "ml", tags: [ "soy" ] },
+    { name: "白米", amount: 200, unit: "g", tags: [ "rice" ] }
   ]
 },
 
@@ -6438,11 +6438,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏ささみ", amount: "270g", tags: [ "chicken" ] },
-    { name: "小松菜", amount: "60g" },
-    { name: "白菜", amount: "140g" },
-    { name: "えのき", amount: "60g" },
-    { name: "白米", amount: "200g", tags: [ "rice" ] }
+    { name: "鶏ささみ", amount: 270, unit: "g", tags: [ "chicken" ] },
+    { name: "小松菜", amount: 60, unit: "g" },
+    { name: "白菜", amount: 140, unit: "g" },
+    { name: "えのき", amount: 60, unit: "g" },
+    { name: "白米", amount: 200, unit: "g", tags: [ "rice" ] }
   ]
 },
 
@@ -6495,11 +6495,11 @@ Recipe.create!(
 
  ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "300g", tags: [ "chicken" ] },
-    { name: "高野豆腐", amount: "120g", tags: [ "soy" ] },
-    { name: "大根", amount: "130g" },
-    { name: "人参", amount: "70g" },
-    { name: "白米", amount: "230g", tags: [ "rice" ] }
+    { name: "鶏むね肉", amount: 300, unit: "g", tags: [ "chicken" ] },
+    { name: "高野豆腐", amount: 120, unit: "g", tags: [ "soy" ] },
+    { name: "大根", amount: 130, unit: "g" },
+    { name: "人参", amount: 70, unit: "g" },
+    { name: "白米", amount: 230, unit: "g", tags: [ "rice" ] }
   ]
 },
   instructions: <<~TEXT,
@@ -6552,11 +6552,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "タラ", amount: "270g", tags: [ "fish" ] },
-    { name: "ひきわり納豆", amount: "95g", tags: [ "soy" ] },
-    { name: "白菜", amount: "140g" },
-    { name: "小松菜", amount: "70g" },
-    { name: "白米", amount: "210g", tags: [ "rice" ] }
+    { name: "タラ", amount: 270, unit: "g", tags: [ "fish" ] },
+    { name: "ひきわり納豆", amount: 95, unit: "g", tags: [ "soy" ] },
+    { name: "白菜", amount: 140, unit: "g" },
+    { name: "小松菜", amount: 70, unit: "g" },
+    { name: "白米", amount: 210, unit: "g", tags: [ "rice" ] }
   ]
 },
 
@@ -6611,11 +6611,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "白身魚", amount: "240g", tags: [ "fish" ] },
-    { name: "生おから", amount: "100g", tags: [ "soy" ] },
-    { name: "白米", amount: "190g", tags: [ "rice" ] },
-    { name: "大根", amount: "140g" },
-    { name: "小松菜", amount: "60g" }
+    { name: "白身魚", amount: 240, unit: "g", tags: [ "fish" ] },
+    { name: "生おから", amount: 100, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 190, unit: "g", tags: [ "rice" ] },
+    { name: "大根", amount: 140, unit: "g" },
+    { name: "小松菜", amount: 60, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6664,11 +6664,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "タラ", amount: "270g", tags: [ "fish" ] },
-    { name: "ひきわり納豆", amount: "100g", tags: [ "soy" ] },
-    { name: "白米", amount: "200g", tags: [ "rice" ] },
-    { name: "大根", amount: "140g" },
-    { name: "小松菜", amount: "70g" }
+    { name: "タラ", amount: 270, unit: "g", tags: [ "fish" ] },
+    { name: "ひきわり納豆", amount: 100, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 200, unit: "g", tags: [ "rice" ] },
+    { name: "大根", amount: 140, unit: "g" },
+    { name: "小松菜", amount: 70, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6719,11 +6719,11 @@ Recipe.create!(
 
  ingredients_json: {
   medium: [
-    { name: "鶏ささみ", amount: "240g", tags: [ "chicken" ] },
-    { name: "白米", amount: "140g", tags: [ "rice" ] },
-    { name: "キャベツ", amount: "140g" },
-    { name: "人参", amount: "70g" },
-    { name: "乾燥ひじき（水戻し後）", amount: "35g" }
+    { name: "鶏ささみ", amount: 240, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 140, unit: "g", tags: [ "rice" ] },
+    { name: "キャベツ", amount: 140, unit: "g" },
+    { name: "人参", amount: 70, unit: "g" },
+    { name: "乾燥ひじき（水戻し後）", amount: 35, unit: "g" }
   ]
 },
 
@@ -6774,11 +6774,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "たら", amount: "260g", tags: [ "fish" ] },
-    { name: "絹ごし豆腐", amount: "170g", tags: [ "soy" ] },
-    { name: "白米", amount: "130g", tags: [ "rice" ] },
-    { name: "ブロッコリー", amount: "120g" },
-    { name: "かぼちゃ", amount: "100g" }
+    { name: "たら", amount: 260, unit: "g", tags: [ "fish" ] },
+    { name: "絹ごし豆腐", amount: 170, unit: "g", tags: [ "soy" ] },
+    { name: "白米", amount: 130, unit: "g", tags: [ "rice" ] },
+    { name: "ブロッコリー", amount: 120, unit: "g" },
+    { name: "かぼちゃ", amount: 100, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6827,11 +6827,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "まぐろ赤身", amount: "260g", tags: [ "fish" ] },
-    { name: "白米", amount: "120g", tags: [ "rice" ] },
-    { name: "オクラ", amount: "120g" },
-    { name: "かぼちゃ", amount: "100g" },
-    { name: "キャベツ", amount: "100g" }
+    { name: "まぐろ赤身", amount: 260, unit: "g", tags: [ "fish" ] },
+    { name: "白米", amount: 120, unit: "g", tags: [ "rice" ] },
+    { name: "オクラ", amount: 120, unit: "g" },
+    { name: "かぼちゃ", amount: 100, unit: "g" },
+    { name: "キャベツ", amount: 100, unit: "g" }
   ]
 },
   instructions: <<~TEXT,
@@ -6880,11 +6880,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "260g", tags: [ "chicken" ] },
-    { name: "白米", amount: "130g", tags: [ "rice" ] },
-    { name: "豆苗", amount: "120g" },
-    { name: "ズッキーニ", amount: "140g" },
-    { name: "人参", amount: "70g" }
+    { name: "鶏むね肉", amount: 260, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 130, unit: "g", tags: [ "rice" ] },
+    { name: "豆苗", amount: 120, unit: "g" },
+    { name: "ズッキーニ", amount: 140, unit: "g" },
+    { name: "人参", amount: 70, unit: "g" }
   ]
 },
 
@@ -6930,11 +6930,11 @@ Recipe.create!(
 
   ingredients_json: {
   medium: [
-    { name: "鶏むね肉", amount: "260g", tags: [ "chicken" ] },
-    { name: "白米", amount: "130g", tags: [ "rice" ] },
-    { name: "大根", amount: "170g" },
-    { name: "人参", amount: "70g" },
-    { name: "小松菜", amount: "50g" }
+    { name: "鶏むね肉", amount: 260, unit: "g", tags: [ "chicken" ] },
+    { name: "白米", amount: 130, unit: "g", tags: [ "rice" ] },
+    { name: "大根", amount: 170, unit: "g" },
+    { name: "人参", amount: 70, unit: "g" },
+    { name: "小松菜", amount: 50, unit: "g" }
   ]
 },
 
