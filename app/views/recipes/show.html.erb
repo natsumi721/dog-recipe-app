@@ -20,73 +20,183 @@
       🥕 材料
     </h5>
     <!-- ブックマークボタン（ログインユーザーのみ表示） -->
-    <% if logged_in? %>
-      <div>
-        <% if @bookmark.present? %>
-          <%= link_to bookmark_path(@bookmark, return_to: request.fullpath), 
-                    data: { turbo_method: :delete, turbo_confirm: "本当にブックマークを外しますか?" },
-                    class: "btn btn-link p-0 border-0", 
-                    style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #999; filter: grayscale(100%);" do %>
-            <span style="filter: grayscale(0%);">🦴 ブックマークを外す 🦴</span>
-          <% end %>
-        <% else %>
-          <%= link_to bookmarks_path(recipe_id: @recipe.id, dog_id: @dog&.id, return_to: request.fullpath), 
-                    data: { turbo_method: :post },
-                    class: "btn btn-link p-0 border-0", 
-                    style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #ff6b9d;" do %>
-            <span>🦴 ブックマーク 🦴</span>
-          <% end %>
+        <% if logged_in? %>
+          <div>
+            <% if @bookmark.present? %>
+              <%= link_to bookmark_path(@bookmark, return_to: request.fullpath), 
+                        data: { turbo_method: :delete, turbo_confirm: "本当にブックマークを外しますか?" },
+                        class: "btn btn-link p-0 border-0", 
+                        style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #999; filter: grayscale(100%);" do %>
+                <span style="filter: grayscale(0%);">🦴 ブックマークを外す 🦴</span>
+              <% end %>
+            <% else %>
+              <%= link_to bookmarks_path(recipe_id: @recipe.id, dog_id: @dog&.id, return_to: request.fullpath), 
+                        data: { turbo_method: :post },
+                        class: "btn btn-link p-0 border-0", 
+                        style: "font-size: 0.9rem; text-decoration: none; font-family: 'Hiragino Maru Gothic ProN', 'メイリオ', sans-serif; color: #ff6b9d;" do %>
+                <span>🦴 ブックマーク 🦴</span>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
+  
+  <% if @recipe.json_format? %>
+    <!-- JSON形式の場合 -->
+    
+    <!-- 犬情報の表示 -->
+    <% if @dog.present? %>
+      <div class="alert alert-info mb-3">
+        <strong><%= @dog.name %></strong> ちゃん用に調整されています
+        (サイズ: <%= @dog.size_i18n %> / 
+         年齢: <%= @dog.age_stage_i18n %> / 
+         体型: <%= @dog.body_type_i18n %> /
+         運動量: <%= @dog.activity_level_i18n %>)
+      </div>
+
+      <!-- ✅ 犬のサイズに応じた材料のみを表示 -->
+      <div class="bg-light p-3 rounded-3 mt-3">
+        <ul class="list-unstyled mb-0">
+          <% @adjusted_ingredients.each do |ingredient| %>
+            <li class="mb-2">
+              <strong><%= ingredient[:name] %>:</strong> 
+              <%= ingredient[:amount] %><%= ingredient[:unit] %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    <% else %>
+      <!-- ✅ 犬が登録されていない場合は全てのサイズのタブを表示 -->
+      <!-- サイズ選択タブ -->
+      <ul class="nav nav-tabs" id="ingredientsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="small-tab" data-bs-toggle="tab" data-bs-target="#small" type="button" role="tab">
+            小型犬（〜5kg）
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="medium-tab" data-bs-toggle="tab" data-bs-target="#medium" type="button" role="tab">
+            中型犬（6〜15kg）
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="large-tab" data-bs-toggle="tab" data-bs-target="#large" type="button" role="tab">
+            大型犬（16kg〜）
+          </button>
+        </li>
+      </ul>
+
+      <!-- タブコンテンツ -->
+      <div class="tab-content" id="ingredientsTabContent">
+        <!-- 小型犬 -->
+        <div class="tab-pane fade show active" id="small" role="tabpanel">
+          <div class="bg-light p-3 rounded-3 mt-3">
+            <ul class="list-unstyled mb-0">
+              <% @adjusted_ingredients_small.each do |ingredient| %>
+                <li class="mb-2">
+                  <strong><%= ingredient[:name] %>:</strong> 
+                  <%= ingredient[:amount] %><%= ingredient[:unit] %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 中型犬 -->
+        <div class="tab-pane fade" id="medium" role="tabpanel">
+          <div class="bg-light p-3 rounded-3 mt-3">
+            <ul class="list-unstyled mb-0">
+              <% @adjusted_ingredients_medium.each do |ingredient| %>
+                <li class="mb-2">
+                  <strong><%= ingredient[:name] %>:</strong> 
+                  <%= ingredient[:amount] %><%= ingredient[:unit] %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 大型犬 -->
+        <div class="tab-pane fade" id="large" role="tabpanel">
+          <div class="bg-light p-3 rounded-3 mt-3">
+            <ul class="list-unstyled mb-0">
+              <% @adjusted_ingredients_large.each do |ingredient| %>
+                <li class="mb-2">
+                  <strong><%= ingredient[:name] %>:</strong> 
+                  <%= ingredient[:amount] %><%= ingredient[:unit] %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
 
-  <!-- 見出し部分 -->
-  <p class="text-muted mb-3"><%= @recipe.ingredients_header %></p>
-
-  <!-- サイズ選択タブ -->
-  <ul class="nav nav-tabs" id="ingredientsTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="small-tab" data-bs-toggle="tab" data-bs-target="#small" type="button" role="tab">
-        小型犬（〜5kg）
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="medium-tab" data-bs-toggle="tab" data-bs-target="#medium" type="button" role="tab">
-        中型犬（6〜15kg）
-      </button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="large-tab" data-bs-toggle="tab" data-bs-target="#large" type="button" role="tab">
-        大型犬（16kg〜）
-      </button>
-    </li>
-  </ul>
-
-  <!-- タブコンテンツ -->
-  <div class="tab-content" id="ingredientsTabContent">
-    <!-- 小型犬 -->
-    <div class="tab-pane fade show active" id="small" role="tabpanel">
-      <div class="bg-light p-3 rounded-3 mt-3">
-        <%= simple_format(@recipe.ingredients_for_size(:small)) %>
+  <% else %>
+    <!-- TEXT形式の場合 -->
+    
+    <!-- 犬情報の表示 -->
+    <% if @dog.present? %>
+      <div class="alert alert-info mb-3">
+        <strong><%= @dog.name %></strong> ちゃん用に調整されています
+        (サイズ: <%= @dog.size_i18n %>)
       </div>
-    </div>
 
-    <!-- 中型犬 -->
-    <div class="tab-pane fade" id="medium" role="tabpanel">
+      <!-- ✅ 犬のサイズに応じた材料のみを表示 -->
       <div class="bg-light p-3 rounded-3 mt-3">
-        <%= simple_format(@recipe.ingredients_for_size(:medium)) %>
+        <%= simple_format(@recipe.ingredients_for_size(@dog.size.to_sym)) %>
       </div>
-    </div>
 
-    <!-- 大型犬 -->
-    <div class="tab-pane fade" id="large" role="tabpanel">
-      <div class="bg-light p-3 rounded-3 mt-3">
-        <%= simple_format(@recipe.ingredients_for_size(:large)) %>
+    <% else %>
+      <!-- ✅ 犬が登録されていない場合は全てのサイズのタブを表示 -->
+      <!-- サイズ選択タブ -->
+      <ul class="nav nav-tabs" id="ingredientsTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="small-tab" data-bs-toggle="tab" data-bs-target="#small" type="button" role="tab">
+            小型犬（〜5kg）
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="medium-tab" data-bs-toggle="tab" data-bs-target="#medium" type="button" role="tab">
+            中型犬（6〜15kg）
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="large-tab" data-bs-toggle="tab" data-bs-target="#large" type="button" role="tab">
+            大型犬（16kg〜）
+          </button>
+        </li>
+      </ul>
+
+      <!-- タブコンテンツ -->
+      <div class="tab-content" id="ingredientsTabContent">
+        <!-- 小型犬 -->
+        <div class="tab-pane fade show active" id="small" role="tabpanel">
+          <div class="bg-light p-3 rounded-3 mt-3">
+            <%= simple_format(@recipe.ingredients_for_size(:small)) %>
+          </div>
+        </div>
+
+        <!-- 中型犬 -->
+        <div class="tab-pane fade" id="medium" role="tabpanel">
+          <div class="bg-light p-3 rounded-3 mt-3">
+            <%= simple_format(@recipe.ingredients_for_size(:medium)) %>
+          </div>
+        </div>
+
+        <!-- 大型犬 -->
+        <div class="tab-pane fade" id="large" role="tabpanel">
+          <div class="bg-light p-3 rounded-3 mt-3">
+            <%= simple_format(@recipe.ingredients_for_size(:large)) %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    <% end %>
+
+  <% end %>
 </div>
+
     <!-- 作り方 -->
     <div class="mb-4">
       <h5 class="fw-bold mb-3" style="color: #f4a300;">

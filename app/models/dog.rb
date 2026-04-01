@@ -1,12 +1,29 @@
 class Dog < ApplicationRecord
   belongs_to :user, optional: true
-  serialize :allergies, type: Array, coder: YAML
+  serialize :allergies, coder: JSON, type: Array
 
-  # アレルギー情報を定数として定義
+  # アレルギー情報（表示用）
   ALLERGIES = [
     "牛肉", "鶏肉", "豚肉", "牛乳", "チーズ", "ヨーグルト",
     "卵", "鹿肉", "納豆(大豆)", "鮭", "マグロ", "タラ"
   ].freeze
+
+  # 日本語 → 英語タグ変換
+  ALLERGY_MAP = {
+    "牛肉" => "beef",
+    "鶏肉" => "chicken",
+    "豚肉" => "pork",
+    "牛乳" => "milk",
+    "チーズ" => "dairy",
+    "ヨーグルト" => "dairy",
+    "卵" => "egg",
+    "鹿肉" => "venison",
+    "納豆(大豆)" => "soy",
+    "魚" => "fish",
+    "米" => "rice",
+    "雑穀米" => "grain"
+
+  }.freeze
 
   enum :size, { small: 0, medium: 1, large: 2 }, prefix: true
   enum :age_stage, { puppy: 0, adult: 1, senior: 2 }, prefix: true
@@ -14,7 +31,6 @@ class Dog < ApplicationRecord
   enum :activity_level, { low: 0, medium: 1, high: 2 }, prefix: true
 
   include EnumI18n
-  # enum の日本語化を有効にする
   enum_i18n :size
   enum_i18n :age_stage
   enum_i18n :body_type
@@ -26,26 +42,53 @@ class Dog < ApplicationRecord
   validates :body_type, presence: true
   validates :activity_level, presence: true
 
-  attribute :allergies, :string, array: true, default: []
-
   def recommended_recipes
-  recipes = Recipe.published.where(
-    age_stage: age_stage,
-    body_type: body_type,
-    activity_level: activity_level
-  )
+    recipes = Recipe.published.to_a
 
-  return recipes.order("RANDOM()").limit(3) unless allergies.present?
+    # 🔥 アレルギー除外（TEXT + JSON + tag対応）
+    if allergies.present?
+      recipes = recipes.reject do |recipe|
+        allergies.any? do |a|
+          tag = ALLERGY_MAP[a]
 
-    recipes = recipes.to_a.reject do |recipe|
-      allergies.any? do |a|
-        base = a.gsub("肉", "")
-        recipe.ingredients.include?(base)
+          if recipe.ingredients_json.present?
+            ingredients = recipe.ingredients_json.values.flatten
+
+            ingredients.any? do |ing|
+              ing["name"]&.include?(a) ||
+              (tag && ing["tags"]&.include?(tag))
+            end
+
+          elsif recipe.ingredients.present?
+            recipe.ingredients.include?(a) ||
+            recipe.ingredients.include?(a.gsub("肉", ""))
+
+          else
+            false
+          end
+        end
       end
     end
 
-    recipes.sample(3)
-  end
+    # スコアリング
+    scored = recipes.map do |recipe|
+      score = 0
+      score += 1 if recipe.age_stage == age_stage
+      score += 1 if recipe.body_type == body_type
+      score += 1 if recipe.activity_level == activity_level
+      [ recipe, score ]
+    end
+
+    # 上位取得
+    top_recipes = scored
+                    .sort_by { |_, score| -score }
+                    .map(&:first)
+                    .take(20)
+
+    top_recipes = top_recipes.sample(5)
+
+    top_recipes
+   end
 
   def allergies_i18n
     return "なし" if allergies.blank?

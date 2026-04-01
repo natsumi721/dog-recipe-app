@@ -85,14 +85,19 @@ class DogsController < ApplicationController
   end
 
   def dog_params
-    params.require(:dog).permit(
+    permitted = params.require(:dog).permit(
       :name,
       :size,
       :age_stage,
       :body_type,
       :activity_level,
+      :size,
       allergies: []
     )
+
+     permitted[:allergies] = Array(permitted[:allergies]).reject(&:blank?)
+
+     permitted
   end
 
   def logged_in?

@@ -28,7 +28,7 @@ RSpec.describe Dog, type: :model do
       recipe = create(:recipe,
         age_stage: :adult,
         body_type: :normal,
-        activity_level: :medium
+        activity_level: :medium,
       )
 
       result = dog.recommended_recipes
@@ -36,25 +36,12 @@ RSpec.describe Dog, type: :model do
       expect(result).to include(recipe)
     end
 
-    it "条件に一致しないレシピは含まれない" do
-      dog = create(:dog, age_stage: :adult, body_type: :normal, activity_level: :medium)
-
-        ng_recipe = create(:recipe,
-          age_stage: :puppy, # ← 不一致
-          body_type: :normal,
-          activity_level: :medium
-        )
-
-      result = dog.recommended_recipes
-
-      expect(result).not_to include(ng_recipe)
-    end
-
     it "アレルギー食材を含むレシピは除外される" do
       dog = create(:dog,
         age_stage: :adult,
         body_type: :normal,
         activity_level: :medium,
+        size: :medium,
         allergies: [ "鶏肉" ]
       )
 
@@ -72,50 +59,43 @@ RSpec.describe Dog, type: :model do
       expect(result).not_to include(ng_recipe)
     end
 
-    it "最大3件返す" do
+    it "最大5件返す" do
       dog = create(:dog, age_stage: :adult, body_type: :normal, activity_level: :medium)
 
       create_list(:recipe, 5,
         age_stage: :adult,
         body_type: :normal,
-        activity_level: :medium
+        activity_level: :medium,
       )
 
       result = dog.recommended_recipes
 
-      expect(result.length).to be <= 3
+      expect(result.length).to be <= 5
     end
   end
 
-  it "ユーザーは複数の犬を登録できる" do
-  user = create(:user)
+    it "ユーザーは複数の犬を登録できる" do
+      user = create(:user)
 
-  dog1 = create(:dog, user: user)
-  dog2 = create(:dog, user: user)
+      dog1 = create(:dog, user: user)
+      dog2 = create(:dog, user: user)
 
-  expect(user.dogs.count).to eq(2)
-end
+      expect(user.dogs.count).to eq(2)
+    end
 
-  it "犬ごとに異なるレシピが返る" do
-  dog1 = create(:dog, age_stage: :adult, body_type: :normal, activity_level: :medium)
-  dog2 = create(:dog, age_stage: :puppy, body_type: :thin, activity_level: :low)
+   it "犬ごとに異なるレシピが返る" do
+   user = create(:user)
+  dog1 = create(:dog, user: user, age_stage: :puppy, body_type: :thin, activity_level: :low, size: :small)
+  dog2 = create(:dog, user: user, age_stage: :adult, body_type: :normal, activity_level: :medium, size: :medium)
 
-  recipe1 = create(:recipe,
-    age_stage: :adult,
-    body_type: :normal,
-    activity_level: :medium
-  )
+  recipe1 = create(:recipe, age_stage: :puppy, body_type: :thin, activity_level: :low)
+  recipe2 = create(:recipe, age_stage: :adult, body_type: :normal, activity_level: :medium)
 
-  recipe2 = create(:recipe,
-    age_stage: :puppy,
-    body_type: :thin,
-    activity_level: :low
-  )
+  dog1_recipes = dog1.recommended_recipes
+  dog2_recipes = dog2.recommended_recipes
 
-  expect(dog1.recommended_recipes).to include(recipe1)
-  expect(dog1.recommended_recipes).not_to include(recipe2)
-
-  expect(dog2.recommended_recipes).to include(recipe2)
-  expect(dog2.recommended_recipes).not_to include(recipe1)
+  # ✅ スコアが高いレシピが含まれることを確認
+  expect(dog1_recipes).to include(recipe1)
+  expect(dog2_recipes).to include(recipe2)
 end
 end

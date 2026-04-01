@@ -27,7 +27,7 @@ services:
       - bundle_data:/usr/local/bundle:cached
       - node_modules:/myapp/node_modules
     environment:
-      POSTGRES_HOST: postgres
+      POSTGRES_HOST: db
       POSTGRES_PASSWORD: password
       SELENIUM_DRIVER_URL: "http://chrome:4444/wd/hub"
     ports:
