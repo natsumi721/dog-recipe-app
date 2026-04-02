@@ -1,6 +1,5 @@
 class Dog < ApplicationRecord
   belongs_to :user, optional: true
-  serialize :allergies, coder: JSON, type: Array
 
   # アレルギー情報（表示用）
   ALLERGIES = [
@@ -45,29 +44,22 @@ class Dog < ApplicationRecord
   def recommended_recipes
     recipes = Recipe.published.to_a
 
-    # 🔥 アレルギー除外（TEXT + JSON + tag対応）
+    #  アレルギー除外
     if allergies.present?
-      recipes = recipes.reject do |recipe|
-        allergies.any? do |a|
-          tag = ALLERGY_MAP[a]
+  recipes = recipes.reject do |recipe|
+    next true if recipe.ingredients_json.blank?
 
-          if recipe.ingredients_json.present?
-            ingredients = recipe.ingredients_json.values.flatten
+    ingredients = recipe.ingredients_json.values.flatten
 
-            ingredients.any? do |ing|
-              ing["name"]&.include?(a) ||
-              (tag && ing["tags"]&.include?(tag))
-            end
+    allergies.any? do |a|
+      tag = ALLERGY_MAP[a]
 
-          elsif recipe.ingredients.present?
-            recipe.ingredients.include?(a) ||
-            recipe.ingredients.include?(a.gsub("肉", ""))
-
-          else
-            false
-          end
-        end
+      ingredients.any? do |ing|
+        ing["name"]&.include?(a) ||
+        (tag && ing["tags"]&.include?(tag))
       end
+    end
+  end
     end
 
     # スコアリング
