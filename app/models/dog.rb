@@ -44,23 +44,35 @@ class Dog < ApplicationRecord
   def recommended_recipes
     recipes = Recipe.published.to_a
 
+    allergies_list = allergies
+
+    if allergies_list.is_a?(String)
+      begin
+        allergies_list = JSON.parse(allergies_list)
+      rescue
+        allergies_list = [ allergies_list ]
+      end
+    end
+
+
     #  アレルギー除外
-    if allergies.present?
-  recipes = recipes.reject do |recipe|
-    next true if recipe.ingredients_json.blank?
+    if allergies_list.present?
+      recipes = recipes.reject do |recipe|
+        next true if recipe.ingredients_json.blank?
 
-    ingredients = recipe.ingredients_json.values.flatten
+        ingredients = recipe.ingredients_json.values.flatten
 
-    allergies.any? do |a|
-      tag = ALLERGY_MAP[a]
+        allergies_list.any? do |a|
+            tag = ALLERGY_MAP[a]
 
       ingredients.any? do |ing|
         ing["name"]&.include?(a) ||
         (tag && ing["tags"]&.include?(tag))
+          end
+        end
       end
     end
-  end
-    end
+
 
     # スコアリング
     scored = recipes.map do |recipe|
@@ -77,14 +89,16 @@ class Dog < ApplicationRecord
                     .map(&:first)
                     .take(20)
 
-    top_recipes = top_recipes.sample(5)
-
-    top_recipes
+    top_recipes.sample(5)
    end
 
   def allergies_i18n
     return "なし" if allergies.blank?
 
-    allergies.map { |allergy| I18n.t("enums.dog.allergy.#{allergy}", default: allergy) }.join(", ")
+    list = allergies.is_a?(String) ? [ allergies ] : allergies
+
+    list.map do |allergy|
+    I18n.t("enums.dog.allergy.#{allergy}", default: allergy)
+  end.join(", ")
   end
 end
