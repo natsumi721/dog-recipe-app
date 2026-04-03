@@ -217,6 +217,47 @@
       </div>
     </div>
 
+    <div class="text-center mt-4">
+  <% share_text = "#{@recipe.name} をチェック！🐶🍽️" %>
+  <% share_url = recipe_url(@recipe) %>
+  <% hashtags = "犬ごはん,手作り犬ごはん" %>
+
+  <%= link_to "🐾 Xでシェアする",
+  "https://twitter.com/intent/tweet?text=#{CGI.escape(share_text)}&url=#{CGI.escape(share_url)}&hashtags=#{hashtags}",
+  target: "_blank",
+  rel: "noopener",
+  class: "btn px-4 py-2",
+  style: "
+    background-color: #444;
+    color: white;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.2s;
+  ",
+  onmouseover: "this.style.backgroundColor='#666'",
+  onmouseout: "this.style.backgroundColor='#444'" %>
+  </div>
+
+<div class="text-center mt-3">
+  <button onclick="copyToClipboard()" 
+    class="btn px-4 py-2"
+    style="
+      background-color: #f4a300;
+      color: white;
+      border-radius: 30px;
+      font-weight: bold;
+    ">
+    📋 URLをコピー
+  </button>
+</div>
+
+<script>
+function copyToClipboard() {
+  const url = "<%= recipe_url(@recipe) %>";
+  navigator.clipboard.writeText(url);
+  alert("URLをコピーしました！Instagramなどでシェアしてね🐶📸");
+}
+</script>
     <!-- 戻るボタン -->
     <div class="text-center mt-4">
       <%= link_to "← 戻る",
