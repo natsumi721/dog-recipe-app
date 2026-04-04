@@ -5,7 +5,7 @@
       🐶 レシピ投稿
     </h2>
 
-    <%= form_with model: @recipe, url: confirm_recipes_path do |f| %>
+    <%= form_with model: @recipe, url: confirm_recipes_path, data: { turbo: false } do |f| %>
 
       <!-- レシピ名 -->
       <div class="mb-3">
@@ -13,10 +13,10 @@
         <%= f.text_field :name, class: "form-control", placeholder: "例：ささみと野菜のごはん" %>
       </div>
 
-      <!-- 説明 -->
+     <!-- 対象のわんちゃん -->
       <div class="mb-3">
-        <label class="fw-bold">📝 説明</label>
-        <%= f.text_area :description, class: "form-control", rows: 3 %>
+         <label class="fw-bold">🐶 このレシピはどんなわんちゃん向け？</label>
+         <%= f.text_area :description, class: "form-control", rows: 2, placeholder: "例：体重を増やしたい子犬向け" %>
       </div>
 
 
@@ -42,6 +42,32 @@
     ＋材料を追加
   </button>
 </div>
+
+  <div class="row">
+    <!-- 年齢 -->
+    <div class="col-md-4">
+      <%= f.label :age_stage, "年齢" %>
+      <%= f.select :age_stage,
+  Dog.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] },
+  {}, class: "form-select" %>
+    </div>
+
+    <!-- 体型 -->
+    <div class="col-md-4">
+      <%= f.label :body_type, "体型" %>
+      <%= f.select :body_type,
+  Dog.body_types.keys.map { |k| [t("enums.dog.body_type.#{k}"), k] },
+  {}, class: "form-select" %>
+    </div>
+
+    <!-- 運動量 -->
+    <div class="col-md-4">
+      <%= f.label :activity_level, "運動量" %>
+      <%= f.select :activity_level,
+  Dog.activity_levels.keys.map { |k| [t("enums.dog.activity_level.#{k}"), k] },
+  {}, class: "form-select" %>
+    </div>
+  </div>
 
       <!-- 作り方 -->
       <div class="mb-3">

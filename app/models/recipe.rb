@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   attr_accessor :adjusted_multiplier
   belongs_to :user, optional: true
 
+
   enum :age_stage, { puppy: 0, adult: 1, senior: 2 }, prefix: true
   enum :body_type, { thin: 0, normal: 1, overweight: 2 }, prefix: true
   enum :activity_level, { low: 0, medium: 1, high: 2 }, prefix: true

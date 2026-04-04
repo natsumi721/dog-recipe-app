@@ -1,0 +1,77 @@
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow-lg p-5 rounded-4 border-0">
+
+    <!-- タイトル -->
+    <h2 class="fw-bold mb-3 text-center" style="color:#f4a300;">
+      🍽 <%= recipe.name %>
+    </h2>
+
+    <!-- 説明 -->
+    <p class="text-muted mb-4 text-center" style="font-size: 14px;">
+      <%= recipe.description %>
+    </p>
+
+    <!-- 対象犬 -->
+    <div class="mb-4 p-3 rounded-3" style="background-color:#fff8e6;">
+      <h5 class="fw-bold mb-2">🐶 対象のわんちゃん</h5>
+      <div class="d-flex justify-content-around text-center">
+        <div>
+          <small class="text-muted">年齢</small><br>
+          <span class="fw-bold">
+            <%= t("enums.dog.age_stage.#{recipe.age_stage}") %>
+          </span>
+        </div>
+        <div>
+          <small class="text-muted">体型</small><br>
+          <span class="fw-bold">
+            <%= t("enums.dog.body_type.#{recipe.body_type}") %>
+          </span>
+        </div>
+        <div>
+          <small class="text-muted">運動量</small><br>
+          <span class="fw-bold">
+            <%= t("enums.dog.activity_level.#{recipe.activity_level}") %>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 材料 -->
+    <div class="mb-4">
+      <h5 class="fw-bold mb-3">🥕 材料（中型犬）</h5>
+      <ul class="list-group list-group-flush">
+        <% recipe.ingredients_json["medium"].values.each do |ingredient| %>
+          <% next if ingredient["name"].blank? || ingredient["amount"].blank? %>
+          <li class="list-group-item d-flex justify-content-between">
+            <span><%= ingredient["name"] %></span>
+            <span class="fw-bold">
+              <%= ingredient["amount"] %><%= ingredient["unit"] %>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <!-- 作り方 -->
+    <div class="mb-4">
+      <h5 class="fw-bold mb-3">🍳 作り方</h5>
+      <div class="p-3 rounded-3" style="background:#f9f9f9;">
+        <%= simple_format(recipe.instructions) %>
+      </div>
+    </div>
+
+    <!-- 栄養 -->
+    <div class="mb-4">
+      <h5 class="fw-bold mb-3">🌟 栄養ポイント</h5>
+      <div class="p-3 rounded-3" style="background:#f9f9f9;">
+        <%= simple_format(recipe.nutrition_note) %>
+      </div>
+    </div>
+
+    <!-- 投稿者 -->
+    <div class="text-end text-muted mt-4">
+      👤 <%= recipe.user&.nickname || "運営レシピ" %>
+    </div>
+
+  </div>
+</div>

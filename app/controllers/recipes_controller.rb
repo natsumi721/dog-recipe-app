@@ -7,7 +7,12 @@ class RecipesController < ApplicationController
   end
 
   def confirm
+    filtered = recipe_params[:ingredients_json]["medium"].reject do |i|
+    i["name"].blank? || i["amount"].blank?
+  end
+
     @recipe = current_user.recipes.build(recipe_params)
+    @recipe.ingredients_json["medium"] = filtered
     @recipe.status = "draft"
   end
 
@@ -121,7 +126,9 @@ class RecipesController < ApplicationController
       :activity_level,
       :size,
       :allergies,
-      ingredients_json: {}
+      ingredients_json: {
+        medium: [:name, :amount, :unit]
+      }
     )
   end
 
