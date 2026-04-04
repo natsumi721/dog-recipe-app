@@ -1,0 +1,25 @@
+<p><%= @recipe.name %></p>
+<p><%= @recipe.description %></p>
+
+<h5>🥕 材料</h5>
+<ul>
+  <% @recipe.ingredients_json["medium"].each do |ingredient| %>
+    <li>
+      <%= ingredient["name"] %>：
+      <%= ingredient["amount"] %><%= ingredient["unit"] %>
+    </li>
+  <% end %>
+</ul>
+
+<%= form_with model: @recipe do |f| %>
+  <%= hidden_field_tag "recipe[name]", @recipe.name %>
+  <%= hidden_field_tag "recipe[description]", @recipe.description %>
+
+  <% @recipe.ingredients_json["medium"].each do |ingredient| %>
+    <%= hidden_field_tag "recipe[ingredients_json][medium][][name]", ingredient["name"] %>
+    <%= hidden_field_tag "recipe[ingredients_json][medium][][amount]", ingredient["amount"] %>
+    <%= hidden_field_tag "recipe[ingredients_json][medium][][unit]", ingredient["unit"] %>
+  <% end %>
+
+  <%= f.submit "投稿する" %>
+<% end %>

@@ -42,10 +42,11 @@ Rails.application.routes.draw do
   end
 
   # レシピ
-  resources :recipes, only: [ :index, :show ] do
+  resources :recipes, only: [ :new, :create, :index, :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(レシピ閲覧用)
       get :bookmarks   # ブックマーク
+      post :confirm  # レシピ公開前の確認画面
     end
   end
 

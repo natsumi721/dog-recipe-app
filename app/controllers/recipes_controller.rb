@@ -2,6 +2,27 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: [ :index, :show ]
   skip_before_action :check_dog_profile, only: [ :index, :show ]
 
+  def new
+    @recipe = Recipe.new
+  end
+
+  def confirm
+    @recipe = current_user.recipes.build(recipe_params)
+    @recipe.status = "draft"
+  end
+
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+    @recipe.status = "draft"
+
+    if @recipe.save
+      redirect_to recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
+    else
+      flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def index
     if params[:dog_id].present? && logged_in?
       @dog = current_user.dogs.find(params[:dog_id])
@@ -87,6 +108,22 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def recipe_params
+    params.require(:recipe).permit(
+      :name,
+      :description,
+      :instructions,
+      :nutrition_note,
+      :nutrition_note,
+      :age_stage,
+      :body_type,
+      :activity_level,
+      :size,
+      :allergies,
+      ingredients_json: {}
+    )
+  end
 
   def set_ogp
     set_meta_tags(
