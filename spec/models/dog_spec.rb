@@ -46,23 +46,31 @@ RSpec.describe Dog, type: :model do
       )
 
       safe_recipe = create(:recipe,
-        ingredients: "魚"
+        ingredients_json: {
+          "medium" => [
+            { "name" => "魚", "amount" => 100, "unit" => "g" }
+         ]
+        }
       )
 
       ng_recipe = create(:recipe,
-        ingredients: "鶏肉"
+        ingredients_json: {
+          "medium" => [
+            { "name" => "鶏肉", "amount" => 100, "unit" => "g" }
+          ]
+        }
       )
 
-      result = dog.recommended_recipes
+  result = dog.recommended_recipes
 
-      expect(result).to include(safe_recipe)
-      expect(result).not_to include(ng_recipe)
-    end
+  expect(result).to include(safe_recipe)
+  expect(result).not_to include(ng_recipe)
+end
 
     it "最大5件返す" do
       dog = create(:dog, age_stage: :adult, body_type: :normal, activity_level: :medium)
 
-      create_list(:recipe, 5,
+      create_list(:recipe, 6,
         age_stage: :adult,
         body_type: :normal,
         activity_level: :medium,
