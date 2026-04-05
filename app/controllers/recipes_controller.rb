@@ -127,7 +127,7 @@ class RecipesController < ApplicationController
       :size,
       :allergies,
       ingredients_json: {
-        medium: [:name, :amount, :unit]
+        medium: [ :name, :amount, :unit ]
       }
     )
   end

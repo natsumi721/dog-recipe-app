@@ -54,7 +54,11 @@ Rails.application.routes.draw do
 
     # 管理者画面
     namespace :admin do
-    resources :recipes, only: [ :index, :show, :update ]
-    get "dashboard", to: "dashboard#index"
+    resources :recipes, only: [ :index, :show, :update ] do
+      collection do
+        get :published  # 承認済みレシピ一覧
+      end
+      get "dashboard", to: "dashboard#index"
   end
+end
 end
