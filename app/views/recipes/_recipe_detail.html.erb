@@ -18,19 +18,19 @@
         <div>
           <small class="text-muted">年齢</small><br>
           <span class="fw-bold">
-            <%= t("enums.dog.age_stage.#{recipe.age_stage}") %>
+            <%= t("enums.dog.age_stage.#{recipe.age_stage}") if recipe.age_stage.present? %>
           </span>
         </div>
         <div>
           <small class="text-muted">体型</small><br>
           <span class="fw-bold">
-            <%= t("enums.dog.body_type.#{recipe.body_type}") %>
+            <%= t("enums.dog.body_type.#{recipe.body_type}") if recipe.body_type.present? %>
           </span>
         </div>
         <div>
           <small class="text-muted">運動量</small><br>
           <span class="fw-bold">
-            <%= t("enums.dog.activity_level.#{recipe.activity_level}") %>
+            <%= t("enums.dog.activity_level.#{recipe.activity_level}") if recipe.activity_level.present? %>
           </span>
         </div>
       </div>
@@ -40,14 +40,17 @@
     <div class="mb-4">
       <h5 class="fw-bold mb-3">🥕 材料（中型犬）</h5>
       <ul class="list-group list-group-flush">
-        <% recipe.ingredients_json["medium"].values.each do |ingredient| %>
-          <% next if ingredient["name"].blank? || ingredient["amount"].blank? %>
-          <li class="list-group-item d-flex justify-content-between">
-            <span><%= ingredient["name"] %></span>
-            <span class="fw-bold">
-              <%= ingredient["amount"] %><%= ingredient["unit"] %>
-            </span>
-          </li>
+        <% if recipe.ingredients_json["medium"].present? %>
+          <% ingredients = recipe.ingredients_json["medium"] %>
+          <% ingredients = ingredients.values if ingredients.is_a?(Hash) %>
+
+          <% ingredients.each do |ingredient| %>
+            <% next if ingredient["name"].blank? || ingredient["amount"].blank? %>
+            <li class="list-group-item d-flex justify-content-between">
+              <span><%= ingredient["name"] %></span>
+              <span class="fw-bold"><%= ingredient["amount"] %><%= ingredient["unit"] %></span>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>

@@ -10,7 +10,7 @@ class Admin::RecipesController < ApplicationController
 
     # 承認済みレシピ一覧
     def published
-      @recipes = Recipe.published
+      @recipes = Recipe.published.order(updated_at: :desc)
     end
 
     def show
