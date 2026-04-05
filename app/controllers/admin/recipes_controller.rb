@@ -17,15 +17,19 @@ class Admin::RecipesController < ApplicationController
     end
 
     def update
-      if params[:commit] == I18n.t("admin.recipes.actions.approve")
+    case params[:commit]
+    when I18n.t("admin.recipes.actions.approve")
         @recipe.published!
         redirect_to published_admin_recipes_path, notice: "承認済みに移動しました"
-      elsif params[:commit] == I18n.t("admin.recipes.actions.reject")
-        redirect_to admin_recipes_path, notice: "却下されました"
-      else
+
+    when I18n.t("admin.recipes.actions.reject")
+        @recipe.rejected!
+        redirect_to admin_recipes_path, notice: "却下しました"
+
+    else
         redirect_to admin_recipes_path, alert: "不正な操作です"
-      end
     end
+  end
 
     private
 

@@ -19,35 +19,47 @@ ja:
         activity_level: "活動レベル"
         allergies: "アレルギー"
         breed: "犬種"
+
+      recipe:
+        name: "レシピ名"
+        description: "対象のわんちゃん"
+        instructions: "作り方"
+        nutrition_note: "栄養のポイント"
+        age_stage: "年齢ステージ"
+        body_type: "体型"
+        activity_level: "活動レベル"
+        ingredients_json: "材料"
     
-  enums:
-    dog:
-      age_stage:
-        puppy: "子犬"
-        adult: "成犬"
-        senior: "シニア"
-      size:
-        small: "小型犬"
-        medium: "中型犬"
-        large: "大型犬"
-      body_type:
-        thin: "痩せ型"
-        normal: "標準"
-        overweight: "肥満"
-      activity_level:
-        low: "穏やか"
-        medium: "普通"
-        high: "活発"
-      allergy:
-        牛肉: 牛肉
-        鶏肉: 鶏肉
-        豚肉: 豚肉
-        牛乳: 牛乳
-        チーズ: チーズ
-        ヨーグルト: ヨーグルト
-        卵: 卵
-        鹿肉: 鹿肉
-        納豆(大豆): 納豆(大豆)
-        鮭: 鮭
-        マグロ: マグロ
-        タラ: タラ
+    enums:
+      dog:
+        age_stage:
+          puppy: "子犬"
+          adult: "成犬"
+          senior: "シニア"
+        size:
+          small: "小型犬"
+          medium: "中型犬"
+          large: "大型犬"
+        body_type:
+          thin: "痩せ型"
+          normal: "標準"
+          overweight: "肥満"
+        activity_level:
+          low: "穏やか"
+          medium: "普通"
+          high: "活発"
+        allergy:
+          牛肉: 牛肉
+          鶏肉: 鶏肉
+          豚肉: 豚肉
+          牛乳: 牛乳
+          チーズ: チーズ
+          ヨーグルト: ヨーグルト
+          卵: 卵
+          鹿肉: 鹿肉
+          納豆(大豆): 納豆(大豆)
+          鮭: 鮭
+          マグロ: マグロ
+          タラ: タラ
+    
+ 

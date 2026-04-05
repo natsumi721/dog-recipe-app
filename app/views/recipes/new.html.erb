@@ -1,5 +1,14 @@
 <div class="container mt-5" style="max-width: 800px;">
   <div class="card shadow-lg p-5 rounded-4 border-0">
+  <% if @recipe.errors.any? %>
+    <div class="alert alert-danger">
+      <ul class="mb-0">
+       <% @recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
     <h2 class="fw-bold mb-4 text-center" style="color: #f4a300;">
       🐶 レシピ投稿
@@ -25,9 +34,36 @@
   <label class="fw-bold">🥕 材料（中型犬用の量を入力してください。）</label>
 
   <div id="ingredients-fields">
+  <% if @recipe.ingredients_json.present? %>
+    <% ingredients = @recipe.ingredients_json["medium"] %>
+    <% ingredients = ingredients.values if ingredients.is_a?(Hash) %>
+
+    <% ingredients.each do |ingredient| %>
+      <div class="d-flex gap-2 mb-2">
+        <input type="text"
+          name="recipe[ingredients_json][medium][][name]"
+          value="<%= ingredient["name"] %>"
+          class="form-control">
+
+        <input type="number"
+          name="recipe[ingredients_json][medium][][amount]"
+          value="<%= ingredient["amount"] %>"
+          class="form-control">
+
+        <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
+          <option value="g" <%= "selected" if ingredient["unit"] == "g" %>>g</option>
+          <option value="ml" <%= "selected" if ingredient["unit"] == "ml" %>>ml</option>
+          <option value="tsp" <%= "selected" if ingredient["unit"] == "tsp" %>>小さじ</option>
+          <option value="tbsp" <%= "selected" if ingredient["unit"] == "tbsp" %>>大さじ</option>
+          <option value="piece" <%= "selected" if ingredient["unit"] == "piece" %>>個</option>
+        </select>
+      </div>
+    <% end %>
+  <% else %>
+    <!-- 初期表示 -->
     <div class="d-flex gap-2 mb-2">
-      <input type="text" name="recipe[ingredients_json][medium][][name]" placeholder="食材名" class="form-control">
-      <input type="number" name="recipe[ingredients_json][medium][][amount]" placeholder="量" class="form-control">
+      <input type="text" name="recipe[ingredients_json][medium][][name]" class="form-control">
+      <input type="number" name="recipe[ingredients_json][medium][][amount]" class="form-control">
       <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
         <option value="g">g</option>
         <option value="ml">ml</option>
@@ -36,8 +72,8 @@
         <option value="piece">個</option>
       </select>
     </div>
-  </div>
-
+  <% end %>
+</div>
   <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addIngredient()">
     ＋材料を追加
   </button>
@@ -46,7 +82,7 @@
   <div class="row">
     <!-- 年齢 -->
     <div class="col-md-4">
-      <%= f.label :age_stage, "年齢" %>
+      <%= f.label :age_stage, "このレシピの該当タイプ" %>
       <%= f.select :age_stage,
   Dog.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] },
   {}, class: "form-select" %>
@@ -93,6 +129,19 @@
           " %>
       </div>
 
+      <!-- 戻る -->
+      <div class="text-center mt-3">
+        <%= link_to "戻る",
+          select_action_recipes_path,
+          class: "btn px-4 py-2",
+          style: "
+            border-radius: 30px;
+            padding: 10px 25px;
+            border: 2px solid #ccc;
+            color: #555;
+          " %>
+      </div>
+
     <% end %>
 
   </div>
@@ -113,9 +162,9 @@ function addIngredient() {
         <option value="tbsp">大さじ</option>
         <option value="piece">個</option>
       </select>
+      <button type="button" class="btn btn-outline-danger btn-sm" onclick="this.parentElement.remove()">✖</button>
     </div>
   `;
-
   container.insertAdjacentHTML("beforeend", html);
 }
 </script>

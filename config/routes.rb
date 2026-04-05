@@ -46,6 +46,8 @@ Rails.application.routes.draw do
     collection do
       get :select_dog  # 愛犬選択画面(レシピ閲覧用)
       get :bookmarks   # ブックマーク
+      get :my_recipes   # マイレシピ
+      get :select_action
       post :confirm  # レシピ公開前の確認画面
     end
   end

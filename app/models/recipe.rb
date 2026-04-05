@@ -16,6 +16,14 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  validates :instructions, presence: true
+  validates :nutrition_note, presence: true
+  validates :age_stage, presence: true
+  validates :body_type, presence: true
+  validates :activity_level, presence: true
+
+  validate :ingredients_presence
+
 
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_by_users, through: :bookmarks, source: :user
@@ -136,6 +144,23 @@ class Recipe < ApplicationRecord
 
   private
 
+def ingredients_presence
+  return if ingredients_json.blank?
+
+  ingredients = ingredients_json["medium"]
+
+  # HashでもArrayでも対応
+  ingredients = ingredients.values if ingredients.is_a?(Hash)
+
+  valid = ingredients.any? do |i|
+    i["name"].present? && i["amount"].present?
+  end
+
+  unless valid
+    errors.add(:ingredients_json, "材料を1つ以上入力してください")
+  end
+end
+
   # 指定サイズの材料を調整
   def adjust_ingredients_for_size(size, multiplier)
     ingredients_list = base_ingredients[size.to_s] || base_ingredients[size]
@@ -148,6 +173,7 @@ class Recipe < ApplicationRecord
 
   # サイズに応じた材料を計算
   def calculate_size_ingredients(ingredients, multiplier)
+    ingredients = ingredients.values if ingredients.is_a?(Hash)
     ingredients.map do |ingredient|
       adjusted_ingredient = ingredient.dup
       adjusted_ingredient["amount"] = calculate_amount(

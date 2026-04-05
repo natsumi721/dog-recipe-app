@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4 fw-bold">📖 投稿したレシピ一覧</h2>
+
+  <div class="row g-4">
+    <% @recipes.each do |recipe| %>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-4 h-100 d-flex flex-column">
+
+          <h5 class="fw-bold mb-2"><%= recipe.name %></h5>
+
+          <p class="text-muted small mb-3">
+            <%= truncate(recipe.description, length: 50) %>
+          </p>
+
+          <!-- ステータス -->
+          <div class="mb-3">
+            <% if recipe.published? %>
+              <span class="badge bg-success">公開中</span>
+            <% elsif recipe.rejected? %>
+              <span class="badge bg-danger">却下</span>
+            <% else %>
+              <span class="badge bg-secondary">審査中</span>
+            <% end %>
+          </div>
+
+          <%= link_to "詳細を見る",
+            recipe_path(recipe),
+            class: "btn btn-warning rounded-pill mt-auto text-white" %>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="text-center mt-5">
+    <%= link_to "戻る", select_action_recipes_path,
+      class: "btn btn-outline-secondary rounded-pill px-4" %>
+  </div>
+</div>

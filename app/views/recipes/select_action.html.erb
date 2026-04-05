@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">🐶 レシピ投稿</h2>
+    <p class="text-muted">やりたい操作を選んでください</p>
+  </div>
+
+  <div class="row justify-content-center g-4">
+
+    <!-- 投稿する -->
+    <div class="col-md-4">
+      <div class="card shadow-sm p-4 text-center h-100">
+        <h5 class="fw-bold mb-3">✍️ レシピを投稿</h5>
+        <p class="text-muted">新しいレシピを作成します</p>
+
+        <%= link_to "投稿する",
+          new_recipe_path,
+          class: "btn btn-outline-warning rounded-pill px-4 mt-auto"  %>
+      </div>
+    </div>
+
+    <!-- 投稿一覧 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm p-4 text-center h-100">
+        <h5 class="fw-bold mb-3">📖 投稿したレシピ</h5>
+        <p class="text-muted">自分のレシピを確認できます</p>
+
+        <%= link_to "一覧を見る",
+          my_recipes_recipes_path,
+          class: "btn btn-outline-warning rounded-pill px-4 mt-auto" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5">
+    <%= link_to "ホームに戻る", dashboard_path,
+      class: "btn btn-secondary px-4 rounded-pill" %>
+  </div>
+</div>

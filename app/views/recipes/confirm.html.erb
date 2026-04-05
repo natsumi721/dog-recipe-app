@@ -21,14 +21,14 @@
 
  <div class="text-center mt-5">
   <%= link_to "修正する",
-    new_recipe_path(recipe: @recipe.attributes),
-    class: "btn me-3",
-    style: "
-      border-radius: 30px;
-      padding: 10px 25px;
-      border: 2px solid #ccc;
-      color: #555;
-    " %>
+  new_recipe_path(recipe: params[:recipe].permit!),
+  class: "btn me-3",
+  style: "
+    border-radius: 30px;
+    padding: 10px 25px;
+    border: 2px solid #ccc;
+    color: #555;
+  " %>
 
   <%= f.submit "レシピを投稿する",
     class: "btn",

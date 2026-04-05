@@ -3,13 +3,28 @@ class RecipesController < ApplicationController
   skip_before_action :check_dog_profile, only: [ :index, :show ]
 
   def new
-    @recipe = Recipe.new
+    if params[:recipe]
+      @recipe = Recipe.new(params[:recipe].permit!)
+    else
+      @recipe = Recipe.new
+    end
   end
 
   def confirm
+    @recipe = current_user.recipes.build(recipe_params)
+
     filtered = recipe_params[:ingredients_json]["medium"].reject do |i|
-    i["name"].blank? || i["amount"].blank?
-  end
+      i["name"].blank? || i["amount"].blank?
+    end
+
+    @recipe.ingredients_json["medium"] = filtered
+    @recipe.status = "draft"
+
+      # バリデーションチェック
+      unless @recipe.valid?
+    flash.now[:alert] = "入力内容を確認してください"
+      render :new, status: :unprocessable_entity
+      end
 
     @recipe = current_user.recipes.build(recipe_params)
     @recipe.ingredients_json["medium"] = filtered
@@ -54,6 +69,11 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @return_to = params[:return_to]
+
+    unless @recipe.published? || current_user&.admin? || @recipe.user == current_user
+      redirect_to recipes_path, alert: "このレシピはまだ公開されていません"
+      return
+    end
 
     # OGP設定
     set_ogp
@@ -110,6 +130,10 @@ class RecipesController < ApplicationController
 
   def select_dog
     @dogs = current_user.dogs
+  end
+
+  def my_recipes
+    @recipes = current_user.recipes.order(created_at: :desc)
   end
 
   private
