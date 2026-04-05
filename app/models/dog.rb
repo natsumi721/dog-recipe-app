@@ -7,6 +7,11 @@ class Dog < ApplicationRecord
     "卵", "鹿肉", "納豆(大豆)", "鮭", "マグロ", "タラ"
   ].freeze
 
+  # 犬のサイズ
+  SIZES = [
+    "小型犬", "中型犬", "大型犬"
+  ].freeze
+
   # 日本語 → 英語タグ変換
   ALLERGY_MAP = {
     "牛肉" => "beef",

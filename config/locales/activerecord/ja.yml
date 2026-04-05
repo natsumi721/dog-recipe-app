@@ -19,6 +19,16 @@ ja:
         activity_level: "活動レベル"
         allergies: "アレルギー"
         breed: "犬種"
+
+      recipe:
+        name: "レシピ名"
+        description: "対象のわんちゃん"
+        instructions: "作り方"
+        nutrition_note: "栄養のポイント"
+        age_stage: "年齢ステージ"
+        body_type: "体型"
+        activity_level: "活動レベル"
+        ingredients_json: "材料"
     
     enums:
       dog:
@@ -51,3 +61,5 @@ ja:
           鮭: 鮭
           マグロ: マグロ
           タラ: タラ
+    
+ 

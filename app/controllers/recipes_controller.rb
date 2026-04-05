@@ -2,6 +2,47 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: [ :index, :show ]
   skip_before_action :check_dog_profile, only: [ :index, :show ]
 
+  def new
+    if params[:recipe]
+      @recipe = Recipe.new(params[:recipe].permit!)
+    else
+      @recipe = Recipe.new
+    end
+  end
+
+  def confirm
+    @recipe = current_user.recipes.build(recipe_params)
+
+    filtered = recipe_params[:ingredients_json]["medium"].reject do |i|
+      i["name"].blank? || i["amount"].blank?
+    end
+
+    @recipe.ingredients_json["medium"] = filtered
+    @recipe.status = "draft"
+
+      # バリデーションチェック
+      unless @recipe.valid?
+    flash.now[:alert] = "入力内容を確認してください"
+      render :new, status: :unprocessable_entity
+      end
+
+    @recipe = current_user.recipes.build(recipe_params)
+    @recipe.ingredients_json["medium"] = filtered
+    @recipe.status = "draft"
+  end
+
+  def create
+    @recipe = current_user.recipes.build(recipe_params)
+    @recipe.status = "draft"
+
+    if @recipe.save
+      redirect_to recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
+    else
+      flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def index
     if params[:dog_id].present? && logged_in?
       @dog = current_user.dogs.find(params[:dog_id])
@@ -28,6 +69,11 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @return_to = params[:return_to]
+
+    unless @recipe.published? || current_user&.admin? || @recipe.user == current_user
+      redirect_to recipes_path, alert: "このレシピはまだ公開されていません"
+      return
+    end
 
     # OGP設定
     set_ogp
@@ -86,7 +132,29 @@ class RecipesController < ApplicationController
     @dogs = current_user.dogs
   end
 
+  def my_recipes
+    @recipes = current_user.recipes.order(created_at: :desc)
+  end
+
   private
+
+  def recipe_params
+    params.require(:recipe).permit(
+      :name,
+      :description,
+      :instructions,
+      :nutrition_note,
+      :nutrition_note,
+      :age_stage,
+      :body_type,
+      :activity_level,
+      :size,
+      :allergies,
+      ingredients_json: {
+        medium: [ :name, :amount, :unit ]
+      }
+    )
+  end
 
   def set_ogp
     set_meta_tags(

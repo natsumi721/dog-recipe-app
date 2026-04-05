@@ -42,10 +42,13 @@ Rails.application.routes.draw do
   end
 
   # レシピ
-  resources :recipes, only: [ :index, :show ] do
+  resources :recipes, only: [ :new, :create, :index, :show ] do
     collection do
       get :select_dog  # 愛犬選択画面(レシピ閲覧用)
       get :bookmarks   # ブックマーク
+      get :my_recipes   # マイレシピ
+      get :select_action
+      post :confirm  # レシピ公開前の確認画面
     end
   end
 
@@ -53,7 +56,11 @@ Rails.application.routes.draw do
 
     # 管理者画面
     namespace :admin do
-    resources :recipes, only: [ :index, :show, :update ]
-    get "dashboard", to: "dashboard#index"
+    resources :recipes, only: [ :index, :show, :update ] do
+      collection do
+        get :published  # 承認済みレシピ一覧
+      end
+      get "dashboard", to: "dashboard#index"
   end
+end
 end

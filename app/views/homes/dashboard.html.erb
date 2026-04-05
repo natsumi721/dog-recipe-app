@@ -64,8 +64,7 @@
       text: "あなたのレシピをシェアしましょう" do %>
 
       <%= link_to "投稿する",
-        "#",
-        class: "btn btn-warning btn-lg" %>
+        select_action_recipes_path, class: "btn btn-warning btn-lg" %>
 
     <% end %>
 
@@ -107,6 +106,26 @@
         class: "btn btn-warning btn-lg" %>
 
     <% end %>
+
+    <% if current_user.admin? %>
+  <!-- 承認待ちレシピ -->
+  <%= render "homes/card",
+      icon: "bi-list-check",
+      title: "承認待ちレシピ",
+      text: "まだ承認されていないレシピを確認" do %>
+
+      <%= link_to "確認する", admin_recipes_path, class: "btn btn-warning btn-lg" %>
+  <% end %>
+
+  <!-- 承認済みレシピ -->
+  <%= render "homes/card",
+      icon: "bi-check-circle",
+      title: "承認済みレシピ",
+      text: "承認済みレシピの一覧を見る" do %>
+
+      <%= link_to "確認する", published_admin_recipes_path, class: "btn btn-warning btn-lg" %>
+  <% end %>
+<% end %>
 
   </div>
 </div>

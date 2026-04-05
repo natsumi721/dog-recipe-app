@@ -32,3 +32,8 @@ ja:
       success: ブックマークしました
     destroy:
       success: ブックマークを外しました
+  admin:
+    recipes:
+      actions:
+        approve: レシピを承認
+        reject: レシピを却下

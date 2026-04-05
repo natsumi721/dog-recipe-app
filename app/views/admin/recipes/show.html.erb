@@ -1,28 +1,28 @@
-<div class="container mt-5">
-  <div class="card shadow-sm p-5">
-    <h2 class="fw-bold mb-4 text-center"><%= @recipe.title %></h2>
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow-lg p-5 rounded-4 border-0">
 
-    <p class="text-muted mb-5 text-center">
-      <%= @recipe.content %>
-    </p>
+    <h2 class="fw-bold mb-4 text-center" style="color:#f4a300;">
+      🛠 管理者レビュー
+    </h2>
 
-    <div class="d-flex justify-content-center gap-3">
+    <%= render "recipes/recipe_detail", recipe: @recipe %>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
       <%= form_with model: [:admin, @recipe], method: :patch do |f| %>
-        <%= f.submit "承認する",
-              name: "commit",
-              value: "approve",
-              class: "btn btn-success rounded-pill px-4" %>
+        <%= f.submit t("admin.recipes.actions.approve"),
+  name: "commit",
+  class: "btn btn-success px-4 rounded-pill" %>
 
-        <%= f.submit "却下する",
-              name: "commit",
-              value: "reject",
-              class: "btn btn-danger rounded-pill px-4" %>
+<%= f.submit t("admin.recipes.actions.reject"),
+  name: "commit",
+  class: "btn btn-danger px-4 rounded-pill" %>
       <% end %>
     </div>
 
     <div class="text-center mt-4">
       <%= link_to "一覧に戻る", admin_recipes_path,
-          class: "btn btn-secondary btn-lg" %>
+        class: "btn btn-secondary px-4 rounded-pill" %>
     </div>
+
   </div>
 </div>
