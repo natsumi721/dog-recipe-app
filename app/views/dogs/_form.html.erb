@@ -80,30 +80,28 @@
   <%= f.label :avatar, "愛犬の写真" %>
 
   <!-- 🔥 編集時のみ現在の画像を表示 -->
-  <% if dog.persisted? %>
+  <% if dog.persisted? && dog.avatar.attached? %>
     <div class="mb-3">
-      <%= dog_avatar(
-            dog,
+      <%= image_tag dog.avatar,
             alt: "#{dog.name}の写真",
             class: "rounded",
-            style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;"
-          ) %>
-      <p class="text-muted mt-2">
-        <% if dog.avatar.attached? %>
-          現在の画像
-        <% else %>
-          デフォルト画像（未登録）
-        <% end %>
-      </p>
+            style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;" %>
+      <p class="text-muted mt-2">現在の画像</p>
     </div>
 
+
     <!-- 🔥 画像を削除するチェックボックス（編集時のみ） -->
-    <% if dog.avatar.attached? %>
       <div class="form-check mt-2 mb-3">
         <%= f.check_box :remove_avatar, class: "form-check-input" %>
         <%= f.label :remove_avatar, "この画像を削除する", class: "form-check-label" %>
       </div>
     <% end %>
+
+    <!-- 🔥 画像が未登録の場合のメッセージ -->
+  <% if dog.persisted? && !dog.avatar.attached? %>
+    <div class="mb-3">
+      <p class="text-muted">画像が登録されていません</p>
+    </div>
   <% end %>
 
   <!-- 🔥 ファイル選択フィールド -->
