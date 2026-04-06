@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
+
   # バリデーション
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
@@ -12,7 +13,9 @@ class User < ApplicationRecord
     has_many :recipes, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
     has_many :bookmark_recipes, through: :bookmarks, source: :recipe
+    has_one :dog, dependent: :destroy
 
+    
     # ネストした属性を許可
     accepts_nested_attributes_for :dogs
 

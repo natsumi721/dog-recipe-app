@@ -74,14 +74,52 @@
           <% end %>
         </div>
       </div>
-
       
+        <!-- 画像アップロード -->
+<div class="mb-3 text-start">
+  <%= f.label :avatar, "愛犬の写真" %>
 
-      <div class="d-grid">
-        <%= f.submit dog.new_record? ? "登録する" : "更新する",
-            class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
+  <!-- 🔥 編集時のみ現在の画像を表示 -->
+  <% if dog.persisted? %>
+    <div class="mb-3">
+      <%= dog_avatar(
+            dog,
+            alt: "#{dog.name}の写真",
+            class: "rounded",
+            style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;"
+          ) %>
+      <p class="text-muted mt-2">
+        <% if dog.avatar.attached? %>
+          現在の画像
+        <% else %>
+          デフォルト画像（未登録）
+        <% end %>
+      </p>
+    </div>
+
+    <!-- 🔥 画像を削除するチェックボックス（編集時のみ） -->
+    <% if dog.avatar.attached? %>
+      <div class="form-check mt-2 mb-3">
+        <%= f.check_box :remove_avatar, class: "form-check-input" %>
+        <%= f.label :remove_avatar, "この画像を削除する", class: "form-check-label" %>
       </div>
+    <% end %>
+  <% end %>
 
+  <!-- 🔥 ファイル選択フィールド -->
+  <%= f.file_field :avatar, accept: "image/png, image/jpg, image/jpeg", class: "form-control" %>
+  <small class="text-muted">
+    PNG、JPG、JPEG形式、5MB以下
+    <% if dog.new_record? %>
+      （未選択の場合はデフォルト画像が使用されます）
+    <% end %>
+  </small>
+</div>
+
+<div class="d-grid">
+  <%= f.submit dog.new_record? ? "登録する" : "更新する",
+      class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
+</div>
     <% end %>
       <% if dog.persisted? %>
         <div class="text-center mt-3">

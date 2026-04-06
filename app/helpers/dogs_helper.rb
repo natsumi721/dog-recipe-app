@@ -14,4 +14,12 @@ module DogsHelper
     def activity_i18n(key)
         { "low"=>"穏やか", "medium"=>"普通", "high"=>"活発" }[key]
     end
+
+    def dog_avatar(dog, options = {})
+      if dog.avatar.attached?
+        image_tag dog.avatar, options
+      else
+        image_tag 'nikukyuu.jpeg', options
+      end
+    end
 end
