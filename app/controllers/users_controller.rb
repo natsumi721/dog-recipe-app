@@ -3,15 +3,29 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.dogs.build 
   end
 
   def create
     @user = User.new(user_params)
 
+    # 画像が添付されていれば処理
+    if params[:user][:dogs_attributes]&.dig('0', :avatar).present?
+      processed_image = ImageProcessor.process(
+        params[:user][:dogs_attributes]['0'][:avatar]
+      )
+      
+      if processed_image
+        # 処理済み画像をパラメータに再設定
+        params[:user][:dogs_attributes]['0'][:avatar] = processed_image
+      end
+    end
+
     if @user.save
       auto_login(@user) # ログイン状態にする
       redirect_to root_path, notice: "登録ありがとうございます！次に愛犬の情報を登録してください。"
     else
+      flash.now[:danger] = 'ユーザー登録に失敗しました'
       render :new
     end
   end
@@ -19,6 +33,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation, :avatar)
     end
 end

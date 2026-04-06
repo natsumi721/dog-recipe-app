@@ -13,6 +13,9 @@ class User < ApplicationRecord
     has_many :bookmarks, dependent: :destroy
     has_many :bookmark_recipes, through: :bookmarks, source: :recipe
 
+    # ネストした属性を許可
+    accepts_nested_attributes_for :dogs
+
     # デフォルトスコープで削除済みユーザーを除外
     default_scope { where(deleted_at: nil) } if column_names.include?("deleted_at")
 

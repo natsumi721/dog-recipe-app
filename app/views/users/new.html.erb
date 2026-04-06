@@ -42,6 +42,13 @@
         <%= f.password_field :password_confirmation,class:"form-control" %>
       </div>
 
+      <!-- 画像アップロード -->
+        <div class="mb-3 text-start">
+          <%= f.label :avatar, "愛犬の写真（オプション）" %>
+          <%= f.file_field :avatar, accept: "image/png, image/jpg, image/jpeg", class: "form-control" %>
+          <small class="text-muted">PNG、JPG、JPEG形式、5MB以下</small>
+        </div>
+
       <%= f.submit "登録する",class:"primary-button" %>
 
     <% end %>

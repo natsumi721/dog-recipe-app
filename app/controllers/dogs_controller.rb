@@ -12,6 +12,7 @@ class DogsController < ApplicationController
       # ログインユーザーの場合、DBに保存
       @dog = current_user.dogs.build(dog_params)
 
+
       if @dog.save
         redirect_to complete_dog_path(@dog), notice: "愛犬情報を登録しました!"
       else
@@ -61,6 +62,13 @@ class DogsController < ApplicationController
 
   def update
     if @dog.update(dog_params)
+
+      # 画像が新しくアップロードされた場合のみ処理
+      if params[:dog][:avatar].present?
+        processed_image = ImageProcessor.process(params[:dog][:avatar])
+        @dog.avatar.attach(processed_image) if processed_image
+      end
+
       redirect_to dashboard_path, notice: "愛犬情報を更新しました"
     else
       flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
@@ -91,8 +99,8 @@ class DogsController < ApplicationController
       :age_stage,
       :body_type,
       :activity_level,
-      :size,
-      allergies: []
+      :allergies [],
+      :avatar
     )
 
      permitted[:allergies] = Array(permitted[:allergies]).reject(&:blank?)
