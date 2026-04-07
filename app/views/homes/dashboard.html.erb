@@ -4,26 +4,34 @@
       <!-- 🔥 犬が登録されている場合 -->
       <div style="max-width: 600px; margin: 0 auto;">
         <div class="d-flex align-items-center justify-content-center mb-4">
+        <div>
           <!-- 🔥 画像のスライダー（左側） -->
-          <div class="swiper top-dog-swiper me-3" style="width: 100px; height: 100px;">
-            <div class="swiper-wrapper">
-              <% current_user.dogs.each do |dog| %>
-                <div class="swiper-slide">
-                  <%= dog_avatar(
-                        dog,
-                        alt: "#{dog.name}の写真",
-                        class: "rounded-circle",
-                        style: "width: 100px; height: 100px; object-fit: cover; border: 3px solid #dee2e6;"
-                      ) %>
-                </div>
+          <div class="me-3" style="width: 100px; height: 100px; position: relative;">
+            <div class="swiper top-dog-swiper">
+              <div class="swiper-wrapper">
+                <% current_user.dogs.each do |dog| %>
+                  <div class="swiper-slide">
+                    <%= dog_avatar(
+                          dog,
+                          alt: "#{dog.name}の写真",
+                          class: "rounded-circle",
+                          style: "width: 100px; height: 100px; object-fit: cover; border: 3px solid #dee2e6;"
+                        ) %>
+                  </div>
+                <% end %>
+              </div>
+              
+              <!-- ナビゲーションボタン（犬が2匹以上の場合のみ表示） -->
+              <% if current_user.dogs.count > 1 %>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              <% end %>
+              
+              <!-- ページネーション（犬が2匹以上の場合のみ表示） -->
+              <% if current_user.dogs.count > 1 %>
+                <div class="swiper-pagination"></div>
               <% end %>
             </div>
-            
-            <!-- ナビゲーションボタン（犬が2匹以上の場合のみ表示） -->
-            <% if current_user.dogs.count > 1 %>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            <% end %>
           </div>
 
           <!-- 🔥 テキスト（右側・固定表示） -->
@@ -38,13 +46,9 @@
             </p>
           </div>
         </div>
-
-        <!-- 🔥 ページネーション（犬が2匹以上の場合のみ表示） -->
-        <% if current_user.dogs.count > 1 %>
-          <div class="swiper-pagination top-dog-pagination"></div>
-        <% end %>
       </div>
-      
+    </div>  
+
     <% else %>
       <!-- 🔥 犬が登録されていない場合：肉球画像を表示 -->
       <div class="d-flex align-items-center justify-content-center mb-4">
@@ -64,11 +68,8 @@
       </div>
     <% end %>
 
-
     <p class="lead">次のアクションを選択してください</p>
   </div>
-</div>
-
 
   <div class="row justify-content-center">
 

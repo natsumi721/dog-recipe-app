@@ -6,36 +6,51 @@ import * as bootstrap from "bootstrap"
 // Bootstrapをグローバルに設定（削除確認ダイアログで使用）
 window.bootstrap = bootstrap
 
-// Swiperのインポート
-import Swiper from 'swiper/bundle';
-import 'swiper/css/bundle';
+// 🔥 Swiperを初期化する関数（CDN版）
+function initSwiper() {
+  console.log('★★★ initSwiper() called ★★★');
+  
+  const swiperElement = document.querySelector('.top-dog-swiper');
+  console.log('Swiper element:', swiperElement);
+  
+  if (!swiperElement) {
+    console.log('Swiper element not found');
+    return;
+  }
 
-//  Turboが読み込まれた後にSwiperを初期化
-document.addEventListener("turbo:load", () => {
-  // Swiperの初期化
-  const swiper = new Swiper('.dog-swiper', {
-    // スライドの設定
-    slidesPerView: 1,        // 一度に表示するスライド数
-    spaceBetween: 30,        // スライド間の余白（ピクセル）
+  const slideCount = document.querySelectorAll('.top-dog-swiper .swiper-slide').length;
+  console.log('Slide count:', slideCount);
+  
+  // 🔥 Swiperが読み込まれているか確認
+  if (typeof window.Swiper === 'undefined') {
+    console.error('Swiper is not loaded!');
+    return;
+  }
+  
+  if (slideCount > 1) {
+    // 🔥 CDN版のSwiperを使う
+    const swiper = new window.Swiper('.top-dog-swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
     
-    // ループ設定
-    loop: true,              // 最後のスライドの次に最初のスライドに戻る
-    
-    // ナビゲーションボタン（前へ・次へ）
-    navigation: {
-      nextEl: '.swiper-button-next',  // 次へボタン
-      prevEl: '.swiper-button-prev',  // 前へボタン
-    },
-    
-    // ページネーション（下の丸いボタン）
-    pagination: {
-      el: '.swiper-pagination',       // ページネーション要素
-      clickable: true,                // クリックで移動可能
-    },
-    
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-  });
-});
+    console.log('Swiper initialized:', swiper);
+  } else {
+    console.log('Swiper not initialized: Only one slide');
+  }
+}
+
+// 🔥 ページ読み込み時にSwiperを初期化
+window.addEventListener('DOMContentLoaded', initSwiper);
+window.addEventListener('turbo:load', initSwiper);

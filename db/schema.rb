@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_05_122021) do
     t.integer "weight"
     t.integer "body_type"
     t.integer "activity_level"
-    t.jsonb "allergies", default: []
+    t.text "allergies"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

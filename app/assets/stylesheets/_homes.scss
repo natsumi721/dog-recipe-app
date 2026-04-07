@@ -407,15 +407,18 @@ html {
   .dashboard-card h3 {
     font-size: 1.25rem;
   }
+}
 
 /* トップ部分のスライダー */
 .top-dog-swiper {
   position: relative;
   padding: 20px 0;
+  overflow: hidden;
 }
 
 /* スライド */
 .top-dog-swiper .swiper-slide {
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -484,5 +487,4 @@ html {
   .top-dog-swiper .lead {
     font-size: 1rem;
   }
-}
 }
