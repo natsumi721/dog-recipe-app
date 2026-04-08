@@ -1,15 +1,17 @@
 <div class="container mt-5">
   <div class="text-center mb-5">
-    <% if current_user.dogs.present? %>
-      <!-- 🔥 犬が登録されている場合 -->
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div class="d-flex align-items-center justify-content-start mb-4">
 
-          <!-- 🔥 左側：画像エリア -->
+    <% if current_user.dogs.present? %>
+      <!-- 犬が登録されている場合 -->
+      <div style="max-width: 800px; margin: 0 auto;">
+        <!-- 中央寄せ -->
+        <div class="d-flex align-items-center justify-content-center mb-4">
+
+          <!-- 左側：画像エリア -->
           <div class="me-4" style="width: 120px; height: 120px; flex-shrink: 0;">
 
             <% if current_user.dogs.count == 1 %>
-              <!-- 🐶 1匹 → 普通表示（これが超重要🔥） -->
+              <!-- 1匹 なら普通表示 -->
               <%= dog_avatar(
                     current_user.dogs.first,
                     alt: "#{current_user.dogs.first.name}の写真",
@@ -18,7 +20,7 @@
                   ) %>
 
             <% else %>
-              <!-- 🐶 複数 → Swiper -->
+              <!--  複数登録なら Swiper -->
               <div class="swiper top-dog-swiper" style="width: 120px; height: 120px;">
                 <div class="swiper-wrapper">
                   <% current_user.dogs.each do |dog| %>
@@ -44,8 +46,8 @@
 
           </div>
 
-          <!-- 🔥 右側：テキスト -->
-          <div class="text-start">
+          <!--  右側：テキスト（中央寄せ） -->
+          <div class="text-center">
             <h1 class="display-4 mb-2">
               ようこそ、<%= current_user.first_name %>さん!
             </h1>
@@ -63,16 +65,18 @@
       </div>
 
     <% else %>
-      <!-- 🔥 犬が登録されていない場合 -->
+      <!-- 犬が登録されていない場合 -->
       <div style="max-width: 800px; margin: 0 auto;">
-        <div class="d-flex align-items-center justify-content-start mb-4">
+        <!-- 中央寄せ -->
+        <div class="d-flex align-items-center justify-content-center mb-4">
 
           <%= image_tag 'nikukyuu.jpeg',
                 alt: '肉球の写真',
                 class: 'rounded-circle me-4',
                 style: 'width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6; flex-shrink: 0;' %>
 
-          <div class="text-start">
+          <!-- テキスト中央寄せ -->
+          <div class="text-center">
             <h1 class="display-4 mb-2">
               ようこそ、<%= current_user.first_name %>さん!
             </h1>
@@ -85,9 +89,10 @@
       </div>
     <% end %>
 
-    <p class="lead">次のアクションを選択してください</p>
+    <p class="lead text-center">次のアクションを選択してください</p>
+
   </div>
-</div>
+
 
   <div class="row justify-content-center">
 

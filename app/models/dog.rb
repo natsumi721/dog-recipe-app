@@ -47,10 +47,10 @@ class Dog < ApplicationRecord
   validates :age_stage, presence: true
   validates :body_type, presence: true
   validates :activity_level, presence: true
-  validates :avatar, content_type: ['image/png', 'image/jpeg', 'image/jpeg'],
-                     size: { less_than: 5.megabytes, message: '画像は5MB以下にしてください' }
- 
- 
+  validates :avatar, content_type: [ "image/png", "image/jpeg", "image/jpeg" ],
+                     size: { less_than: 5.megabytes, message: "画像は5MB以下にしてください" }
+
+
 
   def recommended_recipes
     recipes = Recipe.published.to_a

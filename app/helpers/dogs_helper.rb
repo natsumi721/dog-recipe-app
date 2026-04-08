@@ -19,7 +19,7 @@ module DogsHelper
       if dog.avatar.attached?
         image_tag dog.avatar, options
       else
-        image_tag 'nikukyuu.jpeg', options
+        image_tag "nikukyuu.jpeg", options
       end
     end
 end

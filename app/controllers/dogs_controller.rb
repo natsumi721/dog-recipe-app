@@ -62,17 +62,17 @@ class DogsController < ApplicationController
 
   def update
     @dog = current_user.dogs.find(params[:id])
-  
+
       #  画像削除のチェックボックスがONの場合、画像を削除
-      if params[:dog][:remove_avatar] == '1'
+      if params[:dog][:remove_avatar] == "1"
         @dog.avatar.purge
       end
-  
+
       #  画像が新しくアップロードされた場合のみ処理
       if params[:dog][:avatar].present?
         @dog.avatar.attach(params[:dog][:avatar])
       end
-  
+
       # その他の属性を更新
       if @dog.update(dog_params_without_avatar)
         redirect_to dashboard_path, notice: "愛犬情報を更新しました"

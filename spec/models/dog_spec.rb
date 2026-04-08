@@ -21,6 +21,33 @@ RSpec.describe Dog, type: :model do
     expect(dog).to be_invalid
   end
 
+  it "画像を添付できる" do
+    dog = build(:dog)
+
+    dog.avatar.attach(
+      io: File.open(Rails.root.join("spec/fixtures/files/test_dog.jpg")),
+      filename: "test_dog.jpg",
+      content_type: "image/jpeg"
+    )
+
+    expect(dog.avatar).to be_attached
+  end
+
+  it "複数の犬がそれぞれ画像を持てる" do
+  user = create(:user)
+  dogs = create_list(:dog, 2, user: user)
+
+  dogs.each_with_index do |dog, i|
+    dog.avatar.attach(
+      io: File.open(Rails.root.join("spec/fixtures/files/test_dog.jpg")),
+      filename: "dog#{i}.jpg",
+      content_type: "image/jpeg"
+    )
+  end
+
+  expect(dogs.all? { |d| d.avatar.attached? }).to be true
+  end
+
   describe "#recommended_recipes" do
     it "条件に一致するレシピが返る" do
       dog = create(:dog, age_stage: :adult, body_type: :normal, activity_level: :medium)
