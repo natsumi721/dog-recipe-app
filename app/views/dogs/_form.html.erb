@@ -3,7 +3,7 @@
 
     <h2 class="text-center mb-4 fw-bold">健康プロフィールの作成</h2>
 
-    <%= form_with model: dog, local: true do |f| %>
+    <%= form_with model: dog, local: true, multipart: true do |f| %>
 
       <!-- 名前 -->
       <div class="mb-4">

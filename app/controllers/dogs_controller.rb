@@ -105,6 +105,7 @@ class DogsController < ApplicationController
       :age_stage,
       :body_type,
       :activity_level,
+      :avatar,
       allergies: []
     )
 

@@ -2,41 +2,54 @@
   <div class="text-center mb-5">
     <% if current_user.dogs.present? %>
       <!-- 🔥 犬が登録されている場合 -->
-      <div style="max-width: 600px; margin: 0 auto;">
-        <div class="d-flex align-items-center justify-content-center mb-4">
-        <div>
-          <!-- 🔥 画像のスライダー（左側） -->
-          <div class="me-3" style="width: 100px; height: 100px; position: relative;">
-            <div class="swiper top-dog-swiper">
-              <div class="swiper-wrapper">
-                <% current_user.dogs.each do |dog| %>
-                  <div class="swiper-slide">
-                    <%= dog_avatar(
-                          dog,
-                          alt: "#{dog.name}の写真",
-                          class: "rounded-circle",
-                          style: "width: 100px; height: 100px; object-fit: cover; border: 3px solid #dee2e6;"
-                        ) %>
-                  </div>
-                <% end %>
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="d-flex align-items-center justify-content-start mb-4">
+
+          <!-- 🔥 左側：画像エリア -->
+          <div class="me-4" style="width: 120px; height: 120px; flex-shrink: 0;">
+
+            <% if current_user.dogs.count == 1 %>
+              <!-- 🐶 1匹 → 普通表示（これが超重要🔥） -->
+              <%= dog_avatar(
+                    current_user.dogs.first,
+                    alt: "#{current_user.dogs.first.name}の写真",
+                    class: "rounded-circle",
+                    style: "width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6;"
+                  ) %>
+
+            <% else %>
+              <!-- 🐶 複数 → Swiper -->
+              <div class="swiper top-dog-swiper" style="width: 120px; height: 120px;">
+                <div class="swiper-wrapper">
+                  <% current_user.dogs.each do |dog| %>
+                    <div class="swiper-slide d-flex justify-content-center align-items-center">
+                      <%= dog_avatar(
+                            dog,
+                            alt: "#{dog.name}の写真",
+                            class: "rounded-circle",
+                            style: "width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6;"
+                          ) %>
+                    </div>
+                  <% end %>
+                </div>
+
+                <!-- ナビゲーション -->
+                <div class="swiper-button-prev" style="left: -30px;"></div>
+                <div class="swiper-button-next" style="right: -30px;"></div>
+
+                <!-- ページネーション -->
+                <div class="swiper-pagination" style="bottom: -20px;"></div>
               </div>
-              
-              <!-- ナビゲーションボタン（犬が2匹以上の場合のみ表示） -->
-              <% if current_user.dogs.count > 1 %>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-              <% end %>
-              
-              <!-- ページネーション（犬が2匹以上の場合のみ表示） -->
-              <% if current_user.dogs.count > 1 %>
-                <div class="swiper-pagination"></div>
-              <% end %>
-            </div>
+            <% end %>
+
           </div>
 
-          <!-- 🔥 テキスト（右側・固定表示） -->
+          <!-- 🔥 右側：テキスト -->
           <div class="text-start">
-            <h1 class="display-4 mb-0">ようこそ、<%= current_user.first_name %>さん!</h1>
+            <h1 class="display-4 mb-2">
+              ようこそ、<%= current_user.first_name %>さん!
+            </h1>
+
             <p class="lead mb-0">
               <% if current_user.dogs.count == 1 %>
                 <%= current_user.dogs.first.name %>ちゃんと一緒に
@@ -45,31 +58,36 @@
               <% end %>
             </p>
           </div>
+
         </div>
       </div>
-    </div>  
 
     <% else %>
-      <!-- 🔥 犬が登録されていない場合：肉球画像を表示 -->
-      <div class="d-flex align-items-center justify-content-center mb-4">
-        <!-- デフォルトの肉球画像（左側） -->
-        <%= image_tag 'nikukyuu.jpeg',
-              alt: '肉球の写真',
-              class: 'rounded-circle me-3',
-              style: 'width: 100px; height: 100px; object-fit: cover; border: 3px solid #dee2e6;' %>
+      <!-- 🔥 犬が登録されていない場合 -->
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="d-flex align-items-center justify-content-start mb-4">
 
-        <!-- テキスト（右側） -->
-        <div class="text-start">
-          <h1 class="display-4 mb-0">ようこそ、<%= current_user.first_name %>さん!</h1>
-          <p class="lead mb-0 text-muted">
-            愛犬を登録してください
-          </p>
+          <%= image_tag 'nikukyuu.jpeg',
+                alt: '肉球の写真',
+                class: 'rounded-circle me-4',
+                style: 'width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6; flex-shrink: 0;' %>
+
+          <div class="text-start">
+            <h1 class="display-4 mb-2">
+              ようこそ、<%= current_user.first_name %>さん!
+            </h1>
+            <p class="lead mb-0 text-muted">
+              愛犬を登録してください
+            </p>
+          </div>
+
         </div>
       </div>
     <% end %>
 
     <p class="lead">次のアクションを選択してください</p>
   </div>
+</div>
 
   <div class="row justify-content-center">
 
