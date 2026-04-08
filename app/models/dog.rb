@@ -40,11 +40,17 @@ class Dog < ApplicationRecord
   enum_i18n :body_type
   enum_i18n :activity_level
 
+  has_one_attached :avatar
+
   validates :name, presence: true
   validates :size, presence: true
   validates :age_stage, presence: true
   validates :body_type, presence: true
   validates :activity_level, presence: true
+  validates :avatar, content_type: [ "image/png", "image/jpeg", "image/jpeg" ],
+                     size: { less_than: 5.megabytes, message: "画像は5MB以下にしてください" }
+
+
 
   def recommended_recipes
     recipes = Recipe.published.to_a

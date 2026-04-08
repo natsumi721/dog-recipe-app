@@ -408,3 +408,83 @@ html {
     font-size: 1.25rem;
   }
 }
+
+/* トップ部分のスライダー */
+.top-dog-swiper {
+  position: relative;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+/* スライド */
+.top-dog-swiper .swiper-slide {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ナビゲーションボタン */
+.top-dog-swiper .swiper-button-prev,
+.top-dog-swiper .swiper-button-next {
+  color: #ffc107;  /* 黄色（warningカラー） */
+  width: 40px;
+  height: 40px;
+}
+
+.top-dog-swiper .swiper-button-prev:after,
+.top-dog-swiper .swiper-button-next:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ページネーション */
+.top-dog-swiper .swiper-pagination {
+  bottom: -10px !important;
+}
+
+.top-dog-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #ffc107;
+  opacity: 0.5;
+}
+
+.top-dog-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ff9800;
+}
+
+/* 🔥 スマホ対応（画面幅768px以下） */
+@media (max-width: 768px) {
+  .top-dog-swiper {
+    padding: 10px 0;
+  }
+  
+  /* ナビゲーションボタンを小さく */
+  .top-dog-swiper .swiper-button-prev,
+  .top-dog-swiper .swiper-button-next {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .top-dog-swiper .swiper-button-prev:after,
+  .top-dog-swiper .swiper-button-next:after {
+    font-size: 16px;
+  }
+  
+  /* 写真を少し小さく */
+  .top-dog-swiper .rounded-circle {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  /* テキストサイズを調整 */
+  .top-dog-swiper .display-4 {
+    font-size: 2rem;
+  }
+  
+  .top-dog-swiper .lead {
+    font-size: 1rem;
+  }
+}

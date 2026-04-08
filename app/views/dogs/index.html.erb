@@ -29,7 +29,7 @@
               <dt class="col-sm-4 mb-3 fw-bold">アレルギー</dt>
               <dd class="col-sm-8 mb-3">
                 <% if dog.allergies.present? %>
-                  <%= dog.allergies.join(", ") %>
+                  <%= Array(dog.allergies).join(", ") %>
                 <% else %>
                   なし
                 <% end %>

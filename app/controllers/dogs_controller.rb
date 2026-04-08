@@ -12,6 +12,7 @@ class DogsController < ApplicationController
       # ログインユーザーの場合、DBに保存
       @dog = current_user.dogs.build(dog_params)
 
+
       if @dog.save
         redirect_to complete_dog_path(@dog), notice: "愛犬情報を登録しました!"
       else
@@ -60,13 +61,26 @@ class DogsController < ApplicationController
   end
 
   def update
-    if @dog.update(dog_params)
-      redirect_to dashboard_path, notice: "愛犬情報を更新しました"
-    else
-      flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
-      render :edit, status: :unprocessable_entity
+    @dog = current_user.dogs.find(params[:id])
+
+      #  画像削除のチェックボックスがONの場合、画像を削除
+      if params[:dog][:remove_avatar] == "1"
+        @dog.avatar.purge
+      end
+
+      #  画像が新しくアップロードされた場合のみ処理
+      if params[:dog][:avatar].present?
+        @dog.avatar.attach(params[:dog][:avatar])
+      end
+
+      # その他の属性を更新
+      if @dog.update(dog_params_without_avatar)
+        redirect_to dashboard_path, notice: "愛犬情報を更新しました"
+      else
+        flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
+        render :edit, status: :unprocessable_entity
+      end
     end
-  end
 
   def destroy
     if @dog.destroy
@@ -91,13 +105,25 @@ class DogsController < ApplicationController
       :age_stage,
       :body_type,
       :activity_level,
-      :size,
+      :avatar,
       allergies: []
     )
 
      permitted[:allergies] = Array(permitted[:allergies]).reject(&:blank?)
 
      permitted
+  end
+
+  def dog_params_without_avatar
+    # 🔥 画像以外のパラメータを許可
+    params.require(:dog).permit(
+      :name,
+      :size,
+      :age_stage,
+      :body_type,
+      :activity_level,
+      allergies: []
+    )
   end
 
   def logged_in?

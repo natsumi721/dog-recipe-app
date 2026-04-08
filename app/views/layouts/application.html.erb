@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title> One Wan Dish</title>
+    <title>One Wan Dish</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,14 +9,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     
-     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <!-- 🔥 SwiperのCSSをCDNから読み込む -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   </head>
 
   <body>
     <%= render 'shared/header' %>
     
-    <!-- フラッシュメッセージがあれば表示 -->
     <% if flash[:notice] %>
       <div class="alert alert-success"><%= flash[:notice] %></div>
     <% end %>
@@ -25,6 +27,10 @@
     <% end %>
     
     <%= yield %>
+    
+    <%= render 'shared/footer' %>
+    
+    <!-- 🔥 SwiperのJavaScriptをCDNから読み込む（</body>の直前に配置） -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </body>
-  <%= render 'shared/footer' %>
 </html>
