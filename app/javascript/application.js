@@ -8,10 +8,8 @@ window.bootstrap = bootstrap
 
 // 🔥 Swiperを初期化する関数（CDN版）
 function initSwiper() {
-  console.log('★★★ initSwiper() called ★★★');
   
   const swiperElement = document.querySelector('.top-dog-swiper');
-  console.log('Swiper element:', swiperElement);
   
   if (!swiperElement) {
     console.log('Swiper element not found');
@@ -19,7 +17,6 @@ function initSwiper() {
   }
 
   const slideCount = document.querySelectorAll('.top-dog-swiper .swiper-slide').length;
-  console.log('Slide count:', slideCount);
   
   // 🔥 Swiperが読み込まれているか確認
   if (typeof window.Swiper === 'undefined') {
@@ -45,7 +42,6 @@ function initSwiper() {
       },
     });
     
-    console.log('Swiper initialized:', swiper);
   } else {
     console.log('Swiper not initialized: Only one slide');
   }

@@ -76,6 +76,7 @@
       </div>
       
         <!-- 画像アップロード -->
+        <% if current_user %>
 <div class="mb-3 text-start">
   <%= f.label :avatar, "愛犬の写真" %>
 
@@ -113,6 +114,7 @@
     <% end %>
   </small>
 </div>
+<% end %>
 
 <div class="d-grid">
   <%= f.submit dog.new_record? ? "登録する" : "更新する",

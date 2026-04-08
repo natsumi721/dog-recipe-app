@@ -19,13 +19,17 @@
     <div>
     <div class="text-center mt-4">
     <% if current_user %>
-      <!-- ログインユーザーには「ダッシュボードへ」ボタンのみ表示 -->
-      <%= link_to "ホームに戻る", dashboard_path,
-          class: "btn btn-secondary btn-lg" %>
-    <% else %>
-      <!-- 未ログインユーザーには「戻る」ボタンのみ表示 -->
-      <%= link_to "戻る", new_dog_path,
-          class: "btn btn-secondary btn-lg" %>
+  <!-- ログインユーザーには「ダッシュボードへ」ボタンのみ表示 -->
+  <%= link_to "ホームに戻る", dashboard_path,
+      class: "btn btn-secondary btn-lg" %>
+<% else %>
+  <!-- 未ログインユーザーには「戻る」ボタンと「ユーザー登録」ボタンを表示 -->
+  <div class="d-grid gap-2" style="max-width: 400px; margin: 0 auto;">
+    <%= link_to "もっと試したい", signup_path,
+        class: "btn btn-warning px-4 text-white" %>
+    <%= link_to "戻る", new_dog_path,
+        class: "btn btn-secondary btn-lg" %>
+  </div>
     <% end %>
     </div>
   </div>
