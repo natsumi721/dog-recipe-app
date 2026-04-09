@@ -3,7 +3,8 @@ class ImageProcessor
     return nil unless image_file
 
     # 一時ファイルとして保存
-    temp_file = Tempfile.new([ "processed", ".webp" ])
+    temp_file = Tempfile.new(["processed", ".webp"], binmode: true)
+    temp_file.rewind
 
     begin
       # MiniMagickで画像を処理

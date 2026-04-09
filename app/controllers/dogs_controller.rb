@@ -10,8 +10,12 @@ class DogsController < ApplicationController
     # ログインしているかどうかで処理を分岐
     if logged_in?
       # ログインユーザーの場合、DBに保存
-      @dog = current_user.dogs.build(dog_params)
+      @dog = current_user.dogs.build(dog_params.except(:avatar))
 
+      if params[:dog][:avatar].present?
+        processed = ImageProcessor.process(params[:dog][:avatar])
+        @dog.avatar.attach(processed) if processed
+      end
 
       if @dog.save
         redirect_to complete_dog_path(@dog), notice: "愛犬情報を登録しました!"
