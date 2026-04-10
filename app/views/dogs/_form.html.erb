@@ -82,15 +82,16 @@
 
   <!-- 🔥 編集時のみ現在の画像を表示 -->
   <% if dog.persisted? && dog.avatar.attached? %>
-    <div class="mb-3">
-      <%= image_tag dog.avatar,
-            alt: "#{dog.name}の写真",
-            class: "rounded",
-            style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;" %>
-      <p class="text-muted mt-2">現在の画像</p>
-    </div>
-
-
+  <div class="mb-3">
+  <% if dog.avatar.persisted? %>
+    <%= image_tag dog.avatar,
+          alt: "#{dog.name}の写真",
+          class: "rounded",
+          style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;" %>
+    <% else %>
+      <p class="text-muted">画像をアップロード中...</p>
+    <% end %>
+    
     <!-- 🔥 画像を削除するチェックボックス（編集時のみ） -->
       <div class="form-check mt-2 mb-3">
         <%= f.check_box :remove_avatar, class: "form-check-input" %>
@@ -121,6 +122,7 @@
       class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
 </div>
     <% end %>
+    
       <% if dog.persisted? %>
         <div class="text-center mt-3">
           <%= button_to "#{dog.name}ちゃんの情報を削除",

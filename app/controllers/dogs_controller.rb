@@ -64,27 +64,45 @@ class DogsController < ApplicationController
   def edit
   end
 
-  def update
-    @dog = current_user.dogs.find(params[:id])
+ def update
+  @dog = current_user.dogs.find(params[:id])
 
-      #  画像削除のチェックボックスがONの場合、画像を削除
-      if params[:dog][:remove_avatar] == "1"
-        @dog.avatar.purge
-      end
+  # 画像削除のチェックボックスがONの場合、画像を削除
+  if params[:dog][:remove_avatar] == "1"
+    @dog.avatar.purge
+  end
 
-      #  画像が新しくアップロードされた場合のみ処理
-      if params[:dog][:avatar].present?
-        @dog.avatar.attach(params[:dog][:avatar])
-      end
-
-      # その他の属性を更新
-      if @dog.update(dog_params_without_avatar)
-        redirect_to dashboard_path, notice: "愛犬情報を更新しました"
-      else
-        flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
-        render :edit, status: :unprocessable_entity
-      end
+  # ✅ 画像処理を先に行うが、添付はしない
+  processed_image = nil
+  if params[:dog][:avatar].present?
+    Rails.logger.info "ImageProcessor: Starting image processing for update"
+    processed_image = ImageProcessor.process(params[:dog][:avatar])
+    
+    if processed_image
+      Rails.logger.info "ImageProcessor: Image processed successfully"
+    else
+      Rails.logger.error "ImageProcessor: Failed to process image"
+      # 処理に失敗した場合は元の画像を使う
+      processed_image = params[:dog][:avatar]
     end
+  end
+
+  # その他の属性を更新
+  if @dog.update(dog_params_without_avatar)
+    # ✅ 更新が成功した後に画像を添付
+    if processed_image
+      @dog.avatar.attach(processed_image)
+      Rails.logger.info "Avatar attached successfully after update"
+    end
+    
+    redirect_to dashboard_path, notice: "愛犬情報を更新しました"
+  else
+    # ✅ 更新が失敗した場合は画像を添付しない
+    flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
+    render :edit, status: :unprocessable_entity
+  end
+end
+
 
   def destroy
     if @dog.destroy
