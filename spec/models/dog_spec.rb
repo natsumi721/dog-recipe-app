@@ -24,11 +24,12 @@ RSpec.describe Dog, type: :model do
   it "画像を添付できる" do
     dog = build(:dog)
 
-    dog.avatar.attach(
-      io: File.open(Rails.root.join("spec/fixtures/files/test_dog.jpg")),
-      filename: "test_dog.jpg",
-      content_type: "image/jpeg"
-    )
+    file = fixture_file_upload(
+    Rails.root.join("spec/fixtures/files/test_image.png"),
+    "image/png"
+  )
+
+  dog.avatar.attach(file)
 
     expect(dog.avatar).to be_attached
   end
@@ -132,5 +133,31 @@ end
   # ✅ スコアが高いレシピが含まれることを確認
   expect(dog1_recipes).to include(recipe1)
   expect(dog2_recipes).to include(recipe2)
+end
+
+describe 'avatar upload (webp変換)' do
+  let(:dog) { build(:dog) }
+
+  let(:file) do
+    fixture_file_upload(
+      Rails.root.join('spec/fixtures/files/test_image.png'),
+      'image/png'
+    )
+  end
+
+  it 'webp形式で保存される' do
+    processed = ImageProcessor.process(file)
+
+    dog.avatar.attach(
+      io: processed,
+      filename: "processed.webp",
+      content_type: "image/webp"
+    )
+
+    dog.save!
+
+    expect(dog.avatar).to be_attached
+    expect(dog.avatar.blob.content_type).to eq("image/webp")
+  end
 end
 end

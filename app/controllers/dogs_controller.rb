@@ -10,8 +10,19 @@ class DogsController < ApplicationController
     # ログインしているかどうかで処理を分岐
     if logged_in?
       # ログインユーザーの場合、DBに保存
-      @dog = current_user.dogs.build(dog_params)
+      @dog = current_user.dogs.build(dog_params.except(:avatar))
 
+      if params[:dog][:avatar].present?
+          processed = ImageProcessor.process(params[:dog][:avatar])
+
+      if processed
+           @dog.avatar.attach(
+             io: processed,
+             filename: "processed.webp",
+             content_type: "image/webp"
+           )
+      end
+      end
 
       if @dog.save
         redirect_to complete_dog_path(@dog), notice: "愛犬情報を登録しました!"
@@ -60,27 +71,45 @@ class DogsController < ApplicationController
   def edit
   end
 
-  def update
-    @dog = current_user.dogs.find(params[:id])
+ def update
+  @dog = current_user.dogs.find(params[:id])
 
-      #  画像削除のチェックボックスがONの場合、画像を削除
-      if params[:dog][:remove_avatar] == "1"
-        @dog.avatar.purge
-      end
+  # ① 属性を先にセット（DBにはまだ保存しない）
+  @dog.assign_attributes(dog_params_without_avatar)
 
-      #  画像が新しくアップロードされた場合のみ処理
-      if params[:dog][:avatar].present?
-        @dog.avatar.attach(params[:dog][:avatar])
-      end
+  # ② 削除チェック（※新規画像がないときだけ）
+  if params[:dog][:remove_avatar] == "1" && params[:dog][:avatar].blank?
+    @dog.avatar.purge
+  end
 
-      # その他の属性を更新
-      if @dog.update(dog_params_without_avatar)
-        redirect_to dashboard_path, notice: "愛犬情報を更新しました"
-      else
-        flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
-        render :edit, status: :unprocessable_entity
-      end
+  # ③ 画像処理
+  if params[:dog][:avatar].present?
+    Rails.logger.info "ImageProcessor: Starting image processing for update"
+
+    processed = ImageProcessor.process(params[:dog][:avatar])
+
+    if processed
+
+      @dog.avatar.attach(io: processed,
+    filename: "processed.webp",
+    content_type: "image/webp")
+
+      Rails.logger.info "Avatar attached successfully"
+    else
+      Rails.logger.error "ImageProcessor failed, fallback original"
+      @dog.avatar.attach(params[:dog][:avatar])
     end
+  end
+
+  # ④ 最後に保存（ここが超重要）
+  if @dog.save
+    redirect_to dashboard_path, notice: "愛犬情報を更新しました"
+  else
+
+    flash.now[:alert] = "情報の更新に失敗しました。入力内容を確認してください。"
+    render :edit, status: :unprocessable_entity
+  end
+end
 
   def destroy
     if @dog.destroy
@@ -115,7 +144,7 @@ class DogsController < ApplicationController
   end
 
   def dog_params_without_avatar
-    # 🔥 画像以外のパラメータを許可
+    # 画像以外のパラメータを許可
     params.require(:dog).permit(
       :name,
       :size,
