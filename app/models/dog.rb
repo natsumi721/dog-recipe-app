@@ -55,7 +55,7 @@ class Dog < ApplicationRecord
     recipes = Recipe.published.to_a
 
     # アレルギー取得
-    allergies_list = parse_allergies  
+    allergies_list = allergies || []
 
     # タグに変換
     allergy_tags = allergies_list.map { |a| ALLERGY_MAP[a] }.compact
@@ -87,26 +87,12 @@ class Dog < ApplicationRecord
   def allergies_i18n
     return "なし" if allergies.blank?
 
-    list = allergies.is_a?(String) ? [allergies] : allergies
-
-    list.map do |allergy|
-      I18n.t("enums.dog.allergy.#{allergy}", default: allergy)
-    end.join(", ")
-  end
+    allergies.map do |allergy|
+    I18n.t("enums.dog.allergy.#{allergy}", default: allergy)
+  end.join(", ")
+end
 
   private
-
-  # アレルギーを配列に変換
-  def parse_allergies
-    return [] if allergies.blank?
-
-    # 文字列の場合はカンマで分割、配列の場合はそのまま
-    if allergies.is_a?(String)
-      allergies.split(",").map(&:strip)
-    else
-      allergies
-    end
-  end
 
   # レシピがアレルゲンを含むか確認
   def recipe_has_allergen?(recipe, allergy_tags)
