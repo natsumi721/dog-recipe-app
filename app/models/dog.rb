@@ -1,7 +1,7 @@
 class Dog < ApplicationRecord
   belongs_to :user, optional: true
 
-  # アレルギー情報（表示用）
+  # アレルギー情報(表示用)
   ALLERGIES = [
     "牛肉", "鶏肉", "豚肉", "牛乳", "チーズ", "ヨーグルト",
     "卵", "鹿肉", "納豆(大豆)", "鮭", "マグロ", "タラ"
@@ -26,7 +26,6 @@ class Dog < ApplicationRecord
     "魚" => "fish",
     "米" => "rice",
     "雑穀米" => "grain"
-
   }.freeze
 
   enum :size, { small: 0, medium: 1, large: 2 }, prefix: true
@@ -48,41 +47,23 @@ class Dog < ApplicationRecord
   validates :body_type, presence: true
   validates :activity_level, presence: true
   validates :avatar,
-  content_type: { in: %w[image/png image/jpeg image/webp] },
-  size: { less_than: 5.megabytes, message: "画像は5MB以下にしてください" }
+            content_type: { in: %w[image/png image/jpeg image/webp] },
+            size: { less_than: 5.megabytes, message: "画像は5MB以下にしてください" }
 
+  # 推奨レシピを取得
   def recommended_recipes
     recipes = Recipe.published.to_a
 
-    allergies_list = allergies
+    # アレルギー取得
+    allergies_list = parse_allergies  
 
-    if allergies_list.is_a?(String)
-      begin
-        allergies_list = JSON.parse(allergies_list)
-      rescue
-        allergies_list = [ allergies_list ]
-      end
+    # タグに変換
+    allergy_tags = allergies_list.map { |a| ALLERGY_MAP[a] }.compact
+
+    # アレルギーを含むレシピを除外
+    recipes = recipes.reject do |recipe|
+      recipe_has_allergen?(recipe, allergy_tags)
     end
-
-
-    #  アレルギー除外
-    if allergies_list.present?
-      recipes = recipes.reject do |recipe|
-        next true if recipe.ingredients_json.blank?
-
-        ingredients = recipe.ingredients_json.values.flatten
-
-        allergies_list.any? do |a|
-            tag = ALLERGY_MAP[a]
-
-      ingredients.any? do |ing|
-        ing["name"]&.include?(a) ||
-        (tag && ing["tags"]&.include?(tag))
-          end
-        end
-      end
-    end
-
 
     # スコアリング
     scored = recipes.map do |recipe|
@@ -90,7 +71,7 @@ class Dog < ApplicationRecord
       score += 1 if recipe.age_stage == age_stage
       score += 1 if recipe.body_type == body_type
       score += 1 if recipe.activity_level == activity_level
-      [ recipe, score ]
+      [recipe, score]
     end
 
     # 上位取得
@@ -100,15 +81,42 @@ class Dog < ApplicationRecord
                     .take(20)
 
     top_recipes.sample(5)
-   end
+  end
 
+  # アレルギー情報を日本語で表示
   def allergies_i18n
     return "なし" if allergies.blank?
 
-    list = allergies.is_a?(String) ? [ allergies ] : allergies
+    list = allergies.is_a?(String) ? [allergies] : allergies
 
     list.map do |allergy|
-    I18n.t("enums.dog.allergy.#{allergy}", default: allergy)
-  end.join(", ")
+      I18n.t("enums.dog.allergy.#{allergy}", default: allergy)
+    end.join(", ")
+  end
+
+  private
+
+  # アレルギーを配列に変換
+  def parse_allergies
+    return [] if allergies.blank?
+
+    # 文字列の場合はカンマで分割、配列の場合はそのまま
+    if allergies.is_a?(String)
+      allergies.split(",").map(&:strip)
+    else
+      allergies
+    end
+  end
+
+  # レシピがアレルゲンを含むか確認
+  def recipe_has_allergen?(recipe, allergy_tags)
+    # 全サイズの材料を取得
+    ingredients = recipe.ingredients_json.values.flatten
+
+    # 材料のタグとアレルギータグを照合
+    ingredients.any? do |ingredient|
+      ingredient_tags = ingredient["tags"] || []
+      (allergy_tags & ingredient_tags).any?  # 共通要素があるか?
+    end
   end
 end
