@@ -102,7 +102,8 @@ end
   ingredients = recipe.ingredients_json.values.flatten
 
   ingredients.any? do |ingredient|
-    allergies.any? { |allergy| ingredient["name"].to_s.include?(allergy) }
-  end
+  ingredient_tags = ingredient["tags"] || []
+  (ingredient_tags & allergy_tags).any?
+end
 end
 end

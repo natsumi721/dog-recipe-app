@@ -145,7 +145,7 @@ end
 
   def dog_params_without_avatar
     # 画像以外のパラメータを許可
-    params.require(:dog).permit(
+    permitted = params.require(:dog).permit(
       :name,
       :size,
       :age_stage,
@@ -153,6 +153,11 @@ end
       :activity_level,
       allergies: []
     )
+
+  # ✅ allergies が nil の場合は空配列にする
+  permitted[:allergies] = Array(permitted[:allergies]).reject(&:blank?)
+
+  permitted
   end
 
   def logged_in?
