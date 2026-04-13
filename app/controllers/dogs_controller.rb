@@ -154,7 +154,7 @@ end
       allergies: []
     )
 
-    # ✅ allergies が nil の場合は空配列にする
+  # ✅ allergies が nil の場合は空配列にする
   permitted[:allergies] = Array(permitted[:allergies]).reject(&:blank?)
 
   permitted
