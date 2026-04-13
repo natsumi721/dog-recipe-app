@@ -22,7 +22,7 @@ class ImageProcessor
       # 一時ファイルに書き込み
       image.write(temp_file.path)
 
-      # ファイルポインタを先頭に戻す（これは必要）
+      # ファイルポインタを先頭に戻す
       temp_file.rewind
 
       # 返す

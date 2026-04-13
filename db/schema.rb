@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_05_122021) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_12_143502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,10 +61,10 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_05_122021) do
     t.integer "weight"
     t.integer "body_type"
     t.integer "activity_level"
-    t.text "allergies"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "allergies", default: [], array: true
     t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 

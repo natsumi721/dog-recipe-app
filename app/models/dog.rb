@@ -1,7 +1,7 @@
 class Dog < ApplicationRecord
   belongs_to :user, optional: true
 
-  # アレルギー情報（表示用）
+  # アレルギー情報(表示用)
   ALLERGIES = [
     "牛肉", "鶏肉", "豚肉", "牛乳", "チーズ", "ヨーグルト",
     "卵", "鹿肉", "納豆(大豆)", "鮭", "マグロ", "タラ"
@@ -26,7 +26,6 @@ class Dog < ApplicationRecord
     "魚" => "fish",
     "米" => "rice",
     "雑穀米" => "grain"
-
   }.freeze
 
   enum :size, { small: 0, medium: 1, large: 2 }, prefix: true
@@ -48,41 +47,23 @@ class Dog < ApplicationRecord
   validates :body_type, presence: true
   validates :activity_level, presence: true
   validates :avatar,
-  content_type: { in: %w[image/png image/jpeg image/webp] },
-  size: { less_than: 5.megabytes, message: "画像は5MB以下にしてください" }
+            content_type: { in: %w[image/png image/jpeg image/webp] },
+            size: { less_than: 5.megabytes, message: "画像は5MB以下にしてください" }
 
+  # 推奨レシピを取得
   def recommended_recipes
     recipes = Recipe.published.to_a
 
-    allergies_list = allergies
+    # アレルギー取得
+    allergies_list = allergies || []
 
-    if allergies_list.is_a?(String)
-      begin
-        allergies_list = JSON.parse(allergies_list)
-      rescue
-        allergies_list = [ allergies_list ]
-      end
+    # タグに変換
+    allergy_tags = allergies_list.map { |a| ALLERGY_MAP[a] }.compact
+
+    # アレルギーを含むレシピを除外
+    recipes = recipes.reject do |recipe|
+      recipe_has_allergen?(recipe, allergy_tags)
     end
-
-
-    #  アレルギー除外
-    if allergies_list.present?
-      recipes = recipes.reject do |recipe|
-        next true if recipe.ingredients_json.blank?
-
-        ingredients = recipe.ingredients_json.values.flatten
-
-        allergies_list.any? do |a|
-            tag = ALLERGY_MAP[a]
-
-      ingredients.any? do |ing|
-        ing["name"]&.include?(a) ||
-        (tag && ing["tags"]&.include?(tag))
-          end
-        end
-      end
-    end
-
 
     # スコアリング
     scored = recipes.map do |recipe|
@@ -100,15 +81,28 @@ class Dog < ApplicationRecord
                     .take(20)
 
     top_recipes.sample(5)
-   end
+  end
 
+  # アレルギー情報を日本語で表示
   def allergies_i18n
     return "なし" if allergies.blank?
 
-    list = allergies.is_a?(String) ? [ allergies ] : allergies
-
-    list.map do |allergy|
+    allergies.map do |allergy|
     I18n.t("enums.dog.allergy.#{allergy}", default: allergy)
   end.join(", ")
+end
+
+  private
+
+  # レシピがアレルゲンを含むか確認
+  def recipe_has_allergen?(recipe, allergy_tags)
+  # ingredients_json が nil の場合は false を返す
+  return false if recipe.ingredients_json.blank?
+
+  ingredients = recipe.ingredients_json.values.flatten
+
+  ingredients.any? do |ingredient|
+    allergies.any? { |allergy| ingredient["name"].to_s.include?(allergy) }
   end
+end
 end
