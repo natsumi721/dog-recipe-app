@@ -1,5 +1,5 @@
 class FixAllergiesColumnFinal < ActiveRecord::Migration[7.2]
-   def up
+  def up
     # 不要な一時カラムを削除
     if column_exists?(:dogs, :allergies_temp)
       puts "⚠️  allergies_tempカラムが残っています。削除します..."
@@ -26,40 +26,52 @@ class FixAllergiesColumnFinal < ActiveRecord::Migration[7.2]
       # 一時的なカラムを作成
       add_column :dogs, :allergies_array, :string, array: true, default: []
 
-      # データを移行
-      Dog.reset_column_information
-      Dog.find_each do |dog|
-        next if dog.allergies.blank?
+      # SQLでデータ移行（JSON文字列も考慮）
+      execute <<~SQL
+        UPDATE dogs
+        SET allergies_array =#{' '}
+          CASE
+            -- NULL または空文字列の場合
+            WHEN allergies IS NULL OR allergies = '' THEN '{}'
+        #{'    '}
+            -- JSON配列文字列の場合（例: '["鶏肉", "小麦"]'）
+            WHEN allergies LIKE '[%]' THEN
+              -- JSON文字列をPostgreSQLの配列に変換
+              (
+                SELECT array_agg(elem::text)
+                FROM json_array_elements_text(allergies::json) AS elem
+              )
+        #{'    '}
+            -- 通常の文字列の場合
+            ELSE ARRAY[allergies]
+          END;
+      SQL
 
-        begin
-          allergies_data = if dog.allergies.is_a?(Array)
-                            dog.allergies
-          else
-                            JSON.parse(dog.allergies)
-          end
-          dog.update_column(:allergies_array, allergies_data)
-        rescue JSON::ParserError => e
-          puts "⚠️  Dog ID:#{dog.id} のデータ変換に失敗しました。空配列を設定します。"
-          dog.update_column(:allergies_array, [])
-        end
-      end
-
-      # 古いカラムを削除
+      # カラム入れ替え
       remove_column :dogs, :allergies
-
-      # 新しいカラムの名前を変更
       rename_column :dogs, :allergies_array, :allergies
 
-      puts "✅ 変換完了しました!"
+      puts "✅ allergiesカラムの配列型への変換が完了しました。"
     else
-      # allergiesカラムが存在しない場合は新規作成
-      puts "📝 allergiesカラムを新規作成します..."
+      puts "⚠️  allergiesカラムが存在しません。新規作成します..."
       add_column :dogs, :allergies, :string, array: true, default: []
-      puts "✅ 作成完了しました!"
     end
   end
 
   def down
     # ロールバック処理(必要に応じて実装)
+    if column_exists?(:dogs, :allergies)
+      puts "📝 allergiesカラムをtext型に戻します..."
+
+      add_column :dogs, :allergies_text, :text
+
+      execute <<~SQL
+        UPDATE dogs
+        SET allergies_text = array_to_json(allergies)::text;
+      SQL
+
+      remove_column :dogs, :allergies
+      rename_column :dogs, :allergies_text, :allergies
+    end
   end
 end
