@@ -71,7 +71,7 @@ class Dog < ApplicationRecord
       score += 1 if recipe.age_stage == age_stage
       score += 1 if recipe.body_type == body_type
       score += 1 if recipe.activity_level == activity_level
-      [recipe, score]
+      [ recipe, score ]
     end
 
     # 上位取得
@@ -96,13 +96,13 @@ end
 
   # レシピがアレルゲンを含むか確認
   def recipe_has_allergen?(recipe, allergy_tags)
-    # 全サイズの材料を取得
-    ingredients = recipe.ingredients_json.values.flatten
+  # ingredients_json が nil の場合は false を返す
+  return false if recipe.ingredients_json.blank?
 
-    # 材料のタグとアレルギータグを照合
-    ingredients.any? do |ingredient|
-      ingredient_tags = ingredient["tags"] || []
-      (allergy_tags & ingredient_tags).any?  # 共通要素があるか?
-    end
+  ingredients = recipe.ingredients_json.values.flatten
+
+  ingredients.any? do |ingredient|
+    allergies.any? { |allergy| ingredient["name"].to_s.include?(allergy) }
   end
+end
 end
