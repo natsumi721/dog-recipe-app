@@ -32,7 +32,7 @@ it "条件に一致するレシピだけ表示される" do
 
      post login_path, params: {
     email: dog.user.email,
-    password: 'password'
+    password: 'password12345'
   }
 
    recipe1 = create(:recipe,

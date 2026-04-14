@@ -59,6 +59,10 @@ Rails.application.configure do
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
+  # テスト環境でのメール設定
+  config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 

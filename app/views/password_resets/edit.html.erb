@@ -1,0 +1,68 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <!-- 可愛いカードデザイン -->
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-5">
+          <!-- アイコン付きタイトル -->
+          <div class="text-center mb-4">
+            <div class="mb-3">
+              <i class="fas fa-key fa-3x text-success"></i>
+            </div>
+            <h2 class="fw-bold text-success">新しいパスワードを設定</h2>
+            <p class="text-muted">安全なパスワードを入力してください</p>
+          </div>
+          
+          <%= form_with model: @user, url: password_reset_path(@token), method: :patch, local: true do |f| %>
+            <!-- パスワード入力 -->
+            <div class="mb-4">
+              <%= f.label :password, '新しいパスワード', class: "form-label fw-bold" %>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                  <i class="fas fa-lock text-muted"></i>
+                </span>
+                <%= f.password_field :password, 
+                    class: "form-control border-start-0", 
+                    placeholder: "8文字以上で入力してください",
+                    required: true %>
+              </div>
+              <small class="text-muted">
+                <i class="fas fa-shield-alt me-1"></i>
+                8文字以上の英数字を組み合わせてください
+              </small>
+            </div>
+            
+            <!-- パスワード確認 -->
+            <div class="mb-4">
+              <%= f.label :password_confirmation, 'パスワード確認', class: "form-label fw-bold" %>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                  <i class="fas fa-lock text-muted"></i>
+                </span>
+                <%= f.password_field :password_confirmation, 
+                    class: "form-control border-start-0", 
+                    placeholder: "もう一度入力してください",
+                    required: true %>
+              </div>
+            </div>
+            
+            <!-- 更新ボタン -->
+            <%= f.submit "パスワードを更新", 
+                class: "btn btn-success w-100 py-3 rounded-pill fw-bold shadow-sm" %>
+          <% end %>
+        </div>
+      </div>
+      
+      <!-- セキュリティ情報 -->
+      <div class="alert alert-info border-0 rounded-4 mt-4" role="alert">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-info-circle fa-2x me-3"></i>
+          <div>
+            <strong>パスワードのヒント</strong><br>
+            <small>英字・数字を組み合わせた8文字以上のパスワードを設定してください</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

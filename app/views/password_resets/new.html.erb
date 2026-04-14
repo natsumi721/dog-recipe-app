@@ -1,0 +1,54 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <!-- 可愛いカードデザイン -->
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-5">
+          <!-- アイコン付きタイトル -->
+          <div class="text-center mb-4">
+            <div class="mb-3">
+              <!-- Font Awesome の鍵アイコン(または犬アイコン) -->
+              <i class="fas fa-paw fa-3x text-primary"></i>
+            </div>
+            <h2 class="fw-bold text-primary">パスワードをお忘れですか?</h2>
+            <p class="text-muted">登録済みのメールアドレスを入力してください</p>
+          </div>
+          
+          <%= form_with url: password_resets_path, local: true do |f| %>
+            <!-- メールアドレス入力 -->
+            <div class="mb-4">
+              <%= f.label :email, 'メールアドレス', class: "form-label fw-bold" %>
+              <div class="input-group">
+                <span class="input-group-text bg-light border-end-0">
+                  <i class="fas fa-envelope text-muted"></i>
+                </span>
+                <%= f.email_field :email, 
+                    class: "form-control border-start-0", 
+                    placeholder: "例: wanwan@example.com",
+                    required: true %>
+              </div>
+            </div>
+            
+            <!-- 送信ボタン -->
+            <%= f.submit "パスワードリセットメールを送信", 
+                class: "btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm" %>
+          <% end %>
+          
+          <!-- 戻るリンク -->
+          <div class="text-center mt-4">
+            <i class="fas fa-arrow-left me-2"></i>
+            <%= link_to 'ログイン画面に戻る', login_path, class: "text-decoration-none" %>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 補足説明 -->
+      <div class="text-center mt-4">
+        <small class="text-muted">
+          <i class="fas fa-info-circle me-1"></i>
+          メールが届かない場合は、迷惑メールフォルダをご確認ください
+        </small>
+      </div>
+    </div>
+  </div>
+</div>

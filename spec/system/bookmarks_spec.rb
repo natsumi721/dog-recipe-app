@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Bookmark", type: :system do
-  let(:user) { create(:user, password: "password") }
+  let(:user) { create(:user, password: "password12345") }
   let!(:dog) { create(:dog, user: user) }
   let!(:recipe) { create(:recipe) }
 
   it "ログインユーザーはブックマークできる" do
     visit login_path
     fill_in "メールアドレス", with: user.email
-    fill_in "パスワード", with: "password"
+    fill_in "パスワード", with: "password12345"
     click_button "ログインする"
     expect(page).to have_current_path(dashboard_path)
 
