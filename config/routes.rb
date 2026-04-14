@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   # get "dogs/new"
   # get "dogs/creat"
 
+
+  # 開発環境でのみメールプレビュー機能を有効化
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  
   # ユーザー登録
   get "signup", to: "users#new"
   post "users", to: "users#create"
