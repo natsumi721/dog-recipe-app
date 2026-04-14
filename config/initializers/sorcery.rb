@@ -383,6 +383,15 @@ Rails.application.config.sorcery.configure do |config|
     # user.prevent_non_active_users_to_login =
 
     # -- reset_password --
+
+    # reset_password モジュールの設定
+    user.reset_password_token_attribute_name = :reset_password_token
+    user.reset_password_token_expires_at_attribute_name = :reset_password_token_expires_at
+    user.reset_password_email_sent_at_attribute_name = :reset_password_email_sent_at
+    user.reset_password_mailer = UserMailer
+    user.reset_password_expiration_period = 86400 # 24時間
+    user.reset_password_time_between_emails = 300 # 5分
+
     # Password reset token attribute name.
     # Default: `:reset_password_token`
     #

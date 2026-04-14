@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "password_resets/new"
+  get "password_resets/edit"
   # get "user_sessions/new"
   # get "user_sessions/create"
   # get "user_sessions/destroy"
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
 
   # 開発環境でのみメールプレビュー機能を有効化
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
-  
+
   # ユーザー登録
   get "signup", to: "users#new"
   post "users", to: "users#create"
@@ -67,4 +69,7 @@ Rails.application.routes.draw do
       get "dashboard", to: "dashboard#index"
   end
 end
+
+    #パスワードリセット
+    resources :password_resets, only: [:new, :create, :edit, :update]
 end
