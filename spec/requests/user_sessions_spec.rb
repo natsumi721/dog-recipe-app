@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "UserSessions", type: :request do
-  let(:user) { create(:user, email: "test@example.com", password: "password") }
+  let(:user) { create(:user, email: "test@example.com", password: "password12345") }
 
   describe "POST /login" do
     it "正しい情報でログインできる" do
       post login_path, params: {
         email: user.email,
-        password: "password"
+        password: "password12345"
       }
 
       expect(response).to redirect_to(dashboard_path)
@@ -16,7 +16,7 @@ RSpec.describe "UserSessions", type: :request do
     it "間違ったパスワードだとログインできない" do
       post login_path, params: {
         email: user.email,
-        password: "wrong_password"
+        password: "wrong_password123"
       }
 
       expect(response).to have_http_status(:unprocessable_entity).or have_http_status(:ok)

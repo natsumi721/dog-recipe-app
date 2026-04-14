@@ -24,7 +24,7 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem "meta-tags"
 
-gem 'letter_opener_web', '~> 2.0'
+gem "letter_opener_web", "~> 2.0"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

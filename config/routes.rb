@@ -70,6 +70,6 @@ Rails.application.routes.draw do
   end
 end
 
-    #パスワードリセット
-    resources :password_resets, only: [:new, :create, :edit, :update]
+    # パスワードリセット
+    resources :password_resets, only: [ :new, :create, :edit, :update ]
 end
