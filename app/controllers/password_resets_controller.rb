@@ -8,13 +8,11 @@ class PasswordResetsController < ApplicationController
 
   # パスワードリセットメール送信
   def create
-    @user = User.find_by(email: params[:email])
+  @user = User.find_by(email: params[:email])
+  @user&.deliver_reset_password_instructions!
 
-    # セキュリティのため、メールアドレスの存在に関わらず同じメッセージを表示
-    @user&.deliver_reset_password_instructions!
-
-    redirect_to login_path, notice: "パスワードリセットのメールを送信しました。メールをご確認ください。"
-  end
+  redirect_to login_path, notice: "パスワードリセットのメールを送信しました。"
+end
 
 
   # パスワード変更フォーム

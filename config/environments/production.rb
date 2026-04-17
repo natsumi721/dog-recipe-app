@@ -84,11 +84,11 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
+    address: "smtp.resend.com",
     port: 587,
     domain: "one-wan-dish.com",
-    user_name: "apikey",
-    password: Rails.application.credentials.dig(:sendgrid, :api_key),
+    user_name: "resend",
+    password: Rails.application.credentials.dig(:resend, :api_key),
     authentication: :plain,
     enable_starttls_auto: true
   }
