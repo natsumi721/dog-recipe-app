@@ -1,0 +1,6 @@
+default_url_options:
+  host: 'localhost:3000'
+
+resend:
+  api_key: 'dummy_key'
+  from_email: 'noreply@localhost'

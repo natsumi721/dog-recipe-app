@@ -1,0 +1,6 @@
+default_url_options:
+  host: 'one-wan-dish.com'
+
+resend:
+  api_key: <%= ENV['RESEND_API_KEY'] %>
+  from_email: 'noreply@send.one-wan-dish.com'

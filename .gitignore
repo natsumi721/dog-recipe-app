@@ -38,3 +38,8 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Ignore local settings
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

@@ -14,7 +14,7 @@
             <p class="text-muted">登録済みのメールアドレスを入力してください</p>
           </div>
           
-          <%= form_with url: password_resets_path, local: true do |f| %>
+          <%= form_with url: password_resets_path, method: :post do |f| %>
             <!-- メールアドレス入力 -->
             <div class="mb-4">
               <%= f.label :email, 'メールアドレス', class: "form-label fw-bold" %>

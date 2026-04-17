@@ -8,25 +8,29 @@
     <%= form_with url: login_path, local: true do |f| %>
 
       <div class="mb-3 text-start">
-        <%= f.label :email,"メールアドレス" %>
-        <%= f.email_field :email, class:"form-control" %>
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, class: "form-control" %>
       </div>
 
       <div class="mb-3 text-start">
-        <%= f.label :password,"パスワード" %>
-        <%= f.password_field :password, class:"form-control" %>
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, class: "form-control" %>
       </div>
 
-      <%= f.submit "ログインする", class:"primary-button" %>
-      <%= link_to "パスワード忘れた方", new_password_reset_path, class:"primary-button" %>
+      <%= f.submit "ログインする", class: "primary-button" %>
 
     <% end %>
+    
+    <!-- パスワードリセットのリンクをフォームの外に移動 -->
+    <div class="text-center mt-3">
+      <%= link_to "パスワード忘れた方", new_password_reset_path, class: "primary-button" %>
+    </div>
 
   </div>
 
   <p class="note mt-4">
     アカウントをお持ちでないですか？
   </p>
-  <%= link_to "新規登録する", signup_path, class:"secondary-button" %><br>
-  <%= link_to "戻る", root_path, class:"secondary-button" %>
+  <%= link_to "新規登録する", signup_path, class: "secondary-button" %><br>
+  <%= link_to "戻る", root_path, class: "secondary-button" %>
 </div>
