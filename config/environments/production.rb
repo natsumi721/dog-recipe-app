@@ -76,29 +76,30 @@ Rails.application.configure do
 
   # Disable caching for Action Mailer templates even if Action Controller
   # caching is enabled.
-  config.action_mailer.perform_caching = false
-
+  # メール送信の設定
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "one-wan-dish.com", protocol: "https" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
 
+  # SMTP設定
   config.action_mailer.smtp_settings = {
     address: "smtp.resend.com",
     port: 587,
-    domain: "one-wan-dish.com",
+    domain: "send.one-wan-dish.com",
     user_name: "resend",
-    password: Rails.application.credentials.dig(:resend, :api_key),
-    authentication: :plain,
+    password: Settings.resend.api_key,
+    authentication: "plain",
     enable_starttls_auto: true
   }
 
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
+  # メールのURLに使うホスト名
+  config.action_mailer.default_url_options = {
+    host: Settings.default_url_options.host
+  }
+
+  # Enable locale fallbacks for I18n.
   config.i18n.fallbacks = true
 
   # Don't log any deprecations.
@@ -109,12 +110,4 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
-
-  # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
-  # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
