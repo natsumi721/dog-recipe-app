@@ -35,6 +35,8 @@ Rails.application.routes.draw do
 
   # トップページ
   root "homes#top"
+  # 使い方
+  get "how_to", to: "homes#how_to"
 
   # 愛犬情報
   resources :dogs, except: [ :show ] do
