@@ -3,4 +3,4 @@ default_url_options:
 
 resend:
   api_key: <%= ENV['RESEND_API_KEY'] %>
-  from_email: 'noreply@send.one-wan-dish.com'
+  from_email: 'noreply@one-wan-dish.com'

@@ -110,12 +110,4 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
-
-  # 一時的にAPIキーをログに出力（確認後は削除すること！）
-  config.after_initialize do
-    Rails.logger.info "=== RESEND_API_KEY CHECK ==="
-    Rails.logger.info "ENV['RESEND_API_KEY']: #{ENV['RESEND_API_KEY'].present? ? 'SET' : 'NOT SET'}"
-    Rails.logger.info "Settings.resend.api_key: #{Settings.resend.api_key.present? ? 'SET' : 'NOT SET'}"
-    Rails.logger.info "=========================="
-  end
 end
