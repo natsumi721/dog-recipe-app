@@ -71,7 +71,7 @@ Rails.application.routes.draw do
 end
 
   # ユーザー情報
-  resource :user, only: [:edit, :update]
+  resource :user, only: [ :edit, :update ]
 
     # パスワードリセット
     resources :password_resets, only: [ :new, :create, :edit, :update ]
