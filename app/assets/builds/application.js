@@ -13846,6 +13846,31 @@ function initFadeIn() {
 }
 document.addEventListener("turbo:load", initFadeIn);
 document.addEventListener("DOMContentLoaded", initFadeIn);
+function showHowToUseModal() {
+  console.log("showHowToUseModal called");
+  const isLoggedIn = document.querySelector("body").dataset.loggedIn === "true";
+  if (isLoggedIn) {
+    console.log("User is logged in, skipping modal");
+    return;
+  }
+  const hasVisited = localStorage.getItem("hasVisitedBefore");
+  console.log("hasVisited:", hasVisited);
+  if (hasVisited) {
+    console.log("Already visited, skipping modal");
+    return;
+  }
+  const modal = document.getElementById("howToUseModal");
+  if (!modal) {
+    console.log("Modal not found");
+    return;
+  }
+  console.log("Showing modal");
+  const bsModal = new Modal(modal);
+  bsModal.show();
+  localStorage.setItem("hasVisitedBefore", "true");
+}
+document.addEventListener("turbo:load", showHowToUseModal);
+document.addEventListener("DOMContentLoaded", showHowToUseModal);
 /*! Bundled license information:
 
 @hotwired/turbo/dist/turbo.es2017-esm.js:
