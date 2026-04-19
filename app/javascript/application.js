@@ -50,3 +50,42 @@ function initSwiper() {
 // 🔥 ページ読み込み時にSwiperを初期化
 window.addEventListener('DOMContentLoaded', initSwiper);
 window.addEventListener('turbo:load', initSwiper);
+
+// 使い方ページ、ふわっと浮かび上がるように
+function initFadeIn() {
+  console.log("fade-in start");
+
+  const elements = document.querySelectorAll(".fade-in-section");
+  console.log("Found elements:", elements.length);
+
+  if (elements.length === 0) {
+    console.log("No fade-in-section elements found");
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      console.log("Entry:", entry.target, "isIntersecting:", entry.isIntersecting);
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        console.log("Added is-visible to:", entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  elements.forEach(el => {
+    observer.observe(el);
+
+    // 初期表示にも対応
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+      el.classList.add("is-visible");
+      console.log("Initial visible:", el);
+    }
+  });
+}
+
+// 両方のイベントで実行
+document.addEventListener("turbo:load", initFadeIn);
+document.addEventListener("DOMContentLoaded", initFadeIn);

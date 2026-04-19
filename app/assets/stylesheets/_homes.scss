@@ -182,6 +182,35 @@ body {
   }
 }
 
+
+  /* ===================================
+   使い方説明用スタイル
+   =================================== */
+
+
+  .fade-in-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 順番にふわっと */
+.fade-in-section:nth-of-type(1) {
+  transition-delay: 0.1s;
+}
+
+.fade-in-section:nth-of-type(2) {
+  transition-delay: 0.3s;
+}
+
+.fade-in-section:nth-of-type(3) {
+  transition-delay: 0.5s;
+}
 /* ===================================
    ホバーアニメーション
    =================================== */
