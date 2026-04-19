@@ -89,3 +89,43 @@ function initFadeIn() {
 // 両方のイベントで実行
 document.addEventListener("turbo:load", initFadeIn);
 document.addEventListener("DOMContentLoaded", initFadeIn);
+
+// 🔥 未ログイン時の「アプリの使い方」モーダル表示
+function showHowToUseModal() {
+  console.log("showHowToUseModal called");
+
+  // 未ログイン状態かどうかを確認
+  const isLoggedIn = document.querySelector('body').dataset.loggedIn === 'true';
+  
+  if (isLoggedIn) {
+    console.log("User is logged in, skipping modal");
+    return;
+  }
+
+  // 初回訪問かどうかを確認
+  const hasVisited = localStorage.getItem("hasVisitedBefore");
+  console.log("hasVisited:", hasVisited);
+
+  if (hasVisited) {
+    console.log("Already visited, skipping modal");
+    return;
+  }
+
+  // モーダル要素を取得
+  const modal = document.getElementById("howToUseModal");
+  if (!modal) {
+    console.log("Modal not found");
+    return;
+  }
+
+  console.log("Showing modal");
+  const bsModal = new bootstrap.Modal(modal);
+  bsModal.show();
+
+  // 訪問済みフラグを設定
+  localStorage.setItem("hasVisitedBefore", "true");
+}
+
+// 両方のイベントで実行
+document.addEventListener("turbo:load", showHowToUseModal);
+document.addEventListener("DOMContentLoaded", showHowToUseModal);
