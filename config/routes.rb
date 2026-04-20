@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "signup", to: "users#new"
   post "users", to: "users#create"
 
-   # ユーザー情報
+  # ユーザー情報
   resource :user, only: [ :edit, :update, :destroy  ] do
     member do
       get :confirm_destroy  # 削除確認画面

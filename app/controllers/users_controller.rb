@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     end
   end
 
-   #削除確認画面
+  # 削除確認画面
   def confirm_destroy
     @user = current_user
   end
@@ -52,13 +52,13 @@ class UsersController < ApplicationController
   # 実際の削除処理
   def destroy
     @user = current_user
-    
+
     # ユーザーを削除（関連データも自動削除される）
     @user.destroy!
-    
+
     # セッションをクリア
     logout
-    
+
     redirect_to root_path, notice: "アカウントを削除しました。ご利用ありがとうございました。"
   rescue ActiveRecord::RecordNotDestroyed => e
     redirect_to edit_user_path(@user), alert: "アカウントの削除に失敗しました。もう一度お試しください。"

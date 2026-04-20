@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, unless: :admin?
 
     has_many :dogs, dependent: :destroy
-    has_many :recipes, dependent: :nullify  #作成レシピは残したい
+    has_many :recipes, dependent: :nullify  # 作成レシピは残したい
     has_many :bookmarks, dependent: :destroy
     has_many :bookmark_recipes, through: :bookmarks, source: :recipe
     has_one :dog, dependent: :destroy
@@ -41,15 +41,19 @@ class User < ApplicationRecord
       deleted_at.present?
     end
     private
-  
+
   def transfer_recipes_to_anonymous_user
-    # 匿名ユーザーを取得（存在しない場合は作成）
-    anonymous_user = User.find_or_create_by!(email: 'deleted_user@example.com') do |user|
-      user.name = '不明なユーザー'
+    # レシピがない場合は何もしない
+    return if recipes.empty?
+
+    # レシピ作成ユーザーのみ匿名ユーザーへ
+    anonymous_user = User.find_or_create_by!(email: "deleted_user@example.com") do |user|
+      user.name = "削除されたユーザー"
+      user.nickname = "不明なユーザー"
       user.password = SecureRandom.hex(32)
       user.password_confirmation = user.password
     end
-    
+
     # レシピを匿名ユーザーに移管
     recipes.update_all(user_id: anonymous_user.id)
   end

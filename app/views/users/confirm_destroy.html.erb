@@ -18,16 +18,16 @@
       </p>
     </div>
 
-    <div class="d-flex justify-content-center gap-3 mt-4">
-      <%= link_to "キャンセル", edit_user_path(current_user), class: "secondary-button" %>
-      <%= button_to "削除する", 
-                    user_path(current_user), 
-                    method: :delete,
-                    data: { 
-                      turbo_confirm: "本当に削除してもよろしいですか？この操作は取り消せません。",
-                      turbo_method: :delete 
-                    },
-                    class: "btn btn-danger" %>
-    </div>
+    <div class="d-flex flex-column align-items-center gap-3 mt-4">
+  <%= button_to "削除する", 
+        user_path(current_user), 
+        method: :delete,
+        data: { turbo_confirm: "本当に削除してもよろしいですか？この操作は取り消せません。" },
+        class: "btn btn-danger" %>
+
+  <%= link_to "キャンセル", 
+        edit_user_path(current_user), 
+        class: "secondary-button" %>
+</div>
   </div>
 </div>
