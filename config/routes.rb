@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "static_pages/privacy_policy"
+  get "static_pages/terms_of_service"
   get "password_resets/new"
   get "password_resets/edit"
   # get "user_sessions/new"
@@ -37,6 +39,11 @@ Rails.application.routes.draw do
   root "homes#top"
   # 使い方
   get "how_to", to: "homes#how_to"
+
+  # プライバシーポリシー
+  get "privacy_policy", to: "static_pages#privacy_policy"
+  get "terms_of_service", to: "static_pages#terms_of_service"
+
 
   # 愛犬情報
   resources :dogs, except: [ :show ] do
