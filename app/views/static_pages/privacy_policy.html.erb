@@ -1,4 +1,4 @@
-<<div class="container mt-5">
+<div class="container mt-5">
   <div class="text-center mb-5"><h1>プライバシーポリシー</h1>
   
   <section class="mb-8">
@@ -45,4 +45,18 @@
   </p>
 </div>
 
-<div class="text-center mb-5"><%= link_to '戻る', :back %> 
+<div class="text-center mt-8 space-y-4">
+    <!-- メインの戻るボタン -->
+    <div>
+      <button onclick="window.history.back()" 
+              class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded">
+        前のページに戻る
+      </button>
+    </div>
+    
+    <!-- 代替リンク（履歴がない場合や外部サイトから来た場合） -->
+    <div class="text-sm text-gray-600">
+      <span>または</span>
+      <%= link_to 'トップページ', root_path, class: 'text-blue-600 hover:underline mx-2' %>
+    </div>
+</div>
