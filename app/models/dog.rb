@@ -40,6 +40,7 @@ class Dog < ApplicationRecord
   enum_i18n :activity_level
 
   has_one_attached :avatar
+  has_many :recipe_calculations, dependent: :destroy
 
   validates :name, presence: true
   validates :size, presence: true
