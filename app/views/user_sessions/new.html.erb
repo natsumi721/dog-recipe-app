@@ -26,6 +26,15 @@
       <%= link_to "パスワード忘れた方", new_password_reset_path, class: "primary-button" %>
     </div>
 
+    <!-- Google OAuth ログインボタン -->
+    <div class="text-center mt-4">
+      <p class="note">または</p>
+      <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
+        <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
+        <span>Google でログイン</span>
+      <% end %>
+    </div>
+
   </div>
 
   <p class="note mt-4">
