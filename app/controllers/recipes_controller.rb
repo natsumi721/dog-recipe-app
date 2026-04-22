@@ -3,11 +3,7 @@ class RecipesController < ApplicationController
   skip_before_action :check_dog_profile, only: [ :index, :show ]
 
   def new
-    if params[:recipe]
-      @recipe = Recipe.new(params[:recipe].permit!)
-    else
-      @recipe = Recipe.new
-    end
+    @recipe = Recipe.new
   end
 
   def confirm
@@ -20,15 +16,11 @@ class RecipesController < ApplicationController
     @recipe.ingredients_json["medium"] = filtered
     @recipe.status = "draft"
 
-      # バリデーションチェック
-      unless @recipe.valid?
-    flash.now[:alert] = "入力内容を確認してください"
+    # バリデーションチェック
+    unless @recipe.valid?
+      flash.now[:alert] = "入力内容を確認してください"
       render :new, status: :unprocessable_entity
-      end
-
-    @recipe = current_user.recipes.build(recipe_params)
-    @recipe.ingredients_json["medium"] = filtered
-    @recipe.status = "draft"
+    end
   end
 
   def create
@@ -42,6 +34,7 @@ class RecipesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def index
     if params[:dog_id].present? && logged_in?
