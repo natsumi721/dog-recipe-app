@@ -9,7 +9,7 @@
     <!-- Google OAuth 登録ボタン -->
     <div class="text-center mt-4">
       <p class="note">または</p>
-      <%= link_to oauth_authorize_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
+      <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
         <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
         <span>Google で登録</span>
       <% end %>

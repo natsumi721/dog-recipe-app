@@ -73,15 +73,24 @@ class User < ApplicationRecord
 
   # OAuth ユーザーかどうかを判定
   def oauth_user?
-    authentications.any?
+    # 保存済みの authentications、または新規作成中の authentications をチェック
+    if persisted?
+      # 保存済みの場合は exists? でチェック
+      authentications.exists?
+    else
+      # 新規作成中の場合は any? でチェック（メモリ上の authentications を確認）
+      authentications.any?
+    end
   end
 
   # パスワードが必要かどうかを判定
   def password_required?
-    # 新規作成時で、かつ OAuth ユーザーでない場合
-    # または、パスワードが変更される場合
-    (new_record? && !oauth_user?) || changes[:crypted_password]
-  end
+  # OAuth ユーザーの場合はパスワード不要
+  return false if oauth_user?
+  
+  # 新規作成時、またはパスワードが入力されている場合
+  new_record? || password.present?
+end
 
   # 削除前の処理
   def transfer_recipes_to_anonymous_user
@@ -89,14 +98,21 @@ class User < ApplicationRecord
     return if recipes.empty?
 
     # レシピ作成ユーザーのみ匿名ユーザーへ
-    anonymous_user = User.find_or_create_by!(email: "deleted_user@example.com") do |user|
-      user.name = "削除されたユーザー"
-      user.nickname = "不明なユーザー"
-      user.password = SecureRandom.hex(32)
-      user.password_confirmation = user.password
-    end
-
-    # レシピを匿名ユーザーに移管
-    recipes.update_all(user_id: anonymous_user.id)
+  anonymous_user = User.unscoped.find_or_create_by!(email: "deleted_user@example.com") do |user|
+    user.first_name = "削除された"
+    user.last_name = "ユーザー"
+    user.nickname = "不明なユーザー"
+    
+    # ランダムなパスワードを生成
+    password = SecureRandom.hex(32)
+    user.password = password
+    user.password_confirmation = password
+    
+    # バリデーションをスキップ（匿名ユーザーは特殊なケース）
+    user.save(validate: false) if user.new_record?
   end
+
+  # レシピを匿名ユーザーに移管
+  recipes.update_all(user_id: anonymous_user.id)
+end
 end
