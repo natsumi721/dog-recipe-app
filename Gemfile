@@ -68,4 +68,4 @@ group :test do
 end
 
 gem "sorcery", "0.16.0"
-gem 'dotenv-rails'
+gem "dotenv-rails"

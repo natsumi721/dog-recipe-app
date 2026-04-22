@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "static_pages/terms_of_service"
   get "password_resets/new"
   get "password_resets/edit"
-  
+
 
   # 開発環境でのみメールプレビュー機能を有効化
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
@@ -31,16 +31,16 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
-  resource :profile, only: [:edit, :update]
+  resource :profile, only: [ :edit, :update ]
 
   # Google OAuth のルーティング
-  post 'oauth/callback', to: 'oauths#callback'
-  get 'oauth/callback', to: 'oauths#callback'
-  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 
   # OAuth 追加情報入力
-  get 'complete_registration', to: 'users#complete_registration', as: :complete_registration
-  patch 'complete_registration', to: 'users#update_registration', as: :update_registration
+  get "complete_registration", to: "users#complete_registration", as: :complete_registration
+  patch "complete_registration", to: "users#update_registration", as: :update_registration
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -59,8 +59,8 @@ Rails.application.routes.draw do
   get "privacy_policy", to: "static_pages#privacy_policy"
   get "terms_of_service", to: "static_pages#terms_of_service"
 
-  #プロフィール変更
-  resource :user, only: [:edit, :update]
+  # プロフィール変更
+  resource :user, only: [ :edit, :update ]
 
 
   # 愛犬情報

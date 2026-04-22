@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   # OAuth ユーザーの追加情報入力画面
   def complete_registration
     @user = current_user
-    
+
     # すでに姓名が入力済みの場合はダッシュボードに遷移
     if @user.first_name.present? && @user.last_name.present?
       redirect_to dashboard_path, notice: "すでに登録済みです"
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   # OAuth ユーザーの追加情報更新
   def update_registration
     @user = current_user
-    
+
     if @user.update(registration_params)
       redirect_to dashboard_path, notice: "登録が完了しました"
     else

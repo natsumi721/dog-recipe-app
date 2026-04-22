@@ -8,11 +8,20 @@ class PasswordResetsController < ApplicationController
 
   # パスワードリセットメール送信
   def create
-  @user = User.find_by(email: params[:email])
-  @user&.deliver_reset_password_instructions!
+    @user = User.find_by(email: params[:email])
 
-  redirect_to login_path, notice: "パスワードリセットのメールを送信しました。"
-end
+    # OAuth ユーザー(Google ログインユーザー)かどうかをチェック
+    if @user&.provider.present?
+      # OAuth ユーザーの場合はパスワードリセットを許可しない
+      redirect_to login_path, warning: "#{@user.provider.titleize} アカウントでログインしてください"
+    else
+      # 通常ユーザーの場合はメール送信
+      @user&.deliver_reset_password_instructions!
+      # セキュリティのため、ユーザーが存在しない場合も同じメッセージを表示
+      redirect_to login_path, notice: "パスワードリセットのメールを送信しました。"
+    end
+  end
+
 
 
   # パスワード変更フォーム

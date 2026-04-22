@@ -85,7 +85,7 @@ class User < ApplicationRecord
   def password_required?
   # OAuth ユーザーの場合はパスワード不要
   return false if oauth_user?
-  
+
   # 新規作成時、またはパスワードが入力されている場合
   new_record? || password.present?
 end
@@ -93,8 +93,8 @@ end
   # 姓が必要かどうかを判定
   def first_name_required?
     # カラムが存在する場合のみチェック
-    return false unless self.class.column_names.include?('first_name')
-    
+    return false unless self.class.column_names.include?("first_name")
+
     # OAuth ユーザーの場合、初回登録時(first_name が空)はスキップ
     # それ以外の場合は必須
     if oauth_user?
@@ -107,8 +107,8 @@ end
   # 名が必要かどうかを判定
   def last_name_required?
     # カラムが存在する場合のみチェック
-    return false unless self.class.column_names.include?('last_name')
-    
+    return false unless self.class.column_names.include?("last_name")
+
     # OAuth ユーザーの場合、初回登録時(last_name が空)はスキップ
     # それ以外の場合は必須
     if oauth_user?
@@ -123,17 +123,17 @@ end
     # レシピがない場合は何もしない
     return if recipes.empty?
 
-    # レシピ作成ユーザーのみ匿名ユーザーへ
+  # レシピ作成ユーザーのみ匿名ユーザーへ
   anonymous_user = User.unscoped.find_or_create_by!(email: "deleted_user@example.com") do |user|
     user.first_name = "削除された"
     user.last_name = "ユーザー"
     user.nickname = "不明なユーザー"
-    
+
     # ランダムなパスワードを生成
     password = SecureRandom.hex(32)
     user.password = password
     user.password_confirmation = password
-    
+
     # バリデーションをスキップ（匿名ユーザーは特殊なケース）
     user.save(validate: false) if user.new_record?
   end
