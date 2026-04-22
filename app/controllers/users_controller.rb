@@ -63,8 +63,32 @@ class UsersController < ApplicationController
   rescue ActiveRecord::RecordNotDestroyed => e
     redirect_to edit_user_path(@user), alert: "アカウントの削除に失敗しました。もう一度お試しください。"
   end
+  # OAuth ユーザーの追加情報入力画面
+  def complete_registration
+    @user = current_user
+
+    # すでに姓名が入力済みの場合はダッシュボードに遷移
+    if @user.first_name.present? && @user.last_name.present?
+      redirect_to dashboard_path, notice: "すでに登録済みです"
+    end
+  end
+
+  # OAuth ユーザーの追加情報更新
+  def update_registration
+    @user = current_user
+
+    if @user.update(registration_params)
+      redirect_to dashboard_path, notice: "登録が完了しました"
+    else
+      render :complete_registration, status: :unprocessable_entity
+    end
+  end
 
   private
+
+    def registration_params
+    params.require(:user).permit(:last_name, :first_name, :nickname)
+    end
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation)

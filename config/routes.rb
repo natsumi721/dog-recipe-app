@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
+  get "profiles/edit"
+  get "profiles/update"
+  get "oauths/oauth"
+  get "oauths/callback"
   get "static_pages/privacy_policy"
   get "static_pages/terms_of_service"
   get "password_resets/new"
   get "password_resets/edit"
-  # get "user_sessions/new"
-  # get "user_sessions/create"
-  # get "user_sessions/destroy"
-  # get "users/new"
-  # get "users/create"
-  # get "dogs/new"
-  # get "dogs/creat"
 
 
   # 開発環境でのみメールプレビュー機能を有効化
@@ -34,6 +31,17 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
 
+  resource :profile, only: [ :edit, :update ]
+
+  # Google OAuth のルーティング
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback"
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+
+  # OAuth 追加情報入力
+  get "complete_registration", to: "users#complete_registration", as: :complete_registration
+  patch "complete_registration", to: "users#update_registration", as: :update_registration
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -50,6 +58,9 @@ Rails.application.routes.draw do
   # プライバシーポリシー
   get "privacy_policy", to: "static_pages#privacy_policy"
   get "terms_of_service", to: "static_pages#terms_of_service"
+
+  # プロフィール変更
+  resource :user, only: [ :edit, :update ]
 
 
   # 愛犬情報

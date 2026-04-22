@@ -18,6 +18,14 @@
     <%= link_to "ログイン", login_path, class: "primary-button" %><br>
     <%= link_to "新規登録", signup_path, class: "primary-button" %><br>
 
+    <!-- Google OAuth ログインボタン -->
+    <div class="text-center mt-3">
+      <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
+        <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
+        <span>Google でログイン</span>
+      <% end %>
+    </div>
+
     <%= link_to "登録せずレシピを見る", new_dog_path, class: "primary-button" %>
     <p class="note">※情報登録することで、より快適に利用できます</p>
   </section>
