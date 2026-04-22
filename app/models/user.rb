@@ -48,13 +48,11 @@ class User < ApplicationRecord
   # ※ first_name, last_name カラムが存在する場合のみ有効にしてください
   validates :first_name,
             presence: true,
-            unless: :oauth_user?,
-            if: -> { self.class.column_names.include?('first_name') }
+            if: -> { first_name_required? }
 
   validates :last_name,
             presence: true,
-            unless: :oauth_user?,
-            if: -> { self.class.column_names.include?('last_name') }
+            if: -> { last_name_required? }
 
   # コールバック
   before_destroy :transfer_recipes_to_anonymous_user
@@ -91,6 +89,34 @@ class User < ApplicationRecord
   # 新規作成時、またはパスワードが入力されている場合
   new_record? || password.present?
 end
+
+  # 姓が必要かどうかを判定
+  def first_name_required?
+    # カラムが存在する場合のみチェック
+    return false unless self.class.column_names.include?('first_name')
+    
+    # OAuth ユーザーの場合、初回登録時(first_name が空)はスキップ
+    # それ以外の場合は必須
+    if oauth_user?
+      persisted? && first_name_changed?
+    else
+      true
+    end
+  end
+
+  # 名が必要かどうかを判定
+  def last_name_required?
+    # カラムが存在する場合のみチェック
+    return false unless self.class.column_names.include?('last_name')
+    
+    # OAuth ユーザーの場合、初回登録時(last_name が空)はスキップ
+    # それ以外の場合は必須
+    if oauth_user?
+      persisted? && last_name_changed?
+    else
+      true
+    end
+  end
 
   # 削除前の処理
   def transfer_recipes_to_anonymous_user

@@ -38,6 +38,10 @@ Rails.application.routes.draw do
   get 'oauth/callback', to: 'oauths#callback'
   get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
 
+  # OAuth 追加情報入力
+  get 'complete_registration', to: 'users#complete_registration', as: :complete_registration
+  patch 'complete_registration', to: 'users#update_registration', as: :update_registration
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

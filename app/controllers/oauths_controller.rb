@@ -23,13 +23,12 @@ class OauthsController < ApplicationController
         # ユーザー情報を保存後、自動ログイン
         reset_session
         auto_login(@user)
-        redirect_to root_path, notice: "#{provider.titleize}でログインしました"
+        # 新規ユーザーの場合は追加情報入力画面に遷移
+        redirect_to complete_registration_path, notice: "#{provider.titleize}でログインしました。追加情報を入力してください"
       rescue => e
-        # エラーログを出力
         Rails.logger.error "OAuth登録エラー: #{e.message}"
         Rails.logger.error e.backtrace.join("\n")
-        
-        # エラーが発生した場合
+         # エラーが発生した場合
         redirect_to root_path, alert: "#{provider.titleize}でのログインに失敗しました"
       end
     end
