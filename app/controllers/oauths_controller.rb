@@ -41,9 +41,6 @@ class OauthsController < ApplicationController
     # @user_hash からユーザー情報を取得
     user_hash = @user_hash
 
-    # デバッグログを出力
-    Rails.logger.info "OAuth user_hash: #{user_hash.inspect}"
-
     # user_hash が nil の場合はエラーを発生させる
     raise "OAuth user_hash is nil" if user_hash.nil?
 
