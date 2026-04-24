@@ -80,30 +80,30 @@
 </div>
 
   <div class="row">
-    <!-- 年齢 -->
-    <div class="col-md-4">
-      <%= f.label :age_stage, "このレシピの該当タイプ" %>
-      <%= f.select :age_stage,
-  Dog.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] },
-  {}, class: "form-select" %>
-    </div>
-
-    <!-- 体型 -->
-    <div class="col-md-4">
-      <%= f.label :body_type, "体型" %>
-      <%= f.select :body_type,
-  Dog.body_types.keys.map { |k| [t("enums.dog.body_type.#{k}"), k] },
-  {}, class: "form-select" %>
-    </div>
-
-    <!-- 運動量 -->
-    <div class="col-md-4">
-      <%= f.label :activity_level, "運動量" %>
-      <%= f.select :activity_level,
-  Dog.activity_levels.keys.map { |k| [t("enums.dog.activity_level.#{k}"), k] },
-  {}, class: "form-select" %>
-    </div>
+  <!-- 年齢 -->
+  <div class="col-md-4">
+    <%= f.label :age_stage, "このレシピの該当タイプ" %>
+    <%= f.select :age_stage,
+        Recipe.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] },
+        {}, class: "form-select" %>
   </div>
+
+  <!-- 体型 -->
+  <div class="col-md-4">
+    <%= f.label :body_type, "体型" %>
+    <%= f.select :body_type,
+        Recipe.body_types.keys.map { |k| [t("enums.dog.body_type.#{k}"), k] },
+        {}, class: "form-select" %>
+  </div>
+
+  <!-- 運動量 -->
+  <div class="col-md-4">
+    <%= f.label :activity_level, "運動量" %>
+    <%= f.select :activity_level,
+        Recipe.activity_levels.keys.map { |k| [t("enums.dog.activity_level.#{k}"), k] },
+        {}, class: "form-select" %>
+  </div>
+</div>
 
       <!-- 作り方 -->
       <div class="mb-3">

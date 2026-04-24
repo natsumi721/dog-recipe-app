@@ -61,5 +61,52 @@ ja:
           鮭: 鮭
           マグロ: マグロ
           タラ: タラ
+
+  enums:  
+    dog:
+      age_stage:
+        puppy: "子犬"
+        adult: "成犬"
+        senior: "シニア"
+      size:
+        small: "小型犬"
+        medium: "中型犬"
+        large: "大型犬"
+      body_type:
+        thin: "痩せ型"
+        normal: "標準"
+        overweight: "肥満"
+      activity_level:
+        low: "穏やか"
+        medium: "普通"
+        high: "活発"
+      allergy:
+        牛肉: 牛肉
+        鶏肉: 鶏肉
+        豚肉: 豚肉
+        牛乳: 牛乳
+        チーズ: チーズ
+        ヨーグルト: ヨーグルト
+        卵: 卵
+        鹿肉: 鹿肉
+        納豆(大豆): 納豆(大豆)
+        鮭: 鮭
+        マグロ: マグロ
+        タラ: タラ
+
+    recipe:
+      age_stage:
+        puppy: "子犬"
+        adult: "成犬"
+        senior: "シニア"
+      body_type:
+        thin: "痩せ型"
+        normal: "標準"
+        overweight: "肥満"
+      activity_level:
+        low: "穏やか"
+        medium: "普通"
+        high: "活発"
+          
     
  
