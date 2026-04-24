@@ -6,39 +6,34 @@
   <%= hidden_field_tag "recipe[description]", @recipe.description %>
   <%= hidden_field_tag "recipe[instructions]", @recipe.instructions %>
   <%= hidden_field_tag "recipe[nutrition_note]", @recipe.nutrition_note %>
-
-  <% @recipe.ingredients_json["medium"].each_with_index do |ingredient, i| %>
-    <% next if ingredient["name"].blank? || ingredient["amount"].blank? %>
-
-    <%= hidden_field_tag "recipe[ingredients_json][medium][#{i}][name]", ingredient["name"] %>
-    <%= hidden_field_tag "recipe[ingredients_json][medium][#{i}][amount]", ingredient["amount"] %>
-    <%= hidden_field_tag "recipe[ingredients_json][medium][#{i}][unit]", ingredient["unit"] %>
-  <% end %>
-
   <%= hidden_field_tag "recipe[age_stage]", @recipe.age_stage %>
   <%= hidden_field_tag "recipe[body_type]", @recipe.body_type %>
   <%= hidden_field_tag "recipe[activity_level]", @recipe.activity_level %>
 
- <div class="text-center mt-5">
-  <%= link_to "修正する",
-  new_recipe_path(recipe: params[:recipe].permit!),
-  class: "btn me-3",
-  style: "
-    border-radius: 30px;
-    padding: 10px 25px;
-    border: 2px solid #ccc;
-    color: #555;
-  " %>
+  <%# JSON文字列として送信 %>
+  <%= hidden_field_tag "recipe[ingredients_json_string]", @recipe.ingredients_json.to_json %>
 
-  <%= f.submit "レシピを投稿する",
-    class: "btn",
-    style: "
-      background-color: #f4a300;
-      color: white;
-      border-radius: 30px;
-      padding: 10px 25px;
-      font-weight: bold;
-    " %>
-</div>
+  <div class="text-center mt-5">
+    <%# ★ 修正する: セッションに保存してから new_recipe_path へ %>
+    <%= link_to "修正する",
+      new_recipe_path,
+      class: "btn me-3",
+      style: "
+        border-radius: 30px;
+        padding: 10px 25px;
+        border: 2px solid #ccc;
+        color: #555;
+      " %>
+
+    <%= f.submit "レシピを投稿する",
+      class: "btn",
+      style: "
+        background-color: #f4a300;
+        color: white;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: bold;
+      " %>
+  </div>
 
 <% end %>

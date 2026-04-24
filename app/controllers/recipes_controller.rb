@@ -4,36 +4,82 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+
+    # ★ セッションから入力内容を復元
+    if session[:recipe_draft].present?
+      draft = session[:recipe_draft]
+      @recipe.assign_attributes(draft.except("ingredients_json"))
+      @recipe.ingredients_json = draft["ingredients_json"]
+      session.delete(:recipe_draft)  # 復元後はセッションをクリア
+    end
   end
 
   def confirm
-    @recipe = current_user.recipes.build(recipe_params)
+  @recipe = current_user.recipes.build(recipe_params)
 
-    filtered = recipe_params[:ingredients_json]["medium"].reject do |i|
+  # ingredients_json を正規化
+  if recipe_params[:ingredients_json].present? && recipe_params[:ingredients_json]["medium"].present?
+    medium_ingredients = recipe_params[:ingredients_json]["medium"]
+
+    # 正規化処理
+    normalized = if medium_ingredients.is_a?(Hash)
+      # ハッシュ形式の場合は配列に変換
+      medium_ingredients.values.map do |ingredient|
+        {
+          "name" => ingredient["name"],
+          "amount" => ingredient["amount"],
+          "unit" => ingredient["unit"]
+        }
+      end
+    elsif medium_ingredients.is_a?(Array)
+      # すでに配列形式ならそのまま
+      medium_ingredients.map do |ingredient|
+        {
+          "name" => ingredient["name"],
+          "amount" => ingredient["amount"],
+          "unit" => ingredient["unit"]
+        }
+      end
+    else
+      # それ以外の場合は空配列
+      []
+    end
+
+    # 空の材料を除外
+    filtered = normalized.reject do |i|
       i["name"].blank? || i["amount"].blank?
     end
 
-    @recipe.ingredients_json["medium"] = filtered
-    @recipe.status = "draft"
-
-    # バリデーションチェック
-    unless @recipe.valid?
-      flash.now[:alert] = "入力内容を確認してください"
-      render :new, status: :unprocessable_entity
-    end
+    # ★ ここで @recipe.ingredients_json に代入
+    @recipe.ingredients_json = { "medium" => filtered }
   end
+
+  @recipe.status = "draft"
+
+  # バリデーションチェック
+  unless @recipe.valid?
+    flash.now[:alert] = "入力内容を確認してください"
+    render :new, status: :unprocessable_entity
+  end
+end
 
   def create
-    @recipe = current_user.recipes.build(recipe_params)
-    @recipe.status = "draft"
+  @recipe = current_user.recipes.build(recipe_params)
+  @recipe.status = "draft"
 
-    if @recipe.save
-      redirect_to recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
-    else
-      flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
-      render :new, status: :unprocessable_entity
-    end
+  # ★ JSON文字列をパースして ingredients_json に代入
+  if params[:recipe][:ingredients_json_string].present?
+    @recipe.ingredients_json = JSON.parse(params[:recipe][:ingredients_json_string])
   end
+
+  if @recipe.save
+    redirect_to recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
+  else
+    flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
+    render :new, status: :unprocessable_entity
+  end
+end
+
 
 
   def index
