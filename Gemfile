@@ -24,8 +24,6 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem "meta-tags"
 
-gem "enum_help"
-
 gem "letter_opener_web", "~> 2.0"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -61,6 +59,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "bullet"
 end
 
 group :test do
