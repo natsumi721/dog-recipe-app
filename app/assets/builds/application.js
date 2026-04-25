@@ -13871,6 +13871,23 @@ function showHowToUseModal() {
 }
 document.addEventListener("turbo:load", showHowToUseModal);
 document.addEventListener("DOMContentLoaded", showHowToUseModal);
+document.addEventListener("DOMContentLoaded", setupDogFormLoading);
+document.addEventListener("turbo:load", setupDogFormLoading);
+function setupDogFormLoading() {
+  const dogForm = document.getElementById("dog-form");
+  if (!dogForm) return;
+  const submitButton = document.getElementById("dog-submit-button");
+  const loadingIndicator = document.getElementById("loading-indicator");
+  if (!submitButton || !loadingIndicator) return;
+  dogForm.addEventListener("submit", () => {
+    submitButton.disabled = true;
+    submitButton.classList.add("opacity-50");
+    submitButton.style.cursor = "not-allowed";
+    submitButton.value = "\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u4E2D...";
+    loadingIndicator.style.display = "block";
+    loadingIndicator.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+}
 /*! Bundled license information:
 
 @hotwired/turbo/dist/turbo.es2017-esm.js:

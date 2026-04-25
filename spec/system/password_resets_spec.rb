@@ -9,6 +9,15 @@ RSpec.describe "PasswordResets", type: :system do
 
     visit login_path
 
+    # 🔥 モーダルが表示されている場合は閉じる
+    if page.has_selector?(".modal", visible: true)
+      find(".modal .btn-close").click
+      sleep 0.5
+    end
+
+    # 🔥 リンクが表示されるのを待つ
+    expect(page).to have_link("パスワード忘れた方")
+
     # リンクをクリック
     click_on "パスワード忘れた方"
 
@@ -20,6 +29,9 @@ RSpec.describe "PasswordResets", type: :system do
 
     # メールアドレスを入力
     fill_in "メールアドレス", with: user.email
+
+    # 🔥 送信ボタンが表示されるのを待つ
+    expect(page).to have_button("パスワードリセットメールを送信")
 
     # 送信ボタンをクリック
     click_on "パスワードリセットメールを送信"

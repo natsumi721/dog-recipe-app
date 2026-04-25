@@ -129,3 +129,35 @@ function showHowToUseModal() {
 // 両方のイベントで実行
 document.addEventListener("turbo:load", showHowToUseModal);
 document.addEventListener("DOMContentLoaded", showHowToUseModal);
+
+
+// ローディング中
+// ローディング表示の設定（犬の登録・編集ページでのみ実行）
+document.addEventListener("DOMContentLoaded", setupDogFormLoading);
+document.addEventListener("turbo:load", setupDogFormLoading);
+
+function setupDogFormLoading() {
+  // 🔥 犬の登録・編集ページでのみ実行
+  const dogForm = document.getElementById("dog-form");
+  if (!dogForm) return;  // 犬のフォームがない場合は何もしない
+
+  const submitButton = document.getElementById("dog-submit-button");
+  const loadingIndicator = document.getElementById("loading-indicator");
+
+  if (!submitButton || !loadingIndicator) return;
+
+  // フォーム送信時の処理
+  dogForm.addEventListener("submit", () => {
+    // ボタンを無効化
+    submitButton.disabled = true;
+    submitButton.classList.add("opacity-50");
+    submitButton.style.cursor = "not-allowed";
+    submitButton.value = "アップロード中...";
+
+    // ローディング表示を表示
+    loadingIndicator.style.display = "block";
+
+    // ローディング表示までスクロール
+    loadingIndicator.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+}
