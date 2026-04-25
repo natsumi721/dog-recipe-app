@@ -13874,27 +13874,18 @@ document.addEventListener("DOMContentLoaded", showHowToUseModal);
 document.addEventListener("DOMContentLoaded", setupDogFormLoading);
 document.addEventListener("turbo:load", setupDogFormLoading);
 function setupDogFormLoading() {
-  const form = document.querySelector("form[action*='dogs']");
+  const dogForm = document.getElementById("dog-form");
+  if (!dogForm) return;
   const submitButton = document.getElementById("dog-submit-button");
   const loadingIndicator = document.getElementById("loading-indicator");
-  if (!form || !submitButton || !loadingIndicator) return;
-  form.addEventListener("submit", (event) => {
-    const fileInput = form.querySelector("input[type='file']");
-    const hasFile = fileInput && fileInput.files.length > 0;
-    const removeCheckbox = form.querySelector("input[name='dog[remove_avatar]']");
-    const isRemoving = removeCheckbox && removeCheckbox.checked;
-    if (hasFile || isRemoving) {
-      submitButton.disabled = true;
-      submitButton.classList.add("opacity-50");
-      submitButton.style.cursor = "not-allowed";
-      if (hasFile) {
-        submitButton.value = "\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u4E2D...";
-      } else if (isRemoving) {
-        submitButton.value = "\u524A\u9664\u4E2D...";
-      }
-      loadingIndicator.classList.remove("hidden");
-      loadingIndicator.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+  if (!submitButton || !loadingIndicator) return;
+  dogForm.addEventListener("submit", () => {
+    submitButton.disabled = true;
+    submitButton.classList.add("opacity-50");
+    submitButton.style.cursor = "not-allowed";
+    submitButton.value = "\u30A2\u30C3\u30D7\u30ED\u30FC\u30C9\u4E2D...";
+    loadingIndicator.style.display = "block";
+    loadingIndicator.scrollIntoView({ behavior: "smooth", block: "center" });
   });
 }
 /*! Bundled license information:

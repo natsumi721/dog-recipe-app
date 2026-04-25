@@ -14,7 +14,7 @@ class BookmarksController < ApplicationController
     current_user.bookmarks.create!(recipe: recipe, dog: dog)
 
     # 元のページに戻る
-    redirect_to params[:return_to] || recipes_path, success: t(".success")
+    redirect_to params[:return_to] || recipes_path, notice: t(".success")
   end
 
   def destroy
@@ -22,6 +22,6 @@ class BookmarksController < ApplicationController
     bookmark.destroy!
 
     # 元のページに戻る
-    redirect_to params[:return_to] || recipes_path, success: t(".success")
+    redirect_to params[:return_to] || recipes_path, notice: t(".success")
   end
 end
