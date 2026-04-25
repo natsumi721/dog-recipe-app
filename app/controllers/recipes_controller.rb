@@ -99,7 +99,7 @@ end
         allergies: params[:allergies] || dog_data["allergies"] || []
       )
       @recipes = @dog.recommended_recipes
-      @dog = current_user.dogs.first if logged_in?
+      
     else
       @recipes = Recipe.published.limit(5)
     end
@@ -117,19 +117,24 @@ end
     # OGP設定
     set_ogp
 
-    # ログインしていない場合は早期リターン
-    return unless logged_in?
-
+    # ログインユーザーの場合
+    if logged_in?
     # 犬の情報を取得
-    @dog = if params[:dog_id].present?
+      @dog = if params[:dog_id].present?
              current_user.dogs.find(params[:dog_id])
-    else
+           else
              current_user.dogs.first
-    end
-
+           end
 
     # ブックマーク情報を取得
     @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog.present?
+
+    else
+      # ゲストユーザーの場合、セッションから犬情報を取得
+      if session[:guest_dog].present?
+        @dog = Dog.new(session[:guest_dog])
+      end
+    end
 
     # JSON形式のレシピの場合、各サイズ用に調整された材料を取得
     if @recipe.json_format? && @dog.present?
