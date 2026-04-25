@@ -117,6 +117,27 @@ body {
 }
 
 /* ===================================
+   ローディング中
+   =================================== */
+/* ローディング表示用のスタイル */
+.hidden {
+  display: none;
+}
+
+/* くるくる回るアニメーション */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+/* ===================================
    ロゴ部分
    =================================== */
 

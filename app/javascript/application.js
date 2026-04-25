@@ -129,3 +129,51 @@ function showHowToUseModal() {
 // 両方のイベントで実行
 document.addEventListener("turbo:load", showHowToUseModal);
 document.addEventListener("DOMContentLoaded", showHowToUseModal);
+
+
+// ローディング中
+// DOMContentLoadedとturbo:loadの両方に対応
+document.addEventListener("DOMContentLoaded", setupDogFormLoading);
+document.addEventListener("turbo:load", setupDogFormLoading);
+
+function setupDogFormLoading() {
+  // フォーム、ボタン、ローディング表示を取得
+  const form = document.querySelector("form[action*='dogs']");
+  const submitButton = document.getElementById("dog-submit-button");
+  const loadingIndicator = document.getElementById("loading-indicator");
+
+  // 要素が存在しない場合は処理を終了
+  if (!form || !submitButton || !loadingIndicator) return;
+
+  // フォーム送信時の処理
+  form.addEventListener("submit", (event) => {
+    // ファイルが選択されているかチェック
+    const fileInput = form.querySelector("input[type='file']");
+    const hasFile = fileInput && fileInput.files.length > 0;
+
+    // 画像削除チェックボックスがチェックされているかを確認
+    const removeCheckbox = form.querySelector("input[name='dog[remove_avatar]']");
+    const isRemoving = removeCheckbox && removeCheckbox.checked;
+
+    // ファイルが選択されているか、画像削除が選択されている場合のみローディング表示
+    if (hasFile || isRemoving) {
+      // ボタンを無効化
+      submitButton.disabled = true;
+      submitButton.classList.add("opacity-50");
+      submitButton.style.cursor = "not-allowed";
+      
+      // ボタンのテキストを変更
+      if (hasFile) {
+        submitButton.value = "アップロード中...";
+      } else if (isRemoving) {
+        submitButton.value = "削除中...";
+      }
+
+      // ローディング表示を表示
+      loadingIndicator.classList.remove("hidden");
+
+      // ローディング表示までスクロール
+      loadingIndicator.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  });
+}

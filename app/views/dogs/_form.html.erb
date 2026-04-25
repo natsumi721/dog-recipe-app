@@ -77,61 +77,76 @@
       
         <!-- 画像アップロード -->
         <% if current_user %>
-<div class="mb-3 text-start">
-  <%= f.label :avatar, "愛犬の写真" %>
+          <div class="mb-3 text-start">
+            <%= f.label :avatar, "愛犬の写真" %>
 
-  <!-- 🔥 編集時のみ現在の画像を表示 -->
-  <% if dog.persisted? && dog.avatar.attached? %>
-  <div class="mb-3">
-  <% if dog.avatar.persisted? %>
-    <%= image_tag dog.avatar,
-          alt: "#{dog.name}の写真",
-          class: "rounded",
-          style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;" %>
-    <% else %>
-      <p class="text-muted">画像をアップロード中...</p>
-    <% end %>
+        <!--  編集時のみ現在の画像を表示 -->
+           <% if dog.persisted? && dog.avatar.attached? %>
+          <div class="mb-3">
+          <% if dog.avatar.persisted? %>
+            <%= image_tag dog.avatar,
+                alt: "#{dog.name}の写真",
+                class: "rounded",
+                style: "max-width: 200px; height: auto; border: 2px solid #dee2e6;" %>
+          <% else %>
+            <p class="text-muted">画像をアップロード中...</p>
+          <% end %>
     
-    <!-- 🔥 画像を削除するチェックボックス（編集時のみ） -->
-      <div class="form-check mt-2 mb-3">
-        <%= f.check_box :remove_avatar, class: "form-check-input" %>
-        <%= f.label :remove_avatar, "この画像を削除する", class: "form-check-label" %>
+           <!--  画像を削除するチェックボックス（編集時のみ） -->
+            <div class="form-check mt-2 mb-3">
+              <%= f.check_box :remove_avatar, class: "form-check-input" %>
+              <%= f.label :remove_avatar, "この画像を削除する", class: "form-check-label" %>
+            </div>
+           <% end %>
+
+          <!--  画像が未登録の場合のメッセージ -->
+        <% if dog.persisted? && !dog.avatar.attached? %>
+          <div class="mb-3">
+            <p class="text-muted">画像が登録されていません</p>
+          </div>
+         <% end %>
+
+         <!-- 🔥 ファイル選択フィールド -->
+         <%= f.file_field :avatar, accept: "image/png, image/jpg, image/jpeg", class: "form-control" %>
+        <small class="text-muted">
+          PNG、JPG、JPEG形式、5MB以下
+          <% if dog.new_record? %>
+            （未選択の場合はデフォルト画像が使用されます）
+          <% end %>
+        </small>
       </div>
-    <% end %>
-
-    <!-- 🔥 画像が未登録の場合のメッセージ -->
-  <% if dog.persisted? && !dog.avatar.attached? %>
-    <div class="mb-3">
-      <p class="text-muted">画像が登録されていません</p>
-    </div>
-  <% end %>
-
-  <!-- 🔥 ファイル選択フィールド -->
-  <%= f.file_field :avatar, accept: "image/png, image/jpg, image/jpeg", class: "form-control" %>
-  <small class="text-muted">
-    PNG、JPG、JPEG形式、5MB以下
-    <% if dog.new_record? %>
-      （未選択の場合はデフォルト画像が使用されます）
-    <% end %>
-  </small>
-</div>
-<% end %>
-
-<div class="d-grid">
-  <%= f.submit dog.new_record? ? "登録する" : "更新する",
-      class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
-</div>
-    <% end %>
-    
-      <% if dog.persisted? %>
-        <div class="text-center mt-3">
-          <%= button_to "#{dog.name}ちゃんの情報を削除",
-              dog_path(dog),
-              method: :delete,
-              data: { turbo_confirm: "本当に削除しますか？", turbo:true },
-              class: "btn btn-outline-danger rounded-pill px-4" %>
-           </div>
       <% end %>
+
+        <!-- 🔥 送信ボタン（IDを追加） -->
+      <div class="d-grid">
+        <%= f.submit dog.new_record? ? "登録する" : "更新する",
+            id: "dog-submit-button",
+            class: "btn btn-warning btn-lg rounded-pill fw-bold text-white" %>
+      </div>
+
+        <!-- 🔥 ローディング表示（初期状態は非表示） -->
+      <div id="loading-indicator" class="hidden text-center mt-4">
+        <div class="d-flex justify-content-center align-items-center">
+          <svg class="animate-spin" style="width: 40px; height: 40px; color: #ffc107;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </div>
+        <p class="text-warning fw-bold mt-3">画像をアップロード中...</p>
+        <p class="text-muted small">少々お待ちください</p>
+      </div>
+
+    <% end %>
+
+            <% if dog.persisted? %>
+              <div class="text-center mt-3">
+                <%= button_to "#{dog.name}ちゃんの情報を削除",
+                    dog_path(dog),
+                    method: :delete,
+                    data: { turbo_confirm: "本当に削除しますか？", turbo:true },
+                    class: "btn btn-outline-danger rounded-pill px-4" %>
+              </div>
+            <% end %>
 
     <div class="text-center mt-4">
       <%= link_to "← 戻る", root_path,
