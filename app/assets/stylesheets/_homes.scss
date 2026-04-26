@@ -342,6 +342,361 @@ body {
   margin-top: 20px;
 }
 
+/* ===========================
+   Hero セクション
+=========================== */
+.how-to-hero {
+  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%); /* オレンジ→黄色のグラデーション */
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-to-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.how-to-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeInDown 1s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+.how-to-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================
+   コンテナ
+=========================== */
+.how-to-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* ===========================
+   イントロセクション
+=========================== */
+.how-to-intro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.intro-card {
+  background: #FFF8E1; /* 薄い黄色 */
+  border-left: 4px solid #FFA500; /* オレンジのアクセント */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.intro-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #FF8C00; /* 濃いオレンジ */
+}
+
+.intro-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* ===========================
+   ステップセクション
+=========================== */
+.steps-section {
+  margin-bottom: 60px;
+}
+
+.steps-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* ===========================
+   ステップカード
+=========================== */
+.step-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.step-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+}
+
+.step-number {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.step-icon {
+  font-size: 4rem;
+  margin: 20px 0;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.step-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.step-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.step-details li {
+  background: #f5f7fa;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  transition: background 0.3s ease;
+}
+
+.step-details li:hover {
+  background: #e8ecf3;
+}
+
+/* ===========================
+   CTAセクション
+=========================== */
+.how-to-cta {
+  text-align: center;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* 黄色→オレンジ */
+  padding: 60px 40px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
+
+.how-to-cta h3 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.how-to-cta p {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primary-button {
+  background: #FF8C00; /* 濃いオレンジ */
+  color: white;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button:hover {
+  background: #FF6F00; /* さらに濃いオレンジ */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.secondary-button {
+  background: white;
+  color: #FF8C00; /* 濃いオレンジ */
+  padding: 15px 40px;
+  border: 2px solid white;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background: #FF8C00; /* オレンジ */
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   アニメーション
+=========================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 1s ease-out;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   レスポンシブ対応
+=========================== */
+@media (max-width: 768px) {
+  .how-to-title {
+    font-size: 2rem;
+  }
+
+  .how-to-subtitle {
+    font-size: 1rem;
+  }
+
+  .steps-title {
+    font-size: 1.8rem;
+  }
+
+  .step-card {
+    padding: 30px 20px;
+  }
+
+  .step-icon {
+    font-size: 3rem;
+  }
+
+  .how-to-cta h3 {
+    font-size: 1.5rem;
+  }
+
+  .how-to-cta p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
 /* ===================================
    スクロールで登場するセクション
    =================================== */

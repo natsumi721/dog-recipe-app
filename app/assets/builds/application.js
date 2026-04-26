@@ -13804,6 +13804,25 @@ document.addEventListener("turbo:load", () => {
   });
 });
 
+// app/javascript/how_to.js
+document.addEventListener("DOMContentLoaded", () => {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px"
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, observerOptions);
+  const fadeElements = document.querySelectorAll(".fade-in-section");
+  fadeElements.forEach((element) => {
+    observer.observe(element);
+  });
+});
+
 // app/javascript/application.js
 window.bootstrap = bootstrap_esm_exports;
 function initSwiper() {
@@ -13839,35 +13858,6 @@ function initSwiper() {
 }
 window.addEventListener("DOMContentLoaded", initSwiper);
 window.addEventListener("turbo:load", initSwiper);
-function initFadeIn() {
-  console.log("fade-in start");
-  const elements = document.querySelectorAll(".fade-in-section");
-  console.log("Found elements:", elements.length);
-  if (elements.length === 0) {
-    console.log("No fade-in-section elements found");
-    return;
-  }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      console.log("Entry:", entry.target, "isIntersecting:", entry.isIntersecting);
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        console.log("Added is-visible to:", entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-  elements.forEach((el) => {
-    observer.observe(el);
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add("is-visible");
-      console.log("Initial visible:", el);
-    }
-  });
-}
-document.addEventListener("turbo:load", initFadeIn);
-document.addEventListener("DOMContentLoaded", initFadeIn);
 function showHowToUseModal() {
   console.log("showHowToUseModal called");
   const isLoggedIn = document.querySelector("body").dataset.loggedIn === "true";
