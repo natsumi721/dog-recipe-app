@@ -250,36 +250,6 @@ body {
 }
 
 /* ===================================
-   ログアウトボタンのフォーム調整
-   =================================== */
-
-.custom-header form {
-  margin: 0;
-  display: inline-block;
-}
-
-.custom-header form button {
-  cursor: pointer;
-}
-
-/* ===================================
-   ナビゲーションアイテムの間隔調整
-   =================================== */
-
-.custom-header .nav-item {
-  display: flex;
-  align-items: center;
-}
-
-/* ===================================
-   スムーズスクロール
-   =================================== */
-
-html {
-  scroll-padding-top: 80px;
-}
-
-/* ===================================
    TOPページ用スタイル
    =================================== */
 
@@ -373,11 +343,9 @@ html {
 }
 
 /* ===================================
-  TOP
+   スクロールで登場するセクション
    =================================== */
 
-
-// スクロールで登場するセクション
 .scroll-reveal-section {
   padding: 80px 20px;
   max-width: 1200px;
@@ -388,13 +356,19 @@ html {
   margin-bottom: 150px;
   opacity: 0;
   transition: all 1s ease-out;
-  
-  &.visible {
-    opacity: 1;
-  }
 }
 
-// 画像のスタイル
+.scroll-reveal-item.visible {
+  opacity: 1;
+}
+
+.scroll-reveal-item.visible .fade-text,
+.scroll-reveal-item.visible .fade-text-main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 画像のスタイル */
 .reveal-image {
   width: 100%;
   max-width: 600px;
@@ -405,85 +379,116 @@ html {
   margin: 0 auto 20px;
 }
 
-.reveal-image-main {
-  width: 100%;
-  max-width: 800px;
+.hero-image .reveal-image-main {
+  width: 100% !important; /* !important で優先度を上げる */
+  max-width: 600px !important;
   height: auto;
   border-radius: 20px;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
   display: block;
-  margin: 0 auto 40px;
+  margin: 0 auto 30px;
 }
 
-// 画像のキャプション
+/* 画像のキャプション */
 .image-caption {
   text-align: center;
   margin-top: 20px;
-  
-  .main-text {
-    display: block;
-    font-size: 32px;
-    font-weight: bold;
-    color: #f59e0b;
-    margin-bottom: 8px;
-  }
-  
-  .sub-text-caption {
-    display: block;
-    font-size: 18px;
-    color: #999;
-    font-weight: 300;
-    letter-spacing: 3px;
-  }
 }
 
-// 左から登場
+.image-caption .main-text {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  color: #f59e0b;
+  margin-bottom: 8px;
+}
+
+.image-caption .sub-text-caption {
+  display: block;
+  font-size: 18px;
+  color: #999;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+/* ふわっと表示される文章(画像1・2の下) */
+.fade-text {
+  font-size: 16px;
+  color: #666;
+  margin-top: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s ease-out 0.5s;
+}
+
+/* ふわっと表示される文章(メイン画像の下) */
+.fade-text-main {
+  text-align: center;
+  font-size: 20px;
+  color: #f59e0b;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s ease-out 0.5s;
+}
+
+/* 左から登場 */
 .fade-in-left {
   transform: translateX(-100px);
-  
-  &.visible {
-    transform: translateX(0);
-  }
 }
 
-// 右から登場
+.fade-in-left.visible {
+  transform: translateX(0);
+}
+
+/* 右から登場 */
 .fade-in-right {
   transform: translateX(100px);
-  
-  &.visible {
-    transform: translateX(0);
-  }
 }
 
-// 中央から登場(フェードイン)
+.fade-in-right.visible {
+  transform: translateX(0);
+}
+
+/* 中央から登場(フェードイン) */
 .fade-in-center {
   transform: scale(0.8);
-  
-  &.visible {
-    transform: scale(1);
-  }
 }
 
-// CTAボタンエリア
+.fade-in-center.visible {
+  transform: scale(1);
+}
+
+/* hero-imageのスタイル調整 */
+.hero-image {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* CTAボタンエリア */
 .cta-buttons {
   text-align: center;
   padding: 40px 20px;
-  
-  .primary-button,
-  .secondary-button {
-    margin: 15px auto;
-    display: block;
-    max-width: 400px;
-  }
-  
-  .note {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
-  }
+  margin-top: 0;
 }
 
-// レスポンシブ対応
+.cta-buttons .primary-button,
+.cta-buttons .secondary-button {
+  margin: 15px auto;
+  display: block;
+  max-width: 400px;
+}
+
+.cta-buttons .note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
   .scroll-reveal-section {
     padding: 40px 15px;
@@ -501,49 +506,34 @@ html {
     max-width: 100%;
   }
   
-  .image-caption {
-    .main-text {
-      font-size: 24px;
-    }
-    
-    .sub-text-caption {
-      font-size: 14px;
-    }
+  .image-caption .main-text {
+    font-size: 24px;
+  }
+  
+  .image-caption .sub-text-caption {
+    font-size: 14px;
+  }
+  
+  .fade-text {
+    font-size: 14px;
+  }
+  
+  .fade-text-main {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
   
   .fade-in-left,
   .fade-in-right {
     transform: translateY(50px);
-    
-    &.visible {
-      transform: translateY(0);
-    }
+  }
+  
+  .fade-in-left.visible,
+  .fade-in-right.visible {
+    transform: translateY(0);
   }
 }
-
-/* ===================================
-   レシピカード用スタイル
-   =================================== */
-
-.recipe-card {
-  border-radius: 20px;
-  transition: 0.3s ease;
-  background-color: #ffffff;
-}
-
-.recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.recipe-pre {
-  white-space: pre-wrap;
-  font-family: inherit;
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 15px;
-}
-
 /* ===================================
    ダッシュボード用スタイル
    =================================== */
