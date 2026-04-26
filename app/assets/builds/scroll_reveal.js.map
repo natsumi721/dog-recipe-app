@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../javascript/scroll_reveal.js"],
+  "sourcesContent": ["// \u30B9\u30AF\u30ED\u30FC\u30EB\u3067\u8981\u7D20\u3092\u8868\u793A\u3059\u308B\u51E6\u7406\ndocument.addEventListener('turbo:load', () => {\n  const revealItems = document.querySelectorAll('.scroll-reveal-item');\n  \n  // Intersection Observer API \u3092\u4F7F\u7528\n  const observerOptions = {\n    root: null,\n    rootMargin: '0px',\n    threshold: 0.2 // \u8981\u7D20\u306E20%\u304C\u8868\u793A\u3055\u308C\u305F\u3089\u767A\u706B\n  };\n  \n  const observer = new IntersectionObserver((entries) => {\n    entries.forEach(entry => {\n      if (entry.isIntersecting) {\n        entry.target.classList.add('visible');\n        // \u4E00\u5EA6\u8868\u793A\u3055\u308C\u305F\u3089\u76E3\u8996\u3092\u89E3\u9664(\u518D\u5EA6\u975E\u8868\u793A\u306B\u3057\u306A\u3044)\n        observer.unobserve(entry.target);\n      }\n    });\n  }, observerOptions);\n  \n  // \u5404\u8981\u7D20\u3092\u76E3\u8996\n  revealItems.forEach(item => {\n    observer.observe(item);\n  });\n});"],
+  "mappings": ";AACA,SAAS,iBAAiB,cAAc,MAAM;AAC5C,QAAM,cAAc,SAAS,iBAAiB,qBAAqB;AAGnE,QAAM,kBAAkB;AAAA,IACtB,MAAM;AAAA,IACN,YAAY;AAAA,IACZ,WAAW;AAAA;AAAA,EACb;AAEA,QAAM,WAAW,IAAI,qBAAqB,CAAC,YAAY;AACrD,YAAQ,QAAQ,WAAS;AACvB,UAAI,MAAM,gBAAgB;AACxB,cAAM,OAAO,UAAU,IAAI,SAAS;AAEpC,iBAAS,UAAU,MAAM,MAAM;AAAA,MACjC;AAAA,IACF,CAAC;AAAA,EACH,GAAG,eAAe;AAGlB,cAAY,QAAQ,UAAQ;AAC1B,aAAS,QAAQ,IAAI;AAAA,EACvB,CAAC;AACH,CAAC;",
+  "names": []
+}

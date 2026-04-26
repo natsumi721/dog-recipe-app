@@ -11,25 +11,51 @@
       愛犬の年齢、体型、運動量に合わせた<br>
       その子に合った栄養を補給できるトッピングレシピを提案します。
     </p>
-
-    <div class="hero-image">
-      <%= image_tag "ogp.png", alt: "dog recipe", class: "img-fluid" %>
-    </div>
-    <%= link_to "ログイン", login_path, class: "primary-button" %><br>
-    <%= link_to "新規登録", signup_path, class: "primary-button" %><br>
-
-    <!-- Google OAuth ログインボタン -->
-    <div class="text-center mt-3">
-      <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
-        <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
-        <span>Google でログイン</span>
-      <% end %>
-    </div>
-
-    <%= link_to "登録せずレシピを見る", new_dog_path, class: "primary-button" %>
-    <p class="note">※情報登録することで、より快適に利用できます</p>
   </section>
 
+  <!-- スクロールで登場する画像セクション -->
+  <section class="scroll-reveal-section">
+    <!-- 画像1: 左から登場 (犬の写真) -->
+    <div class="scroll-reveal-item fade-in-left">
+      <%= image_tag "top2.png", alt: "元気な愛犬", class: "reveal-image" %>
+      <div class="image-caption">
+        <span class="main-text">笑顔</span>
+        <span class="sub-text-caption">smile</span>
+      </div>
+    </div>
+
+    <!-- 画像2: 右から登場 (食材の写真) -->
+    <div class="scroll-reveal-item fade-in-right">
+      <%= image_tag "top1.png", alt: "健康的な食材", class: "reveal-image" %>
+      <div class="image-caption">
+        <span class="main-text">健康</span>
+        <span class="sub-text-caption">healthy</span>
+      </div>
+    </div>
+
+    <!-- 画像3: 中央から登場 (メイン画像 + ボタン) -->
+    <div class="scroll-reveal-item fade-in-center">
+      <div class="hero-image">
+        <%= image_tag "ogp.png", alt: "dog recipe", class: "reveal-image-main" %>
+      </div>
+
+      <div class="cta-buttons">
+        <%= link_to "ログイン", login_path, class: "primary-button" %>
+        <%= link_to "新規登録", signup_path, class: "primary-button" %>
+
+        <!-- Google OAuth ログインボタン -->
+        <div class="text-center mt-3">
+          <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
+            <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
+            <span>Google でログイン</span>
+          <% end %>
+        </div>
+
+        <%= link_to "登録せずレシピを見る", new_dog_path, class: "primary-button" %>
+        <p class="note">※情報登録することで、より快適に利用できます</p>
+      </div>
+    </div>
+  </section>
 
   <!-- 使い方セクション -->
   <section class="process">
@@ -53,7 +79,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- CTAセクション -->
   <section class="cta">
