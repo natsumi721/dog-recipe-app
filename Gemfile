@@ -32,7 +32,7 @@ gem "letter_opener_web", "~> 2.0"
 gem "bcrypt", "~> 3.1.7"
 gem "rails-i18n", "~> 7.0.0"
 gem "enum_help"
-gem "config", "4.0.0"
+gem "config", "5.6.1"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
