@@ -2,11 +2,14 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
+import "./scroll_reveal"
+import "./how_to"
+
 
 // Bootstrapをグローバルに設定（削除確認ダイアログで使用）
 window.bootstrap = bootstrap
 
-// 🔥 Swiperを初期化する関数（CDN版）
+//  Swiperを初期化する関数（CDN版）
 function initSwiper() {
   
   const swiperElement = document.querySelector('.top-dog-swiper');
@@ -18,14 +21,14 @@ function initSwiper() {
 
   const slideCount = document.querySelectorAll('.top-dog-swiper .swiper-slide').length;
   
-  // 🔥 Swiperが読み込まれているか確認
+  // Swiperが読み込まれているか確認
   if (typeof window.Swiper === 'undefined') {
     console.error('Swiper is not loaded!');
     return;
   }
   
   if (slideCount > 1) {
-    // 🔥 CDN版のSwiperを使う
+    // CDN版のSwiperを使う
     const swiper = new window.Swiper('.top-dog-swiper', {
       loop: true,
       autoplay: {
@@ -47,50 +50,11 @@ function initSwiper() {
   }
 }
 
-// 🔥 ページ読み込み時にSwiperを初期化
+//  ページ読み込み時にSwiperを初期化
 window.addEventListener('DOMContentLoaded', initSwiper);
 window.addEventListener('turbo:load', initSwiper);
 
-// 使い方ページ、ふわっと浮かび上がるように
-function initFadeIn() {
-  console.log("fade-in start");
-
-  const elements = document.querySelectorAll(".fade-in-section");
-  console.log("Found elements:", elements.length);
-
-  if (elements.length === 0) {
-    console.log("No fade-in-section elements found");
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      console.log("Entry:", entry.target, "isIntersecting:", entry.isIntersecting);
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        console.log("Added is-visible to:", entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  elements.forEach(el => {
-    observer.observe(el);
-
-    // 初期表示にも対応
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add("is-visible");
-      console.log("Initial visible:", el);
-    }
-  });
-}
-
-// 両方のイベントで実行
-document.addEventListener("turbo:load", initFadeIn);
-document.addEventListener("DOMContentLoaded", initFadeIn);
-
-// 🔥 未ログイン時の「アプリの使い方」モーダル表示
+//  未ログイン時の「アプリの使い方」モーダル表示
 function showHowToUseModal() {
   console.log("showHowToUseModal called");
 
@@ -137,7 +101,7 @@ document.addEventListener("DOMContentLoaded", setupDogFormLoading);
 document.addEventListener("turbo:load", setupDogFormLoading);
 
 function setupDogFormLoading() {
-  // 🔥 犬の登録・編集ページでのみ実行
+  //  犬の登録・編集ページでのみ実行
   const dogForm = document.getElementById("dog-form");
   if (!dogForm) return;  // 犬のフォームがない場合は何もしない
 

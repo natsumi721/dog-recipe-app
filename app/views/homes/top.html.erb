@@ -11,25 +11,55 @@
       愛犬の年齢、体型、運動量に合わせた<br>
       その子に合った栄養を補給できるトッピングレシピを提案します。
     </p>
-
-    <div class="hero-image">
-      <%= image_tag "ogp.png", alt: "dog recipe", class: "img-fluid" %>
-    </div>
-    <%= link_to "ログイン", login_path, class: "primary-button" %><br>
-    <%= link_to "新規登録", signup_path, class: "primary-button" %><br>
-
-    <!-- Google OAuth ログインボタン -->
-    <div class="text-center mt-3">
-      <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
-        <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
-        <span>Google でログイン</span>
-      <% end %>
-    </div>
-
-    <%= link_to "登録せずレシピを見る", new_dog_path, class: "primary-button" %>
-    <p class="note">※情報登録することで、より快適に利用できます</p>
   </section>
 
+  <!-- スクロールで登場する画像セクション -->
+  <section class="scroll-reveal-section">
+    <!-- 画像1: 左から登場 (犬の写真) -->
+    <div class="scroll-reveal-item fade-in-left">
+      <%= image_tag "top2.png", alt: "元気な愛犬", class: "reveal-image" %>
+      <div class="image-caption">
+        <span class="main-text">元気</span>
+        <span class="sub-text-caption">energy</span>
+        <!-- 追加: ふわっと表示される文章 -->
+        <p class="fade-text">〜愛犬がいつまでも元気でいてくれるために〜</p>
+      </div>
+    </div>
+
+    <!-- 画像2: 右から登場 (食材の写真) -->
+    <div class="scroll-reveal-item fade-in-right">
+      <%= image_tag "top1.png", alt: "健康的な食材", class: "reveal-image" %>
+      <div class="image-caption">
+        <span class="main-text">健康</span>
+        <span class="sub-text-caption">healthy</span>
+        <!-- 追加: ふわっと表示される文章 -->
+        <p class="fade-text">〜健康な身体は食事から〜</p>
+      </div>
+    </div>
+
+    <!-- 画像3: 中央から登場 (メイン画像 + ボタン) -->
+    <div class="scroll-reveal-item fade-in-center">
+      <div class="hero-image">
+        <%= image_tag "center.png", alt: "dog recipe", class: "reveal-image-main" %>
+        <!-- 追加: ふわっと表示される文章 -->
+        <p class="fade-text-main">〜たっぷりの愛情を食事に。一緒にはじめませんか?〜</p>
+      </div>
+
+      <div class="cta-buttons">
+  <%= link_to "ログイン", login_path, class: "cta-button" %>
+  <%= link_to "新規登録", signup_path, class: "cta-button" %>
+
+  <!-- Google OAuth ログインボタン -->
+  <%= link_to auth_at_provider_path(provider: :google), class: "cta-button google-button" do %>
+    <%= image_tag "google-icon.png", alt: "Google", class: "google-icon" %>
+    <span>Google でログイン</span>
+  <% end %>
+
+  <%= link_to "登録せずレシピを見る", new_dog_path, class: "cta-button secondary" %>
+  <p class="note">※情報登録することで、より快適に利用できます</p>
+</div>
+    </div>
+  </section>
 
   <!-- 使い方セクション -->
   <section class="process">
@@ -38,22 +68,22 @@
     <div class="steps">
       <div class="step">
         <h3>1. 情報を入力</h3>
-        <p>年齢、体重、アレルギーなどを登録。</p>
+        <p>年齢、体重、体型、アレルギーなどを登録。</p>
       </div>
 
       <div class="step">
         <h3>2. レシピをGET</h3>
         <p>愛犬の体質に最適な栄養バランスのレシピを提案。<br>
-           トッピングでフードだけでは得られない栄養を補給</p>
+           フードだけでは得られない栄養を補給</p>
       </div>
 
       <div class="step">
         <h3>3. つくる</h3>
-        <p>スーパーで買える食材で、愛情たっぷりのごはんを。</p>
+        <p>スーパーで買える食材で、愛情たっぷりのごはんを。<br>
+        あなたの愛犬のために、厳選されたレシピを体験しましょう。</p>
       </div>
     </div>
   </section>
-
 
   <!-- CTAセクション -->
   <section class="cta">

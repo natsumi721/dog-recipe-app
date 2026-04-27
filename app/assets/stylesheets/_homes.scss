@@ -173,6 +173,16 @@ body {
   box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
 }
 
+/* ボタンをグループ化 */
+.button-group {
+  display: flex;
+  flex-direction: column; /* 縦並び */
+  gap: 15px; /* ボタン間の余白 */
+  align-items: center; /* 中央揃え */
+  margin-top: 20px; /* 上部に余白 */
+}
+
+
 /* ===================================
    レスポンシブ対応
    =================================== */
@@ -250,36 +260,6 @@ body {
 }
 
 /* ===================================
-   ログアウトボタンのフォーム調整
-   =================================== */
-
-.custom-header form {
-  margin: 0;
-  display: inline-block;
-}
-
-.custom-header form button {
-  cursor: pointer;
-}
-
-/* ===================================
-   ナビゲーションアイテムの間隔調整
-   =================================== */
-
-.custom-header .nav-item {
-  display: flex;
-  align-items: center;
-}
-
-/* ===================================
-   スムーズスクロール
-   =================================== */
-
-html {
-  scroll-padding-top: 80px;
-}
-
-/* ===================================
    TOPページ用スタイル
    =================================== */
 
@@ -336,7 +316,14 @@ html {
 
 /* process */
 .process {
-  margin-top: 80px;
+  margin-top: 60px;
+}
+
+.process h2 {
+  margin-top: 0;  /* 見出しの上マージンを削除 */
+  margin-bottom: 40px;  /* 見出しと下のコンテンツの間隔 */
+  font-size: 2rem; 
+  text-align: center;  /* 中央揃え */
 }
 
 .steps {
@@ -352,47 +339,830 @@ html {
   margin-bottom: 8px;
 }
 
-/* CTA */
-.cta {
-  background-color: #f59e0b;
-  color: white;
+
+/* ===========================
+   Hero セクション
+=========================== */
+.how-to-hero {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE5B4 50%, #FFD9A0 100%); /* 優しい黄色のグラデーション */
+  padding: 80px 20px;
+  text-align: center;
+  color: #333; /* テキストを濃い色に */
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🎨 背景に丸い装飾を追加 */
+.how-to-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 193, 7, 0.2); /* 薄い黄色の円 */
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.how-to-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 152, 0, 0.15); /* 薄いオレンジの円 */
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* テキストを前面に */
+.how-to-title,
+.how-to-subtitle {
+  position: relative;
+  z-index: 1;
+}
+
+.how-to-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #FF8C00; /* 濃いオレンジ */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 柔らかい影 */
+  animation: fadeInDown 1s ease-out;
+}
+
+.how-to-subtitle {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #555; /* 優しいグレー */
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.how-to-subtitle strong {
+  color: #FF8C00; /* 強調部分をオレンジに */
+  font-weight: bold;
+}
+
+/* ===========================
+   コンテナ
+=========================== */
+.how-to-container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 60px 20px;
-  border-radius: 30px;
-  margin-top: 80px;
+}
+
+/* ===========================
+   イントロセクション
+=========================== */
+.how-to-intro {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.intro-card {
+  background: #FFF8E1; /* 薄い黄色 */
+  border-left: 4px solid #FFA500; /* オレンジのアクセント */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.intro-card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #FF8C00; /* 濃いオレンジ */
+}
+
+.intro-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* ===========================
+   ステップセクション
+=========================== */
+.steps-section {
+  margin-bottom: 60px;
+}
+
+.steps-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* ===========================
+   ステップカード
+=========================== */
+.step-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.step-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+}
+
+.step-number {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%); /* 綺麗なグリーンのグラデーション */
+  color: white; /* 中の数字を白に */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); /* グリーンの影 */
+}
+
+.step-icon {
+  font-size: 4rem;
+  margin: 20px 0;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.step-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.step-description {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.step-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.step-details li {
+  background: #f5f7fa;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  transition: background 0.3s ease;
+}
+
+.step-details li:hover {
+  background: #e8ecf3;
+}
+
+/* ===========================
+   CTAセクション
+=========================== */
+.how-to-cta {
+  text-align: center;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); /* 黄色→オレンジ */
+  padding: 60px 40px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+}
+
+.how-to-cta h3 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.how-to-cta p {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.primary-button:hover {
+  background: #FF6F00; /* さらに濃いオレンジ */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
 .secondary-button {
-  display: inline-block;
-  background-color: white;
-  color: #f59e0b;
-  padding: 12px 30px;
+  background: white;
+  color: #FF8C00; /* 濃いオレンジ */
+  padding: 15px 40px;
+  border: 2px solid white;
   border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background: #FF8C00; /* オレンジ */
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* 戻るボタンのコンテナ */
+.back-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* 戻るボタンのスタイル */
+.back-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #f3f4f6;
+  color: #374151;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .back-button-container {
+    margin-top: 20px;
+  }
+
+  .back-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===========================
+   新規登録ページのボタン
+=========================== */
+.signup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* ボタン間の余白 */
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* secondary-button のスタイル */
+.signup-buttons .secondary-button {
+  padding: 12px 30px; /* 左右のpaddingでサイズ調整 */
+  background-color: #f97316; /* オレンジ色 */
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* インラインブロックにする */
+}
+
+.signup-buttons .secondary-button:hover {
+  background-color: #ea580c; /* 濃いオレンジ */
+  transform: translateY(-2px);
+}
+
+/* 「戻る」ボタンに追加の余白 */
+.signup-buttons .back-button {
+  margin-top: 20px; /* 上に20pxの余白を追加 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .signup-buttons {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .signup-buttons .secondary-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .signup-buttons .back-button {
+    margin-top: 15px; /* スマホでは余白を少し小さく */
+  }
+}
+
+/* ===========================
+   アニメーション
+=========================== */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 1s ease-out;
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===========================
+   レスポンシブ対応
+=========================== */
+@media (max-width: 768px) {
+  .how-to-title {
+    font-size: 2rem;
+  }
+
+  .how-to-subtitle {
+    font-size: 1rem;
+  }
+
+  .steps-title {
+    font-size: 1.8rem;
+  }
+
+  .step-card {
+    padding: 30px 20px;
+  }
+
+  .step-icon {
+    font-size: 3rem;
+  }
+
+  .how-to-cta h3 {
+    font-size: 1.5rem;
+  }
+
+  .how-to-cta p {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* ===================================
+   スクロールで登場するセクション
+   =================================== */
+
+.scroll-reveal-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.scroll-reveal-item {
+  margin-bottom: 0;
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+.scroll-reveal-item.visible {
+  opacity: 1;
+}
+
+.scroll-reveal-item.visible .fade-text,
+.scroll-reveal-item.visible .fade-text-main {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 画像のスタイル */
+.reveal-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.hero-image .reveal-image-main {
+  width: 100% !important; /* !important で優先度を上げる */
+  max-width: 600px !important;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto 30px;
+}
+
+/* 画像のキャプション */
+.image-caption {
+  text-align: center;
   margin-top: 20px;
 }
 
-/* ===================================
-   レシピカード用スタイル
-   =================================== */
-
-.recipe-card {
-  border-radius: 20px;
-  transition: 0.3s ease;
-  background-color: #ffffff;
+.image-caption .main-text {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  color: #f59e0b;
+  margin-bottom: 8px;
 }
 
-.recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+.image-caption .sub-text-caption {
+  display: block;
+  font-size: 18px;
+  color: #999;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
 }
 
-.recipe-pre {
-  white-space: pre-wrap;
-  font-family: inherit;
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 15px;
+/* ふわっと表示される文章(画像1・2の下) */
+.fade-text {
+  font-size: 16px;
+  color: #666;
+  margin-top: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s ease-out 0.5s;
+}
+
+/* ふわっと表示される文章(メイン画像の下) */
+.fade-text-main {
+  text-align: center;
+  font-size: 20px;
+  color: #f59e0b;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s ease-out 0.5s;
+}
+
+/* 左から登場 */
+.fade-in-left {
+  transform: translateX(-100px);
+}
+
+.fade-in-left.visible {
+  transform: translateX(0);
+}
+
+/* 右から登場 */
+.fade-in-right {
+  transform: translateX(100px);
+}
+
+.fade-in-right.visible {
+  transform: translateX(0);
+}
+
+/* 中央から登場(フェードイン) */
+.fade-in-center {
+  transform: scale(0.8);
+}
+
+.fade-in-center.visible {
+  transform: scale(1);
+}
+
+/* hero-imageのスタイル調整 */
+.hero-image {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* CTAボタンエリア */
+
+.cta-buttons .primary-button,
+.cta-buttons .secondary-button {
+  margin: 15px auto;
+  display: block;
+  max-width: 400px;
+}
+
+.cta-buttons .note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .scroll-reveal-section {
+    padding: 30px 15px;
+  }
+  
+  .scroll-reveal-item {
+    margin-bottom: 100px;
+  }
+  
+  .reveal-image {
+    max-width: 100%;
+  }
+  
+  .reveal-image-main {
+    max-width: 100%;
+  }
+  
+  .image-caption .main-text {
+    font-size: 24px;
+  }
+  
+  .image-caption .sub-text-caption {
+    font-size: 14px;
+  }
+  
+  .fade-text {
+    font-size: 14px;
+  }
+  
+  .fade-text-main {
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .fade-in-left,
+  .fade-in-right {
+    transform: translateY(50px);
+  }
+  
+  .fade-in-left.visible,
+  .fade-in-right.visible {
+    transform: translateY(0);
+  }
+}
+
+/* ===========================
+   CTAセクション (TOPページ用)
+=========================== */
+.cta {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE5B4 100%);
+  color: #333;
+  padding: 60px 20px;
+  border-radius: 30px;
+  margin-top: 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(255, 193, 7, 0.2);
+  border-bottom: 3px solid #FFD54F;
+}
+
+/* 背景に丸い装飾を追加 */
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 215, 0, 0.15);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.cta::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* テキストとボタンを前面に */
+.cta h2,
+.cta p,
+.cta .secondary-button {
+  position: relative;
+  z-index: 1;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #FF8C00;
+  text-shadow: 2px 2px 4px rgba(255, 193, 7, 0.3);
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* ===========================
+   共通ボタンスタイル (黄色系で統一)
+=========================== */
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cta-button {
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+  background: linear-gradient(135deg, #FFC107 0%, #FF8C00 100%);
+  color: white;
+}
+
+/* セカンダリボタン */
+.cta-button.secondary {
+  background: white;
+  color: #FF8C00;
+  border: 2px solid #FFD700;
+}
+
+.cta-button.secondary:hover {
+  background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+  color: white;
+  border-color: #FFC107;
+}
+
+/* Googleボタン */
+.cta-button.google-button {
+  background: white;
+  color: #333;
+  border: 2px solid #FFD700;
+}
+
+.cta-button.google-button:hover {
+  background: #FFF9E6;
+  border-color: #FFC107;
+  color: #333;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 注意書き */
+.note {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .cta-buttons {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .google-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .note {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===========================
+   CTAセクション用のレスポンシブ対応
+=========================== */
+@media (max-width: 768px) {
+  .cta {
+    padding: 40px 15px;
+    margin-top: 60px;
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta p {
+    font-size: 1rem;
+  }
+
+  .cta .secondary-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+
+  /* 背景の丸を小さく */
+  .cta::before {
+    width: 250px;
+    height: 250px;
+    top: -50px;
+    right: -50px;
+  }
+
+  .cta::after {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+  }
 }
 
 /* ===================================

@@ -1,50 +1,89 @@
-<!-- 使い方セクション -->
-<div class="container mt-5">
-  <div class="text-center mb-5 fade-in-section">
-    <h2 class="fw-bold mb-4">🐶 このアプリの使い方</h2>
-
-    <p class="lead">
+<div class="how-to-hero">
+  <div class="container">
+    <h1 class="how-to-title fade-in">
+      🐶 このアプリの使い方
+    </h1>
+    <p class="how-to-subtitle fade-in">
       愛犬の情報や気になる体調・状態を選ぶだけで、<br>
       その子にぴったりのレシピを <strong>自動でご提案🎵</strong>
     </p>
-
-    <p>
-      「どのレシピを選べばいいのかわからない…」<br>
-      そんなお悩みはもう必要ありません！
-    </p>
-
-    <p>
-      条件に合わせて、最適なレシピを<br>
-      <strong>ひとつに絞ってご提案</strong>します。
-    </p>
-
-    <p>
-      さらに、栄養バランスを考慮した<strong>適切な量</strong>も表示されるので、<br>
-      普段のフードにプラスするだけで健康サポートができます✨
-    </p>
-  </div>
-
-  <!-- ステップ -->
-  <div class="row text-center">
-    <div class="col-md-4 fade-in-section">
-      <div class="p-4 shadow-sm rounded bg-white">
-        <h5 class="fw-bold">① 愛犬情報を登録</h5>
-        <p class="text-muted">まずは愛犬の基本情報を入力します</p>
-      </div>
-    </div>
-
-    <div class="col-md-4 fade-in-section">
-      <div class="p-4 shadow-sm rounded bg-white">
-        <h5 class="fw-bold">② 状態を選択</h5>
-        <p class="text-muted">気になる体調や状態を選びます</p>
-      </div>
-    </div>
-
-    <div class="col-md-4 fade-in-section">
-      <div class="p-4 shadow-sm rounded bg-white">
-        <h5 class="fw-bold">③ レシピ提案</h5>
-        <p class="text-muted">あなたの愛犬に合ったレシピが表示されます</p>
-      </div>
-    </div>
   </div>
 </div>
+
+<div class="container how-to-container">
+  <!-- 説明セクション -->
+  <div class="how-to-intro fade-in-section">
+    <div class="intro-card">
+      <h3> こんなお悩みありませんか?</h3>
+      <p>「フード選びも難しいのに、手作りごはんはもっと難しい。」 </p>
+      <p>「どのレシピを選べばいいのかわからない…」</p>
+      <p>そんなお悩みはもう必要ありません!</p>
+    </div>
+    
+    <div class="intro-card">
+      <h3>✨ このアプリでできること</h3>
+      <p>条件に合わせて、最適なレシピを<strong>アプリが絞ってご提案</strong>します。</p>
+      <p>さらに、栄養バランスを考慮した<strong>適切な量</strong>も表示されるので、<br>
+      普段のフードにプラスするだけで健康サポートができます✨</p>
+    </div>
+  </div>
+
+  <!-- ステップカード -->
+  <div class="steps-section">
+    <h2 class="steps-title fade-in-section">📝 簡単3ステップ</h2>
+    
+    <div class="steps-grid">
+      <!-- ステップ1 -->
+      <div class="step-card fade-in-section">
+        <div class="step-number">1</div>
+        <div class="step-icon">🐕</div>
+        <h4 class="step-title">愛犬情報を登録</h4>
+        <p class="step-description">まずは愛犬の基本情報を入力します</p>
+        <ul class="step-details">
+          <li>名前</li>
+          <li>年齢</li>
+          <li>体重</li>
+        </ul>
+      </div>
+
+      <!-- ステップ2 -->
+      <div class="step-card fade-in-section">
+        <div class="step-number">2</div>
+        <div class="step-icon">💭</div>
+        <h4 class="step-title">状態を選択</h4>
+        <p class="step-description">気になる体調や状態を選びます</p>
+        <ul class="step-details">
+          <li>体調の変化</li>
+          <li>気になる症状</li>
+          <li>食事の悩み</li>
+        </ul>
+      </div>
+
+      <!-- ステップ3 -->
+      <div class="step-card fade-in-section">
+        <div class="step-number">3</div>
+        <div class="step-icon">🍽️</div>
+        <h4 class="step-title">レシピ提案</h4>
+        <p class="step-description">あなたの愛犬に合ったレシピが表示されます</p>
+        <ul class="step-details">
+          <li>最適なレシピ</li>
+          <li>適切な分量</li>
+          <li>栄養バランス</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA セクション -->
+  <div class="how-to-cta fade-in-section">
+    <h3>さあ、はじめましょう!</h3>
+    <p>愛犬の健康を、手作りごはんでサポート✨</p>
+    <div class="cta-buttons">
+      <%= link_to "新規登録", signup_path, class: "primary-button" %>
+      <%= link_to "ログイン", login_path, class: "secondary-button" %>
+    </div>
+</div>
+<!-- 戻るボタン -->
+  <div class="back-button-container">
+    <%= link_to "戻る", "javascript:history.back()", class: "back-button" %>
+  </div>
