@@ -85,7 +85,7 @@ end
   def index
     if params[:dog_id].present? && logged_in?
       @dog = current_user.dogs.find(params[:dog_id])
-      @recipes = @dog.recommended_recipes
+      @recipes = fetch_or_sample_recipes(@dog)
 
     elsif params[:age_stage].present? || session[:guest_dog].present?
       # 未ログインユーザーのフィルタリング条件から取得
@@ -98,7 +98,7 @@ end
         size: params[:size] || dog_data["size"],
         allergies: params[:allergies] || dog_data["allergies"] || []
       )
-      @recipes = @dog.recommended_recipes
+      @recipes = fetch_or_sample_recipes(@dog)
 
     else
       @recipes = Recipe.published.limit(5)
@@ -211,4 +211,31 @@ end
       }
     )
   end
+
+  def fetch_or_sample_recipes(dog)
+  # 上位20件をセッションに保存（初回のみ）
+  unless session[:top_recipe_ids].present?
+    top_recipes = dog.recommended_recipes # 上位20件を取得するメソッド
+    session[:top_recipe_ids] = top_recipes.map(&:id)
+  end
+
+  # シャッフルボタンが押された場合は選択された5件をクリア
+  if params[:shuffle] == "true"
+    session[:selected_recipe_ids] = nil
+  end
+
+  # セッションに保存されたレシピIDがある場合はそれを使用
+  if session[:selected_recipe_ids].present?
+    Recipe.where(id: session[:selected_recipe_ids]).to_a
+  else
+    # セッションに保存された上位20件の中から5件をサンプリング
+    top_recipe_ids = session[:top_recipe_ids]
+    sampled_ids = top_recipe_ids.sample(5)
+    
+    # セッションに保存
+    session[:selected_recipe_ids] = sampled_ids
+    
+    Recipe.where(id: sampled_ids).to_a
+  end
+end
 end

@@ -80,7 +80,6 @@ class Dog < ApplicationRecord
                     .map(&:first)
                     .take(20)
 
-    top_recipes.sample(5)
   end
 
   # アレルギー情報を日本語で表示

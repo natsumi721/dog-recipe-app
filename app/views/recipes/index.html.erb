@@ -11,12 +11,27 @@
           </p>
 
           <%= link_to "詳細を見る",
-                recipe_path(recipe,  dog_id: @dog&.id, return_to: request.fullpath),
+                recipe_path(recipe,  dog_id: @dog&.id, return_to: recipes_path(dog_id: @dog&.id)),
                 class: "btn btn-warning rounded-pill px-4 text-white mt-auto" %>
         </div>
       </div>
     <% end %>
     <div>
+
+     <!-- シャッフルボタンを追加 -->
+  <div class="text-center mb-4">
+    <%= link_to "レシピをシャッフル", recipes_path(
+          dog_id: @dog&.id,
+          age_stage: params[:age_stage],
+          body_type: params[:body_type],
+          activity_level: params[:activity_level],
+          size: params[:size],
+          allergies: params[:allergies],
+          shuffle: true
+        ),
+        class: "btn btn-outline-warning px-4" %>
+  </div>
+
     <div class="text-center mt-4">
     <% if current_user %>
   <!-- ログインユーザーには「ダッシュボードへ」ボタンのみ表示 -->
