@@ -231,10 +231,10 @@ end
     # セッションに保存された上位20件の中から5件をサンプリング
     top_recipe_ids = session[:top_recipe_ids]
     sampled_ids = top_recipe_ids.sample(5)
-    
+
     # セッションに保存
     session[:selected_recipe_ids] = sampled_ids
-    
+
     Recipe.where(id: sampled_ids).to_a
   end
 end

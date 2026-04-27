@@ -316,7 +316,14 @@ body {
 
 /* process */
 .process {
-  margin-top: 80px;
+  margin-top: 60px;
+}
+
+.process h2 {
+  margin-top: 0;  /* 見出しの上マージンを削除 */
+  margin-bottom: 40px;  /* 見出しと下のコンテンツの間隔 */
+  font-size: 2rem; 
+  text-align: center;  /* 中央揃え */
 }
 
 .steps {
@@ -781,7 +788,7 @@ body {
 }
 
 .scroll-reveal-item {
-  margin-bottom: 150px;
+  margin-bottom: 0;
   opacity: 0;
   transition: all 1s ease-out;
 }
@@ -914,7 +921,7 @@ body {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
   .scroll-reveal-section {
-    padding: 40px 15px;
+    padding: 30px 15px;
   }
   
   .scroll-reveal-item {

@@ -156,10 +156,10 @@ RSpec.describe Dog, type: :model do
       expect(result).not_to include(ng_recipe)
     end
 
-    it "最大5件返す" do
+    it "最大20件返す" do
       dog = create(:dog, age_stage: :adult, body_type: :normal, activity_level: :medium, size: :medium)
 
-    create_list(:recipe, 6,
+    create_list(:recipe, 25,
       age_stage: :adult,
       body_type: :normal,
       activity_level: :medium,
@@ -172,7 +172,7 @@ RSpec.describe Dog, type: :model do
 
     result = dog.recommended_recipes
 
-    expect(result.length).to be <= 5
+    expect(result.length).to be <= 20
   end
   end
 
