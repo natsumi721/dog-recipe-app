@@ -346,51 +346,65 @@ body {
    Hero セクション
 =========================== */
 .how-to-hero {
-  background: linear-gradient(135deg, #FFA500 0%, #FFD700 100%); /* オレンジ→黄色のグラデーション */
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE5B4 50%, #FFD9A0 100%); /* 優しい黄色のグラデーション */
   padding: 80px 20px;
   text-align: center;
-  color: white;
+  color: #333; /* テキストを濃い色に */
   position: relative;
   overflow: hidden;
 }
 
+/* 🎨 背景に丸い装飾を追加 */
 .how-to-hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: moveBackground 20s linear infinite;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 193, 7, 0.2); /* 薄い黄色の円 */
+  border-radius: 50%;
+  z-index: 0;
 }
 
-@keyframes moveBackground {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(50px, 50px);
-  }
+.how-to-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 152, 0, 0.15); /* 薄いオレンジの円 */
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* テキストを前面に */
+.how-to-title,
+.how-to-subtitle {
+  position: relative;
+  z-index: 1;
 }
 
 .how-to-title {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #FF8C00; /* 濃いオレンジ */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 柔らかい影 */
   animation: fadeInDown 1s ease-out;
-  position: relative;
-  z-index: 1;
 }
 
 .how-to-subtitle {
   font-size: 1.3rem;
   line-height: 1.8;
+  color: #555; /* 優しいグレー */
   animation: fadeInUp 1s ease-out 0.3s both;
-  position: relative;
-  z-index: 1;
+}
+
+.how-to-subtitle strong {
+  color: #FF8C00; /* 強調部分をオレンジに */
+  font-weight: bold;
 }
 
 /* ===========================
@@ -485,15 +499,15 @@ body {
   transform: translateX(-50%);
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%); /* 綺麗なグリーンのグラデーション */
+  color: white; /* 中の数字を白に */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   font-weight: bold;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4); /* グリーンの影 */
 }
 
 .step-icon {
