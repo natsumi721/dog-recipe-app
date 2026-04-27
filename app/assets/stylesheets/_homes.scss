@@ -589,6 +589,93 @@ body {
   transform: translateY(-3px);
 }
 
+/* 戻るボタンのコンテナ */
+.back-button-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* 戻るボタンのスタイル */
+.back-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #f3f4f6;
+  color: #374151;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .back-button-container {
+    margin-top: 20px;
+  }
+
+  .back-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===========================
+   新規登録ページのボタン
+=========================== */
+.signup-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* ボタン間の余白 */
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* secondary-button のスタイル */
+.signup-buttons .secondary-button {
+  padding: 12px 30px; /* 左右のpaddingでサイズ調整 */
+  background-color: #f97316; /* オレンジ色 */
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* インラインブロックにする */
+}
+
+.signup-buttons .secondary-button:hover {
+  background-color: #ea580c; /* 濃いオレンジ */
+  transform: translateY(-2px);
+}
+
+/* 「戻る」ボタンに追加の余白 */
+.signup-buttons .back-button {
+  margin-top: 20px; /* 上に20pxの余白を追加 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .signup-buttons {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .signup-buttons .secondary-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .signup-buttons .back-button {
+    margin-top: 15px; /* スマホでは余白を少し小さく */
+  }
+}
+
 /* ===========================
    アニメーション
 =========================== */
@@ -938,8 +1025,6 @@ body {
 }
 
 .cta-button {
-  width: 100%;
-  max-width: 400px;
   padding: 15px 30px;
   border-radius: 50px;
   font-size: 1.1rem;
@@ -948,7 +1033,7 @@ body {
   text-align: center;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;

@@ -17,7 +17,7 @@
         <%= f.password_field :password, class: "form-control" %>
       </div>
 
-      <%= f.submit "ログインする", class: "primary-button" %>
+      <%= f.submit "ログインする", class: "cta-button" %>
 
     <% end %>
     
@@ -40,6 +40,7 @@
   <p class="note mt-4">
     アカウントをお持ちでないですか？
   </p>
-  <%= link_to "新規登録する", signup_path, class: "secondary-button" %><br>
-  <%= link_to "戻る", root_path, class: "secondary-button" %>
+  <div class="signup-buttons">
+  <%= link_to "新規登録する", signup_path, class: "secondary-button" %>
+  <%= link_to "戻る", root_path, class: "back-button" %>
 </div>

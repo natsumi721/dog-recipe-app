@@ -1,6 +1,9 @@
 // スクロールアニメーション
-document.addEventListener('DOMContentLoaded', () => {
-  const observerOptions = {
+document.addEventListener('DOMContentLoaded', initScrollAnimation);
+document.addEventListener('turbo:load', initScrollAnimation); 
+
+function initScrollAnimation() {
+    const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
   };
@@ -18,4 +21,4 @@ document.addEventListener('DOMContentLoaded', () => {
   fadeElements.forEach(element => {
     observer.observe(element);
   });
-});
+}
