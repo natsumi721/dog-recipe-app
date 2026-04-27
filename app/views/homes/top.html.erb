@@ -46,20 +46,18 @@
       </div>
 
       <div class="cta-buttons">
-        <%= link_to "ログイン", login_path, class: "primary-button" %>
-        <%= link_to "新規登録", signup_path, class: "primary-button" %>
+  <%= link_to "ログイン", login_path, class: "cta-button" %>
+  <%= link_to "新規登録", signup_path, class: "cta-button" %>
 
-        <!-- Google OAuth ログインボタン -->
-        <div class="text-center mt-3">
-          <%= link_to auth_at_provider_path(provider: :google), class: "secondary-button d-flex align-items-center justify-content-center gap-2", style: "max-width:400px;margin:auto;" do %>
-            <%= image_tag "google-icon.png", alt: "Google", style: "width:20px;height:20px;" %>
-            <span>Google でログイン</span>
-          <% end %>
-        </div>
+  <!-- Google OAuth ログインボタン -->
+  <%= link_to auth_at_provider_path(provider: :google), class: "cta-button google-button" do %>
+    <%= image_tag "google-icon.png", alt: "Google", class: "google-icon" %>
+    <span>Google でログイン</span>
+  <% end %>
 
-        <%= link_to "登録せずレシピを見る", new_dog_path, class: "primary-button" %>
-        <p class="note">※情報登録することで、より快適に利用できます</p>
-      </div>
+  <%= link_to "登録せずレシピを見る", new_dog_path, class: "cta-button secondary" %>
+  <p class="note">※情報登録することで、より快適に利用できます</p>
+</div>
     </div>
   </section>
 

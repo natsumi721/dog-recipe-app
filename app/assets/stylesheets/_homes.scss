@@ -322,25 +322,6 @@ body {
   margin-bottom: 8px;
 }
 
-/* CTA */
-.cta {
-  background-color: #f59e0b;
-  color: white;
-  padding: 60px 20px;
-  border-radius: 30px;
-  margin-top: 80px;
-}
-
-.secondary-button {
-  display: inline-block;
-  background-color: white;
-  color: #f59e0b;
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 20px;
-}
 
 /* ===========================
    Hero セクション
@@ -583,25 +564,6 @@ body {
   margin-bottom: 30px;
 }
 
-.cta-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.primary-button {
-  background: #FF8C00; /* 濃いオレンジ */
-  color: white;
-  padding: 15px 40px;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
 .primary-button:hover {
   background: #FF6F00; /* さらに濃いオレンジ */
   transform: translateY(-3px);
@@ -838,11 +800,6 @@ body {
 }
 
 /* CTAボタンエリア */
-.cta-buttons {
-  text-align: center;
-  padding: 40px 20px;
-  margin-top: 0;
-}
 
 .cta-buttons .primary-button,
 .cta-buttons .secondary-button {
@@ -903,6 +860,209 @@ body {
     transform: translateY(0);
   }
 }
+
+/* ===========================
+   CTAセクション (TOPページ用)
+=========================== */
+.cta {
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE5B4 100%);
+  color: #333;
+  padding: 60px 20px;
+  border-radius: 30px;
+  margin-top: 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(255, 193, 7, 0.2);
+  border-bottom: 3px solid #FFD54F;
+}
+
+/* 背景に丸い装飾を追加 */
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 215, 0, 0.15);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.cta::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: rgba(255, 193, 7, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* テキストとボタンを前面に */
+.cta h2,
+.cta p,
+.cta .secondary-button {
+  position: relative;
+  z-index: 1;
+}
+
+.cta h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #FF8C00;
+  text-shadow: 2px 2px 4px rgba(255, 193, 7, 0.3);
+}
+
+.cta p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* ===========================
+   共通ボタンスタイル (黄色系で統一)
+=========================== */
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.cta-button {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+  color: white;
+  border: 2px solid transparent;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+  background: linear-gradient(135deg, #FFC107 0%, #FF8C00 100%);
+  color: white;
+}
+
+/* セカンダリボタン */
+.cta-button.secondary {
+  background: white;
+  color: #FF8C00;
+  border: 2px solid #FFD700;
+}
+
+.cta-button.secondary:hover {
+  background: linear-gradient(135deg, #FFD700 0%, #FFC107 100%);
+  color: white;
+  border-color: #FFC107;
+}
+
+/* Googleボタン */
+.cta-button.google-button {
+  background: white;
+  color: #333;
+  border: 2px solid #FFD700;
+}
+
+.cta-button.google-button:hover {
+  background: #FFF9E6;
+  border-color: #FFC107;
+  color: #333;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 注意書き */
+.note {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .cta-buttons {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+    padding: 12px 20px;
+  }
+
+  .google-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .note {
+    font-size: 0.8rem;
+  }
+}
+
+/* ===========================
+   CTAセクション用のレスポンシブ対応
+=========================== */
+@media (max-width: 768px) {
+  .cta {
+    padding: 40px 15px;
+    margin-top: 60px;
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta p {
+    font-size: 1rem;
+  }
+
+  .cta .secondary-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+
+  /* 背景の丸を小さく */
+  .cta::before {
+    width: 250px;
+    height: 250px;
+    top: -50px;
+    right: -50px;
+  }
+
+  .cta::after {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+  }
+}
+
 /* ===================================
    ダッシュボード用スタイル
    =================================== */
