@@ -83,6 +83,25 @@ GEM
     addressable (2.8.9)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
+    aws-eventstream (1.4.0)
+    aws-partitions (1.1241.0)
+    aws-sdk-core (3.246.0)
+      aws-eventstream (~> 1, >= 1.3.0)
+      aws-partitions (~> 1, >= 1.992.0)
+      aws-sigv4 (~> 1.9)
+      base64
+      bigdecimal
+      jmespath (~> 1, >= 1.6.1)
+      logger
+    aws-sdk-kms (1.124.0)
+      aws-sdk-core (~> 3, >= 3.244.0)
+      aws-sigv4 (~> 1.5)
+    aws-sdk-s3 (1.220.0)
+      aws-sdk-core (~> 3, >= 3.244.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.5)
+    aws-sigv4 (1.12.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
@@ -203,6 +222,7 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
+    jmespath (1.6.2)
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
     json (2.19.4)
@@ -476,6 +496,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_storage_validations
+  aws-sdk-s3
   bcrypt (~> 3.1.7)
   bootsnap
   brakeman
@@ -523,6 +544,12 @@ CHECKSUMS
   activesupport (7.2.3) sha256=5675c9770dac93e371412684249f9dc3c8cec104efd0624362a520ae685c7b10
   addressable (2.8.9) sha256=cc154fcbe689711808a43601dee7b980238ce54368d23e127421753e46895485
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
+  aws-eventstream (1.4.0) sha256=116bf85c436200d1060811e6f5d2d40c88f65448f2125bc77ffce5121e6e183b
+  aws-partitions (1.1241.0) sha256=cd0efc435de2782e8bdc77ae76bdafe70f493d54398071a88dbb1e1d32026cbe
+  aws-sdk-core (3.246.0) sha256=393864ec8948560e69fcccc2e4d256b40c7028eb98930608dd295279e3c4ddcc
+  aws-sdk-kms (1.124.0) sha256=40d00ab706d7e49fd620270bd0dcb546f266295abdd49b54fec2611e2a41f37c
+  aws-sdk-s3 (1.220.0) sha256=237fda5e6ac7ecdd9c848e27187bfdc370edad5c5a141aeec389fb450fa28c7c
+  aws-sigv4 (1.12.1) sha256=6973ff95cb0fd0dc58ba26e90e9510a2219525d07620c8babeb70ef831826c00
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   bcrypt (3.1.22) sha256=1f0072e88c2d705d94aff7f2c5cb02eb3f1ec4b8368671e19112527489f29032
   benchmark (0.5.0) sha256=465df122341aedcb81a2a24b4d3bd19b6c67c1530713fd533f3ff034e419236c
@@ -577,6 +604,7 @@ CHECKSUMS
   io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
   irb (1.17.0) sha256=168c4ddb93d8a361a045c41d92b2952c7a118fa73f23fe14e55609eb7a863aae
   jbuilder (2.14.1) sha256=4eb26376ff60ef100cb4fd6fd7533cd271f9998327e86adf20fd8c0e69fabb42
+  jmespath (1.6.2) sha256=238d774a58723d6c090494c8879b5e9918c19485f7e840f2c1c7532cf84ebcb1
   jsbundling-rails (1.3.1) sha256=0fa03f6d051c694cbf55a022d8be53399879f2c4cf38b2968f86379c62b1c2ca
   json (2.19.4) sha256=670a7d333fb3b18ca5b29cb255eb7bef099e40d88c02c80bd42a3f30fe5239ac
   json-schema (6.2.0) sha256=e8bff46ed845a22c1ab2bd0d7eccf831c01fe23bb3920caa4c74db4306813666
