@@ -101,7 +101,7 @@ class DogsController < ApplicationController
     end
   end
 
-  # ④ 最後に保存（ここが超重要）
+  # ④ 最後に保存
   if @dog.save
     redirect_to dashboard_path, notice: "愛犬情報を更新しました"
   else

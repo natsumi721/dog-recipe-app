@@ -5,6 +5,18 @@
 
     <%= form_with(model: dog, local: true, id: "dog-form") do |f| %>
 
+    <!-- エラーメッセージ表示部分を追加 -->
+  <% if @dog.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@dog.errors.count, "件のエラー") %>が発生しました:</h4>
+      <ul>
+        <% @dog.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
       <!-- 名前 -->
       <div class="mb-4">
         <%= f.label :name, "愛犬のお名前", class: "form-label fw-bold" %>

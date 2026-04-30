@@ -10,20 +10,20 @@
           <!-- 左側：画像エリア -->
           <div class="me-4" style="width: 120px; height: 120px; flex-shrink: 0;">
 
-            <% if current_user.dogs.count == 1 %>
+            <% if @dogs_with_avatar.count == 1 %>
               <!-- 1匹 なら普通表示 -->
               <%= dog_avatar(
-                    current_user.dogs.first,
-                    alt: "#{current_user.dogs.first.name}の写真",
+                    @dogs_with_avatar.first,
+                    alt: "#{@dogs_with_avatar.first.name}の写真",
                     class: "rounded-circle",
                     style: "width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6;"
                   ) %>
 
-            <% else %>
+            <% elsif @dogs_with_avatar.count >= 2 %>
               <!--  複数登録なら Swiper -->
               <div class="swiper top-dog-swiper" style="width: 120px; height: 120px;">
                 <div class="swiper-wrapper">
-                  <% current_user.dogs.each do |dog| %>
+                  <% @dogs_with_avatar.each do |dog| %>
                     <div class="swiper-slide d-flex justify-content-center align-items-center">
                       <%= dog_avatar(
                             dog,
@@ -42,6 +42,13 @@
                 <!-- ページネーション -->
                 <div class="swiper-pagination" style="bottom: -20px;"></div>
               </div>
+
+              <% else %>
+              <!-- ✅ 画像登録が0匹ならデフォルト画像（スワイプなし） -->
+              <%= image_tag 'nikukyuu.jpeg',
+                    alt: '肉球の写真',
+                    class: 'rounded-circle',
+                    style: 'width: 120px; height: 120px; object-fit: cover; border: 3px solid #dee2e6;' %>
             <% end %>
 
           </div>
@@ -53,10 +60,14 @@
             </h1>
 
             <p class="lead mb-0">
-              <% if current_user.dogs.count == 1 %>
-                <%= current_user.dogs.first.name %>ちゃんと一緒に
+              <% if @dogs_with_avatar.count == 1 %>
+                <%= @dogs_with_avatar.first.name %>ちゃんと一緒に
+              <% elsif @dogs_with_avatar.count >= 2 %>
+                <%= @dogs_with_avatar.count %>匹の愛犬と一緒に
+                <% elsif @dogs.count == 1 %>
+                <%= @dogs.first.name %>ちゃんと一緒に
               <% else %>
-                <%= current_user.dogs.count %>匹の愛犬と一緒に
+                <%= @dogs.count %>匹の愛犬と一緒に
               <% end %>
             </p>
           </div>
