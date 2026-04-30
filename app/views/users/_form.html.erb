@@ -1,4 +1,22 @@
-<%= form_with model:@user, local:true do |f| %>
+<%= form_with model: @user, local: true do |f| %>
+  
+  <!-- エラーメッセージ表示部分を追加 -->
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@user.errors.count, "件のエラー") %>が発生しました:</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 text-start">
+    <%= f.label :last_name, "姓" %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+  
 
       <div class="mb-3 text-start">
         <%= f.label :last_name,"姓" %>

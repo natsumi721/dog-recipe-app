@@ -7,10 +7,14 @@
         </div>
       </div>
       <div class="container mx-auto px-4 text-center">
-    <%= link_to 'プライバシーポリシー', privacy_policy_path, class: 'mx-2 hover:underline' %>
-    |
-    <%= link_to '利用規約', terms_of_service_path, class: 'mx-2 hover:underline' %>
-  </div>
+        <%= link_to 'プライバシーポリシー', 
+            privacy_policy_path, 
+            class: 'mx-2 text-secondary text-decoration-none' %>
+        <span class="text-muted">|</span>
+        <%= link_to '利用規約', 
+            terms_of_service_path, 
+            class: 'mx-2 text-secondary text-decoration-none' %>
+      </div>
     </div>
   </div>
 </footer>

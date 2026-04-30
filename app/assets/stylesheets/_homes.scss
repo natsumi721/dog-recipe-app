@@ -339,6 +339,73 @@ body {
   margin-bottom: 8px;
 }
 
+/* ===========================
+   診断結果ページ専用のボタン
+=========================== */
+
+/* ボタンコンテナ */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* もっと試したいボタン(薄い黄色・テキストサイズに合わせる) */
+.signup-action-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #FEF3C7; /* 薄い黄色 */
+  color: #92400E; /* 濃い茶色の文字 */
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  /* ✅ 幅を指定しない = テキストに合わせて可変 */
+}
+
+.signup-action-button:hover {
+  background-color: #FDE68A; /* 少し濃い黄色 */
+  transform: translateY(-2px);
+  color: #92400E;
+}
+
+/* 戻るボタン(グレー・テキストサイズに合わせる) */
+.signup-back-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #f3f4f6;
+  color: #374151;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  /* ✅ 幅を指定しない = テキストに合わせて可変 */
+}
+
+.signup-back-button:hover {
+  background-color: #e5e7eb;
+  transform: translateY(-2px);
+  color: #374151;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .button-container {
+    margin-top: 20px;
+    gap: 12px;
+  }
+
+  .signup-action-button,
+  .signup-back-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
 
 /* ===========================
    Hero セクション

@@ -10,13 +10,16 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認"
+        first_name: "名"
+        last_name: "姓"
+        nickname: "ニックネーム"
       
       dog:
         name: "名前"
         age_stage: "年齢"
         size: "サイズ"
         body_type: "体型"
-        activity_level: "活動レベル"
+        activity_level: "活発度"
         allergies: "アレルギー"
         breed: "犬種"
 

@@ -131,10 +131,10 @@
     </script>
 
     <!-- 戻るボタン -->
-    <div class="text-center mt-4">
-      <%= link_to "← 戻る",
+    <div class="back-button-container">
+      <%= link_to " 戻る ",
             @return_to.presence || recipes_path,
-            class: "btn btn-secondary btn-lg" %>
+            class: "back-button" %>
     </div>
   </div>
 </div>

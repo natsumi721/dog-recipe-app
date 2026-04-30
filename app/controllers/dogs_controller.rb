@@ -3,7 +3,12 @@ class DogsController < ApplicationController
   before_action :set_dog, only: [ :edit, :update, :destroy ]
 
   def new
-    @dog = Dog.new
+    # セッションから復元
+    if session[:guest_dog].present?
+      @dog = Dog.new(session[:guest_dog])
+    else
+      @dog = Dog.new
+    end
   end
 
   def create
@@ -101,7 +106,7 @@ class DogsController < ApplicationController
     end
   end
 
-  # ④ 最後に保存（ここが超重要）
+  # ④ 最後に保存
   if @dog.save
     redirect_to dashboard_path, notice: "愛犬情報を更新しました"
   else
