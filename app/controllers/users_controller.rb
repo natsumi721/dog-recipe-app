@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "登録ありがとうございます！次に愛犬の情報を登録してください。"
     else
       flash.now[:danger] = "ユーザー登録に失敗しました"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
