@@ -60,15 +60,14 @@
             </h1>
 
             <p class="lead mb-0">
-              <% if @dogs_with_avatar.count == 1 %>
-                <%= @dogs_with_avatar.first.name %>ちゃんと一緒に
-              <% elsif @dogs_with_avatar.count >= 2 %>
-                <%= @dogs_with_avatar.count %>匹の愛犬と一緒に
-                <% elsif @dogs.count == 1 %>
-                <%= @dogs.first.name %>ちゃんと一緒に
-              <% else %>
-                <%= @dogs.count %>匹の愛犬と一緒に
-              <% end %>
+                <% if @dogs.count == 1 %>
+                   <!-- 登録が1匹の場合 -->
+                    <%= @dogs.first.name %>ちゃんと一緒に
+                <% else %>
+                   <!--  登録が2匹以上の場合 -->
+                    <%= @dogs.count %>匹の愛犬と一緒に
+
+                  <% end %>
             </p>
           </div>
 
