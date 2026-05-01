@@ -9,14 +9,17 @@
 
     <div class="d-flex justify-content-center gap-3 mt-4">
       <%= form_with model: [:admin, @recipe], method: :patch do |f| %>
-        <%= f.submit t("admin.recipes.actions.approve"),
-  name: "commit",
-  class: "btn btn-success px-4 rounded-pill" %>
+        <%# 下書き状態の場合のみ承認ボタンを表示 %>
+        <% if @recipe.draft? %>
+          <%= f.submit t("admin.recipes.actions.approve"),
+                name: "commit",
+                class: "btn btn-success px-4 rounded-pill" %>
+        <% end %>
 
-<%= f.submit t("admin.recipes.actions.reject"),
-  name: "commit",
-  class: "btn btn-danger px-4 rounded-pill" %>
-      <% end %>
+          <%= f.submit t("admin.recipes.actions.reject"),
+              name: "commit",
+              class: "btn btn-danger px-4 rounded-pill" %>
+        <% end %>
     </div>
 
     <div class="text-center mt-4">
