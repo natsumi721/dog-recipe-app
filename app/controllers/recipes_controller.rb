@@ -73,7 +73,7 @@ end
   end
 
   if @recipe.save
-    redirect_to recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
+    redirect_to select_action_recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
   else
     flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
     render :new, status: :unprocessable_entity
