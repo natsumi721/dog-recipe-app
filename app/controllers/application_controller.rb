@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     return unless current_user.dogs.empty?
     return if controller_name.in?(%w[dogs user_sessions])
 
-    redirect_to new_dog_path, alert: "犬のプロフィールを登録してください"
+    redirect_to new_dog_path, notice: "登録ありがとうございます!次に愛犬の情報を登録してください。"
   end
 
   # ユーザーチェックをスキップする条件

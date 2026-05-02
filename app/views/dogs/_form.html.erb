@@ -160,9 +160,12 @@
               </div>
             <% end %>
 
-    <div class="back-button-container">
-      <%= link_to " 戻る ", root_path,
-          class: "back-button" %>
-    </div>
+    <!-- ★ 戻るボタン（条件付き表示） -->
+    <% if current_user.dogs.exists? %>
+      <div class="back-button-container">
+        <%= link_to " 戻る ", dashboard_path,
+            class: "back-button" %>
+      </div>
+    <% end %>
   </div>
 </div>
