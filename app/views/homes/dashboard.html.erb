@@ -237,7 +237,17 @@
 
       <%= link_to "確認する", published_admin_recipes_path, class: "btn btn-warning btn-lg" %>
   <% end %>
-<% end %>
+
+  <!-- 却下したレシピ -->
+  <%= render "homes/card",
+      icon: "bi-x-circle",
+      title: "却下したレシピ",
+      text: "却下したレシピの一覧を見る" do %>
+
+      <%= link_to "確認する", rejected_admin_recipes_path, class: "btn btn-warning btn-lg" %>
+  <% end %>
+  <% end %>
 
   </div>
-</div>
+ </div>
+ 

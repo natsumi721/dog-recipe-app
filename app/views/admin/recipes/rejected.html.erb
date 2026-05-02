@@ -1,0 +1,43 @@
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow-lg p-5 rounded-4 border-0">
+    
+    <h2 class="fw-bold mb-4 text-center" style="color:#d9534f;">
+      ❌ 却下したレシピ一覧
+    </h2>
+
+    <% if @recipes.present? %>
+      <div class="list-group">
+        <% @recipes.each do |recipe| %>
+          <div class="list-group-item mb-3 p-4 rounded-3 shadow-sm border">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="mb-2 fw-bold"><%= recipe.name %></h5>
+                <p class="text-muted mb-2"><%= truncate(recipe.description, length: 80) %></p>
+                <small class="text-muted">
+                  却下日: <%= l recipe.updated_at, format: :long %>
+                </small>
+              </div>
+              <div>
+                <%= link_to "詳細", 
+                      admin_recipe_path(recipe), 
+                      class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="text-center py-5">
+        <i class="bi bi-inbox" style="font-size: 3rem; color: #ccc;"></i>
+        <p class="text-muted mt-3">却下したレシピはまだありません</p>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-4">
+      <%= link_to "ダッシュボードに戻る", 
+            dashboard_path, 
+            class: "btn btn-secondary px-4 rounded-pill" %>
+    </div>
+
+  </div>
+</div>

@@ -35,6 +35,11 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
     end
   end
 
+  # 却下レシピ一覧
+  def rejected
+    @recipes = Recipe.rejected.order(updated_at: :desc)
+  end
+
   private
 
   def set_recipe

@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [ :index, :show, :update ] do
       collection do
         get :published  # 承認済みレシピ一覧
+        get :rejected   # 却下レシピ一覧
       end
       get "dashboard", to: "dashboard#index"
   end
