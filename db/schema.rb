@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_22_061439) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_02_132046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_22_061439) do
     t.integer "status", default: 0, null: false
     t.json "ingredients_json"
     t.bigint "user_id"
+    t.text "allergy_tags"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
