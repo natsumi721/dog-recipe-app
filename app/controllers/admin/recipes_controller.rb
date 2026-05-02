@@ -45,7 +45,7 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
     end
   end
 
-  
+
   private
 
   def set_recipe
