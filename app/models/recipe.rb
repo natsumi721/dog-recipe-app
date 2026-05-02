@@ -98,6 +98,12 @@ class Recipe < ApplicationRecord
     ingredients_format == :text
   end
 
+  # アレルギータグを配列として扱う
+    serialize :allergy_tags, coder: YAML, type: Array
+
+  # 保存前に自動的に空白を除去 
+    before_save :remove_blank_allergy_tags
+
   # 全サイズの材料を犬の情報に基づいて調整して返す
   def all_adjusted_ingredients(dog)
     return nil unless json_format?
@@ -205,4 +211,10 @@ def calculate_amount(amount, unit, multiplier)
     amount
   end
 end
+
+  # allergy_tags の空白を除去
+  def remove_blank_allergy_tags
+    # allergy_tags が nil または空の場合は空の配列にする
+    self.allergy_tags = allergy_tags&.reject(&:blank?) || []
+  end
 end

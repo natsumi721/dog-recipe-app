@@ -193,7 +193,7 @@ end
       :body_type,
       :activity_level,
       :size,
-      :allergies,
+      allergy_tags: [],
       ingredients_json: {
         medium: [ :name, :amount, :unit ]
       }

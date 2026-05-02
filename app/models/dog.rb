@@ -62,7 +62,15 @@ class Dog < ApplicationRecord
 
     # アレルギーを含むレシピを除外
     recipes = recipes.reject do |recipe|
-      recipe_has_allergen?(recipe, allergy_tags)
+      # ① 既存レシピ用: ingredients_json のタグをチェック
+      has_allergen_in_ingredients = recipe_has_allergen?(recipe, allergy_tags)
+    
+      # ② ユーザー投稿レシピ用: allergy_tags カラムをチェック
+      has_allergen_in_tags = recipe.allergy_tags.present? && 
+                             (recipe.allergy_tags.reject(&:blank?) & allergy_tags).any?
+    
+      # どちらかに該当したら除外
+      has_allergen_in_ingredients || has_allergen_in_tags
     end
 
     # スコアリング
