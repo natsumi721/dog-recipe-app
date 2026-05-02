@@ -9,23 +9,39 @@
 
     <div class="d-flex justify-content-center gap-3 mt-4">
       <%= form_with model: [:admin, @recipe], method: :patch do |f| %>
-        <%# 下書き状態の場合のみ承認ボタンを表示 %>
-        <% if @recipe.draft? %>
+        <!-- 下書き または 却下済み の場合に承認ボタンを表示 -->
+        <% if @recipe.draft? || @recipe.rejected? %>
           <%= f.submit t("admin.recipes.actions.approve"),
                 name: "commit",
                 class: "btn btn-success px-4 rounded-pill" %>
         <% end %>
 
+        <!-- 下書き または 公開済み の場合に却下ボタンを表示 -->
+        <% if @recipe.draft? || @recipe.published? %>
           <%= f.submit t("admin.recipes.actions.reject"),
               name: "commit",
               class: "btn btn-danger px-4 rounded-pill" %>
         <% end %>
+      <% end %>
     </div>
 
     <div class="text-center mt-4">
-      <%= link_to "一覧に戻る", admin_recipes_path,
-        class: "btn btn-secondary px-4 rounded-pill" %>
-    </div>
-
+  <% if @recipe.rejected? %>
+    <%# 却下済みレシピの場合 %>
+    <%= link_to "却下済み一覧に戻る", 
+          admin_rejected_recipes_path,
+          class: "btn btn-secondary px-4 rounded-pill" %>
+  <% elsif @recipe.published? %>
+    <%# 承認済みレシピの場合（将来的に承認済み一覧を作る場合） %>
+    <%= link_to "承認済み一覧に戻る", 
+          published_admin_recipes_path,
+          class: "btn btn-secondary px-4 rounded-pill" %>
+  <% else %>
+    <%# 未承認レシピの場合 %>
+    <%= link_to "一覧に戻る", 
+          admin_recipes_path,
+          class: "btn btn-secondary px-4 rounded-pill" %>
+  <% end %>
+</div>
   </div>
 </div>
