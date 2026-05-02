@@ -29,10 +29,10 @@
   <% if @recipe.rejected? %>
     <%# 却下済みレシピの場合 %>
     <%= link_to "却下済み一覧に戻る", 
-          admin_rejected_recipes_path,
+          rejected_admin_recipes_path,
           class: "btn btn-secondary px-4 rounded-pill" %>
   <% elsif @recipe.published? %>
-    <%# 承認済みレシピの場合（将来的に承認済み一覧を作る場合） %>
+    <%# 承認済みレシピの場合 %>
     <%= link_to "承認済み一覧に戻る", 
           published_admin_recipes_path,
           class: "btn btn-secondary px-4 rounded-pill" %>

@@ -11,35 +11,41 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
     @recipes = Recipe.published.order(updated_at: :desc)
   end
 
+  # 却下レシピ一覧
+  def rejected
+    @recipes = Recipe.rejected.order(updated_at: :desc)
+  end
+
+
   def show
   end
 
   def update
-  # 下書き状態のレシピのみ更新可能にする
-  unless @recipe.draft?
-    redirect_to admin_recipes_path, alert: "このレシピは既に処理されています"
-    return
-  end
-
     case params[:commit]
     when I18n.t("admin.recipes.actions.approve")
-      @recipe.published!
-      redirect_to published_admin_recipes_path, notice: "承認済みに移動しました"
+      # 下書き または 却下済み の場合のみ承認可能
+      if @recipe.draft? || @recipe.rejected?
+        @recipe.published!
+        redirect_to published_admin_recipes_path, notice: "承認しました"
+      else
+        redirect_to admin_recipes_path, alert: "このレシピは既に承認されています"
+      end
 
     when I18n.t("admin.recipes.actions.reject")
-      @recipe.rejected!
-      redirect_to admin_recipes_path, notice: "却下しました"
+      # 下書き または 承認済み の場合のみ却下可能
+      if @recipe.draft? || @recipe.published?
+        @recipe.rejected!
+        redirect_to rejected_admin_recipes_path, notice: "却下しました"
+      else
+        redirect_to admin_recipes_path, alert: "このレシピは既に却下されています"
+      end
 
     else
       redirect_to admin_recipes_path, alert: "不正な操作です"
     end
   end
 
-  # 却下レシピ一覧
-  def rejected
-    @recipes = Recipe.rejected.order(updated_at: :desc)
-  end
-
+  
   private
 
   def set_recipe
