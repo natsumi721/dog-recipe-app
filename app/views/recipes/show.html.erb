@@ -43,7 +43,7 @@
       </div>
   
       <!-- 犬情報の表示 -->
-      <% if @dog.present? %>
+      <% if @dog.present? && params[:from] != "my_recipes" %>
         <div class="alert alert-info mb-3">
           <strong><%= @dog.name %></strong> ちゃん用に調整されています
           (サイズ: <%= @dog.size_i18n %> / 
@@ -51,20 +51,25 @@
            体型: <%= @dog.body_type_i18n %> /
            運動量: <%= @dog.activity_level_i18n %>)
         </div>
+      <% end %>
 
         <!-- 犬のサイズに応じた材料を表示 -->
         <div class="bg-light p-3 rounded-3 mt-3">
+        <% if @adjusted_ingredients.present? %>
           <ul class="list-unstyled mb-0">
             <% @adjusted_ingredients.each do |ingredient| %>
-  <li class="mb-2">
-    <strong><%= ingredient[:name] || ingredient["name"] %>:</strong> 
-    <%= ingredient[:amount] || ingredient["amount"] %><%= ingredient[:unit] || ingredient["unit"] %>
-  </li>
-<% end %>
+              <li class="mb-2">
+                <strong><%= ingredient[:name] || ingredient["name"] %>:</strong> 
+                <%= ingredient[:amount] || ingredient["amount"] %><%= ingredient[:unit] || ingredient["unit"] %>
+              </li>
+            <% end %>
           </ul>
-        </div>
-      <% end %>
+        <% else %>
+          <p class="text-muted mb-0">材料情報がありません</p>
+        <% end %>
+      </div>
     </div>
+    
 
     <!-- 作り方 -->
     <div class="mb-4">

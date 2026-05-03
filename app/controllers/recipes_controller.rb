@@ -107,7 +107,15 @@ end
 
   def show
     @recipe = Recipe.find(params[:id])
-    @return_to = params[:return_to]
+
+      # ★ 戻り先を設定
+    if params[:from] == "my_recipes"
+      @return_to = select_action_recipes_path
+    elsif params[:return_to].present?
+      @return_to = params[:return_to]
+    else
+      @return_to = recipes_path
+    end
 
     unless @recipe.published? || current_user&.admin? || @recipe.user == current_user
       redirect_to recipes_path, alert: "このレシピはまだ公開されていません"
@@ -116,6 +124,17 @@ end
 
     # OGP設定
     set_ogp
+
+      # ★ from=my_recipes の場合は犬のサイズに調整しない
+    if params[:from] == "my_recipes"
+      
+      # 投稿時の材料（medium）をそのまま表示
+      if @recipe.json_format?
+        @adjusted_ingredients = @recipe.ingredients_json["medium"] || []
+      else
+        @adjusted_ingredients = []
+      end
+    else
 
     # ログインユーザーの場合
     if logged_in?
@@ -143,6 +162,8 @@ end
       @adjusted_ingredients = []  # 空の配列で初期化
     end
   end
+end
+
 
   def bookmarks
     dogs = current_user.dogs
