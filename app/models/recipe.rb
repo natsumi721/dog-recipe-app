@@ -28,6 +28,15 @@ class Recipe < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_by_users, through: :bookmarks, source: :user
 
+  # アレルギータグを配列として扱う
+  serialize :allergy_tags, coder: YAML, type: Array
+
+  # 保存前に自動的に空白を除去
+  before_save :remove_blank_allergy_tags
+
+  # JSON文字列をパースする
+  before_validation :parse_ingredients_json
+
   # サイズ別の材料を取得するメソッド（テキスト形式用）
   def ingredients_for_size(size)
     return "" if ingredients.blank?
@@ -98,12 +107,6 @@ class Recipe < ApplicationRecord
     ingredients_format == :text
   end
 
-  # アレルギータグを配列として扱う
-    serialize :allergy_tags, coder: YAML, type: Array
-
-  # 保存前に自動的に空白を除去 
-    before_save :remove_blank_allergy_tags
-
   # 全サイズの材料を犬の情報に基づいて調整して返す
   def all_adjusted_ingredients(dog)
     return nil unless json_format?
@@ -143,29 +146,39 @@ class Recipe < ApplicationRecord
     multiplier *= 1.2 if dog.activity_level_high?
     multiplier *= 0.9 if dog.activity_level_low?
 
-
-
     multiplier
   end
 
   private
 
-def ingredients_presence
-  return if ingredients_json.blank?
-
-  ingredients = ingredients_json["medium"]
-
-  # HashでもArrayでも対応
-  ingredients = ingredients.values if ingredients.is_a?(Hash)
-
-  valid = ingredients.any? do |i|
-    i["name"].present? && i["amount"].present?
+  def parse_ingredients_json
+    # ingredients_json が文字列の場合、パースする
+    if ingredients_json.is_a?(String)
+      begin
+        self.ingredients_json = JSON.parse(ingredients_json)
+      rescue JSON::ParserError
+        # パースに失敗した場合は空のハッシュにする
+        self.ingredients_json = {}
+      end
+    end
   end
 
-  unless valid
-    errors.add(:ingredients_json, "材料を1つ以上入力してください")
+  # 既存のバリデーション（1つに統一）
+  def ingredients_presence
+    return if ingredients_json.blank?
+
+    ingredients = ingredients_json["medium"]
+    return if ingredients.blank?
+
+    # HashでもArrayでも対応
+    ingredients = ingredients.values if ingredients.is_a?(Hash)
+
+    valid = ingredients.any? do |i|
+      i["name"].present? && i["amount"].present?
+    end
+
+    errors.add(:ingredients_json, "に有効な材料を1つ以上入力してください") unless valid
   end
-end
 
   # 指定サイズの材料を調整
   def adjust_ingredients_for_size(size, multiplier)
@@ -191,26 +204,26 @@ end
     end
   end
 
-# 単位に応じた量の計算
-def calculate_amount(amount, unit, multiplier)
-  case unit
-  when "g"
-    (amount.to_f * multiplier).round
-  when "piece"
-    value = amount.to_f * multiplier
-    return 1 if value < 1
-    return 1 if value < 1.5
-    value.round
-  when "tsp"
-    (amount.to_f * multiplier).round(1)
-  when "tbsp"
-    (amount.to_f * multiplier).round(1)
-  when "ml"
-    (amount.to_f * multiplier).round
-  else
-    amount
+  # 単位に応じた量の計算
+  def calculate_amount(amount, unit, multiplier)
+    case unit
+    when "g"
+      (amount.to_f * multiplier).round
+    when "piece"
+      value = amount.to_f * multiplier
+      return 1 if value < 1
+      return 1 if value < 1.5
+      value.round
+    when "tsp"
+      (amount.to_f * multiplier).round(1)
+    when "tbsp"
+      (amount.to_f * multiplier).round(1)
+    when "ml"
+      (amount.to_f * multiplier).round
+    else
+      amount
+    end
   end
-end
 
   # allergy_tags の空白を除去
   def remove_blank_allergy_tags
