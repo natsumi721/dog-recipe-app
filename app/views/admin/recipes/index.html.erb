@@ -7,6 +7,24 @@
         <div class="card recipe-card h-100 shadow-sm p-4 text-center d-flex flex-column">
           <h5 class="fw-bold mb-3"><%= recipe.name %></h5>
 
+          <!-- ★ ユーザー情報セクションを追加 -->
+          <div class="bg-light p-3 rounded mb-3">
+            <p class="mb-2 text-muted small">投稿者情報</p>
+            <div class="row g-2 small">
+              <div class="col-6">
+                <strong>ID:</strong> <%= recipe.user.id %>
+              </div>
+              <div class="col-6">
+                <strong>名前:</strong> <%= @recipe.user.full_name %>
+              <div class="col-12">
+                <strong>メール:</strong> <%= recipe.user.email %>
+              </div>
+              <div class="col-12">
+                <strong>投稿日:</strong> <%= l(recipe.created_at, format: :short) %>
+              </div>
+            </div>
+          </div>
+
           <%= link_to "確認する",
                 admin_recipe_path(recipe),
                 class: "btn btn-warning rounded-pill px-4 text-white mt-auto" %>

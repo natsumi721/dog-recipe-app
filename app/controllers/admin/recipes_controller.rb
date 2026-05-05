@@ -3,17 +3,17 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
 
   # 下書きレシピ一覧
   def index
-    @recipes = Recipe.draft
+    @recipes = Recipe.draft.includes(:user).order(created_at: :desc)
   end
 
   # 承認済みレシピ一覧
   def published
-    @recipes = Recipe.published.order(updated_at: :desc)
+    @recipes = Recipe.published.includes(:user).order(updated_at: :desc)
   end
 
   # 却下レシピ一覧
   def rejected
-    @recipes = Recipe.rejected.order(updated_at: :desc)
+    @recipes = Recipe.rejected.includes(:user).order(updated_at: :desc)
   end
 
 
@@ -57,7 +57,7 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:user).find(params[:id])
   end
 
   def recipe_params

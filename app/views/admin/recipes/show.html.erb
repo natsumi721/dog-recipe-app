@@ -5,6 +5,37 @@
       🛠 管理者レビュー
     </h2>
 
+    <!-- ★ ユーザー情報セクションを追加 -->
+    <div class="bg-light p-4 rounded mb-4">
+      <h5 class="fw-bold mb-3 border-bottom pb-2">📋 投稿者情報</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-primary me-2">ID</span>
+            <span class="fw-bold"><%= @recipe.user.id %></span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-success me-2">名前</span>
+            <span class="fw-bold"><%= @recipe.user.full_name %></span>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-info me-2">メール</span>
+            <span><%= @recipe.user.email %></span>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-secondary me-2">投稿日</span>
+            <span><%= l(@recipe.created_at, format: :long) %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%= render "recipes/recipe_detail", recipe: @recipe %>
 
     <!-- ★ 編集ボタンを追加 -->
