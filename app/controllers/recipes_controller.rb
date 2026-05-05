@@ -106,61 +106,69 @@ end
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+  @recipe = Recipe.find(params[:id])
 
-      # ★ 戻り先を設定
-    if params[:from] == "my_recipes"
-      @return_to = select_action_recipes_path
-    elsif params[:return_to].present?
-      @return_to = params[:return_to]
+  # ★ 戻り先を設定
+  if params[:from] == "my_recipes"
+    @return_to = select_action_recipes_path
+  elsif params[:return_to].present?
+    @return_to = params[:return_to]
+  else
+    @return_to = recipes_path
+  end
+
+  unless @recipe.published? || current_user&.admin? || @recipe.user == current_user
+    redirect_to recipes_path, alert: "このレシピはまだ公開されていません"
+    return
+  end
+
+  # OGP設定
+  set_ogp
+
+  # ★ from=my_recipes の場合は犬のサイズに調整しない
+  if params[:from] == "my_recipes"
+    # 投稿時の材料（medium）をそのまま表示
+    if @recipe.json_format?
+      @adjusted_ingredients = @recipe.ingredients_json["medium"] || []
     else
-      @return_to = recipes_path
+      @adjusted_ingredients = []
     end
+    return
+  end
 
-    unless @recipe.published? || current_user&.admin? || @recipe.user == current_user
-      redirect_to recipes_path, alert: "このレシピはまだ公開されていません"
-      return
-    end
-
-    # OGP設定
-    set_ogp
-
-      # ★ from=my_recipes の場合は犬のサイズに調整しない
-    if params[:from] == "my_recipes"
-      
-      # 投稿時の材料（medium）をそのまま表示
-      if @recipe.json_format?
-        @adjusted_ingredients = @recipe.ingredients_json["medium"] || []
-      else
-        @adjusted_ingredients = []
-      end
+  # ★ 管理者の場合は medium のレシピをそのまま表示
+  if current_user&.admin?
+    if @recipe.json_format?
+      @adjusted_ingredients = @recipe.ingredients_json["medium"] || []
     else
+      @adjusted_ingredients = []
+    end
+    return  
+  end
 
-    # ログインユーザーの場合
-    if logged_in?
-      # 犬の情報を取得
-      @dog = if params[:dog_id].present?
+  # ログインユーザーの場合
+  if logged_in?
+    # 犬の情報を取得
+    @dog = if params[:dog_id].present?
              current_user.dogs.find(params[:dog_id])
-      else
+           else
              current_user.dogs.first
-      end
+           end
 
     # ブックマーク情報を取得
     @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog.present?
-
-    else
-      # ゲストユーザーの場合、セッションから犬情報を取得
-      if session[:guest_dog].present?
-        @dog = Dog.new(session[:guest_dog])
-      end
+  else
+    # ゲストユーザーの場合、セッションから犬情報を取得
+    if session[:guest_dog].present?
+      @dog = Dog.new(session[:guest_dog])
     end
+  end
 
-    # JSON形式のレシピの場合、各サイズ用に調整された材料を取得
-    if @recipe.json_format? && @dog.present?
-      @adjusted_ingredients = @recipe.adjusted_ingredients(@dog, @dog.size.to_sym)
-    else
-      @adjusted_ingredients = []  # 空の配列で初期化
-    end
+  # JSON形式のレシピの場合、各サイズ用に調整された材料を取得
+  if @recipe.json_format? && @dog.present?
+    @adjusted_ingredients = @recipe.adjusted_ingredients(@dog, @dog.size.to_sym, meals: 4)
+  else
+    @adjusted_ingredients = []
   end
 end
 
