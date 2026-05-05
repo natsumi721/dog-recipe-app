@@ -135,6 +135,15 @@
     }
     </script>
 
+    <% if @recipe.user.present? %>
+      <div class="text-center mt-4 mb-3">
+        <p class="text-muted" style="font-size: 0.95rem;">
+          <%= @recipe.user.nickname %>さん考案レシピ🍴
+        </p>
+      </div>
+    <% end %>
+
+
     <!-- 戻るボタン -->
     <div class="back-button-container">
       <%= link_to " 戻る ",
