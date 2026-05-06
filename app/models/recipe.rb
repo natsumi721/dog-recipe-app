@@ -265,13 +265,13 @@ class Recipe < ApplicationRecord
     self.allergy_tags = allergy_tags&.reject(&:blank?) || []
   end
 
-    # 材料を丸めるメソッド
+  # 材料を丸めるメソッド
   def round_ingredient(ingredient)
     unit = ingredient[:unit]
     amount = ingredient[:amount].to_f
 
     rounded_amount = case unit
-   when "g", "ml"
+    when "g", "ml"
       round_to_5(amount).to_i
     when "個"
       adjust_piece(amount).to_i
@@ -287,9 +287,9 @@ class Recipe < ApplicationRecord
   # 0 または 5 に丸めるメソッド（IngredientAdjuster と同じロジック）
   def round_to_5(value)
     return 5 if value < 5  # 最小値を 5g にする
-  
+
     remainder = value % 10
-  
+
     if remainder <= 5
       value - remainder + 5  # 1~5 → 5 に丸める
     else
