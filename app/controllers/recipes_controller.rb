@@ -143,7 +143,7 @@ end
     else
       @adjusted_ingredients = []
     end
-    return  
+    return
   end
 
   # ログインユーザーの場合
@@ -151,9 +151,9 @@ end
     # 犬の情報を取得
     @dog = if params[:dog_id].present?
              current_user.dogs.find(params[:dog_id])
-           else
+    else
              current_user.dogs.first
-           end
+    end
 
     # ブックマーク情報を取得
     @bookmark = current_user.bookmarks.find_by(recipe: @recipe, dog: @dog) if @dog.present?

@@ -208,13 +208,13 @@ class Recipe < ApplicationRecord
       adjusted_ingredient
     end
   end
- 
+
   # 単位に応じた量の計算
   def calculate_amount(amount, unit, ingredient_data, multiplier, size)
     case unit
     when "g"
       (amount.to_f * multiplier).round
-      
+
     when "piece"
       # 卵だけ特別扱い
       if egg_ingredient?(ingredient_data)
@@ -245,11 +245,11 @@ class Recipe < ApplicationRecord
     # タグで判定
     tags = ingredient_data["tags"] || ingredient_data[:tags]
     return true if tags.present? && tags.include?("egg")
-    
+
     # タグがない場合は材料名で判定
     name = ingredient_data["name"] || ingredient_data[:name]
     return false if name.blank?
-    
+
     egg_keywords = [ "卵", "たまご", "タマゴ", "玉子", "ゆで卵", "卵黄", "卵白" ]
     egg_keywords.any? { |keyword| name.include?(keyword) }
   end
@@ -292,12 +292,11 @@ end
   def estimate_meal_amount(size)
     # サイズ基準の基本量
     base_amount = case size.to_sym
-                  when :small then 80   # g
-                  when :medium then 250  # g
-                  when :large then 550   # g
-                  else 200
-                  end
+    when :small then 80   # g
+    when :medium then 250  # g
+    when :large then 550   # g
+    else 200
+    end
     base_amount
-
   end
 end

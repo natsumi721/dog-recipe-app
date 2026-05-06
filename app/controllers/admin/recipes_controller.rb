@@ -1,5 +1,5 @@
 class Admin::RecipesController < Admin::BaseController  # ← ここを変更
-  before_action :set_recipe, only: [ :show, :edit,:update ]
+  before_action :set_recipe, only: [ :show, :edit, :update ]
 
   # 下書きレシピ一覧
   def index
@@ -24,7 +24,6 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
   end
 
   def update
-
     case params[:commit]
     when I18n.t("admin.recipes.actions.approve")
       # 下書き または 却下済み の場合のみ承認可能
@@ -47,9 +46,9 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
     else
      if @recipe.update(recipe_params)
         redirect_to admin_recipe_path(@recipe), notice: "レシピを更新しました"
-      else
+     else
         render :edit, status: :unprocessable_entity
-      end
+     end
     end
   end
 
