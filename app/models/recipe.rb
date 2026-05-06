@@ -262,10 +262,9 @@ class Recipe < ApplicationRecord
 
   def apply_topping_cap(ingredients, dog, size, meals: 4)
   # ① トッピング総量を計算
-
   estimated_meal_amount = estimate_meal_amount(size)
 
-  total_topping = ingredients.sum { |i| i["amount"].to_f }
+  total_topping = ingredients.sum { |i| i[:amount].to_f }
 
   # ② 1食量を推定
   meal_amount = estimate_meal_amount(size)
@@ -282,7 +281,7 @@ class Recipe < ApplicationRecord
     scale = max_topping / total_topping
 
     ingredients.each do |ingredient|
-      ingredient["amount"] = (ingredient["amount"].to_f * scale).round
+      ingredient[:amount] = (ingredient[:amount].to_f * scale).round
     end
   end
 
