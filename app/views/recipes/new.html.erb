@@ -31,7 +31,7 @@
 
         <!-- 材料 -->
       <div class="mb-4">
-  <label class="fw-bold">🥕 材料（中型犬用の量を入力してください。）</label>
+  <label class="fw-bold">🥕 材料（⚠️必ず中型犬用の量を入力してください）</label>
 
   <div id="ingredients-fields">
   <% if @recipe.ingredients_json.present? %>
@@ -77,6 +77,26 @@
   <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addIngredient()">
     ＋材料を追加
   </button>
+</div>
+
+<div class="mb-4">
+  <label class="fw-bold">⚠️ このレシピに含まれるアレルギー対象食材</label>
+  <p class="text-muted small">該当するものにチェックを入れてください</p>
+  
+  <div class="row">
+    <% Dog::ALLERGY_MAP.each do |japanese, tag| %>
+      <div class="col-md-4 mb-2">
+        <%= check_box_tag "recipe[allergy_tags][]", 
+            tag, 
+            @recipe.allergy_tags&.include?(tag),
+            id: "allergy_#{tag}" %>
+        <%= label_tag "allergy_#{tag}", japanese, class: "ms-2" %>
+      </div>
+    <% end %>
+  </div>
+  
+  <!-- チェックなしでも送信できるようにする -->
+  <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
 </div>
 
   <div class="row">

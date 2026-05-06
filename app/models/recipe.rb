@@ -28,6 +28,15 @@ class Recipe < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_by_users, through: :bookmarks, source: :user
 
+  # アレルギータグを配列として扱う
+  serialize :allergy_tags, coder: YAML, type: Array
+
+  # 保存前に自動的に空白を除去
+  before_save :remove_blank_allergy_tags
+
+  # JSON文字列をパースする
+  before_validation :parse_ingredients_json
+
   # サイズ別の材料を取得するメソッド（テキスト形式用）
   def ingredients_for_size(size)
     return "" if ingredients.blank?
@@ -77,9 +86,9 @@ class Recipe < ApplicationRecord
     return {} if medium_ingredients.blank?
 
     {
-      "small" => calculate_size_ingredients(medium_ingredients, 0.8),
+      "small" => calculate_size_ingredients(medium_ingredients, 0.8, :small),
       "medium" => medium_ingredients,
-      "large" => calculate_size_ingredients(medium_ingredients, 1.2)
+      "large" => calculate_size_ingredients(medium_ingredients, 1.2, :large)
     }
   end
 
@@ -113,12 +122,15 @@ class Recipe < ApplicationRecord
   end
 
   # 犬の情報に基づいて調整された材料を返す（特定サイズ）
-  def adjusted_ingredients(dog, size)
+  def adjusted_ingredients(dog, size, meals: 4)
     return nil unless json_format?
     return [] if dog.nil?
 
     multiplier = calculate_multiplier(dog)
-    adjust_ingredients_for_size(size, multiplier)
+    ingredients = adjust_ingredients_for_size(size, multiplier)
+
+    # 上限制御を追加（食数を指定可能）
+    apply_topping_cap(ingredients, dog, size, meals: meals)
   end
 
   # multiplierを計算
@@ -137,29 +149,39 @@ class Recipe < ApplicationRecord
     multiplier *= 1.2 if dog.activity_level_high?
     multiplier *= 0.9 if dog.activity_level_low?
 
-
-
     multiplier
   end
 
   private
 
-def ingredients_presence
-  return if ingredients_json.blank?
-
-  ingredients = ingredients_json["medium"]
-
-  # HashでもArrayでも対応
-  ingredients = ingredients.values if ingredients.is_a?(Hash)
-
-  valid = ingredients.any? do |i|
-    i["name"].present? && i["amount"].present?
+  def parse_ingredients_json
+    # ingredients_json が文字列の場合、パースする
+    if ingredients_json.is_a?(String)
+      begin
+        self.ingredients_json = JSON.parse(ingredients_json)
+      rescue JSON::ParserError
+        # パースに失敗した場合は空のハッシュにする
+        self.ingredients_json = {}
+      end
+    end
   end
 
-  unless valid
-    errors.add(:ingredients_json, "材料を1つ以上入力してください")
+  # 既存のバリデーション（1つに統一）
+  def ingredients_presence
+    return if ingredients_json.blank?
+
+    ingredients = ingredients_json["medium"]
+    return if ingredients.blank?
+
+    # HashでもArrayでも対応
+    ingredients = ingredients.values if ingredients.is_a?(Hash)
+
+    valid = ingredients.any? do |i|
+      i["name"].present? && i["amount"].present?
+    end
+
+    errors.add(:ingredients_json, "に有効な材料を1つ以上入力してください") unless valid
   end
-end
 
   # 指定サイズの材料を調整
   def adjust_ingredients_for_size(size, multiplier)
@@ -172,37 +194,109 @@ end
   end
 
   # サイズに応じた材料を計算
-  def calculate_size_ingredients(ingredients, multiplier)
+  def calculate_size_ingredients(ingredients, multiplier, size)
     ingredients = ingredients.values if ingredients.is_a?(Hash)
     ingredients.map do |ingredient|
       adjusted_ingredient = ingredient.dup
       adjusted_ingredient["amount"] = calculate_amount(
         ingredient["amount"] || ingredient[:amount],
         ingredient["unit"] || ingredient[:unit],
-        multiplier
+        ingredient,  # ★ 材料データ全体を渡す
+        multiplier,
+        size
       )
       adjusted_ingredient
     end
   end
 
-# 単位に応じた量の計算
-def calculate_amount(amount, unit, multiplier)
-  case unit
-  when "g"
-    (amount.to_f * multiplier).round
-  when "piece"
-    value = amount.to_f * multiplier
-    return 1 if value < 1
-    return 1 if value < 1.5
-    value.round
-  when "tsp"
-    (amount.to_f * multiplier).round(1)
-  when "tbsp"
-    (amount.to_f * multiplier).round(1)
-  when "ml"
-    (amount.to_f * multiplier).round
-  else
-    amount
+  # 単位に応じた量の計算
+  def calculate_amount(amount, unit, ingredient_data, multiplier, size)
+    case unit
+    when "g"
+      (amount.to_f * multiplier).round
+
+    when "piece"
+      # 卵だけ特別扱い
+      if egg_ingredient?(ingredient_data)
+        case size.to_sym
+        when :large
+          2
+        else
+          1
+        end
+      else
+        value = amount.to_f * multiplier
+        value.round
+      end
+
+    when "tsp"
+      (amount.to_f * multiplier).round(1)
+    when "tbsp"
+      (amount.to_f * multiplier).round(1)
+    when "ml"
+      (amount.to_f * multiplier).round
+    else
+      amount
+    end
   end
+
+  # 卵かどうかを判定（タグ + 材料名）
+  def egg_ingredient?(ingredient_data)
+    # タグで判定
+    tags = ingredient_data["tags"] || ingredient_data[:tags]
+    return true if tags.present? && tags.include?("egg")
+
+    # タグがない場合は材料名で判定
+    name = ingredient_data["name"] || ingredient_data[:name]
+    return false if name.blank?
+
+    egg_keywords = [ "卵", "たまご", "タマゴ", "玉子", "ゆで卵", "卵黄", "卵白" ]
+    egg_keywords.any? { |keyword| name.include?(keyword) }
+  end
+
+  # allergy_tags の空白を除去
+  def remove_blank_allergy_tags
+    # allergy_tags が nil または空の場合は空の配列にする
+    self.allergy_tags = allergy_tags&.reject(&:blank?) || []
+  end
+
+  def apply_topping_cap(ingredients, dog, size, meals: 4)
+  # ① トッピング総量を計算
+
+  estimated_meal_amount = estimate_meal_amount(size)
+
+  total_topping = ingredients.sum { |i| i["amount"].to_f }
+
+  # ② 1食量を推定
+  meal_amount = estimate_meal_amount(size)
+
+  # ③ 指定食数分の1食量を計算
+  total_meal_amount = meal_amount * meals
+
+  # ④ 上限を決定（指定食数分の20％まで）
+  max_ratio = 0.2
+  max_topping = total_meal_amount * max_ratio
+
+  # ⑤ 超えてたら全体をスケーリング
+  if total_topping > max_topping
+    scale = max_topping / total_topping
+
+    ingredients.each do |ingredient|
+      ingredient["amount"] = (ingredient["amount"].to_f * scale).round
+    end
+  end
+
+  ingredients
 end
+
+  def estimate_meal_amount(size)
+    # サイズ基準の基本量
+    base_amount = case size.to_sym
+    when :small then 80   # g
+    when :medium then 250  # g
+    when :large then 550   # g
+    else 200
+    end
+    base_amount
+  end
 end

@@ -67,6 +67,11 @@ class User < ApplicationRecord
     deleted_at.present?
   end
 
+  # 名前と名字を連結して返すメソッド
+  def full_name
+    "#{last_name} #{first_name}"
+  end
+
   private
 
   # OAuth ユーザーかどうかを判定

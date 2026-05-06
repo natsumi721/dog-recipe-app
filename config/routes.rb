@@ -89,7 +89,12 @@ Rails.application.routes.draw do
 
     # 管理者画面
     namespace :admin do
-    resources :recipes, only: [ :index, :show, :update ] do
+    resources :recipes, only: [ :index, :show, :edit, :update ] do
+      member do
+        patch :approve
+        patch :reject
+      end
+
       collection do
         get :published  # 承認済みレシピ一覧
         get :rejected   # 却下レシピ一覧

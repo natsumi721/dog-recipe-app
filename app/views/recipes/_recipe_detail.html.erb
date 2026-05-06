@@ -71,6 +71,26 @@
       </div>
     </div>
 
+    <!-- ★ アレルギー情報の表示を追加 ★ -->
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="fw-bold">⚠️ アレルギー対象食材</h5>
+      <% if @recipe.allergy_tags.present? && @recipe.allergy_tags.reject(&:blank?).any? %>
+        <div class="d-flex flex-wrap gap-2">
+          <% @recipe.allergy_tags.reject(&:blank?).each do |tag| %>
+            <span class="badge bg-warning text-dark">
+              <%= Dog::ALLERGY_MAP.key(tag) || tag %>
+            </span>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-muted">なし</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
     <!-- 投稿者 -->
     <div class="text-end text-muted mt-4">
       👤 <%= recipe.user&.nickname || "運営レシピ" %>

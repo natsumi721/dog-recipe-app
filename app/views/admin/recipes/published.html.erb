@@ -4,6 +4,28 @@
   <% @recipes.each do |recipe| %>
     <div class="card mb-3 p-3 shadow-sm">
       <h5><%= recipe.name %></h5>
+
+      <!-- ★ ユーザー情報セクションを追加 -->
+      <% if recipe.user.present? %>
+          <div class="bg-light p-3 rounded mb-3">
+            <p class="mb-2 text-muted small">投稿者情報</p>
+            <div class="row g-2 small">
+              <div class="col-6">
+                <strong>ID:</strong> <%= recipe.user.id %>
+              </div>
+              <div class="col-6">
+                <strong>名前:</strong> <%= recipe.user.full_name %>
+              </div>
+              <div class="col-12">
+                <strong>メール:</strong> <%= recipe.user.email %>
+              </div>
+              <div class="col-12">
+                <strong>承認日:</strong> <%= l(recipe.updated_at, format: :short) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
       <p class="text-muted"><%= recipe.description %></p>
       <%= link_to "詳細", admin_recipe_path(recipe), class: "btn btn-outline-primary btn-sm" %>
     </div>
@@ -12,4 +34,8 @@
   <% if @recipes.empty? %>
     <p class="text-muted">承認済みレシピはまだありません</p>
   <% end %>
+</div>
+
+<div class="text-center mt-4">
+  <%= link_to "ホームに戻る", dashboard_path, class: "btn btn-secondary btn-lg" %>
 </div>

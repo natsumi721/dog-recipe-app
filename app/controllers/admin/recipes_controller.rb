@@ -1,23 +1,26 @@
 class Admin::RecipesController < Admin::BaseController  # ← ここを変更
-  before_action :set_recipe, only: [ :show, :update ]
+  before_action :set_recipe, only: [ :show, :edit, :update ]
 
   # 下書きレシピ一覧
   def index
-    @recipes = Recipe.draft
+    @recipes = Recipe.draft.includes(:user).order(created_at: :desc)
   end
 
   # 承認済みレシピ一覧
   def published
-    @recipes = Recipe.published.order(updated_at: :desc)
+    @recipes = Recipe.published.includes(:user).order(updated_at: :desc)
   end
 
   # 却下レシピ一覧
   def rejected
-    @recipes = Recipe.rejected.order(updated_at: :desc)
+    @recipes = Recipe.rejected.includes(:user).order(updated_at: :desc)
   end
 
 
   def show
+  end
+
+  def edit
   end
 
   def update
@@ -41,7 +44,11 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
       end
 
     else
-      redirect_to admin_recipes_path, alert: "不正な操作です"
+     if @recipe.update(recipe_params)
+        redirect_to admin_recipe_path(@recipe), notice: "レシピを更新しました"
+     else
+        render :edit, status: :unprocessable_entity
+     end
     end
   end
 
@@ -49,6 +56,21 @@ class Admin::RecipesController < Admin::BaseController  # ← ここを変更
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.includes(:user).find(params[:id])
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(
+      :name,
+      :description,
+      :image,
+      :remove_image,
+      :ingredients_json,
+      allergy_tags: []
+    )
+  end
+
+  def require_admin
+    redirect_to root_path, alert: "管理者権限が必要です" unless current_user&.admin?
   end
 end

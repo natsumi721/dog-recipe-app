@@ -1,0 +1,122 @@
+<div class="container mt-5" style="max-width: 800px;">
+  <div class="card shadow-lg p-5 rounded-4 border-0">
+
+    <!-- タイトル -->
+    <h2 class="fw-bold mb-4 text-center" style="color:#f4a300;">
+      ✏️ レシピを編集
+    </h2>
+
+    <%= form_with model: @recipe, url: admin_recipe_path(@recipe), method: :patch, local: true do |f| %>
+      
+      <!-- エラーメッセージ -->
+      <% if @recipe.errors.any? %>
+        <div class="alert alert-danger">
+          <h5 class="fw-bold">⚠️ エラーが発生しました</h5>
+          <ul class="mb-0">
+            <% @recipe.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <!-- レシピ名 -->
+      <div class="mb-4">
+        <h5 class="fw-bold mb-2">🍽 レシピ名</h5>
+        <%= f.text_field :name, class: "form-control", placeholder: "例: 鶏肉と野菜の煮込み" %>
+      </div>
+
+      <!-- 説明 -->
+      <div class="mb-4">
+        <h5 class="fw-bold mb-2">📝 説明</h5>
+        <%= f.text_area :description, rows: 4, class: "form-control", placeholder: "レシピの説明を入力してください" %>
+      </div>
+
+      <!-- 対象犬 -->
+      <div class="mb-4 p-3 rounded-3" style="background-color:#fff8e6;">
+        <h5 class="fw-bold mb-3">🐶 対象のわんちゃん</h5>
+        
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <%= f.label :age_stage, "年齢", class: "form-label fw-bold" %>
+            <%= f.select :age_stage, 
+                Recipe.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] }, 
+                { include_blank: "選択してください" }, 
+                class: "form-select" %>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <%= f.label :body_type, "体型", class: "form-label fw-bold" %>
+            <%= f.select :body_type, 
+                Recipe.body_types.keys.map { |k| [t("enums.dog.body_type.#{k}"), k] }, 
+                { include_blank: "選択してください" }, 
+                class: "form-select" %>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <%= f.label :activity_level, "運動量", class: "form-label fw-bold" %>
+            <%= f.select :activity_level, 
+                Recipe.activity_levels.keys.map { |k| [t("enums.dog.activity_level.#{k}"), k] }, 
+                { include_blank: "選択してください" }, 
+                class: "form-select" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- 材料（JSON形式） -->
+      <div class="mb-4">
+        <h5 class="fw-bold mb-2">🥕 材料（JSON形式）</h5>
+        <%= f.text_area :ingredients_json, rows: 10, class: "form-control", value: @recipe.ingredients_json.to_json %>
+        <small class="form-text text-muted">
+          JSON形式で入力してください。例: {"small": [...], "medium": [...], "large": [...]}
+        </small>
+      </div>
+
+      <!-- 作り方 -->
+      <div class="mb-4">
+        <h5 class="fw-bold mb-2">🍳 作り方</h5>
+        <%= f.text_area :instructions, rows: 6, class: "form-control", placeholder: "作り方を入力してください" %>
+      </div>
+
+      <!-- 栄養ポイント -->
+      <div class="mb-4">
+        <h5 class="fw-bold mb-2">🌟 栄養ポイント</h5>
+        <%= f.text_area :nutrition_note, rows: 4, class: "form-control", placeholder: "栄養ポイントを入力してください" %>
+      </div>
+
+      <!-- アレルギー情報 -->
+      <div class="mb-4">
+        <h5 class="fw-bold mb-3">⚠️ アレルギー対象食材</h5>
+        <small class="text-muted d-block mb-2">このレシピに含まれるアレルギー食材を選択してください</small>
+        
+        <div class="p-3 rounded-3" style="background:#fff8e6;">
+          <div class="d-flex flex-wrap gap-2">
+            <% Dog::ALLERGIES.each do |allergy| %>
+              <% tag_value = Dog::ALLERGY_MAP[allergy] %>
+              <div class="form-check form-check-inline">
+                <%= check_box_tag "recipe[allergy_tags][]", 
+                    tag_value, 
+                    @recipe.allergy_tags.include?(tag_value), 
+                    class: "btn-check", 
+                    id: "recipe_allergy_tags_#{tag_value}" %>
+                <%= label_tag "recipe_allergy_tags_#{tag_value}", allergy, 
+                    class: "btn btn-outline-warning btn-sm" %>
+              </div>
+            <% end %>
+          </div>
+          
+          <%# 空の配列を送信するための hidden フィールド %>
+          <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
+        </div>
+      </div>
+
+      <!-- 送信ボタン -->
+      <div class="d-flex justify-content-center gap-3 mt-5">
+        <%= f.submit "更新", class: "btn btn-warning btn-lg px-5 fw-bold" %>
+        <%= link_to "キャンセル", admin_recipe_path(@recipe), class: "btn btn-secondary btn-lg px-5" %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

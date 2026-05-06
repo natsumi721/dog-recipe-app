@@ -1,5 +1,25 @@
 <%= render "recipes/recipe_detail", recipe: @recipe %>
 
+<!-- ★ アレルギー情報の表示を追加 ★ -->
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="fw-bold">⚠️ アレルギー対象食材</h5>
+      <% if @recipe.allergy_tags.present? && @recipe.allergy_tags.reject(&:blank?).any? %>
+        <div class="d-flex flex-wrap gap-2">
+          <% @recipe.allergy_tags.reject(&:blank?).each do |tag| %>
+            <span class="badge bg-warning text-dark">
+              <%= Dog::ALLERGY_MAP.key(tag) || tag %>
+            </span>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-muted">なし</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <%= form_with url: recipes_path, method: :post, data: { turbo: false } do |f| %>
 
   <%= hidden_field_tag "recipe[name]", @recipe.name %>
@@ -12,6 +32,16 @@
 
   <%# JSON文字列として送信 %>
   <%= hidden_field_tag "recipe[ingredients_json_string]", @recipe.ingredients_json.to_json %>
+
+  <%# ★ アレルギー情報を送信 ★ %>
+  <% if @recipe.allergy_tags.present? %>
+    <% @recipe.allergy_tags.each do |tag| %>
+      <%= hidden_field_tag "recipe[allergy_tags][]", tag %>
+    <% end %>
+  <% else %>
+    <%# チェックなしの場合も空配列を送信 %>
+    <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
+  <% end %>
 
   <div class="text-center mt-5">
     <%# ★ 修正する: セッションに保存してから new_recipe_path へ %>
