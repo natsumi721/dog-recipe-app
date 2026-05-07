@@ -176,9 +176,9 @@ class Recipe < ApplicationRecord
     if ingredients_json.blank? || ingredients_json.empty?
       errors.add(:ingredients_json, "を1つ以上入力してください")
     return
-  end
+    end
 
-  # medium が nil または空の場合はエラー
+    # medium が nil または空の場合はエラー
     ingredients = ingredients_json["medium"] || ingredients_json[:medium]
 
     if ingredients.blank?

@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
 
   def confirm
     @recipe = current_user.recipes.build(recipe_params)
-    
+
     # ingredients_json を正規化
     if recipe_params[:ingredients_json].present? && recipe_params[:ingredients_json]["medium"].present?
       medium_ingredients = recipe_params[:ingredients_json]["medium"]
@@ -63,9 +63,9 @@ class RecipesController < ApplicationController
 
     #  全角数字を半角に変換
     normalize_ingredients!(@recipe)
-    
+
     @recipe.status = "draft"
-    
+
     #  バリデーションチェック
     if @recipe.valid?
       render :confirm
@@ -86,7 +86,7 @@ class RecipesController < ApplicationController
 
     # 全角数字を半角に変換（JSON代入後に実行）
     normalize_ingredients!(@recipe)
-    
+
     #  保存
     if @recipe.save
       redirect_to select_action_recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
@@ -231,11 +231,11 @@ end
   #  全角数字を半角に変換するメソッド
   def normalize_ingredients!(recipe)
     return if recipe.ingredients_json.blank?
-    
+
     # medium の配列を取得
     ingredients = recipe.ingredients_json["medium"]
     return if ingredients.blank?
-    
+
     # 配列の各要素の amount を半角に変換
     ingredients.each do |ingredient|
       if ingredient["amount"].present?
@@ -243,7 +243,7 @@ end
         ingredient["amount"] = ingredient["amount"].to_s.tr("０-９", "0-9")
       end
     end
-    
+
     # 変換後の値を再セット
     recipe.ingredients_json = { "medium" => ingredients }
   end

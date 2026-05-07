@@ -29,7 +29,11 @@
 
       <!-- 材料 -->
       <div class="mb-4">
-        <label class="fw-bold">🥕 材料（⚠️必ず中型犬用の量を入力してください）</label>
+        <label class="fw-bold">🥕 材料</label>
+          <p class="text-muted mb-3" style="font-size: 0.9rem;">
+            ⚠️ 中型犬用の分量、4食分を基準に材料を入力してください。<br>
+            総合栄養食にトッピングとして使用する前提のため、4回に分けて与える量を目安にしてください。
+          </p>
 
         <div id="ingredients-fields">
           <% if @recipe.ingredients_json.present? %>
