@@ -81,6 +81,7 @@ Rails.application.routes.draw do
       get :bookmarks   # ブックマーク
       get :my_recipes   # マイレシピ
       get :select_action
+      post :back_to_new
       post :confirm  # レシピ公開前の確認画面
     end
   end

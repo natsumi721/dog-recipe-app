@@ -65,16 +65,11 @@ class IngredientAdjuster
 
   # 0 または 5 に丸めるメソッド
   def round_to_5(value)
-    remainder = value % 10
+    return 0 if value == 0  # ★ 0g の場合は 0g のまま
+    return 5 if value < 5   # ★ 5g 未満は 5g にする（最小値）
 
-    case remainder
-    when 0..2
-      value - remainder  # 0 に丸める
-    when 3..7
-      value - remainder + 5  # 5 に丸める
-    when 8..9
-      value - remainder + 10  # 10 に丸める
-    end
+    # 四捨五入して、5 の倍数に丸める
+    ((value / 5.0).round * 5).to_i
   end
 
   # 　単位を日本語に

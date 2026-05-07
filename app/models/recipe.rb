@@ -130,7 +130,12 @@ class Recipe < ApplicationRecord
     ingredients = adjust_ingredients_for_size(size, multiplier)
 
     # 上限制御を追加（食数を指定可能）
-    apply_topping_cap(ingredients, dog, size, meals: meals)
+    ingredients = apply_topping_cap(ingredients, dog, size, meals: meals)
+
+    # ② 各材料を丸める
+    ingredients.map do |ingredient|
+      round_ingredient(ingredient)
+    end
   end
 
   # multiplierを計算
@@ -168,10 +173,18 @@ class Recipe < ApplicationRecord
 
   # 既存のバリデーション（1つに統一）
   def ingredients_presence
-    return if ingredients_json.blank?
+    if ingredients_json.blank? || ingredients_json.empty?
+      errors.add(:ingredients_json, "を1つ以上入力してください")
+    return
+    end
 
-    ingredients = ingredients_json["medium"]
-    return if ingredients.blank?
+    # medium が nil または空の場合はエラー
+    ingredients = ingredients_json["medium"] || ingredients_json[:medium]
+
+    if ingredients.blank?
+      errors.add(:ingredients_json, "を1つ以上入力してください")
+      return
+    end
 
     # HashでもArrayでも対応
     ingredients = ingredients.values if ingredients.is_a?(Hash)
@@ -180,7 +193,7 @@ class Recipe < ApplicationRecord
       i["name"].present? && i["amount"].present?
     end
 
-    errors.add(:ingredients_json, "に有効な材料を1つ以上入力してください") unless valid
+    errors.add(:ingredients_json, "を1つ以上入力してください") unless valid
   end
 
   # 指定サイズの材料を調整
@@ -260,29 +273,73 @@ class Recipe < ApplicationRecord
     self.allergy_tags = allergy_tags&.reject(&:blank?) || []
   end
 
-  def apply_topping_cap(ingredients, dog, size, meals: 4)
-  # ① トッピング総量を計算
+  # 材料を丸めるメソッド
+  def round_ingredient(ingredient)
+    unit = ingredient[:unit]
+    amount = ingredient[:amount].to_f
 
+    rounded_amount = case unit
+    when "g", "ml"
+      round_to_5(amount).to_i
+    when "個"
+      adjust_piece(amount).to_i
+    when "小さじ", "大さじ", "カップ"
+      amount.round(1)
+    else
+      amount
+    end
+
+    ingredient.merge(amount: rounded_amount)
+  end
+
+  # 0 または 5 に丸めるメソッド（IngredientAdjuster と同じロジック）
+  def round_to_5(value)
+    return 5 if value < 5  # 最小値を 5g にする
+
+    remainder = value % 10
+
+    if remainder <= 5
+      value - remainder + 5  # 1~5 → 5 に丸める
+    else
+      value - remainder + 10  # 6~9 → 10 に丸める
+    end
+  end
+
+  # piece（個）の調整
+  def adjust_piece(amount)
+    value = amount.to_f
+    return 1 if value < 1
+    return 1 if value < 1.5
+    value.round
+  end
+
+
+  def apply_topping_cap(ingredients, dog, size, meals: 4)
+  #  トッピング総量を計算
   estimated_meal_amount = estimate_meal_amount(size)
 
-  total_topping = ingredients.sum { |i| i["amount"].to_f }
+  total_topping = ingredients.sum { |i| i[:amount].to_f }
 
-  # ② 1食量を推定
+  # 1食量を推定
   meal_amount = estimate_meal_amount(size)
 
-  # ③ 指定食数分の1食量を計算
+  #  指定食数分の1食量を計算
   total_meal_amount = meal_amount * meals
 
-  # ④ 上限を決定（指定食数分の20％まで）
+  #  上限を決定（指定食数分の20％まで）
   max_ratio = 0.2
   max_topping = total_meal_amount * max_ratio
 
-  # ⑤ 超えてたら全体をスケーリング
-  if total_topping > max_topping
-    scale = max_topping / total_topping
+  #  丸め処理で増える分を事前に見込む
+  buffer = ingredients.size * 2.5
+  adjusted_max = max_topping - buffer
+
+  #  調整後の目標値に収める
+  if total_topping > adjusted_max
+    scale = adjusted_max / total_topping
 
     ingredients.each do |ingredient|
-      ingredient["amount"] = (ingredient["amount"].to_f * scale).round
+      ingredient[:amount] = ingredient[:amount].to_f * scale
     end
   end
 

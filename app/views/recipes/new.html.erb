@@ -1,129 +1,150 @@
 <div class="container mt-5" style="max-width: 800px;">
   <div class="card shadow-lg p-5 rounded-4 border-0">
-  <% if @recipe.errors.any? %>
-    <div class="alert alert-danger">
-      <ul class="mb-0">
-       <% @recipe.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if @recipe.errors.any? %>
+      <div class="alert alert-danger">
+        <ul class="mb-0">
+          <% @recipe.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
     <h2 class="fw-bold mb-4 text-center" style="color: #f4a300;">
       🐶 レシピ投稿
     </h2>
 
-    <%= form_with model: @recipe, url: confirm_recipes_path, data: { turbo: false } do |f| %>
-
+    <%= form_with model: @recipe, url: confirm_recipes_path, data: { turbo: false }, html: { id: "recipe-form" } do |f| %>
       <!-- レシピ名 -->
       <div class="mb-3">
         <label class="fw-bold">🍽 レシピ名</label>
         <%= f.text_field :name, class: "form-control", placeholder: "例：ささみと野菜のごはん" %>
       </div>
 
-     <!-- 対象のわんちゃん -->
+      <!-- 対象のわんちゃん -->
       <div class="mb-3">
-         <label class="fw-bold">🐶 このレシピはどんなわんちゃん向け？</label>
-         <%= f.text_area :description, class: "form-control", rows: 2, placeholder: "例：体重を増やしたい子犬向け" %>
+        <label class="fw-bold">🐶 このレシピの特徴は？</label>
+        <%= f.text_area :description, class: "form-control", rows: 2, placeholder: "例：体重を増やしたい子犬向け" %>
       </div>
 
-
-        <!-- 材料 -->
+      <!-- 材料 -->
       <div class="mb-4">
-  <label class="fw-bold">🥕 材料（⚠️必ず中型犬用の量を入力してください）</label>
+        <label class="fw-bold">🥕 材料</label>
+          <p class="text-muted mb-3" style="font-size: 0.9rem;">
+            ⚠️ 中型犬用の分量、4食分を基準に材料を入力してください。<br>
+            総合栄養食にトッピングとして使用する前提のため、4回に分けて与える量を目安にしてください。
+          </p>
 
-  <div id="ingredients-fields">
-  <% if @recipe.ingredients_json.present? %>
-    <% ingredients = @recipe.ingredients_json["medium"] %>
-    <% ingredients = ingredients.values if ingredients.is_a?(Hash) %>
+        <div id="ingredients-fields">
+          <% if @recipe.ingredients_json.present? %>
+            <% ingredients = @recipe.ingredients_json["medium"] %>
+            <% ingredients = ingredients.values if ingredients.is_a?(Hash) %>
 
-    <% ingredients.each do |ingredient| %>
-      <div class="d-flex gap-2 mb-2">
-        <input type="text"
-          name="recipe[ingredients_json][medium][][name]"
-          value="<%= ingredient["name"] %>"
-          class="form-control">
+            <% ingredients.each do |ingredient| %>
+              <div class="d-flex gap-2 mb-2">
+                <!-- 材料名 -->
+                <input type="text"
+                  name="recipe[ingredients_json][medium][][name]"
+                  value="<%= ingredient["name"] %>"
+                  class="form-control"
+                  placeholder="食材名">
 
-        <input type="number"
-          name="recipe[ingredients_json][medium][][amount]"
-          value="<%= ingredient["amount"] %>"
-          class="form-control">
+                <!-- 量 -->
+                <input type="text"
+                  name="recipe[ingredients_json][medium][][amount]"
+                  value="<%= ingredient["amount"] %>"
+                  class="form-control amount-input"
+                  placeholder="量">
 
-        <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
-          <option value="g" <%= "selected" if ingredient["unit"] == "g" %>>g</option>
-          <option value="ml" <%= "selected" if ingredient["unit"] == "ml" %>>ml</option>
-          <option value="tsp" <%= "selected" if ingredient["unit"] == "tsp" %>>小さじ</option>
-          <option value="tbsp" <%= "selected" if ingredient["unit"] == "tbsp" %>>大さじ</option>
-          <option value="piece" <%= "selected" if ingredient["unit"] == "piece" %>>個</option>
-        </select>
+                <!-- 単位 -->
+                <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
+                  <option value="g" <%= "selected" if ingredient["unit"] == "g" %>>g</option>
+                  <option value="ml" <%= "selected" if ingredient["unit"] == "ml" %>>ml</option>
+                  <option value="tsp" <%= "selected" if ingredient["unit"] == "tsp" %>>小さじ</option>
+                  <option value="tbsp" <%= "selected" if ingredient["unit"] == "tbsp" %>>大さじ</option>
+                  <option value="piece" <%= "selected" if ingredient["unit"] == "piece" %>>個</option>
+                </select>
+              </div>
+            <% end %>
+          <% else %>
+            <!-- 初期表示 -->
+            <div class="d-flex gap-2 mb-2">
+              <input type="text" 
+                name="recipe[ingredients_json][medium][][name]" 
+                class="form-control" 
+                placeholder="食材名">
+              
+              <input type="text" 
+                name="recipe[ingredients_json][medium][][amount]" 
+                class="form-control amount-input" 
+                placeholder="量">
+              
+              <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
+                <option value="g">g</option>
+                <option value="ml">ml</option>
+                <option value="tsp">小さじ</option>
+                <option value="tbsp">大さじ</option>
+                <option value="piece">個</option>
+              </select>
+            </div>
+          <% end %>
+        </div>
+        
+        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addIngredient()">
+          ＋材料を追加
+        </button>
       </div>
-    <% end %>
-  <% else %>
-    <!-- 初期表示 -->
-    <div class="d-flex gap-2 mb-2">
-      <input type="text" name="recipe[ingredients_json][medium][][name]" class="form-control">
-      <input type="number" name="recipe[ingredients_json][medium][][amount]" class="form-control">
-      <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
-        <option value="g">g</option>
-        <option value="ml">ml</option>
-        <option value="tsp">小さじ</option>
-        <option value="tbsp">大さじ</option>
-        <option value="piece">個</option>
-      </select>
-    </div>
-  <% end %>
-</div>
-  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addIngredient()">
-    ＋材料を追加
-  </button>
-</div>
 
-<div class="mb-4">
-  <label class="fw-bold">⚠️ このレシピに含まれるアレルギー対象食材</label>
-  <p class="text-muted small">該当するものにチェックを入れてください</p>
-  
-  <div class="row">
-    <% Dog::ALLERGY_MAP.each do |japanese, tag| %>
-      <div class="col-md-4 mb-2">
-        <%= check_box_tag "recipe[allergy_tags][]", 
-            tag, 
-            @recipe.allergy_tags&.include?(tag),
-            id: "allergy_#{tag}" %>
-        <%= label_tag "allergy_#{tag}", japanese, class: "ms-2" %>
+      <!-- アレルギー対象食材 -->
+      <div class="mb-4">
+        <label class="fw-bold">⚠️ このレシピに含まれるアレルギー対象食材</label>
+        <p class="text-muted small">該当するものにチェックを入れてください</p>
+        
+        <div class="row">
+          <% Dog::ALLERGY_MAP.each do |japanese, tag| %>
+            <div class="col-md-4 mb-2">
+              <%= check_box_tag "recipe[allergy_tags][]", 
+                  tag, 
+                  @recipe.allergy_tags&.include?(tag),
+                  id: "allergy_#{tag}" %>
+              <%= label_tag "allergy_#{tag}", japanese, class: "ms-2" %>
+            </div>
+          <% end %>
+        </div>
+        
+        <!-- チェックなしでも送信できるようにする -->
+        <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
       </div>
-    <% end %>
-  </div>
-  
-  <!-- チェックなしでも送信できるようにする -->
-  <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
-</div>
 
-  <div class="row">
-  <!-- 年齢 -->
-  <div class="col-md-4">
-    <%= f.label :age_stage, "このレシピの該当タイプ" %>
-    <%= f.select :age_stage,
-        Recipe.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] },
-        {}, class: "form-select" %>
-  </div>
+      <!-- どんなワンちゃんに向けたレシピ？ -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">どんなワンちゃんに向けたレシピ？</label>
+        <div class="row">
+          <!-- 年齢 -->
+          <div class="col-md-4">
+            <%= f.label :age_stage, "年齢" %>
+            <%= f.select :age_stage,
+                Recipe.age_stages.keys.map { |k| [t("enums.dog.age_stage.#{k}"), k] },
+                {}, class: "form-select" %>
+          </div>
 
-  <!-- 体型 -->
-  <div class="col-md-4">
-    <%= f.label :body_type, "体型" %>
-    <%= f.select :body_type,
-        Recipe.body_types.keys.map { |k| [t("enums.dog.body_type.#{k}"), k] },
-        {}, class: "form-select" %>
-  </div>
+          <!-- 体型 -->
+          <div class="col-md-4">
+            <%= f.label :body_type, "体型" %>
+            <%= f.select :body_type,
+                Recipe.body_types.keys.map { |k| [t("enums.dog.body_type.#{k}"), k] },
+                {}, class: "form-select" %>
+          </div>
 
-  <!-- 運動量 -->
-  <div class="col-md-4">
-    <%= f.label :activity_level, "運動量" %>
-    <%= f.select :activity_level,
-        Recipe.activity_levels.keys.map { |k| [t("enums.dog.activity_level.#{k}"), k] },
-        {}, class: "form-select" %>
-  </div>
-</div>
+          <!-- 運動量 -->
+          <div class="col-md-4">
+            <%= f.label :activity_level, "運動量" %>
+            <%= f.select :activity_level,
+                Recipe.activity_levels.keys.map { |k| [t("enums.dog.activity_level.#{k}"), k] },
+                {}, class: "form-select" %>
+          </div>
+        </div>
+      </div>
 
       <!-- 作り方 -->
       <div class="mb-3">
@@ -168,13 +189,38 @@
 </div>
 
 <script>
+// 全角数字を半角に変換する関数
+function normalizeNumber(value) {
+  return value.replace(/[０-９]/g, function(s) {
+    return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+  });
+}
+
+// フォーム送信時に全角数字を半角に変換
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('recipe-form');
+  
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      // すべての amount-input を取得
+      const amountInputs = document.querySelectorAll('.amount-input');
+      
+      amountInputs.forEach(function(input) {
+        // 全角数字を半角に変換
+        input.value = normalizeNumber(input.value);
+      });
+    });
+  }
+});
+
+// 材料を追加する関数
 function addIngredient() {
   const container = document.getElementById("ingredients-fields");
 
   const html = `
     <div class="d-flex gap-2 mb-2">
       <input type="text" name="recipe[ingredients_json][medium][][name]" placeholder="食材名" class="form-control">
-      <input type="number" name="recipe[ingredients_json][medium][][amount]" placeholder="量" class="form-control">
+      <input type="text" name="recipe[ingredients_json][medium][][amount]" placeholder="量" class="form-control amount-input">
       <select name="recipe[ingredients_json][medium][][unit]" class="form-select">
         <option value="g">g</option>
         <option value="ml">ml</option>

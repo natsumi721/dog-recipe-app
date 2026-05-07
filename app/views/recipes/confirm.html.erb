@@ -1,59 +1,52 @@
 <%= render "recipes/recipe_detail", recipe: @recipe %>
 
-<!-- ★ アレルギー情報の表示を追加 ★ -->
-<div class="container mt-4">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="fw-bold">⚠️ アレルギー対象食材</h5>
-      <% if @recipe.allergy_tags.present? && @recipe.allergy_tags.reject(&:blank?).any? %>
-        <div class="d-flex flex-wrap gap-2">
-          <% @recipe.allergy_tags.reject(&:blank?).each do |tag| %>
-            <span class="badge bg-warning text-dark">
-              <%= Dog::ALLERGY_MAP.key(tag) || tag %>
-            </span>
-          <% end %>
-        </div>
-      <% else %>
-        <p class="text-muted">なし</p>
-      <% end %>
+<div class="text-center mt-5">
+  <div style="display: inline-block; margin-right: 10px;">
+  <%= button_to "修正する",
+    back_to_new_recipes_path,
+    method: :post,
+    params: { 
+      recipe: {
+        name: @recipe.name,
+        description: @recipe.description,
+        instructions: @recipe.instructions,
+        nutrition_note: @recipe.nutrition_note,
+        age_stage: @recipe.age_stage,
+        body_type: @recipe.body_type,
+        activity_level: @recipe.activity_level,
+        allergy_tags: @recipe.allergy_tags,
+        ingredients_json: @recipe.ingredients_json
+      }
+    },
+    class: "btn me-3",
+    style: "
+      border-radius: 30px;
+      padding: 10px 25px;
+      border: 2px solid #ccc;
+      color: #555;
+      background-color: white;
+    " %>
     </div>
-  </div>
-</div>
 
-<%= form_with url: recipes_path, method: :post, data: { turbo: false } do |f| %>
+  <%# ★ form_with は button_to の後に配置 %>
+  <div style="display: inline-block;">
+  <%= form_with url: recipes_path, method: :post, data: { turbo: false } do |f| %>
+    <%= hidden_field_tag "recipe[name]", @recipe.name %>
+    <%= hidden_field_tag "recipe[description]", @recipe.description %>
+    <%= hidden_field_tag "recipe[instructions]", @recipe.instructions %>
+    <%= hidden_field_tag "recipe[nutrition_note]", @recipe.nutrition_note %>
+    <%= hidden_field_tag "recipe[age_stage]", @recipe.age_stage %>
+    <%= hidden_field_tag "recipe[body_type]", @recipe.body_type %>
+    <%= hidden_field_tag "recipe[activity_level]", @recipe.activity_level %>
+    <%= hidden_field_tag "recipe[ingredients_json_string]", @recipe.ingredients_json.to_json %>
 
-  <%= hidden_field_tag "recipe[name]", @recipe.name %>
-  <%= hidden_field_tag "recipe[description]", @recipe.description %>
-  <%= hidden_field_tag "recipe[instructions]", @recipe.instructions %>
-  <%= hidden_field_tag "recipe[nutrition_note]", @recipe.nutrition_note %>
-  <%= hidden_field_tag "recipe[age_stage]", @recipe.age_stage %>
-  <%= hidden_field_tag "recipe[body_type]", @recipe.body_type %>
-  <%= hidden_field_tag "recipe[activity_level]", @recipe.activity_level %>
-
-  <%# JSON文字列として送信 %>
-  <%= hidden_field_tag "recipe[ingredients_json_string]", @recipe.ingredients_json.to_json %>
-
-  <%# ★ アレルギー情報を送信 ★ %>
-  <% if @recipe.allergy_tags.present? %>
-    <% @recipe.allergy_tags.each do |tag| %>
-      <%= hidden_field_tag "recipe[allergy_tags][]", tag %>
+    <% if @recipe.allergy_tags.present? %>
+      <% @recipe.allergy_tags.each do |tag| %>
+        <%= hidden_field_tag "recipe[allergy_tags][]", tag %>
+      <% end %>
+    <% else %>
+      <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
     <% end %>
-  <% else %>
-    <%# チェックなしの場合も空配列を送信 %>
-    <%= hidden_field_tag "recipe[allergy_tags][]", "" %>
-  <% end %>
-
-  <div class="text-center mt-5">
-    <%# ★ 修正する: セッションに保存してから new_recipe_path へ %>
-    <%= link_to "修正する",
-      new_recipe_path,
-      class: "btn me-3",
-      style: "
-        border-radius: 30px;
-        padding: 10px 25px;
-        border: 2px solid #ccc;
-        color: #555;
-      " %>
 
     <%= f.submit "レシピを投稿する",
       class: "btn",
@@ -64,6 +57,6 @@
         padding: 10px 25px;
         font-weight: bold;
       " %>
+  <% end %>
   </div>
-
-<% end %>
+</div>
