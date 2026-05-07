@@ -14,71 +14,88 @@ class RecipesController < ApplicationController
     end
   end
 
+  #  確認画面から戻るアクション
+  def back_to_new
+    # パラメータをセッションに保存
+    session[:recipe_draft] = params[:recipe].to_unsafe_h
+    redirect_to new_recipe_path
+  end
+
   def confirm
-  @recipe = current_user.recipes.build(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
+    
+    # ingredients_json を正規化
+    if recipe_params[:ingredients_json].present? && recipe_params[:ingredients_json]["medium"].present?
+      medium_ingredients = recipe_params[:ingredients_json]["medium"]
 
-  # ingredients_json を正規化
-  if recipe_params[:ingredients_json].present? && recipe_params[:ingredients_json]["medium"].present?
-    medium_ingredients = recipe_params[:ingredients_json]["medium"]
+      # 正規化処理
+      normalized = if medium_ingredients.is_a?(Hash)
+        # ハッシュ形式の場合は配列に変換
+        medium_ingredients.values.map do |ingredient|
+          {
+            "name" => ingredient["name"],
+            "amount" => ingredient["amount"],
+            "unit" => ingredient["unit"]
+          }
+        end
+      elsif medium_ingredients.is_a?(Array)
+        # すでに配列形式ならそのまま
+        medium_ingredients.map do |ingredient|
+          {
+            "name" => ingredient["name"],
+            "amount" => ingredient["amount"],
+            "unit" => ingredient["unit"]
+          }
+        end
+      else
+        # それ以外の場合は空配列
+        []
+      end
 
-    # 正規化処理
-    normalized = if medium_ingredients.is_a?(Hash)
-      # ハッシュ形式の場合は配列に変換
-      medium_ingredients.values.map do |ingredient|
-        {
-          "name" => ingredient["name"],
-          "amount" => ingredient["amount"],
-          "unit" => ingredient["unit"]
-        }
+      # 空の材料を除外
+      filtered = normalized.reject do |i|
+        i["name"].blank? || i["amount"].blank?
       end
-    elsif medium_ingredients.is_a?(Array)
-      # すでに配列形式ならそのまま
-      medium_ingredients.map do |ingredient|
-        {
-          "name" => ingredient["name"],
-          "amount" => ingredient["amount"],
-          "unit" => ingredient["unit"]
-        }
-      end
+
+      #  ここで @recipe.ingredients_json に代入
+      @recipe.ingredients_json = { "medium" => filtered }
+    end
+
+    #  全角数字を半角に変換
+    normalize_ingredients!(@recipe)
+    
+    @recipe.status = "draft"
+    
+    #  バリデーションチェック
+    if @recipe.valid?
+      render :confirm
     else
-      # それ以外の場合は空配列
-      []
+      flash.now[:alert] = "入力内容を確認してください"
+      render :new, status: :unprocessable_entity
     end
-
-    # 空の材料を除外
-    filtered = normalized.reject do |i|
-      i["name"].blank? || i["amount"].blank?
-    end
-
-    # ★ ここで @recipe.ingredients_json に代入
-    @recipe.ingredients_json = { "medium" => filtered }
   end
-
-  @recipe.status = "draft"
-
-  # バリデーションチェック
-  unless @recipe.valid?
-    flash.now[:alert] = "入力内容を確認してください"
-    render :new, status: :unprocessable_entity
-  end
-end
 
   def create
-  @recipe = current_user.recipes.build(recipe_params)
-  @recipe.status = "draft"
+    @recipe = current_user.recipes.build(recipe_params)
+    @recipe.status = "draft"
 
-  # ★ JSON文字列をパースして ingredients_json に代入
-  if params[:recipe][:ingredients_json_string].present?
-    @recipe.ingredients_json = JSON.parse(params[:recipe][:ingredients_json_string])
+    #  JSON文字列をパースして ingredients_json に代入
+    if params[:recipe][:ingredients_json_string].present?
+      @recipe.ingredients_json = JSON.parse(params[:recipe][:ingredients_json_string])
+    end
+
+    # 全角数字を半角に変換（JSON代入後に実行）
+    normalize_ingredients!(@recipe)
+    
+    #  保存
+    if @recipe.save
+      redirect_to select_action_recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
+    else
+      flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  if @recipe.save
-    redirect_to select_action_recipes_path, notice: "レシピを保存しました。管理者の承認後に公開されます。"
-  else
-    flash.now[:alert] = "レシピの保存に失敗しました。入力内容を確認してください。"
-    render :new, status: :unprocessable_entity
-  end
-end
 
 
 
@@ -210,6 +227,27 @@ end
   end
 
   private
+
+  #  全角数字を半角に変換するメソッド
+  def normalize_ingredients!(recipe)
+    return if recipe.ingredients_json.blank?
+    
+    # medium の配列を取得
+    ingredients = recipe.ingredients_json["medium"]
+    return if ingredients.blank?
+    
+    # 配列の各要素の amount を半角に変換
+    ingredients.each do |ingredient|
+      if ingredient["amount"].present?
+        # 全角数字を半角に変換
+        ingredient["amount"] = ingredient["amount"].to_s.tr("０-９", "0-9")
+      end
+    end
+    
+    # 変換後の値を再セット
+    recipe.ingredients_json = { "medium" => ingredients }
+  end
+
 
   def recipe_params
     params.require(:recipe).permit(

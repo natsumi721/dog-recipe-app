@@ -173,10 +173,18 @@ class Recipe < ApplicationRecord
 
   # 既存のバリデーション（1つに統一）
   def ingredients_presence
-    return if ingredients_json.blank?
+    if ingredients_json.blank? || ingredients_json.empty?
+      errors.add(:ingredients_json, "を1つ以上入力してください")
+    return
+  end
 
-    ingredients = ingredients_json["medium"]
-    return if ingredients.blank?
+  # medium が nil または空の場合はエラー
+    ingredients = ingredients_json["medium"] || ingredients_json[:medium]
+
+    if ingredients.blank?
+      errors.add(:ingredients_json, "を1つ以上入力してください")
+      return
+    end
 
     # HashでもArrayでも対応
     ingredients = ingredients.values if ingredients.is_a?(Hash)
@@ -185,7 +193,7 @@ class Recipe < ApplicationRecord
       i["name"].present? && i["amount"].present?
     end
 
-    errors.add(:ingredients_json, "に有効な材料を1つ以上入力してください") unless valid
+    errors.add(:ingredients_json, "を1つ以上入力してください") unless valid
   end
 
   # 指定サイズの材料を調整
