@@ -74,6 +74,7 @@
     </div>
   </div>
 
+  <% if current_user.nil? %>
   <!-- CTA セクション -->
   <div class="how-to-cta fade-in-section">
     <h3>さあ、はじめましょう!</h3>
@@ -83,6 +84,8 @@
       <%= link_to "ログイン", login_path, class: "secondary-button" %>
     </div>
 </div>
+<% end %>
+
 <!-- 戻るボタン -->
   <div class="back-button-container">
     <%= link_to "戻る", "javascript:history.back()", class: "back-button" %>
