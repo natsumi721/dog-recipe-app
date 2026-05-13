@@ -6968,14 +6968,14 @@ Recipe.create!(
   TEXT
 )
 
-# 管理者ユーザー（環境別）
 if Rails.env.development?
   puts "開発環境用の管理者を作成します..."
 
   User.find_or_create_by!(email: "admin@example.com") do |user|
-    user.name = "admin"
-    user.password = "password"
-    user.password_confirmation = "password"
+    user.first_name = "Admin"           # 名を追加
+    user.last_name = "User"             # 姓を追加
+    user.password = "Password123"       # 英字と数字の組み合わせ
+    user.password_confirmation = "Password123"
     user.admin = true
   end
 
@@ -6988,7 +6988,8 @@ if Rails.env.production?
   # 環境変数が設定されているかチェック
   if ENV['ADMIN_EMAIL'].present? && ENV['ADMIN_PASSWORD'].present?
     User.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |user|
-      user.name = ENV['ADMIN_NAME'] || 'Admin'
+      user.first_name = ENV['ADMIN_FIRST_NAME'] || 'Admin'  # 名を追加
+      user.last_name = ENV['ADMIN_LAST_NAME'] || 'User'     # 姓を追加
       user.password = ENV['ADMIN_PASSWORD']
       user.password_confirmation = ENV['ADMIN_PASSWORD']
       user.admin = true
