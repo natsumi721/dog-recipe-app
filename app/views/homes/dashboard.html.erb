@@ -246,6 +246,16 @@
 
       <%= link_to "確認する", rejected_admin_recipes_path, class: "btn btn-warning btn-lg" %>
   <% end %>
+
+  <!-- 登録ユーザー数確認 -->
+  <%= render "homes/card",
+      icon: "bi-list-check",
+      title: "登録ユーザー数",
+      text: "現在の登録ユーザー数を確認" do %>
+
+      <%= link_to "確認する", admin_users_path, class: "btn btn-warning btn-lg" %>
+  <% end %>
+
   <% end %>
 
   </div>
