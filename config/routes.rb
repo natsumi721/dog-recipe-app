@@ -95,9 +95,9 @@ Rails.application.routes.draw do
     namespace :admin do
   get "dashboard", to: "dashboard#index"
 
-  resources :users, only: [:index]
+  resources :users, only: [ :index ]
 
-  resources :recipes, only: [:index, :show, :edit, :update] do
+  resources :recipes, only: [ :index, :show, :edit, :update ] do
     member do
       patch :approve
       patch :reject
