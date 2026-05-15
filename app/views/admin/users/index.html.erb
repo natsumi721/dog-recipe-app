@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <h2 class="mb-4">アプリ登録情報</h2>
+
+
+<p>登録ユーザー数: <%= @users_count %>人</p>
+<p>登録犬数: <%= @dogs_count %>匹</p>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>犬の数</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.dogs.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

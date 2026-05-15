@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get "users/index"
+  end
   get "profiles/edit"
   get "profiles/update"
   get "oauths/oauth"
@@ -90,20 +93,22 @@ Rails.application.routes.draw do
 
     # 管理者画面
     namespace :admin do
-    resources :recipes, only: [ :index, :show, :edit, :update ] do
-      member do
-        patch :approve
-        patch :reject
-      end
+  get "dashboard", to: "dashboard#index"
 
-      collection do
-        get :published  # 承認済みレシピ一覧
-        get :rejected   # 却下レシピ一覧
-      end
-      get "dashboard", to: "dashboard#index"
+  resources :users, only: [ :index ]
+
+  resources :recipes, only: [ :index, :show, :edit, :update ] do
+    member do
+      patch :approve
+      patch :reject
+    end
+
+    collection do
+      get :published # 公開済みレシピ
+      get :rejected   # 却下レシピ
+    end
   end
 end
-
 
     # パスワードリセット
     resources :password_resets, only: [ :new, :create, :edit, :update ]
