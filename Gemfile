@@ -41,7 +41,7 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "mini_magick", "~> 4.11"
-gem "image_processing", "~> 1.12"
+gem "image_processing", "~> 2.0"
 gem "active_storage_validations"
 gem "aws-sdk-s3", require: false
 
